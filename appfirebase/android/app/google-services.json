@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "391084674285",
+    "project_id": "hogar-3f60f",
+    "storage_bucket": "hogar-3f60f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391084674285:android:65e323fc0c1a22a73ed0e4",
+        "android_client_info": {
+          "package_name": "com.tfg.appfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391084674285-1qn498p53596n87a3colj8met7j0nu1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD13w7pDxJJmbmqxmMZRAv1S1bnNMg2l6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391084674285-1qn498p53596n87a3colj8met7j0nu1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391084674285:android:01b1e62d891a6ff03ed0e4",
+        "android_client_info": {
+          "package_name": "com.tfgsergio.hogar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391084674285-1qn498p53596n87a3colj8met7j0nu1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD13w7pDxJJmbmqxmMZRAv1S1bnNMg2l6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391084674285-1qn498p53596n87a3colj8met7j0nu1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

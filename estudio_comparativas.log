@@ -1,0 +1,336 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  6 SEP 2024 19:06
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/USUARIO/Documents/Sergio/TFG/estudio_comparativas.tex
+(c:/Users/USUARIO/Documents/Sergio/TFG/estudio_comparativas.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-16>
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count194
+\c@section=\count195
+\c@subsection=\count196
+\c@subsubsection=\count197
+\c@paragraph=\count198
+\c@subparagraph=\count199
+\c@figure=\count266
+\c@table=\count267
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/08/29 v24.9 The Babel package
+\babel@savecnt=\count268
+\U@D=\dimen142
+\l@unhyphenated=\language79
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count269
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish
+.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks19
+\es@quotdepth=\count270
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+))
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\bab
+el-spanish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 11.
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics
+.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.d
+ef
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen143
+\Gin@req@width=\dimen144
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks21
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-p
+dftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count271
+\l__pdf_internal_box=\box52
+) (estudio_comparativas.aux
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
+)
+\openout1 = `estudio_comparativas.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Info: Redefining \. on input line 14.
+LaTeX Info: Redefining \% on input line 14.
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
+mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count272
+\scratchdimen=\dimen145
+\scratchbox=\box53
+\nofMPsegments=\count273
+\nofMParguments=\count274
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count275
+\MPscratchDim=\dimen146
+\MPnumerator=\count276
+\makeMPintoPDFobject=\count277
+\everyMPtoPDFconversion=\toks23
+)
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf
+-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys
+.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
+
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
+
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+[1
+
+{C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+<./img/principal.jpg, id=10, 1541.76pt x 2055.68pt>
+File: ./img/principal.jpg Graphic file (type jpg)
+<use ./img/principal.jpg>
+Package pdftex.def Info: ./img/principal.jpg  used on input line 60.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+<./img/inicio.jpg, id=11, 1541.76pt x 2055.68pt>
+File: ./img/inicio.jpg Graphic file (type jpg)
+<use ./img/inicio.jpg>
+Package pdftex.def Info: ./img/inicio.jpg  used on input line 67.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+<./img/añadir.jpg, id=12, 1541.76pt x 2055.68pt>
+File: ./img/añadir.jpg Graphic file (type jpg)
+<use ./img/añadir.jpg>
+Package pdftex.def Info: ./img/añadir.jpg  used on input line 89.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+<./img/incio_sesion.jpg, id=13, 1541.76pt x 2055.68pt>
+File: ./img/incio_sesion.jpg Graphic file (type jpg)
+<use ./img/incio_sesion.jpg>
+Package pdftex.def Info: ./img/incio_sesion.jpg  used on input line 96.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+
+
+[2 <./img/principal.jpg> <./img/inicio.jpg>]
+<./img/crear.jpg, id=17, 1541.76pt x 2055.68pt>
+File: ./img/crear.jpg Graphic file (type jpg)
+<use ./img/crear.jpg>
+Package pdftex.def Info: ./img/crear.jpg  used on input line 114.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+<./img/creado.jpg, id=18, 1541.76pt x 2055.68pt>
+File: ./img/creado.jpg Graphic file (type jpg)
+<use ./img/creado.jpg>
+Package pdftex.def Info: ./img/creado.jpg  used on input line 121.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+<./img/participantes.jpg, id=19, 1541.76pt x 2055.68pt>
+File: ./img/participantes.jpg Graphic file (type jpg)
+<use ./img/participantes.jpg>
+Package pdftex.def Info: ./img/participantes.jpg  used on input line 137.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+<./img/gastos.jpg, id=20, 1541.76pt x 2055.68pt>
+File: ./img/gastos.jpg Graphic file (type jpg)
+<use ./img/gastos.jpg>
+Package pdftex.def Info: ./img/gastos.jpg  used on input line 144.
+(pdftex.def)             Requested size: 155.24895pt x 206.99156pt.
+
+
+[3 <./img/añadir.jpg> <./img/incio_sesion.jpg>]
+
+[4 <./img/crear.jpg> <./img/creado.jpg>]
+
+[5 <./img/participantes.jpg> <./img/gastos.jpg>]
+<./img/registro_todoist.jpg, id=30, 741.77126pt x 1606.0pt>
+File: ./img/registro_todoist.jpg Graphic file (type jpg)
+<use ./img/registro_todoist.jpg>
+Package pdftex.def Info: ./img/registro_todoist.jpg  used on input line 209.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/ambito_todoist.jpg, id=31, 741.77126pt x 1606.0pt>
+File: ./img/ambito_todoist.jpg Graphic file (type jpg)
+<use ./img/ambito_todoist.jpg>
+Package pdftex.def Info: ./img/ambito_todoist.jpg  used on input line 216.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/principal_todoist.jpg, id=32, 741.77126pt x 1606.0pt>
+File: ./img/principal_todoist.jpg Graphic file (type jpg)
+<use ./img/principal_todoist.jpg>
+Package pdftex.def Info: ./img/principal_todoist.jpg  used on input line 226.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/añadir_todoist.jpg, id=33, 741.77126pt x 1606.0pt>
+File: ./img/añadir_todoist.jpg Graphic file (type jpg)
+<use ./img/añadir_todoist.jpg>
+Package pdftex.def Info: ./img/añadir_todoist.jpg  used on input line 233.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/tarea_todoist.jpg, id=34, 741.77126pt x 1606.0pt>
+File: ./img/tarea_todoist.jpg Graphic file (type jpg)
+<use ./img/tarea_todoist.jpg>
+Package pdftex.def Info: ./img/tarea_todoist.jpg  used on input line 243.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/calendario_todoist.jpg, id=35, 741.77126pt x 1606.0pt>
+File: ./img/calendario_todoist.jpg Graphic file (type jpg)
+<use ./img/calendario_todoist.jpg>
+Package pdftex.def Info: ./img/calendario_todoist.jpg  used on input line 250.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+
+
+[6]
+Overfull \hbox (5.6395pt too wide) in paragraph at lines 282--284
+[]\OT1/cmr/m/n/10 Corresponsabilidad. Fo-men-ta la co-rres-pon-sa-bi-li-dad en 
+el ho-gar a trav^^Ses
+ []
+
+
+
+[7 <./img/registro_todoist.jpg> <./img/ambito_todoist.jpg>]
+
+[8 <./img/principal_todoist.jpg> <./img/añadir_todoist.jpg>]
+
+[9 <./img/tarea_todoist.jpg> <./img/calendario_todoist.jpg>]
+
+[10]
+<./img/registro_cozi.jpg, id=53, 741.77126pt x 1606.0pt>
+File: ./img/registro_cozi.jpg Graphic file (type jpg)
+<use ./img/registro_cozi.jpg>
+Package pdftex.def Info: ./img/registro_cozi.jpg  used on input line 353.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/familia_cozi.jpg, id=54, 741.77126pt x 1606.0pt>
+File: ./img/familia_cozi.jpg Graphic file (type jpg)
+<use ./img/familia_cozi.jpg>
+Package pdftex.def Info: ./img/familia_cozi.jpg  used on input line 360.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/evento_cozi.jpg, id=55, 741.77126pt x 1606.0pt>
+File: ./img/evento_cozi.jpg Graphic file (type jpg)
+<use ./img/evento_cozi.jpg>
+Package pdftex.def Info: ./img/evento_cozi.jpg  used on input line 370.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/calendario_cozi.jpg, id=56, 741.77126pt x 1606.0pt>
+File: ./img/calendario_cozi.jpg Graphic file (type jpg)
+<use ./img/calendario_cozi.jpg>
+Package pdftex.def Info: ./img/calendario_cozi.jpg  used on input line 377.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/listas_cozi.jpg, id=57, 741.77126pt x 1606.0pt>
+File: ./img/listas_cozi.jpg Graphic file (type jpg)
+<use ./img/listas_cozi.jpg>
+Package pdftex.def Info: ./img/listas_cozi.jpg  used on input line 387.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+<./img/recetas_cozi.jpg, id=58, 741.77126pt x 1606.0pt>
+File: ./img/recetas_cozi.jpg Graphic file (type jpg)
+<use ./img/recetas_cozi.jpg>
+Package pdftex.def Info: ./img/recetas_cozi.jpg  used on input line 394.
+(pdftex.def)             Requested size: 155.24895pt x 336.1182pt.
+
+
+[11]
+
+[12 <./img/registro_cozi.jpg> <./img/familia_cozi.jpg>]
+
+[13 <./img/evento_cozi.jpg> <./img/calendario_cozi.jpg>]
+
+[14 <./img/listas_cozi.jpg> <./img/recetas_cozi.jpg>]
+
+[15] (estudio_comparativas.aux
+LaTeX Info: Redefining \. on input line 8.
+LaTeX Info: Redefining \% on input line 8.
+)
+ ***********
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-16>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 3490 strings out of 473899
+ 58263 string characters out of 5725557
+ 1937960 words of memory out of 5000000
+ 26352 multiletter control sequences out of 15000+600000
+ 566613 words of font info for 69 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,11n,65p,307b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
+rm1000.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/USUARIO/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARI
+O/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+
+Output written on estudio_comparativas.pdf (15 pages, 1710866 bytes).
+PDF statistics:
+ 106 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+
