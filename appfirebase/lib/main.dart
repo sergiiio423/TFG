@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -62,14 +63,16 @@ class _SignInPageState extends State<SignInPage> {
 
   Future<void> _signIn() async {
     try {
-      final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
       if (!userCredential.user!.emailVerified) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Please verify your email before logging in.')),
+          const SnackBar(
+              content: Text('Please verify your email before logging in.')),
         );
       }
     } catch (e) {
@@ -79,20 +82,127 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Image.asset('assets/inicio.png', width: 200, height: 200),
+
+                const Text(
+                  '¡Empieza a gestionar tu hogar!',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Arial',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: _emailController,
+                  decoration: const InputDecoration(labelText: 'Email'),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(height: 16), // Añade espacio entre los campos
+                TextField(
+                  controller: _passwordController,
+                  decoration: const InputDecoration(labelText: 'Contraseña'),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 20),
+                TextButton.icon(
+                  onPressed: _signIn,
+                  icon: const Icon(Icons.email,
+                      color: Colors.black), // Icono del sobre
+                  label: const Text(
+                    'Iniciar sesión con correo electrónico',
+                    style: TextStyle(color: Colors.black), // Color del texto
+                  ),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white, // Color de fondo blanco
+                    minimumSize: const Size(
+                        double.infinity, 50), // Tamaño mínimo del botón
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0), // Espaciado horizontal
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(8.0), // Bordes redondeados
+                    ),
+                    side: BorderSide(
+                        color: Colors.grey.shade300), // Opcional: borde gris
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextButton(
+                  onPressed: () {
+                    // Navegar a la página de registro
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RegistrationPage()),
+                    );
+                  },
+                  child: const Text('Go to Register',
+                      style: TextStyle(color: Colors.blue)),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
+
+  @override
+  _RegistrationPageState createState() => _RegistrationPageState();
+}
+
+class _RegistrationPageState extends State<RegistrationPage> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _surnameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   Future<void> _register() async {
     try {
-      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      // Registro de usuario en Firebase Auth
+      final userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
+      // Guardar datos adicionales en Firestore
+      await FirebaseFirestore.instance
+          .collection('usuarios')
+          .doc(userCredential.user!.uid)
+          .set({
+        'nombre': _nameController.text,
+        'apellidos': _surnameController.text,
+      });
+
+      // Enviar verificación de email
       await userCredential.user!.sendEmailVerification();
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Verification email sent. Please check your inbox.')),
+        const SnackBar(
+            content:
+                Text('Registro completado. Revisa tu correo para verificar.')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Registration Error: ${e.toString()}')),
+        SnackBar(content: Text('Error al registrar: ${e.toString()}')),
       );
     }
   }
@@ -101,12 +211,20 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign In / Register'),
+        title: const Text('Registro'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(labelText: 'Nombre'),
+            ),
+            TextField(
+              controller: _surnameController,
+              decoration: const InputDecoration(labelText: 'Apellidos'),
+            ),
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: 'Email'),
@@ -114,18 +232,13 @@ class _SignInPageState extends State<SignInPage> {
             ),
             TextField(
               controller: _passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(labelText: 'Contraseña'),
               obscureText: true,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _signIn,
-              child: const Text('Sign In'),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
               onPressed: _register,
-              child: const Text('Register'),
+              child: const Text('Registrar'),
             ),
           ],
         ),
