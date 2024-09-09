@@ -1,10 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  6 SEP 2024 19:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  9 SEP 2024 12:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/USUARIO/Documents/Sergio/TFG/estudio_comparativas.tex
-(c:/Users/USUARIO/Documents/Sergio/TFG/estudio_comparativas.tex
+**c:/Users/USUARIO/Documents/Sergio/TFG/documentación/estudio_comparativas.tex
+
+(c:/Users/USUARIO/Documents/Sergio/TFG/documentación/estudio_comparativas.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -313,12 +314,12 @@ L3 programming layer <2024-08-16>
  ) 
 Here is how much of TeX's memory you used:
  3490 strings out of 473899
- 58263 string characters out of 5725557
+ 58368 string characters out of 5725557
  1937960 words of memory out of 5000000
  26352 multiletter control sequences out of 15000+600000
  566613 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,65p,307b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,65p,322b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
 rm1000.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type

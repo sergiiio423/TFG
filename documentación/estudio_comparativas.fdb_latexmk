@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1725642360.39598 "c:/Users/USUARIO/Documents/Sergio/TFG/estudio_comparativas.tex" "estudio_comparativas.pdf" "estudio_comparativas" 1725642361.75131 0
+["pdflatex"] 1725877146.69929 "c:/Users/USUARIO/Documents/Sergio/TFG/documentación/estudio_comparativas.tex" "estudio_comparativas.pdf" "estudio_comparativas" 1725877148.83163 0
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1725355742 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1725355711 11548 9381f0328757d535e8a4f9c169cacc40 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725354652 24266276 f962c6e3930507883e75864bcb40a2ca ""
@@ -55,8 +55,8 @@
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1718270727 2671 70891d50dac933918b827d326687c6e8 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty" 1718270727 4023 2c9f39712cf7b43d3eb93a8bbd5c8f67 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1716480499 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
-  "c:/Users/USUARIO/Documents/Sergio/TFG/estudio_comparativas.tex" 1725642359 25324 e66ba85e4373786c109ab52a52c2a16c ""
-  "estudio_comparativas.aux" 1725642361 5673 0cd05c0a7c0104d0d76f7280777b1bb8 "pdflatex"
+  "c:/Users/USUARIO/Documents/Sergio/TFG/documentación/estudio_comparativas.tex" 1725642359 25324 e66ba85e4373786c109ab52a52c2a16c ""
+  "estudio_comparativas.aux" 1725877148 5673 0cd05c0a7c0104d0d76f7280777b1bb8 "pdflatex"
   "estudio_comparativas.tex" 1725642359 25324 e66ba85e4373786c109ab52a52c2a16c ""
   "img/ambito_todoist.jpg" 1725440317 47494 654635ac1cb890653f306f62a090285f ""
   "img/añadir.jpg" 1725358713 85099 5ef637892027c4b8ff1232c47558d2ac ""

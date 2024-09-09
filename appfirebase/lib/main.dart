@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -82,6 +83,36 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
+  Future<void> _signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        return; // El usuario canceló el inicio de sesión
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (userCredential.user != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Logged in with Google')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.toString()}')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +126,6 @@ class _SignInPageState extends State<SignInPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image.asset('assets/inicio.png', width: 200, height: 200),
-
                 const Text(
                   '¡Empieza a gestionar tu hogar!',
                   style: TextStyle(
@@ -110,7 +140,7 @@ class _SignInPageState extends State<SignInPage> {
                   decoration: const InputDecoration(labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                 ),
-                const SizedBox(height: 16), // Añade espacio entre los campos
+                const SizedBox(height: 16),
                 TextField(
                   controller: _passwordController,
                   decoration: const InputDecoration(labelText: 'Contraseña'),
@@ -119,30 +149,42 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(height: 20),
                 TextButton.icon(
                   onPressed: _signIn,
-                  icon: const Icon(Icons.email,
-                      color: Colors.black), // Icono del sobre
+                  icon: const Icon(Icons.email, color: Colors.black),
                   label: const Text(
                     'Iniciar sesión con correo electrónico',
-                    style: TextStyle(color: Colors.black), // Color del texto
+                    style: TextStyle(color: Colors.black),
                   ),
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white, // Color de fondo blanco
-                    minimumSize: const Size(
-                        double.infinity, 50), // Tamaño mínimo del botón
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0), // Espaciado horizontal
+                    backgroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 50),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(8.0), // Bordes redondeados
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    side: BorderSide(
-                        color: Colors.grey.shade300), // Opcional: borde gris
+                    side: BorderSide(color: Colors.grey.shade300),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextButton.icon(
+                  onPressed: _signInWithGoogle,
+                  icon: const Icon(Icons.account_circle, color: Colors.red),
+                  label: const Text(
+                    'Iniciar sesión con Google',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 50),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    side: BorderSide(color: Colors.grey.shade300),
                   ),
                 ),
                 const SizedBox(height: 10),
                 TextButton(
                   onPressed: () {
-                    // Navegar a la página de registro
                     Navigator.push(
                       context,
                       MaterialPageRoute(

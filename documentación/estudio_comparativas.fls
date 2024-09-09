@@ -1,6 +1,6 @@
-PWD c:\Users\USUARIO\Documents\Sergio\TFG
+PWD c:\Users\USUARIO\Documents\Sergio\TFG\documentación
 INPUT C:\Users\USUARIO\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\USUARIO\Documents\Sergio\TFG\estudio_comparativas.tex
+INPUT c:\Users\USUARIO\Documents\Sergio\TFG\documentación\estudio_comparativas.tex
 OUTPUT estudio_comparativas.log
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
