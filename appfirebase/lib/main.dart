@@ -7,6 +7,8 @@ import 'firebase_options.dart';
 import 'registro.dart';
 import 'inicio_sesion.dart';
 import 'inicio_sesion_correo.dart';
+import 'principal.dart';
+import 'crear_hogar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         // ----------------------------------------------------------
         '/inicio_sesion_correo': (context) => const SignInEmail(),
         // ----------------------------------------------------------
+        '/crear_hogar': (context) => const CrearHogarPage(),
 
       },
     );
@@ -63,31 +66,4 @@ class AuthGate extends StatelessWidget {
 
 
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-            },
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('You are logged in!'),
-          ],
-        ),
-      ),
-    );
-  }
-}

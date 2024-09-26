@@ -40,6 +40,8 @@ dependencies:
   google_sign_in:
   firebase_database:
   cloud_firestore:
+  share_plus:
+  permission_handler:
 
 
 dev_dependencies:

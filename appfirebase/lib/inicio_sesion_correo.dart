@@ -27,14 +27,79 @@ class _SignInEmailState extends State<SignInEmail> {
       );
 
       if (!userCredential.user!.emailVerified) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Please verify your email before logging in.')),
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    'assets/no-confirmado.png',
+                    height: 100,
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Correo no verificado',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Por favor verifica tu correo electrónico antes de iniciar sesión.',
+                  ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Aceptar'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/inicio_sesion_correo');
+                  },
+                ),
+                TextButton(
+                  child: Text('Reenviar correo de verificación'),
+                  onPressed: () async {
+                    await userCredential.user!.sendEmailVerification();
+                    Navigator.pushNamed(context, '/inicio_sesion_correo');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text('Correo de verificación reenviado.')),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
         );
+      } else {
+        Navigator.pushNamed(context, '/');
       }
     } catch (e) {
+      try {
+        await _register();
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
+    }
+  }
+
+  Future<void> _register() async {
+    try {
+      final userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      await userCredential.user!.sendEmailVerification();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.toString()}')),
+        const SnackBar(
+            content: Text('Verification email sent. Please check your inbox.')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Registration Error: ${e.toString()}')),
       );
     }
   }
@@ -90,9 +155,10 @@ class _SignInEmailState extends State<SignInEmail> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _signIn,
-                child: const Text('Iniciar sesión',
-                style: TextStyle(color: Colors.black),),
-
+                child: const Text(
+                  'Iniciar sesión',
+                  style: TextStyle(color: Colors.black),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
