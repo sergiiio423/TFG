@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  27 SEP 2024 13:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  29 SEP 2024 13:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/USUARIO/Documents/Sergio/TFG/documentación/explicacion_natural.tex
-(c:/Users/USUARIO/Documents/Sergio/TFG/documentación/explicacion_natural.tex
+**c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/explicacion_natural.tex
+(c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/explicacion_natural.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -150,15 +150,15 @@ L3 programming layer <2024-08-16>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3298 strings out of 473899
- 53668 string characters out of 5725557
- 1934960 words of memory out of 5000000
- 26164 multiletter control sequences out of 15000+600000
- 564233 words of font info for 59 fonts, out of 8000000 for 9000
+ 3303 strings out of 473899
+ 53727 string characters out of 5725557
+ 1935960 words of memory out of 5000000
+ 26168 multiletter control sequences out of 15000+600000
+ 564568 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,5n,65p,321b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on explicacion_natural.pdf (3 pages, 66671 bytes).
+ 57i,5n,65p,329b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on explicacion_natural.pdf (3 pages, 58306 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
