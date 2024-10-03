@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  30 SEP 2024 18:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  3 OCT 2024 13:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -347,7 +347,17 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \titlewidth=\dimen161
 \titlewidthlast=\dimen162
 \titlewidthfirst=\dimen163
-) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks35
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@col@width=\dimen164
 \TX@old@table=\dimen165
@@ -355,7 +365,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@target=\dimen167
 \TX@delta=\dimen168
 \TX@cols=\count307
-\TX@ftn=\toks35
+\TX@ftn=\toks36
 ) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
@@ -365,19 +375,19 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\idxtitle@default=\toks36
+\idxtitle@default=\toks37
 \tf@default=\write3
 \openout3 = `proyecto.idx'.
 
-Package index Info: Writing index file proyecto.idx on input line 74.
+Package index Info: Writing index file proyecto.idx on input line 77.
 
 
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless.
-(fancyhdr)                Please consider using the `twoside' option on input line 80.
+(fancyhdr)                Please consider using the `twoside' option on input line 83.
 
 
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless.
-(fancyhdr)                Please consider using the `twoside' option on input line 81.
+(fancyhdr)                Please consider using the `twoside' option on input line 84.
 
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -427,30 +437,33 @@ Package: apacite 2013/07/21 v6.03 APA citation
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count313
 \l__pdf_internal_box=\box68
-) (proyecto.aux)
+) (proyecto.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+)
 \openout1 = `proyecto.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
 \c@lstlisting=\count314
-LaTeX Info: Redefining \. on input line 105.
-LaTeX Info: Redefining \% on input line 105.
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count315
@@ -458,19 +471,20 @@ LaTeX Info: Redefining \% on input line 105.
 \scratchbox=\box69
 \nofMPsegments=\count316
 \nofMParguments=\count317
-\everyMPshowfont=\toks37
+\everyMPshowfont=\toks38
 \MPscratchCnt=\count318
 \MPscratchDim=\dimen183
 \MPnumerator=\count319
 \makeMPintoPDFobject=\count320
-\everyMPtoPDFconversion=\toks38
+\everyMPtoPDFconversion=\toks39
 ) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 105.
+Package hyperref Info: Link coloring OFF on input line 108.
+ (proyecto.out) (proyecto.out)
 \@outlinefile=\write4
 \openout4 = `proyecto.out'.
 
@@ -481,18 +495,20 @@ LaTeX Info: Redefining \BPBI on input line 138.
 LaTeX Info: Redefining \BHBI on input line 139.
 ) (portada/portada.tex
 \centeroffset=\skip78
-<imagenes/logo_ugr.jpg, id=3, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=55, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
 (pdftex.def)             Requested size: 323.9978pt x 96.57295pt.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 23.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 23.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 23.
-<imagenes/etsiit_logo.png, id=4, 110.814pt x 40.4712pt>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<imagenes/etsiit_logo.png, id=56, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 33.
@@ -512,7 +528,7 @@ l.1 \begin{titlepage}
                       [1
 
 ]
-<imagenes/logo.png, id=20, 123.46124pt x 45.92157pt>
+<imagenes/logo.png, id=72, 123.46124pt x 45.92157pt>
 File: imagenes/logo.png Graphic file (type png)
 <use imagenes/logo.png>
 Package pdftex.def Info: imagenes/logo.png  used on input line 21.
@@ -579,121 +595,172 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
 ]) (../capitulos/explicacion_natural.tex
 
-../capitulos/explicacion_natural.tex:1: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1 \documentclass
-                  {article}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-../capitulos/explicacion_natural.tex:4: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4 \usepackage
-               [utf8]{inputenc}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-../capitulos/explicacion_natural.tex:5: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.5 \usepackage
-               [spanish]{babel}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-../capitulos/explicacion_natural.tex:6: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.6 \usepackage
-               {graphicx}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-../capitulos/explicacion_natural.tex:7: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \usepackage
-               {amssymb}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-../capitulos/explicacion_natural.tex:15: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 \begin{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-
 [5
 
 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 17.
+Cap\'{\i }tulo 1.
 
 
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.17 
-      [1
+[6
 
 ]
 
+[7]
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.47 		\item \textbf
-                    {Descripción:} Estudio del mercado actual de aplicacion... [1]
+[8]) (../capitulos/planificacion.tex
+Cap\'{\i }tulo 2.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.81 	\item \textbf
-                   {Diseño.} Descripción del diseño de la aplicación, in... [2]
+[9
+
+]) (../capitulos/estado_del_arte.tex
+Cap\'{\i }tulo 3.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.93 \end{document}
-                    [3] (proyecto.aux
+[10
+
+]
+<../capitulos/img/principal.jpg, id=143, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/principal.jpg Graphic file (type jpg)
+<use ../capitulos/img/principal.jpg>
+Package pdftex.def Info: ../capitulos/img/principal.jpg  used on input line 51.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/inicio.jpg, id=144, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/inicio.jpg Graphic file (type jpg)
+<use ../capitulos/img/inicio.jpg>
+Package pdftex.def Info: ../capitulos/img/inicio.jpg  used on input line 58.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+
+
+[11 <../capitulos/img/principal.jpg> <../capitulos/img/inicio.jpg>]
+<../capitulos/img/añadir.jpg, id=160, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/añadir.jpg Graphic file (type jpg)
+<use ../capitulos/img/añadir.jpg>
+Package pdftex.def Info: ../capitulos/img/añadir.jpg  used on input line 80.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/incio_sesion.jpg, id=161, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/incio_sesion.jpg Graphic file (type jpg)
+<use ../capitulos/img/incio_sesion.jpg>
+Package pdftex.def Info: ../capitulos/img/incio_sesion.jpg  used on input line 87.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/crear.jpg, id=165, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/crear.jpg Graphic file (type jpg)
+<use ../capitulos/img/crear.jpg>
+Package pdftex.def Info: ../capitulos/img/crear.jpg  used on input line 105.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/creado.jpg, id=166, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/creado.jpg Graphic file (type jpg)
+<use ../capitulos/img/creado.jpg>
+Package pdftex.def Info: ../capitulos/img/creado.jpg  used on input line 112.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/participantes.jpg, id=169, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/participantes.jpg Graphic file (type jpg)
+<use ../capitulos/img/participantes.jpg>
+Package pdftex.def Info: ../capitulos/img/participantes.jpg  used on input line 128.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/gastos.jpg, id=170, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/gastos.jpg Graphic file (type jpg)
+<use ../capitulos/img/gastos.jpg>
+Package pdftex.def Info: ../capitulos/img/gastos.jpg  used on input line 135.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+
+
+[12 <../capitulos/img/añadir.jpg> <../capitulos/img/incio_sesion.jpg>]
+
+[13 <../capitulos/img/crear.jpg> <../capitulos/img/creado.jpg>]
+Overfull \hbox (4.66583pt too wide) in paragraph at lines 174--175
+[]\OT1/cmr/m/n/10.95 Etiquetas. Per-mi-ten agru-par ta-reas de di-fe-ren-tes pro-yec-tos a trav^^Ses
+ []
+
+
+
+[14 <../capitulos/img/participantes.jpg> <../capitulos/img/gastos.jpg>]
+<../capitulos/img/registro_todoist.jpg, id=209, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/registro_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/registro_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/registro_todoist.jpg  used on input line 204.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/ambito_todoist.jpg, id=210, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/ambito_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/ambito_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/ambito_todoist.jpg  used on input line 211.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/principal_todoist.jpg, id=211, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/principal_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/principal_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/principal_todoist.jpg  used on input line 221.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/añadir_todoist.jpg, id=212, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/añadir_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/añadir_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/añadir_todoist.jpg  used on input line 228.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/tarea_todoist.jpg, id=213, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/tarea_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/tarea_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/tarea_todoist.jpg  used on input line 238.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/calendario_todoist.jpg, id=214, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/calendario_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/calendario_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/calendario_todoist.jpg  used on input line 245.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+
+
+[15]
+
+[16 <../capitulos/img/registro_todoist.jpg> <../capitulos/img/ambito_todoist.jpg>]
+
+[17 <../capitulos/img/principal_todoist.jpg> <../capitulos/img/añadir_todoist.jpg>]
+
+[18 <../capitulos/img/tarea_todoist.jpg> <../capitulos/img/calendario_todoist.jpg>]
+
+[19]
+<../capitulos/img/registro_cozi.jpg, id=278, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/registro_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/registro_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/registro_cozi.jpg  used on input line 355.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/familia_cozi.jpg, id=279, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/familia_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/familia_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/familia_cozi.jpg  used on input line 362.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/evento_cozi.jpg, id=280, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/evento_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/evento_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/evento_cozi.jpg  used on input line 372.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/calendario_cozi.jpg, id=281, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/calendario_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/calendario_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/calendario_cozi.jpg  used on input line 379.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/listas_cozi.jpg, id=282, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/listas_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/listas_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/listas_cozi.jpg  used on input line 389.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/recetas_cozi.jpg, id=283, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/recetas_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/recetas_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/recetas_cozi.jpg  used on input line 396.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+
+
+[20]
+
+[21 <../capitulos/img/registro_cozi.jpg> <../capitulos/img/familia_cozi.jpg>]
+
+[22 <../capitulos/img/evento_cozi.jpg> <../capitulos/img/calendario_cozi.jpg>]
+
+[23 <../capitulos/img/listas_cozi.jpg> <../capitulos/img/recetas_cozi.jpg>]
+
+[24])
+
+[25
+
+] (proyecto.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 )
@@ -701,32 +768,21 @@ LaTeX Info: Redefining \% on input line 12.
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
-
-
-Package rerunfilecheck Warning: File `proyecto.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `proyecto.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  6171718751521635E911252B2D4B474C;589.
- ) )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 15 (\begingroup)
-### bottom level 
+Package rerunfilecheck Info: File `proyecto.out' has not changed.
+(rerunfilecheck)             Checksum: 8EBEA89AB0ADFCB0AACB8B938CD3CDAD;1725.
+ ) 
 Here is how much of TeX's memory you used:
- 14245 strings out of 473899
- 226985 string characters out of 5725557
- 1937960 words of memory out of 5000000
- 36878 multiletter control sequences out of 15000+600000
- 565494 words of font info for 60 fonts, out of 8000000 for 9000
+ 15144 strings out of 473899
+ 242052 string characters out of 5725557
+ 1940960 words of memory out of 5000000
+ 37624 multiletter control sequences out of 15000+600000
+ 567095 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,385b,726s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on proyecto.pdf (12 pages, 207518 bytes).
+ 75i,12n,79p,396b,716s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on proyecto.pdf (28 pages, 1876755 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 25 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 401 PDF objects out of 1000 (max. 8388607)
+ 150 named destinations out of 1000 (max. 500000)
+ 220 words of extra memory for PDF output out of 10000 (max. 10000000)
 
