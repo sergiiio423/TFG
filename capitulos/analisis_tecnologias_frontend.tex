@@ -66,14 +66,22 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
 
 \begin{table}[ht]
     \centering
-    \scalebox{0.9}{
-    \begin{tabular}{|c|c|c|c|c|c|}
+    \scalebox{0.8}{
+    \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-        \textbf{Tecnología} & \textbf{Lenguaje} & \textbf{IDE} & \textbf{Ventajas} & \textbf{Desventajas} & \textbf{Popularidad} \\
+        \textbf{} & \textbf{Lenguaje} & \textbf{Rendimiento} & \textbf{Componentes UI} & \textbf{Comunidad} & \textbf{Hot Reload} & \textbf{Integración} \\
         \hline
-        Kotlin & Java & Android Studio & Interoperabilidad con Java & Baja adopción & Media \\
+         \textbf{Kotlin} & Java & Nativo & Componentes Nativos & Grande & No  & Herramientas Nativas \\
         \hline
-        Swift & Swift & XCode & Sintaxis simple y moderna & Duplicidad de esfuerzos & Alta \\
+        \textbf{Swift} & Swift & Nativo & Componentes Nativos & Grande & No & Herramientas Nativas \\
+        \hline
+        \textbf{Ionic} & JavaScript & Buen Rendimiento & Componentes Nativos & Grande & Sí & Buen Soporte \\
+        \hline
+        \textbf{Flutter} & Dart & Cercano a Nativo & Personalizados & Activa & Sí & Buen Soporte \\
+        \hline
+        \textbf{React Native} & JavaScript & Buen Rendimiento & Componentes Nativos & Grande & Sí & Buen Soporte \\
+        \hline
+        \textbf{Xamarin} & C\# & Buen Rendimiento & Componentes Nativos & Grande & Sí & Integración Microsoft \\
         \hline
     \end{tabular}
     }
@@ -81,7 +89,16 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
     \label{tab:comparativa}
 \end{table}
 
+\section{Analisis de las tecnologías Backend}
+Una vez tomada la decisión de usar Flutter como tecnología front-end, se debe elegir una tecnología backend que permita la comunicación entre la aplicación y la base de datos. A continuación vamos a ver las diferentes tecnologías que hay para ello:
 
+\subsection{Firebase}
+Firebase es una plataforma de Google que ofrece una amplia variedad de servicios backend, lo que incluye \textbf{bases de datos en tiempo real}
+como FireStore y Realtime Database. Además. proporciona servicios de autenticación, almacenamiento de archivos, notificaciones push, análisi y más.
+No requiere gestión de servidores debido a que es completamente serverless. Cuenta con una \textbf{fácil integración} con Flutter debido a que 
+tiene SDks nativos para dicha tecnología, lo que simplifica mucho el desarrollo en comparación con otras tecnologías que requieren la integración manual. Sin embargo, 
+Firebase tiene un \textbf{coste} asociado al uso de sus servicios, lo que puede ser un inconveniente para proyectos con presupuestos limitados. También tiene una \textbf{dependencia de Google}, porque todo esta alojados
+en la infraestructura de Google, lo que puede generar dependecia a largo plazo.
 
 \end{document}
 

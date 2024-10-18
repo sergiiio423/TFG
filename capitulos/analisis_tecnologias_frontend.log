@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  7 OCT 2024 13:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  18 OCT 2024 13:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -139,7 +139,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 [2]
-Overfull \hbox (128.17783pt too wide) in paragraph at lines 79--80
+Overfull \hbox (126.60127pt too wide) in paragraph at lines 87--88
  [][] 
  []
 
@@ -157,13 +157,13 @@ L3 programming layer <2024-08-16>
 Here is how much of TeX's memory you used:
  3313 strings out of 473899
  53957 string characters out of 5725557
- 1937960 words of memory out of 5000000
+ 1940960 words of memory out of 5000000
  26176 multiletter control sequences out of 15000+600000
  566278 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,10n,65p,427b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on analisis_tecnologias_frontend.pdf (3 pages, 75204 bytes).
+Output written on analisis_tecnologias_frontend.pdf (3 pages, 77142 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
