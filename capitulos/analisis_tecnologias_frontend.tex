@@ -5,6 +5,7 @@
 \usepackage[spanish]{babel} % Para la correcta separación de sílabas y etiquetas en español
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{rotating}
 
 \title{}
 \author{}
@@ -62,7 +63,7 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
 
 
 
-\subsection{Tabla comparativa de tecnologías}
+\subsection{Tabla comparativa de tecnologías front-end}
 
 \begin{table}[ht]
     \centering
@@ -85,7 +86,7 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
         \hline
     \end{tabular}
     }
-    \caption{Tabla comparativa de tecnologías}
+    \caption{Tabla comparativa de tecnologías front-end}
     \label{tab:comparativa}
 \end{table}
 
@@ -99,6 +100,48 @@ No requiere gestión de servidores debido a que es completamente serverless. Cue
 tiene SDks nativos para dicha tecnología, lo que simplifica mucho el desarrollo en comparación con otras tecnologías que requieren la integración manual. Sin embargo, 
 Firebase tiene un \textbf{coste} asociado al uso de sus servicios, lo que puede ser un inconveniente para proyectos con presupuestos limitados. También tiene una \textbf{dependencia de Google}, porque todo esta alojados
 en la infraestructura de Google, lo que puede generar dependecia a largo plazo.
+
+\subsection{Node.js con Express}
+Node.js es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el backend. Express es un 
+framework ligero que permite construir aplicaciones web y APIs REST de manera rápida y sencilla. Además, es bastante útil para aplicaciones que manejan 
+un alto número de solicitudes simultáneas. Para el almacenamiento de datos se pueden usar bases de datos realacionales como \textbf{MySQL} o \textbf{PostgreSQL} o bases de datos NoSQL como \textbf{MongoDB}.
+Gracias a npm (\textit{Node Package Manager}), hay miles de paquetes disponibles que permiten acelerar el proceso de desarrollo. También es una tecnología \textbf{flexible}, porque permite elegir el tipo de base de datos.
+Por el contrario tiene una \textbf{Complejidad de gestión del servidor}. Aunque Express es minimalista, la creación y gestión de servidores, puede ser más compleja en comparación con soluciones serverless. Además, la \textbf{curva de aprendizaje} puede ser más pronunciada para desarrolladores que no tienen experiencia previa con JavaScript.
+
+\subsection{Django}
+Es un framework web de alto nivel escrito en Python que facilita la creación de aplicaciones webs seguras y escalables. Junto con \textbf{Django REST Framework}, permite exponer APis REST de forma 
+rápida y eficiente. Se integra bien con bases de datos relacionales como \textbf{PostgreSQL} y \textbf{MySQL}. Django proporciona un \textbf{rápido desarrollo} debido a que incluye una gran cantidad de herramientas listas para usar (\textit{autenticación, administración, etc.}).
+Además, tiene carácteristicas de seguridad incorporadas, como protección CSRF, gestión de contraseñas seguras y más. También proporciona \textbf{gestión automática de bases de datos} sin tener que escribir consultas SQL Manuales. 
+Sin embargo, Django puede ser algo pesado para proyectos más pequeños o simples. Además, la \textbf{curva de aprendizaje} puede ser pronunciada para desarrolladores que no tienen experiencia previa con Python.
+
+\subsection{Ruby on Rails}
+Ruby on Rails es un framework MVC (\textit{Modelo-Vista-Controlador}) escrito en Ruby, que permite desarrollar aplicaciones web y APis de manera rápida. Rails se integra
+perfectamente con bases de datos relacionales como \textbf{PostgreSQL} o \textbf{MySQL}. Una facilidad que incorpora Ruby on Rails es la \textbf{Convención sobre configuración}, 
+lo que significa que muchas decisiones están predefinidas para que el desarrollador no tenga que configurarlas manualmente, acelerando el proceso de desarrollo.
+También \textbf{facilita la interacción} con la base de datos relacionales. Sin embargo, Aunque Rails es excelente para aplicaciones web, no es tan común en el desarrollo de APIs para 
+aplicaciones móviles.
+
+\subsection{Tabla comparativa de tecnologías back-end}
+\begin{sidewaystable}
+    \centering
+    \scalebox{0.9}{
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{} & \textbf{Lenguaje} & \textbf{BD Soportada} & \textbf{Gestión del estado} & \textbf{Integración con API} & \textbf{Popularidad}  \\
+        \hline
+         \textbf{Firebase} & - & Firebase, Realtime DB & Serverless, en tiempo real & APIs nativas de Firebase & Muy alta \\
+        \hline
+        \textbf{Node.js} & JavaScript & MongoDB, MySQL, PostgreSQL & Depende de la implementación & Muy flexible & Muy alta \\
+        \hline
+        \textbf{Django} & Python & PostgreSQL, MySQL & ORM Propio & Django REST Framework & Alta \\
+        \hline
+        \textbf{Ruby on Rails} & Ruby & PostgreSQL, MySQL & ActiveRecord ORM & RESTful API fácil de implementar & Media \\
+        \hline
+    \end{tabular}
+    }
+    \caption{Tabla comparativa de tecnologías back-end}
+    \label{tab:comparativa2}
+\end{sidewaystable}
 
 \end{document}
 
