@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1729336015.50985 "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" "analisis_tecnologias_frontend.pdf" "analisis_tecnologias_frontend" 1729336016.31626 0
+["pdflatex"] 1729616178.48746 "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" "analisis_tecnologias_frontend.pdf" "analisis_tecnologias_frontend" 1729616179.48433 0
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727713762 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725354652 24266276 f962c6e3930507883e75864bcb40a2ca ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -45,6 +45,7 @@
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty" 1719393830 5048 7ebf0f2edf1ef6783e8fe2201a95d0e8 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo" 1719393830 8448 358bf3de18513f057a13bdc6e6770c41 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1623003186 13886 d1306dcf79a944f6988e688c1785f9ce ""
+  "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty" 1469023953 6916 16d2656a1984957e674b149555f1ea1d ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.cfg" 1465894292 1224 978390e9c2234eab29404bc21b268d1e ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/pdftex.def" 1713599642 19440 9da9dcbb27470349a580fca7372d454b ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty" 1718270727 18363 b79c83eab17bf475b508f05e9807e605 ""
@@ -53,9 +54,9 @@
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/rotating.sty" 1718270727 7060 c21bdf2a03ef9298ad94a39d4110f07c ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty" 1718270727 4023 2c9f39712cf7b43d3eb93a8bbd5c8f67 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1716480499 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
-  "analisis_tecnologias_frontend.aux" 1729336016 1783 17e9cbf0b1fd4e2dcf07b4abcf84b414 "pdflatex"
-  "analisis_tecnologias_frontend.tex" 1729336013 12878 131766177bde467d7deddc8308c10d74 ""
-  "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" 1729336013 12878 131766177bde467d7deddc8308c10d74 ""
+  "analisis_tecnologias_frontend.aux" 1729616179 1899 18eb6836692b81d155c1e9077b4fdd6e "pdflatex"
+  "analisis_tecnologias_frontend.tex" 1729616176 14714 760b298bdb781cbcd29ca7baaedcf066 ""
+  "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" 1729616176 14714 760b298bdb781cbcd29ca7baaedcf066 ""
   (generated)
   "analisis_tecnologias_frontend.aux"
   "analisis_tecnologias_frontend.log"
