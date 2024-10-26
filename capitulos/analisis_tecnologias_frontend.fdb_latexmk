@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1729616178.48746 "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" "analisis_tecnologias_frontend.pdf" "analisis_tecnologias_frontend" 1729616179.48433 0
+["pdflatex"] 1729941992.90129 "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" "analisis_tecnologias_frontend.pdf" "analisis_tecnologias_frontend" 1729941995.2639 0
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727713762 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725354652 24266276 f962c6e3930507883e75864bcb40a2ca ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -54,9 +54,19 @@
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/rotating.sty" 1718270727 7060 c21bdf2a03ef9298ad94a39d4110f07c ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty" 1718270727 4023 2c9f39712cf7b43d3eb93a8bbd5c8f67 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1716480499 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
-  "analisis_tecnologias_frontend.aux" 1729616179 1899 18eb6836692b81d155c1e9077b4fdd6e "pdflatex"
-  "analisis_tecnologias_frontend.tex" 1729616176 14714 760b298bdb781cbcd29ca7baaedcf066 ""
-  "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" 1729616176 14714 760b298bdb781cbcd29ca7baaedcf066 ""
+  "analisis_tecnologias_frontend.aux" 1729941995 3494 d55e8fe00782c3f74b3e6cc62c232334 "pdflatex"
+  "analisis_tecnologias_frontend.tex" 1729941989 16586 428dea44aab858f5ab7fd966909c6830 ""
+  "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/analisis_tecnologias_frontend.tex" 1729941989 16586 428dea44aab858f5ab7fd966909c6830 ""
+  "img/Firebase.png" 1729941650 17150 b1cf89805130c05be3003b143040769a ""
+  "img/Kotlin_logo.svg.png" 1729940653 68388 da55f02afe259eee36b6e1d94911ac39 ""
+  "img/Node.js.png" 1729941756 18526 d1e102335f550e068043ca99799b847d ""
+  "img/django.png" 1729941888 16735 59e3a16e4b049a300659864f138ae8d0 ""
+  "img/flutter.png" 1729941214 2850 2914b96650296f7b552e41fde7ed9074 ""
+  "img/images.png" 1729940871 4620 b8c03f11fe6d560a19cf362aa344f6ef ""
+  "img/ionic-itop.png" 1729941022 37177 c893d9dc5473e0e713e380d3538d58cd ""
+  "img/react.png" 1729941478 100654 d2a49d0b2575338610db998db8af1e16 ""
+  "img/ruby.png" 1729941969 60221 286b6c8daf171753bcff03f129768b47 ""
+  "img/xamarin.png" 1729941560 62718 eb9c921b6d46962ad77335a368a097f7 ""
   (generated)
   "analisis_tecnologias_frontend.aux"
   "analisis_tecnologias_frontend.log"

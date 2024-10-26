@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  22 OCT 2024 18:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  26 OCT 2024 13:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -107,22 +107,22 @@ LaTeX Info: Redefining \% on input line 8.
 )
 \openout1 = `analisis_tecnologias_frontend.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Info: Redefining \. on input line 15.
-LaTeX Info: Redefining \% on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Info: Redefining \. on input line 16.
+LaTeX Info: Redefining \% on input line 16.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count274
@@ -142,36 +142,102 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+<./img/Kotlin_logo.svg.png, id=1, 2569.6pt x 571.13374pt>
+File: ./img/Kotlin_logo.svg.png Graphic file (type png)
+<use ./img/Kotlin_logo.svg.png>
+Package pdftex.def Info: ./img/Kotlin_logo.svg.png  used on input line 37.
+(pdftex.def)             Requested size: 172.5pt x 38.33635pt.
+
 
 [1
 
-{C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+{C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/Kotlin_logo.svg.png>]
+<./img/images.png, id=11, 405.515pt x 125.46875pt>
+File: ./img/images.png Graphic file (type png)
+<use ./img/images.png>
+Package pdftex.def Info: ./img/images.png  used on input line 51.
+(pdftex.def)             Requested size: 172.5pt x 53.37424pt.
+<./img/ionic-itop.png, id=12, 1284.8pt x 433.62pt>
+File: ./img/ionic-itop.png Graphic file (type png)
+<use ./img/ionic-itop.png>
+Package pdftex.def Info: ./img/ionic-itop.png  used on input line 73.
+(pdftex.def)             Requested size: 172.5pt x 58.21858pt.
 
-[2]
-Overfull \hbox (126.60127pt too wide) in paragraph at lines 89--90
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[2 <./img/images.png>]
+<./img/flutter.png, id=17, 421.575pt x 120.45pt>
+File: ./img/flutter.png Graphic file (type png)
+<use ./img/flutter.png>
+Package pdftex.def Info: ./img/flutter.png  used on input line 85.
+(pdftex.def)             Requested size: 172.5pt x 49.28555pt.
+<./img/react.png, id=18, 863.225pt x 265.99374pt>
+File: ./img/react.png Graphic file (type png)
+<use ./img/react.png>
+Package pdftex.def Info: ./img/react.png  used on input line 95.
+(pdftex.def)             Requested size: 172.5pt x 53.15315pt.
+<./img/xamarin.png, id=19, 2569.6pt x 1078.0275pt>
+File: ./img/xamarin.png Graphic file (type png)
+<use ./img/xamarin.png>
+Package pdftex.def Info: ./img/xamarin.png  used on input line 104.
+(pdftex.def)             Requested size: 172.5pt x 72.3607pt.
+
+
+[3 <./img/ionic-itop.png> <./img/flutter.png> <./img/react.png>]
+Overfull \hbox (126.60127pt too wide) in paragraph at lines 135--136
+ [][] 
+ []
+
+<./img/Firebase.png, id=27, 1284.8pt x 441.65pt>
+File: ./img/Firebase.png Graphic file (type png)
+<use ./img/Firebase.png>
+Package pdftex.def Info: ./img/Firebase.png  used on input line 152.
+(pdftex.def)             Requested size: 172.5pt x 59.29669pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[4 <./img/xamarin.png>]
+<./img/Node.js.png, id=32, 592.2125pt x 362.35374pt>
+File: ./img/Node.js.png Graphic file (type png)
+<use ./img/Node.js.png>
+Package pdftex.def Info: ./img/Node.js.png  used on input line 166.
+(pdftex.def)             Requested size: 172.5pt x 105.54433pt.
+
+
+[5 <./img/Firebase.png> <./img/Node.js.png>]
+<./img/django.png, id=38, 1204.5pt x 419.5675pt>
+File: ./img/django.png Graphic file (type png)
+<use ./img/django.png>
+Package pdftex.def Info: ./img/django.png  used on input line 179.
+(pdftex.def)             Requested size: 172.5pt x 60.08348pt.
+<./img/ruby.png, id=39, 2569.6pt x 969.6225pt>
+File: ./img/ruby.png Graphic file (type png)
+<use ./img/ruby.png>
+Package pdftex.def Info: ./img/ruby.png  used on input line 193.
+(pdftex.def)             Requested size: 172.5pt x 65.0842pt.
+
+Overfull \hbox (103.51932pt too wide) in paragraph at lines 203--218
  [][] 
  []
 
 
 
-[3]
-Overfull \hbox (103.51932pt too wide) in paragraph at lines 130--145
- [][] 
- []
+[6 <./img/django.png> <./img/ruby.png>]
 
-
-
-[4]
-
-[5] (analisis_tecnologias_frontend.aux
+[7] (analisis_tecnologias_frontend.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -181,17 +247,17 @@ L3 programming layer <2024-08-16>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3523 strings out of 473899
- 57298 string characters out of 5725557
- 1942960 words of memory out of 5000000
- 26376 multiletter control sequences out of 15000+600000
+ 3606 strings out of 473899
+ 59241 string characters out of 5725557
+ 1941960 words of memory out of 5000000
+ 26459 multiletter control sequences out of 15000+600000
  566278 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,10n,65p,461b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on analisis_tecnologias_frontend.pdf (5 pages, 92660 bytes).
+Output written on analisis_tecnologias_frontend.pdf (7 pages, 476258 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

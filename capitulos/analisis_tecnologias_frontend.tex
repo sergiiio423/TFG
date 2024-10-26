@@ -8,6 +8,7 @@
 \usepackage{rotating}
 \usepackage{float}
 
+
 \title{}
 \author{}
 \date{}
@@ -30,11 +31,28 @@ para un sistema operativo en concreto. Dichas tecnologías son:
     avanzados de seguridad frente a valores nulos, lo que ayuda a prevenir errores durante la ejecución de las aplicaciones. Entre sus deventajas destaca que, aunque la popularidad ha crecido, aún no alcanzar
     el nivel de adopción de Java, lo que puede dificultar encontrar soluciones a problemas específicos. Asimismo, aunque existen iniciativas para su uso multiplataforma, Kotlin sigue estando principal,emte 
     orientado al desarrollo de aplicaciones en Android.
+
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.5\textwidth]{./img/Kotlin_logo.svg.png} 
+        \caption{Logo de Kotlin}
+        \label{fig:logo_kotlin}
+    \end{figure}
+    
+
     \item \textbf{Swift.} Es un lenguaje, diseñado específicamente para crear aplicaciones de alto rendimiento y con una sintaxis clara y moderna. En este caso el IDE es XCode utilizado para el desarrollo nativo en las plataformas de Aplle, como iOS y macOS. 
     Swift se caracteriza por su seguridad, facilidad de uso y capacidades de optimización, lo que lo convierte en una buena opción para el desarrolo de aplicaciones en el ecosistema de Apple. Como principales carácteristicas de Swift podemos destacar una \textbf{sintaxis simple y moderna}, 
     un \textbf{alto rendimiento} debido a su compilador avanzado permite ejecutar aplicaciones de manera eficiente, \textbf{seguridad} gracias a su sistema de tipos fuertes y a la prevención de errores en tiempo de ejecución, e \textbf{interoperabilidad con Objetive-C} lo que facilita la integración de código. 
     Sin embargo, una de las principales deventajas de Swift es similar a la mencionada anteriormente en Kotlin, \textbf{la duplicidad de esfuerzos} en el desarrollo de aplicaciones multiplataforma. Las aplicaciones desarrolladas con Swift
     obligan a los desarrolladors a crear aplicaciones independientes para otras plataformas. 
+    
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.5\textwidth]{./img/images.png} 
+        \caption{Logo de Swift}
+        \label{fig:logo_swift}
+    \end{figure}
+
 \end{itemize}
 
 \subsection{Desarrollo Híbrido}
@@ -49,16 +67,44 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
     Se integra con diferentes frameworks frontend como Angular React o Vue, lo que permite a los desarrolladores utilizar el conjunto de herramientas y librerías de su preferencia. Además, Ionic 
     tiene componentes nativos que proporcionan una biblioteca de elementos visuales optimizados para dispositivos móviles. Cuenta también con una \textbf{amplia comunidad} y herramientas adicionales para la integración 
     con servicios de backend y otras tecnologías.
+
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.5\textwidth]{./img/ionic-itop.png} 
+        \caption{Logo de Ionic}
+        \label{fig:logo_ionic}
+    \end{figure}
+
     \item \textbf{Flutter.} Flutter es un framework de código abierto desarrollado por Google que permite crear aplicaciones nativas multiplatadorma con una única base de código. Utiliza el lengujae de programación Darrt
     y proporciona un enfoque único para desarrollar aplicaciones móviles, web y de escritorio. Tiene un \textbf{alto rendimiento} debido a que utiliza un motor gráfico y compila directamente a código nativo, lo que garantizando
     un rendimiento similar al de aplicaciones nativas. Además. cuenta con \textit{Hot Reload} que facilita el desarrollo rápido al permitir que lo cambios en el código se reflejen instantáneamente en la aplicación
-    sin tener que recompilar por completo. 
+    sin tener que recompilar por completo.
+
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.5\textwidth]{./img/flutter.png} 
+        \caption{Logo de Flutter}
+        \label{fig:logo_flutter}
+    \end{figure}
+
     \item \textbf{React Native.} React Native es un framework de código abierto desarrollado por Facebook que permite crear aplicaciones móviles nativas utilizando JavaScript y React. A diferencia de otros frameworks
     híbridos, React Native no se limita a emular una experiencia nativa, en su lugar, \textbf{genera componentes nativos}, lo que permite un rendimiento más cercano al de una aplicación pura. Además cuenta con una 
     \textbf{amplia comunidad} y una gran cantidad de librerías y herramientas que facilitan el desarrollo de aplicaciones.
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.5\textwidth]{./img/react.png} 
+        \caption{Logo de React Native}
+        \label{fig:logo_react}
+    \end{figure}
     \item \textbf{Xamarin.} Es un framework de código abierto desarrollado por Microsoft que permite crear aplicaciones móviles nativas para iOS y Android utilizando C\# y .NET. Xamarin permite compartir hasta un 90\% del código.
     Además, proporciona acceso a las API nativas de cada plataforma, lo que permite a los desarrolladores crear aplicaciones con una \textbf{experiencia de usuario nativa}. También se integra a la perfección con herramientas del ecosistema de Microsoft, como Visual Studio, facilitando
     el desarrollo y la depuración de aplicaciones.
+    \begin{figure}[h] 
+        \centering
+        \includegraphics[width=0.5\textwidth]{./img/xamarin.png} 
+        \caption{Logo de Xamarin}
+        \label{fig:logo_xamarin}
+    \end{figure}
 
 \end{itemize}
 
@@ -92,7 +138,7 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
 \end{table}
 
 \section{Analisis de las tecnologías Backend}
-Una vez tomada la decisión de usar Flutter como tecnología front-end, se debe elegir una tecnología backend que permita la comunicación entre la aplicación y la base de datos. A continuación vamos a ver las diferentes tecnologías que hay para ello:
+Otra de las decisiones que hay que tomar es la tecnología back-end que permita la comunicación entre la aplicación y la base de datos. A continuación vamos a ver las diferentes tecnologías que hay para ello:
 
 \subsection{Firebase}
 Firebase es una plataforma de Google que ofrece una amplia variedad de servicios backend, lo que incluye \textbf{bases de datos en tiempo real}
@@ -101,6 +147,12 @@ No requiere gestión de servidores debido a que es completamente serverless. Cue
 tiene SDks nativos para dicha tecnología, lo que simplifica mucho el desarrollo en comparación con otras tecnologías que requieren la integración manual. Sin embargo, 
 Firebase tiene un \textbf{coste} asociado al uso de sus servicios, lo que puede ser un inconveniente para proyectos con presupuestos limitados. También tiene una \textbf{dependencia de Google}, porque todo esta alojados
 en la infraestructura de Google, lo que puede generar dependecia a largo plazo.
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=0.5\textwidth]{./img/Firebase.png} 
+    \caption{Logo de Firebase}
+    \label{fig:logo_firebase}
+\end{figure}
 
 \subsection{Node.js con Express}
 Node.js es un entorno de ejecución de JavaScript que permite ejecutar código JavaScript en el backend. Express es un 
@@ -109,11 +161,25 @@ un alto número de solicitudes simultáneas. Para el almacenamiento de datos se 
 Gracias a npm (\textit{Node Package Manager}), hay miles de paquetes disponibles que permiten acelerar el proceso de desarrollo. También es una tecnología \textbf{flexible}, porque permite elegir el tipo de base de datos.
 Por el contrario tiene una \textbf{Complejidad de gestión del servidor}. Aunque Express es minimalista, la creación y gestión de servidores, puede ser más compleja en comparación con soluciones serverless. Además, la \textbf{curva de aprendizaje} puede ser más pronunciada para desarrolladores que no tienen experiencia previa con JavaScript.
 
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=0.5\textwidth]{./img/Node.js.png} 
+    \caption{Logo de Node.js}
+    \label{fig:logo_node}
+\end{figure}
+
 \subsection{Django}
 Es un framework web de alto nivel escrito en Python que facilita la creación de aplicaciones webs seguras y escalables. Junto con \textbf{Django REST Framework}, permite exponer APis REST de forma 
 rápida y eficiente. Se integra bien con bases de datos relacionales como \textbf{PostgreSQL} y \textbf{MySQL}. Django proporciona un \textbf{rápido desarrollo} debido a que incluye una gran cantidad de herramientas listas para usar (\textit{autenticación, administración, etc.}).
 Además, tiene carácteristicas de seguridad incorporadas, como protección CSRF, gestión de contraseñas seguras y más. También proporciona \textbf{gestión automática de bases de datos} sin tener que escribir consultas SQL Manuales. 
 Sin embargo, Django puede ser algo pesado para proyectos más pequeños o simples. Además, la \textbf{curva de aprendizaje} puede ser pronunciada para desarrolladores que no tienen experiencia previa con Python.
+
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=0.5\textwidth]{./img/django.png} 
+    \caption{Logo de Django}
+    \label{fig:logo_django}
+\end{figure}
 
 \subsection{Ruby on Rails}
 Ruby on Rails es un framework MVC (\textit{Modelo-Vista-Controlador}) escrito en Ruby, que permite desarrollar aplicaciones web y APis de manera rápida. Rails se integra
@@ -121,6 +187,13 @@ perfectamente con bases de datos relacionales como \textbf{PostgreSQL} o \textbf
 lo que significa que muchas decisiones están predefinidas para que el desarrollador no tenga que configurarlas manualmente, acelerando el proceso de desarrollo.
 También \textbf{facilita la interacción} con la base de datos relacionales. Sin embargo, Aunque Rails es excelente para aplicaciones web, no es tan común en el desarrollo de APIs para 
 aplicaciones móviles.
+
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=0.5\textwidth]{./img/ruby.png} 
+    \caption{Logo de Ruby on Rails}
+    \label{fig:logo_ruby}
+\end{figure}
 
 
 \subsection{Tabla comparativa de tecnologías back-end}
