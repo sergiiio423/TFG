@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1727714339.64362 "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/explicacion_natural_archivo.tex" "explicacion_natural_archivo.pdf" "explicacion_natural_archivo" 1727714340.56937 0
+["pdflatex"] 1730635869.14649 "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/explicacion_natural_archivo.tex" "explicacion_natural_archivo.pdf" "explicacion_natural_archivo" 1730635870.07397 0
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727713762 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1725355711 11548 9381f0328757d535e8a4f9c169cacc40 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725354652 24266276 f962c6e3930507883e75864bcb40a2ca ""
@@ -49,9 +49,9 @@
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1718270727 2671 70891d50dac933918b827d326687c6e8 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty" 1718270727 4023 2c9f39712cf7b43d3eb93a8bbd5c8f67 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1716480499 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
-  "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/explicacion_natural_archivo.tex" 1727714294 6058 939ac460c187edaa60ffc9e1966c391f ""
-  "explicacion_natural_archivo.aux" 1727714340 669 00fb51c0bc78a0b6f7e26213d111f234 "pdflatex"
-  "explicacion_natural_archivo.tex" 1727714294 6058 939ac460c187edaa60ffc9e1966c391f ""
+  "c:/Users/USUARIO/Documents/Sergio/TFG/capitulos/explicacion_natural_archivo.tex" 1730635868 7517 8473c7d03a79f2843b86744c04f3afd3 ""
+  "explicacion_natural_archivo.aux" 1730635869 669 dacb81182a786b38db1681a53cef359e "pdflatex"
+  "explicacion_natural_archivo.tex" 1730635868 7517 8473c7d03a79f2843b86744c04f3afd3 ""
   (generated)
   "explicacion_natural_archivo.aux"
   "explicacion_natural_archivo.log"
