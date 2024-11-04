@@ -157,13 +157,13 @@ INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\pdflscape\pdflsca
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\pdflscape\pdflscape-nometadata.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\graphics\lscape.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\graphics\lscape.sty
-OUTPUT proyecto.idx
-INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
-INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\xcolor\xcolor.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\xcolor\xcolor.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\color.cfg
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
+OUTPUT proyecto.idx
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
