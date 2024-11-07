@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  6 NOV 2024 19:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  7 NOV 2024 16:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -814,60 +814,54 @@ Overfull \hbox (88.50284pt too wide) in paragraph at lines 125--126
 
 
 [31 <../capitulos/img/react.png> <../capitulos/img/xamarin.png>]
-<../capitulos/img/Firebase.png, id=433, 1284.8pt x 441.65pt>
+
+[32]
+<../capitulos/img/Firebase.png, id=438, 1284.8pt x 441.65pt>
 File: ../capitulos/img/Firebase.png Graphic file (type png)
 <use ../capitulos/img/Firebase.png>
-Package pdftex.def Info: ../capitulos/img/Firebase.png  used on input line 147.
+Package pdftex.def Info: ../capitulos/img/Firebase.png  used on input line 150.
 (pdftex.def)             Requested size: 180.0pt x 61.871pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[32]
-<../capitulos/img/Node.js.png, id=440, 592.2125pt x 362.35374pt>
+[33 <../capitulos/img/Firebase.png>]
+<../capitulos/img/Node.js.png, id=446, 592.2125pt x 362.35374pt>
 File: ../capitulos/img/Node.js.png Graphic file (type png)
 <use ../capitulos/img/Node.js.png>
-Package pdftex.def Info: ../capitulos/img/Node.js.png  used on input line 162.
+Package pdftex.def Info: ../capitulos/img/Node.js.png  used on input line 165.
 (pdftex.def)             Requested size: 108.0011pt x 66.07787pt.
-<../capitulos/img/django.png, id=442, 1204.5pt x 419.5675pt>
+<../capitulos/img/django.png, id=448, 1204.5pt x 419.5675pt>
 File: ../capitulos/img/django.png Graphic file (type png)
 <use ../capitulos/img/django.png>
-Package pdftex.def Info: ../capitulos/img/django.png  used on input line 176.
+Package pdftex.def Info: ../capitulos/img/django.png  used on input line 179.
 (pdftex.def)             Requested size: 143.9978pt x 50.15385pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[33 <../capitulos/img/Firebase.png> <../capitulos/img/Node.js.png>]
-<../capitulos/img/ruby.png, id=452, 2569.6pt x 969.6225pt>
+[34 <../capitulos/img/Node.js.png> <../capitulos/img/django.png>]
+<../capitulos/img/ruby.png, id=458, 2569.6pt x 969.6225pt>
 File: ../capitulos/img/ruby.png Graphic file (type png)
 <use ../capitulos/img/ruby.png>
-Package pdftex.def Info: ../capitulos/img/ruby.png  used on input line 191.
+Package pdftex.def Info: ../capitulos/img/ruby.png  used on input line 194.
 (pdftex.def)             Requested size: 143.9978pt x 54.32808pt.
 
-Overfull \hbox (107.99959pt too wide) in paragraph at lines 203--218
+Overfull \hbox (107.99959pt too wide) in paragraph at lines 206--221
  [][] 
  []
 
 
 
-[34 <../capitulos/img/django.png> <../capitulos/img/ruby.png>]
+[35 <../capitulos/img/ruby.png>]
 
-[35]) (../capitulos/bibliografia.tex
+[36]) (../capitulos/bibliografia.tex
 Cap\'{\i }tulo 5.
 
 
-[36
+[37
 
 ])
 
-[37]
+[38]
 
-[38
+[39
 
 ] (proyecto.aux
 LaTeX Info: Redefining \. on input line 12.
@@ -881,17 +875,17 @@ Package rerunfilecheck Info: File `proyecto.out' has not changed.
 (rerunfilecheck)             Checksum: 2BD28075AB8C5EBA0D50D2A894458ECE;4223.
  ) 
 Here is how much of TeX's memory you used:
- 15303 strings out of 473899
- 246044 string characters out of 5725557
- 1943960 words of memory out of 5000000
+ 15304 strings out of 473899
+ 246051 string characters out of 5725557
+ 1939960 words of memory out of 5000000
  37740 multiletter control sequences out of 15000+600000
  567095 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,79p,491b,716s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on proyecto.pdf (41 pages, 2299511 bytes).
+Output written on proyecto.pdf (42 pages, 2300157 bytes).
 PDF statistics:
- 557 PDF objects out of 1000 (max. 8388607)
- 187 named destinations out of 1000 (max. 500000)
+ 561 PDF objects out of 1000 (max. 8388607)
+ 188 named destinations out of 1000 (max. 500000)
  374 words of extra memory for PDF output out of 10000 (max. 10000000)
 
