@@ -1,11 +1,11 @@
 # Fdb version 4
-["makeindex proyecto.idx"] 1733851158.93698 "proyecto.idx" "proyecto.ind" "proyecto" 1733853129.48234 0
-  "proyecto.idx" 1733853127 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex proyecto.idx"] 1737368900.87627 "proyecto.idx" "proyecto.ind" "proyecto" 1737369413.22514 0
+  "proyecto.idx" 1737369409 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "proyecto.ilg"
   "proyecto.ind"
   (rewritten before read)
-["pdflatex"] 1733853125.9852 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1733853129.48317 0
+["pdflatex"] 1737369408.39444 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1737369413.2277 0
   "../capitulos/analisis_tecologias.tex" 1730993091 18993 7e1e7d8456820fe2d9b7ba112dbecae0 ""
   "../capitulos/bibliografia.tex" 1730916043 553 25127e555cee1ab798d4dba5f62a6675 ""
   "../capitulos/estado_del_arte.tex" 1733853121 32831 4200a5680869408ce1915fd1f6b1dbcd ""
@@ -40,7 +40,7 @@
   "../capitulos/img/ruby.png" 1729941969 60221 286b6c8daf171753bcff03f129768b47 ""
   "../capitulos/img/tarea_todoist.jpg" 1725440317 33557 5158948508a45fb082aaab858fa0ad07 ""
   "../capitulos/img/xamarin.png" 1729941560 62718 eb9c921b6d46962ad77335a368a097f7 ""
-  "../capitulos/planificacion.tex" 1727955094 63 c9edaa0ce36ec9dbcd4fb0dfb8427486 ""
+  "../capitulos/planificacion.tex" 1737369407 3283 5b1f00bbf4bd52a2f058a91af4a90230 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727713762 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1727712646 12668 6654a49366def0c2bbc623ba10695a95 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725354652 24266276 f962c6e3930507883e75864bcb40a2ca ""
@@ -160,11 +160,11 @@
   "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" 1733850842 4233 f6d8c925477aa094c0b71418ac834321 ""
   "imagenes/etsiit_logo.png" 1379672160 15686 96fbb972320ee192b868b64d57775747 ""
   "imagenes/logo_ugr.jpg" 1228354992 85532 25866cc28cc667a1cdd972180571e7be ""
-  "portada/portada.tex" 1733851037 1075 c7699385cc027a37383b26e468a77a0a ""
-  "prefacios/prefacio.tex" 1733851921 2574 6307ac230dcbef861b0f8b5ad12e9d65 ""
-  "proyecto.aux" 1733853129 16486 04f7dd547beae618a49047ebd59928d2 "pdflatex"
-  "proyecto.ind" 1733851159 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
-  "proyecto.out" 1733853129 5473 e39025e8b0cb032afc5707ad1ff3047b "pdflatex"
+  "portada/portada.tex" 1737367880 1078 1c2fe0a8f5546a43996c48d26be77a2a ""
+  "prefacios/prefacio.tex" 1737368597 2436 a2f51b8f8963a0db5bac768a2e03c7bd ""
+  "proyecto.aux" 1737369412 17724 bdebdd1db6111591f7e66a4918b1959f "pdflatex"
+  "proyecto.ind" 1737368901 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
+  "proyecto.out" 1737369412 6694 96d3441a5d2e06dca102ffa3c6c87c50 "pdflatex"
   "proyecto.tex" 1733850842 4233 f6d8c925477aa094c0b71418ac834321 ""
   (generated)
   "proyecto.aux"
