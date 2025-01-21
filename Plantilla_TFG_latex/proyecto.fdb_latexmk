@@ -1,11 +1,11 @@
 # Fdb version 4
-["makeindex proyecto.idx"] 1737456438.07127 "proyecto.idx" "proyecto.ind" "proyecto" 1737456906.39584 0
-  "proyecto.idx" 1737456903 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex proyecto.idx"] 1737479297.06922 "proyecto.idx" "proyecto.ind" "proyecto" 1737479359.36078 0
+  "proyecto.idx" 1737479356 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "proyecto.ilg"
   "proyecto.ind"
   (rewritten before read)
-["pdflatex"] 1737456902.11651 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1737456906.39691 0
+["pdflatex"] 1737479355.94809 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1737479359.36147 0
   "../capitulos/analisis_tecologias.tex" 1730993091 18993 7e1e7d8456820fe2d9b7ba112dbecae0 ""
   "../capitulos/bibliografia.tex" 1730916043 553 25127e555cee1ab798d4dba5f62a6675 ""
   "../capitulos/estado_del_arte.tex" 1733853121 32831 4200a5680869408ce1915fd1f6b1dbcd ""
@@ -40,7 +40,7 @@
   "../capitulos/img/ruby.png" 1729941969 60221 286b6c8daf171753bcff03f129768b47 ""
   "../capitulos/img/tarea_todoist.jpg" 1725440317 33557 5158948508a45fb082aaab858fa0ad07 ""
   "../capitulos/img/xamarin.png" 1729941560 62718 eb9c921b6d46962ad77335a368a097f7 ""
-  "../capitulos/planificacion.tex" 1737456896 4767 e284692c1303261bf30a47b446423303 ""
+  "../capitulos/planificacion.tex" 1737479353 5740 7e14a1f57046a5ca1a31f49cdafded19 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727713762 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1727712646 12668 6654a49366def0c2bbc623ba10695a95 ""
   "C:/Users/USUARIO/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1725354652 24266276 f962c6e3930507883e75864bcb40a2ca ""
@@ -162,9 +162,9 @@
   "imagenes/logo_ugr.jpg" 1228354992 85532 25866cc28cc667a1cdd972180571e7be ""
   "portada/portada.tex" 1737367880 1078 1c2fe0a8f5546a43996c48d26be77a2a ""
   "prefacios/prefacio.tex" 1737368597 2436 a2f51b8f8963a0db5bac768a2e03c7bd ""
-  "proyecto.aux" 1737456905 17861 28b17b8198098ba7eb5f5972f4f45f25 "pdflatex"
-  "proyecto.ind" 1737456438 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
-  "proyecto.out" 1737456905 6694 96d3441a5d2e06dca102ffa3c6c87c50 "pdflatex"
+  "proyecto.aux" 1737479358 18119 be59879c54bc3cce2554db36ff014933 "pdflatex"
+  "proyecto.ind" 1737479297 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
+  "proyecto.out" 1737479358 6994 fe49dbf0d343cc8e17ed48b1a444ad40 "pdflatex"
   "proyecto.tex" 1737454072 4233 f6d8c925477aa094c0b71418ac834321 ""
   (generated)
   "proyecto.aux"
