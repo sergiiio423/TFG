@@ -164,6 +164,8 @@ INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolo
 OUTPUT proyecto.idx
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\eurosym\eurosym.sty
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\eurosym\eurosym.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\apacite\apacite.sty
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
@@ -263,6 +265,8 @@ INPUT ..\capitulos\planificacion.tex
 INPUT ..\capitulos\planificacion.tex
 INPUT ..\capitulos\planificacion.tex
 INPUT ..\capitulos\planificacion.tex
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\tfm\public\eurosym\feymr10.tfm
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\tfm\public\eurosym\feybr10.tfm
 INPUT ..\capitulos\estado_del_arte.tex
 INPUT ..\capitulos\estado_del_arte.tex
 INPUT ..\capitulos\estado_del_arte.tex
@@ -488,6 +492,7 @@ INPUT ..\capitulos\bibliografia.tex
 INPUT ..\capitulos\bibliografia.tex
 INPUT ..\capitulos\bibliografia.tex
 INPUT ..\capitulos\bibliografia.tex
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT proyecto.aux
 INPUT .\proyecto.out
 INPUT .\proyecto.out
@@ -505,5 +510,11 @@ INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\eurosym\feybr10.pfb
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\eurosym\feybr10.pfb
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\eurosym\feymr10.pfb
+INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\eurosym\feymr10.pfb
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
 INPUT C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
