@@ -132,37 +132,47 @@ class _SignInEmailState extends State<SignInEmail> {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Ingresa tu dirección de correo electrónico y contraseña y te enviaremos un correo de confirmación.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'Arial',
-                ),
-              ),
+              
               const SizedBox(height: 20),
               TextField(
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
                 keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  filled: true,
+                  fillColor: Colors.grey.shade300,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),  
+                ),
               ),
               const SizedBox(height: 16),
               TextField(
                 controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Contraseña'),
                 obscureText: true,
+                decoration: InputDecoration(
+                  filled: true,
+                  hintText: 'Contraseña',
+                  fillColor: Colors.grey.shade300,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _signIn,
                 child: const Text(
                   'Iniciar sesión',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.orange,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   side: BorderSide(color: Colors.grey.shade300),
                 ),

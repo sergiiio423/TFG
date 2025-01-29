@@ -115,7 +115,7 @@ class _SignInPageState extends State<SignInPage> {
                           builder: (context) => const RegistrationPage()),
                     );
                   },
-                  child: const Text('Go to Register',
+                  child: const Text('¿No tienes cuenta? Regístrate',
                       style: TextStyle(color: Colors.blue)),
                 ),
               ],
