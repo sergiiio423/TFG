@@ -1,0 +1,154 @@
+\chapter{Análisis de la aplicación}
+\label{cap:analisis_aplicacion} 
+
+\section{Especificación de requisitos}
+\label{sec:requisitos}
+La especificación de requisitos es una etapa clave en el desarrollo de un proyecto, ya que en ella se definen las funcionalidades y condiciones que debe cumplir el sistema. Su objetivo principal
+es establecer de manera clara y estructurada las expectativas del producto final.
+
+En esta sección se identifican y detallan los requisitos, tomando en cuenta las necesidades y restricciones detalladas por los 
+usuarios y demás partes interesadas. Para ello, es fundamental realizar un análisis que permita comprender qué características son esenciales 
+para el correcto funcionamiento del software.
+
+Cada requisito contará con un código único que permitirá clasificarlo y referenciarlo fácilmente a lo largo del documento. Este método de organización facilita su seguimiento y garantiza que 
+todas las especificaciones sean consideradas durante el desarrollo del proyecto. 
+
+\subsection{Requisitos funcionales}
+\label{subsec:requisitos_funcionales}
+Los requisitos funcionales son especificaciones detalladas que describen las funciones y comportamientos que un sistema debe cumplir para 
+satisfacer las necesidades del usuario. Estos requisitos definen las acciones que el sistema debe ser capaz de realizar, incluyendo las interacciones
+con el usuario y las respuestas a entradas específicas. Estos requisitos son ensenciales para guiar el desarrollo del sistema y asegurar que cumpla con las expectivas del usuario. (PMO Informática, 2017)
+
+Vamos a clasificar estos requisitos en diferentes grupos según su funcionalidad. 
+
+\begin{itemize}
+    \item \textbf{Grupo 1:} Gestión de sesión. En este grupo se incluyen los requisitos relacionados con la autenticación y la gestión de la sesión del usuario.
+    \item \textbf{Grupo 2:} Gestión del hogar. En este grupo se incluyen los requisitos relacionados con la creación y gestión de un hogar compartido.
+    \item \textbf{Grupo 3:} Gestión de tareas. En este grupo se incluyen los requisitos relacionados con la creación y asignación de tareas en el hogar.
+    \item \textbf{Grupo 4:} Gestión de gastos. En este grupo se incluyen los requisitos relacionados con la creación y gestión de gastos en el hogar.
+    \item \textbf{Grupo 5:} Gestión de compra. En este grupo se incluyen los requisitos relacionados con la creación y gestión de listas de compra.
+\end{itemize}
+
+A continuación, se detallan los requisitos funcionales de cada grupo.
+
+\subsubsection{Grupo 1: Gestión de sesión}
+\label{subsubsec:grupo1}
+
+
+\begin{table}[htb!]
+	\centering 
+	\begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+		\hline
+		\rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_01} & \textbf{Registro} \\
+		\hline
+		\textbf{Prioridad} & Alta \\
+		\hline
+		\textbf{Descripción} & El sistema debe permitir al usuario registrarse.  \\
+		\hline
+		\vspace{0.5mm}
+		\textbf{Criterios de aceptación} & 
+		\begin{minipage}[t]{0.9\linewidth}
+			\begin{enumerate}
+				\item La interfaz de registro debe contener los campos: nombre, apellidos, correo electrónico y contraseña.
+				\item Verificar que los campos no estén vacíos.
+				\item Verificar que la información introducida sea válida y que los campos cumplan con el formato requerido.
+				\item Si los campos no son válidos o ya pertenecen a un usuario registrado, mostrar un mensaje de error.
+				\item Tras el registro, se mostrará un mensaje indicando que debe verificar su correo electrónico y se redigirá a la pantalla de inicio de sesión.
+			\end{enumerate}
+			\vspace{2mm}
+		\end{minipage} \\
+		\hline
+	\end{tabular}
+	\caption{RF\_01}
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_02} & \textbf{Inicio de sesión} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario iniciar sesión.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de inicio de sesión debe contener los campos: correo electrónico y contraseña.
+                \item Verificar que los campos no estén vacíos.
+                \item Verificar que la información introducida sea válida y que los campos cumplan con el formato requerido.
+                \item Si los campos no son válidos o no pertenecen a un usuario registrado, mostrar un mensaje de error.
+                \item Si el usuario no ha verificado su correo electrónico, mostrar un mensaje indicando que debe verificarlo.
+                \item Tras el inicio de sesión, se redirigirá a la pantalla principal de la aplicación.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_02}
+
+\end{table}
+
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_03} & \textbf{Inicio de sesión con Google} \\
+        \hline
+        \textbf{Prioridad} & Baja \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario iniciar sesión con Google  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de inicio de sesión debe contener un botón para iniciar sesión con Google.
+                \item Al pulsar el botón, se abrirá una ventana emergente para iniciar sesión con la cuenta de Google.
+                \item Si el usuario ya ha iniciado sesión con Google, se redirigirá a la pantalla principal de la aplicación.
+                \item Si el usuario no ha iniciado sesión con Google, se registrará automáticamente y se redirigirá a la pantalla principal de la aplicación.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_03}
+\end{table}
+
+\begin{table} [htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_04} & \textbf{Cerrar Sesión} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario cerrar sesión  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para cerrar sesión.
+                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Si el usuario confirma, se cerrará la sesión y se redirigirá a la pantalla de inicio de sesión.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_04}
+
+\end{table}
+
+
+
+
+
+
+
+
