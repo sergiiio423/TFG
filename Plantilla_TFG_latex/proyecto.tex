@@ -78,9 +78,9 @@
 % Configuración de enlaces
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
+    linkcolor=black,
 	urlcolor = black, 
-    citecolor=blue
+    citecolor=black
 }
 
 
@@ -119,14 +119,20 @@
 \setlength{\headheight}{1.5\headheight}
 \begin{document}
 \input{portada/portada}
+
+\thispagestyle{empty}
+
+\clearpage
+\setcounter{page}{2}
 \input{prefacios/prefacio}
-%\frontmatter
-%\tableofcontents
-%\listoffigures
-%\listoftables
-%
+\tableofcontents
+\listoffigures
+\listoftables
+
 %\mainmatter
-%\setlength{\parskip}{5pt}
+\setlength{\parskip}{5pt}
+
+% Contenido Principal
 
 \input{../capitulos/01_Introduccion}
 %
@@ -138,7 +144,8 @@
 %
 \input{../capitulos/05_Analisis}
 %
-\input{../capitulos/10_Bibliografia}
+
+\bibliography{bibliografia.bib}
 %\input{capitulos/05_Diseno}
 %
 %\input{capitulos/06_Implementacion}

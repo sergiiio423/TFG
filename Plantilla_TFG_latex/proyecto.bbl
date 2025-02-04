@@ -1,0 +1,224 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Adverthia%
+}{%
+Adverthia%
+}{%
+{\protect \APACyear {2019}}%
+}]{%
+adverthia2019}
+\APACinsertmetastar {%
+adverthia2019}%
+\begin{APACrefauthors}%
+Adverthia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+\APACrefbtitle {Usabilidad web: definición y características.} {Usabilidad
+  web: definición y características.}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://adverthia.com/usabilidad-web-definicion-y-caracteristicas}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{American Time Use Survey}%
+}{%
+{American Time Use Survey}%
+}{%
+{\protect \APACyear {2022}}%
+}]{%
+american2022}
+\APACinsertmetastar {%
+american2022}%
+\begin{APACrefauthors}%
+{American Time Use Survey}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2022}{}{}.
+\newblock
+\APACrefbtitle {Distributions of Time for Household Management and Shared
+  Living Challenges.} {Distributions of time for household management and
+  shared living challenges.}
+\newblock
+\begin{APACrefURL} \url{https://www.bls.gov/tus/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Burriel%
+}{%
+Burriel%
+}{%
+{\protect \APACyear {2024}}%
+}]{%
+torresburriel2024}
+\APACinsertmetastar {%
+torresburriel2024}%
+\begin{APACrefauthors}%
+Burriel, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {Accesibilidad en aplicaciones móviles.} {Accesibilidad en
+  aplicaciones móviles.}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://torresburriel.com/weblog/accesibilidad-en-aplicaciones-moviles}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Coursera%
+}{%
+Coursera%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+coursera2023}
+\APACinsertmetastar {%
+coursera2023}%
+\begin{APACrefauthors}%
+Coursera.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {What is usability and why it matters.} {What is usability and
+  why it matters.}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://www.coursera.org/mx/articles/what-is-usability-and-why-it-matters}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Microsoft%
+}{%
+Microsoft%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+microsoft2023}
+\APACinsertmetastar {%
+microsoft2023}%
+\begin{APACrefauthors}%
+Microsoft.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {Guía de accesibilidad.} {Guía de accesibilidad.}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://learn.microsoft.com/es-es/windows/win32/uxguide/inter-accessibility}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Mozilla Developer Network}%
+}{%
+{Mozilla Developer Network}%
+}{%
+{\protect \APACyear {2024}}%
+}]{%
+mdn2024}
+\APACinsertmetastar {%
+mdn2024}%
+\begin{APACrefauthors}%
+{Mozilla Developer Network}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {¿Qué es la accesibilidad?} {¿qué es la accesibilidad?}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://developer.mozilla.org/es/docs/Learn_web_development/Core/Accessibility/What_is_accessibility}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{PMO Informática}%
+}{%
+{PMO Informática}%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+pmo2017}
+\APACinsertmetastar {%
+pmo2017}%
+\begin{APACrefauthors}%
+{PMO Informática}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+\APACrefbtitle {Requerimientos funcionales: definición y ejemplos.}
+  {Requerimientos funcionales: definición y ejemplos.}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://www.pmoinformatica.com/2017/02/requerimientos-funcionales-ejemplos.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{U.S. Department of Housing and Urban Development}%
+}{%
+{U.S. Department of Housing and Urban Development}%
+}{%
+{\protect \APACyear {2022}}%
+}]{%
+hud2022}
+\APACinsertmetastar {%
+hud2022}%
+\begin{APACrefauthors}%
+{U.S. Department of Housing and Urban Development}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2022}{}{}.
+\newblock
+\APACrefbtitle {Desafíos financieros en viviendas estudiantiles fuera del
+  campus: Un análisis de la carga financiera de los arrendamientos anuales y
+  la gestión de los gastos compartidos.} {Desafíos financieros en viviendas
+  estudiantiles fuera del campus: Un análisis de la carga financiera de los
+  arrendamientos anuales y la gestión de los gastos compartidos.}
+\newblock
+\begin{APACrefURL} [{2025-02-04}]\url{https://www.hud.gov/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wikipedia%
+}{%
+Wikipedia%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+wikipedia2025}
+\APACinsertmetastar {%
+wikipedia2025}%
+\begin{APACrefauthors}%
+Wikipedia.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Usabilidad.} {Usabilidad.}
+\newblock
+\begin{APACrefURL} [{2025-02-04}]\url{https://es.wikipedia.org/wiki/Usabilidad}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
