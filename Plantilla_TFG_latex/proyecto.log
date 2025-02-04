@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  3 FEB 2025 13:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.3)  4 FEB 2025 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -573,7 +573,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
 [4
 
-]) (../capitulos/explicacion_natural.tex
+]) (../capitulos/01_Introduccion.tex
 
 [5
 
@@ -589,7 +589,7 @@ Cap\'{\i }tulo 1.
 
 [8]
 
-[9]) (../capitulos/planificacion.tex
+[9]) (../capitulos/02_Planificacion.tex
 Cap\'{\i }tulo 2.
 
 
@@ -605,7 +605,7 @@ Cap\'{\i }tulo 2.
 
 [14]
 
-[15]) (../capitulos/estado_del_arte.tex
+[15]) (../capitulos/03_Estado_del_arte.tex
 Cap\'{\i }tulo 3.
 
 
@@ -756,7 +756,7 @@ Package pdftex.def Info: ../capitulos/img/recetas_cozi.jpg  used on input line 3
 
 [33]
 
-[34]) (../capitulos/analisis_tecologias.tex
+[34]) (../capitulos/04_Tecnologias.tex
 
 [35]
 Cap\'{\i }tulo 4.
@@ -846,7 +846,7 @@ Overfull \hbox (107.99959pt too wide) in paragraph at lines 207--223
 
 [43 <../capitulos/img/ruby.png>]
 
-[44]) (../capitulos/analisis_aplicacion.tex
+[44]) (../capitulos/05_Analisis.tex
 Cap\'{\i }tulo 5.
 
 
@@ -877,7 +877,7 @@ Overfull \hbox (7.20438pt too wide) in paragraph at lines 123--144
 [][] 
  []
 
-) (../capitulos/bibliografia.tex
+) (../capitulos/10_Bibliografia.tex
 
 [46]
 
@@ -940,7 +940,7 @@ Package rerunfilecheck Info: File `proyecto.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  15483 strings out of 473899
- 248568 string characters out of 5725557
+ 248504 string characters out of 5725557
  1944960 words of memory out of 5000000
  37836 multiletter control sequences out of 15000+600000
  567497 words of font info for 71 fonts, out of 8000000 for 9000
