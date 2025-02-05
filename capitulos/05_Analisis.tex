@@ -145,6 +145,312 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 
 \end{table}
 
+\clearpage
+
+\subsubsection{Grupo 2: Gestión del hogar}
+\label{subsubsec:grupo2}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_05} & \textbf{Crear hogar} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario crear un hogar compartido.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para crear un hogar.
+                \item Al pulsar el botón, se mostrará un formulario con los campos: nombre del hogar y nombre de los miembros que lo componen.
+                \item Verificar que los campos no estén vacíos.
+                \item Si los campos no son válidos, mostrar un mensaje de error.
+                \item Tras la creación del hogar, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_05}
+
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_06} & \textbf{Unirse a un hogar} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario unirse a un hogar compartido.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para unirse a un hogar.
+                \item Al pulsar el botón, se mostrará un formulario con el campo: código del hogar.
+                \item Verificar que el campo no esté vacío.
+                \item Si el campo no es válido, mostrar un mensaje de error.
+                \item Tras unirse al hogar, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_06}
+
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_07} & \textbf{Abandonar hogar} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario abandonar un hogar compartido.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para abandonar el hogar.
+                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Si el usuario confirma, abandonará el hogar y se redirigirá a la pantalla principal de la aplicación.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_07}
+
+\end{table}
+
+\clearpage
+
+\subsubsection{Grupo 3: Gestión de tareas}
+\label{subsubsec:grupo3}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_08} & \textbf{Crear tarea semanal} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario crear una tarea semanal.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para crear una tarea.
+                \item Al pulsar el botón, nos dará a elegir que tipo de tarea queremos crear, si semanal o puntual.
+                \item Al elegir la opción semanal, se mostrará un formulario con los campos: nombre de la tarea, descripción, semanas en las que se realizará y los miembros que la realizaran cada semana. 
+                \item Verificar que los campos no estén vacíos.
+                \item Si los campos no son válidos, mostrar un mensaje de error.
+                \item Tras la creación de la tarea, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_08}
+
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_09} & \textbf{Crear tarea puntual} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario crear una tarea puntual.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para crear una tarea.
+                \item Al pulsar el botón, nos dará a elegir que tipo de tarea queremos crear, si semanal o puntual.
+                \item Al elegir la opción puntual, se mostrará un formulario con los campos: nombre de la tarea, descripción, fecha y los miembros que la realizaran.
+                \item Verificar que los campos no estén vacíos.
+                \item Si los campos no son válidos, mostrar un mensaje de error.
+                \item Tras la creación de la tarea, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_09}
+
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_10} & \textbf{Consultar planificación semanal} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario poder consultar las tareas asignadas por semanas.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un calendario con las tareas asignadas por semanas.
+                \item Al pulsar en una tarea, se mostrará la información detallada de la misma.
+                \item Si no hay tareas asignadas en una semana, mostrar un mensaje indicando que no hay tareas asignadas.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_10}
+
+\end{table}
+
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_11} & \textbf{Marcar tarea como realizada} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario poder marcar una tarea como realizada.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para marcar una tarea como realizada.
+                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Si el usuario confirma, la tarea se marcará como realizada y se actualizará la información en la base de datos.
+                \item Si el usuario cancela, no se realizará ninguna acción.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_11}
+
+\end{table}
+
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_12} & \textbf{Modificar Tarea} \\
+        \hline
+        \textbf{Prioridad} & Media \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario poder modificar una tarea.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para modificar una tarea.
+                \item Al pulsar el botón, se mostrará un formulario con los campos de la tarea a modificar.
+                \item Verificar que los campos no estén vacíos.
+                \item Si los campos no son válidos, mostrar un mensaje de error.
+                \item Tras la modificación de la tarea, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_12}
+
+\end{table}
+
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_13} & \textbf{Eliminar Tarea} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario poder eliminar una tarea.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para eliminar una tarea.
+                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Si el usuario confirma, la tarea se eliminará y se actualizará la información en la base de datos.
+                \item Si el usuario cancela, no se realizará ninguna acción.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_13}
+
+\end{table}
+
+
+\clearpage
+
+\subsubsection{Grupo 4: Gestión de gastos}
+\label{subsubsec:grupo4}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_14} & \textbf{Crear gasto} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario crear un gasto.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para crear un gasto.
+                \item Al pulsar el botón, se mostrará un formulario con los campos: nombre del gasto, descripción, cantidad y miembros que lo han realizado.
+                \item Verificar que los campos no estén vacíos.
+                \item Si los campos no son válidos, mostrar un mensaje de error.
+                \item Tras la creación del gasto, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_14}
+
+\end{table}
+
+
+
+\clearpage
+
+\subsubsection{Grupo 5: Gestión de compra}
+\label{subsubsec:grupo5}
+
+
+
+
+
 
 
 

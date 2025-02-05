@@ -64,4 +64,9 @@
 \contentsline {section}{\numberline {5.1}Especificación de requisitos}{52}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Requisitos funcionales}{52}{subsection.5.1.1}%
 \contentsline {subsubsection}{\numberline {5.1.1.1}Grupo 1: Gestión de sesión}{53}{subsubsection.5.1.1.1}%
-\contentsline {section}{Referencias}{54}{table.5.4}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}Grupo 2: Gestión del hogar}{56}{subsubsection.5.1.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.1.3}Grupo 3: Gestión de tareas}{58}{subsubsection.5.1.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.1.4}Grupo 4: Gestión de gastos}{62}{subsubsection.5.1.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.1.5}Grupo 5: Gestión de compra}{63}{subsubsection.5.1.1.5}%
+\contentsline {chapter}{\numberline {6}Diseño}{64}{chapter.6}%
+\contentsline {section}{Referencias}{65}{section*.8}%
