@@ -18,60 +18,72 @@ Warning--entry type for "american2022" isn't style-file defined
 --line 1 of file bibliografia.bib
 Warning--entry type for "hud2022" isn't style-file defined
 --line 15 of file bibliografia.bib
-Warning--entry type for "wikipedia2025" isn't style-file defined
---line 31 of file bibliografia.bib
 Warning--entry type for "coursera2023" isn't style-file defined
---line 47 of file bibliografia.bib
+--line 51 of file bibliografia.bib
 Warning--entry type for "adverthia2019" isn't style-file defined
---line 63 of file bibliografia.bib
-Warning--entry type for "microsoft2023" isn't style-file defined
---line 79 of file bibliografia.bib
+--line 67 of file bibliografia.bib
+Warning--entry type for "thoughtworks2020" isn't style-file defined
+--line 83 of file bibliografia.bib
 Warning--entry type for "torresburriel2024" isn't style-file defined
---line 95 of file bibliografia.bib
+--line 99 of file bibliografia.bib
 Warning--entry type for "mdn2024" isn't style-file defined
---line 111 of file bibliografia.bib
+--line 115 of file bibliografia.bib
 Warning--entry type for "pmo2017" isn't style-file defined
---line 127 of file bibliografia.bib
+--line 131 of file bibliografia.bib
+Warning--entry type for "gdpr2016" isn't style-file defined
+--line 147 of file bibliografia.bib
+Warning--entry type for "lopd2018" isn't style-file defined
+--line 161 of file bibliografia.bib
+Warning--entry type for "tricount2025" isn't style-file defined
+--line 175 of file bibliografia.bib
+Warning--entry type for "todoist2025" isn't style-file defined
+--line 189 of file bibliografia.bib
+Warning--entry type for "metoca2023" isn't style-file defined
+--line 203 of file bibliografia.bib
+Warning--entry type for "cozi2025" isn't style-file defined
+--line 219 of file bibliografia.bib
+Warning--entry type for "ourhome2025" isn't style-file defined
+--line 233 of file bibliografia.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 9 entries,
+You've used 16 entries,
             6951 wiz_defined-function locations,
-            1311 strings with 11985 characters,
-and the built_in function-call counts, 15935 in all, are:
-= -- 2317
-> -- 90
-< -- 621
-+ -- 540
-- -- 34
-* -- 805
-:= -- 2548
-add.period$ -- 36
-call.type$ -- 9
-change.case$ -- 153
+            1345 strings with 13302 characters,
+and the built_in function-call counts, 30344 in all, are:
+= -- 4306
+> -- 160
+< -- 1374
++ -- 1217
+- -- 58
+* -- 1615
+:= -- 5213
+add.period$ -- 64
+call.type$ -- 16
+change.case$ -- 272
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 263
-empty$ -- 613
-format.name$ -- 126
-if$ -- 3303
+cite$ -- 32
+duplicate$ -- 498
+empty$ -- 1095
+format.name$ -- 224
+if$ -- 6081
 int.to.chr$ -- 0
-int.to.str$ -- 27
+int.to.str$ -- 48
 missing$ -- 0
-newline$ -- 201
-num.names$ -- 72
-pop$ -- 181
+newline$ -- 355
+num.names$ -- 128
+pop$ -- 338
 preamble$ -- 1
-purify$ -- 36
+purify$ -- 64
 quote$ -- 0
-skip$ -- 1579
+skip$ -- 2789
 stack$ -- 0
-substring$ -- 577
-swap$ -- 127
-text.length$ -- 26
+substring$ -- 1284
+swap$ -- 240
+text.length$ -- 45
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 1368
+type$ -- 2360
 warning$ -- 0
-while$ -- 45
+while$ -- 80
 width$ -- 0
-write$ -- 218
-(There were 9 warnings)
+write$ -- 386
+(There were 15 warnings)

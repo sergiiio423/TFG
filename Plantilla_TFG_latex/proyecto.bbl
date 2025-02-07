@@ -46,7 +46,9 @@ american2022}%
   Living Challenges.} {Distributions of time for household management and
   shared living challenges.}
 \newblock
-\begin{APACrefURL} \url{https://www.bls.gov/tus/} \end{APACrefURL}
+\begin{APACrefURL}
+  \url{https://www.bls.gov/news.release/archives/atus_06222023.pdf}
+  \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -75,51 +77,77 @@ Burriel, T.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Coursera%
+{Cozi Inc.}%
 }{%
-Coursera%
+{Cozi Inc.}%
 }{%
-{\protect \APACyear {2023}}%
+{\protect \APACyear {2025}}%
 }]{%
-coursera2023}
+cozi2025}
 \APACinsertmetastar {%
-coursera2023}%
+cozi2025}%
 \begin{APACrefauthors}%
-Coursera.%
+{Cozi Inc.}%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2023}{}{}.
+\APACrefYearMonthDay{2025}{}{}.
 \newblock
-\APACrefbtitle {What is usability and why it matters.} {What is usability and
-  why it matters.}
+\APACrefbtitle {Cozi Family Organizer.} {Cozi family organizer.}
 \newblock
-\begin{APACrefURL}
-  [{2025-02-04}]\url{https://www.coursera.org/mx/articles/what-is-usability-and-why-it-matters}
+\begin{APACrefURL} \url{https://www.cozi.com/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Jefatura del Estado}%
+}{%
+{Jefatura del Estado}%
+}{%
+{\protect \APACyear {2018}}%
+}]{%
+lopd2018}
+\APACinsertmetastar {%
+lopd2018}%
+\begin{APACrefauthors}%
+{Jefatura del Estado}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+\APACrefbtitle {Ley Orgánica 3/2018, de 5 de diciembre, de Protección de
+  Datos Personales y garantía de los derechos digitales.} {Ley orgánica
+  3/2018, de 5 de diciembre, de protección de datos personales y garantía de
+  los derechos digitales.}
+\newblock
+\begin{APACrefURL} \url{https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Microsoft%
+{Ministerio de Igualdad}%
 }{%
-Microsoft%
+{Ministerio de Igualdad}%
 }{%
 {\protect \APACyear {2023}}%
 }]{%
-microsoft2023}
+metoca2023}
 \APACinsertmetastar {%
-microsoft2023}%
+metoca2023}%
 \begin{APACrefauthors}%
-Microsoft.%
+{Ministerio de Igualdad}.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
 \APACrefYearMonthDay{2023}{}{}.
 \newblock
-\APACrefbtitle {Guía de accesibilidad.} {Guía de accesibilidad.}
+\APACrefbtitle {Igualdad presenta 'MeToca', la aplicación para repartir de
+  forma corresponsable las tareas domésticas y de cuidados.} {Igualdad
+  presenta 'metoca', la aplicación para repartir de forma corresponsable las
+  tareas domésticas y de cuidados.}
 \newblock
 \begin{APACrefURL}
-  [{2025-02-04}]\url{https://learn.microsoft.com/es-es/windows/win32/uxguide/inter-accessibility}
+  \url{https://www.igualdad.gob.es/comunicacion/notasprensa/igualdad-presenta-metoca-la-aplicacion-para-repartir-de-forma-corresponsable-las-tareas-domesticas-y-de-cuidados/}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
@@ -144,6 +172,82 @@ mdn2024}%
 \newblock
 \begin{APACrefURL}
   [{2025-02-04}]\url{https://developer.mozilla.org/es/docs/Learn_web_development/Core/Accessibility/What_is_accessibility}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Nielsen%
+}{%
+Nielsen%
+}{%
+{\protect \APACyear {1993}}%
+}]{%
+nielsen1993}
+\APACinsertmetastar {%
+nielsen1993}%
+\begin{APACrefauthors}%
+Nielsen, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1993}.
+\newblock
+\APACrefbtitle {Usability Engineering} {Usability engineering}\
+  (\PrintOrdinal{1st}\ \BEd).
+\newblock
+\APACaddressPublisher{San Diego}{Academic Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+OurHome%
+}{%
+OurHome%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+ourhome2025}
+\APACinsertmetastar {%
+ourhome2025}%
+\begin{APACrefauthors}%
+OurHome.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {OurHome - Organiza tu hogar fácilmente.} {Ourhome - organiza
+  tu hogar fácilmente.}
+\newblock
+\begin{APACrefURL} \url{https://ourhomeapp.com/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Parlamento Europeo}%
+}{%
+{Parlamento Europeo}%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+gdpr2016}
+\APACinsertmetastar {%
+gdpr2016}%
+\begin{APACrefauthors}%
+{Parlamento Europeo}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+\APACrefbtitle {Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo,
+  de 27 de abril de 2016, relativo a la protección de las personas físicas en
+  lo que respecta al tratamiento de datos personales y a la libre circulación
+  de estos datos.} {Reglamento (ue) 2016/679 del parlamento europeo y del
+  consejo, de 27 de abril de 2016, relativo a la protección de las personas
+  físicas en lo que respecta al tratamiento de datos personales y a la libre
+  circulación de estos datos.}
+\newblock
+\begin{APACrefURL}
+  \url{https://eur-lex.europa.eu/legal-content/ES/TXT/PDF/?uri=CELEX%3A32016R0679}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
@@ -173,6 +277,102 @@ pmo2017}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Staff%
+}{%
+Staff%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+coursera2023}
+\APACinsertmetastar {%
+coursera2023}%
+\begin{APACrefauthors}%
+Staff, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {What is usability and why it matters.} {What is usability and
+  why it matters.}
+\newblock
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://www.coursera.org/mx/articles/what-is-usability-and-why-it-matters}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+ThoughtWorks%
+}{%
+ThoughtWorks%
+}{%
+{\protect \APACyear {2020}}%
+}]{%
+thoughtworks2020}
+\APACinsertmetastar {%
+thoughtworks2020}%
+\begin{APACrefauthors}%
+ThoughtWorks.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+\APACrefbtitle {Manual de accesibilidad para profesionales.} {Manual de
+  accesibilidad para profesionales.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.thoughtworks.com/content/dam/thoughtworks/documents/e-book/tw_ebook_accessibility_handbook_v4_spanish.pdf}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Todoist%
+}{%
+Todoist%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+todoist2025}
+\APACinsertmetastar {%
+todoist2025}%
+\begin{APACrefauthors}%
+Todoist.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Todoist - Organiza tu vida y trabajo.} {Todoist - organiza tu
+  vida y trabajo.}
+\newblock
+\begin{APACrefURL} \url{https://todoist.com/es} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Tricount%
+}{%
+Tricount%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+tricount2025}
+\APACinsertmetastar {%
+tricount2025}%
+\begin{APACrefauthors}%
+Tricount.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Tricount - Organiza los gastos del grupo.} {Tricount - organiza
+  los gastos del grupo.}
+\newblock
+\begin{APACrefURL} \url{https://tricount.com/es-es} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 {U.S. Department of Housing and Urban Development}%
 }{%
 {U.S. Department of Housing and Urban Development}%
@@ -195,29 +395,8 @@ hud2022}%
   estudiantiles fuera del campus: Un análisis de la carga financiera de los
   arrendamientos anuales y la gestión de los gastos compartidos.}
 \newblock
-\begin{APACrefURL} [{2025-02-04}]\url{https://www.hud.gov/} \end{APACrefURL}
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
-Wikipedia%
-}{%
-Wikipedia%
-}{%
-{\protect \APACyear {2025}}%
-}]{%
-wikipedia2025}
-\APACinsertmetastar {%
-wikipedia2025}%
-\begin{APACrefauthors}%
-Wikipedia.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2025}{}{}.
-\newblock
-\APACrefbtitle {Usabilidad.} {Usabilidad.}
-\newblock
-\begin{APACrefURL} [{2025-02-04}]\url{https://es.wikipedia.org/wiki/Usabilidad}
+\begin{APACrefURL}
+  [{2025-02-04}]\url{https://www.huduser.gov/portal/periodicals/insight/insight_2.pdf}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
