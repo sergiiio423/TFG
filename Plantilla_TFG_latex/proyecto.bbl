@@ -74,6 +74,29 @@ swift2025}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Boehm%
+}{%
+Boehm%
+}{%
+{\protect \APACyear {1988}}%
+}]{%
+boehm1988}
+\APACinsertmetastar {%
+boehm1988}%
+\begin{APACrefauthors}%
+Boehm, B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1988}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A Spiral Model of Software Development and Enhancement}
+  {A spiral model of software development and enhancement}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{ACM SIGSOFT Software Engineering Notes}{11}{4}{14-24}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Burriel%
 }{%
 Burriel%
@@ -552,6 +575,29 @@ rails2025}%
   web application framework.}
 \newblock
 \begin{APACrefURL} \url{https://rubyonrails.org/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sommerville%
+}{%
+Sommerville%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+sommerville2015}
+\APACinsertmetastar {%
+sommerville2015}%
+\begin{APACrefauthors}%
+Sommerville, I.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2015}.
+\newblock
+\APACrefbtitle {Software Engineering} {Software engineering}\
+  (\PrintOrdinal{10th}\ \BEd).
+\newblock
+\APACaddressPublisher{}{Pearson}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
