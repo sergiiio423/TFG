@@ -52,6 +52,28 @@ american2022}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{Apple Inc.}%
+}{%
+{Apple Inc.}%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+swift2025}
+\APACinsertmetastar {%
+swift2025}%
+\begin{APACrefauthors}%
+{Apple Inc.}%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Swift Programming Language.} {Swift programming language.}
+\newblock
+\begin{APACrefURL} \url{https://www.swift.org/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Burriel%
 }{%
 Burriel%
@@ -99,6 +121,149 @@ cozi2025}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{FC Research}%
+}{%
+{FC Research}%
+}{%
+{\protect \APACyear {2024}}%
+}]{%
+ndp2024}
+\APACinsertmetastar {%
+ndp2024}%
+\begin{APACrefauthors}%
+{FC Research}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {Pisos Compartidos: Tendencias y Perspectivas.} {Pisos
+  compartidos: Tendencias y perspectivas.}
+\newblock
+\begin{APACrefURL}
+  \url{https://s36360.pcdn.co/wp-content/uploads/2024/09/NdP-Pisos-compartidos-I-FC-Research.pdf}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Foundation%
+}{%
+Foundation%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+django2025}
+\APACinsertmetastar {%
+django2025}%
+\begin{APACrefauthors}%
+Foundation, D\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Django - The Web framework for perfectionists with deadlines.}
+  {Django - the web framework for perfectionists with deadlines.}
+\newblock
+\begin{APACrefURL} \url{https://www.djangoproject.com/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Google%
+}{%
+Google%
+}{%
+{\protect \APACyear {2025}}%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+firebase2025}
+\APACinsertmetastar {%
+firebase2025}%
+\begin{APACrefauthors}%
+Google.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025{\protect \BCnt {1}}}{}{}.
+\newblock
+\APACrefbtitle {Firebase.} {Firebase.}
+\newblock
+\begin{APACrefURL} \url{https://firebase.google.com/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Google%
+}{%
+Google%
+}{%
+{\protect \APACyear {2025}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+flutter2025}
+\APACinsertmetastar {%
+flutter2025}%
+\begin{APACrefauthors}%
+Google.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025{\protect \BCnt {2}}}{}{}.
+\newblock
+\APACrefbtitle {Flutter - Build apps for any screen.} {Flutter - build apps for
+  any screen.}
+\newblock
+\begin{APACrefURL} \url{https://flutter.dev/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Huffington Post}%
+}{%
+{Huffington Post}%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+huffpost2025}
+\APACinsertmetastar {%
+huffpost2025}%
+\begin{APACrefauthors}%
+{Huffington Post}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {El 87\% de los jóvenes emancipados comparte vivienda en
+  alquiler al no poder hacer frente a los gastos mensuales.} {El 87\% de los
+  jóvenes emancipados comparte vivienda en alquiler al no poder hacer frente a
+  los gastos mensuales.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.huffingtonpost.es/politica/el-87-jovenes-emancipados-comparte-vivienda-alquiler-frente-gastos-mensuales.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Ionic Framework}%
+}{%
+{Ionic Framework}%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+ionic2025}
+\APACinsertmetastar {%
+ionic2025}%
+\begin{APACrefauthors}%
+{Ionic Framework}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Ionic Framework - The Cross-Platform App Development Leader.}
+  {Ionic framework - the cross-platform app development leader.}
+\newblock
+\begin{APACrefURL} \url{https://ionicframework.com/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 {Jefatura del Estado}%
 }{%
 {Jefatura del Estado}%
@@ -121,6 +286,74 @@ lopd2018}%
   los derechos digitales.}
 \newblock
 \begin{APACrefURL} \url{https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+JetBrains%
+}{%
+JetBrains%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+kotlin2025}
+\APACinsertmetastar {%
+kotlin2025}%
+\begin{APACrefauthors}%
+JetBrains.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Kotlin Programming Language.} {Kotlin programming language.}
+\newblock
+\begin{APACrefURL} \url{https://kotlinlang.org/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Meta~Platforms%
+}{%
+Meta~Platforms%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+reactnative2025}
+\APACinsertmetastar {%
+reactnative2025}%
+\begin{APACrefauthors}%
+Meta~Platforms, I.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {React Native · Learn once, write anywhere.} {React native ·
+  learn once, write anywhere.}
+\newblock
+\begin{APACrefURL} \url{https://reactnative.dev/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Microsoft%
+}{%
+Microsoft%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+xamarin2025}
+\APACinsertmetastar {%
+xamarin2025}%
+\begin{APACrefauthors}%
+Microsoft.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Xamarin.} {Xamarin.}
+\newblock
+\begin{APACrefURL} \url{https://dotnet.microsoft.com/apps/xamarin}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
@@ -199,6 +432,28 @@ Nielsen, J.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{Node.js Foundation}%
+}{%
+{Node.js Foundation}%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+nodejs2025}
+\APACinsertmetastar {%
+nodejs2025}%
+\begin{APACrefauthors}%
+{Node.js Foundation}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Node.js - JavaScript runtime.} {Node.js - javascript runtime.}
+\newblock
+\begin{APACrefURL} \url{https://nodejs.org/} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 OurHome%
 }{%
 OurHome%
@@ -274,6 +529,29 @@ pmo2017}%
 \begin{APACrefURL}
   [{2025-02-04}]\url{https://www.pmoinformatica.com/2017/02/requerimientos-funcionales-ejemplos.html}
   \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Ruby on Rails}%
+}{%
+{Ruby on Rails}%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+rails2025}
+\APACinsertmetastar {%
+rails2025}%
+\begin{APACrefauthors}%
+{Ruby on Rails}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Ruby on Rails - Web Application Framework.} {Ruby on rails -
+  web application framework.}
+\newblock
+\begin{APACrefURL} \url{https://rubyonrails.org/} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

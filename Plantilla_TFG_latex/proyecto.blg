@@ -44,46 +44,66 @@ Warning--entry type for "cozi2025" isn't style-file defined
 --line 219 of file bibliografia.bib
 Warning--entry type for "ourhome2025" isn't style-file defined
 --line 233 of file bibliografia.bib
+Warning--entry type for "kotlin2025" isn't style-file defined
+--line 247 of file bibliografia.bib
+Warning--entry type for "swift2025" isn't style-file defined
+--line 261 of file bibliografia.bib
+Warning--entry type for "ionic2025" isn't style-file defined
+--line 275 of file bibliografia.bib
+Warning--entry type for "flutter2025" isn't style-file defined
+--line 289 of file bibliografia.bib
+Warning--entry type for "reactnative2025" isn't style-file defined
+--line 303 of file bibliografia.bib
+Warning--entry type for "xamarin2025" isn't style-file defined
+--line 317 of file bibliografia.bib
+Warning--entry type for "firebase2025" isn't style-file defined
+--line 331 of file bibliografia.bib
+Warning--entry type for "nodejs2025" isn't style-file defined
+--line 347 of file bibliografia.bib
+Warning--entry type for "django2025" isn't style-file defined
+--line 361 of file bibliografia.bib
+Warning--entry type for "rails2025" isn't style-file defined
+--line 375 of file bibliografia.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 16 entries,
+You've used 28 entries,
             6951 wiz_defined-function locations,
-            1345 strings with 13302 characters,
-and the built_in function-call counts, 30344 in all, are:
-= -- 4306
-> -- 160
-< -- 1374
-+ -- 1217
-- -- 58
-* -- 1615
-:= -- 5213
-add.period$ -- 64
-call.type$ -- 16
-change.case$ -- 272
+            1392 strings with 14548 characters,
+and the built_in function-call counts, 50091 in all, are:
+= -- 7178
+> -- 281
+< -- 2119
++ -- 1804
+- -- 103
+* -- 2540
+:= -- 8147
+add.period$ -- 112
+call.type$ -- 28
+change.case$ -- 492
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 498
-empty$ -- 1095
-format.name$ -- 224
-if$ -- 6081
+cite$ -- 56
+duplicate$ -- 887
+empty$ -- 1915
+format.name$ -- 392
+if$ -- 10330
 int.to.chr$ -- 0
-int.to.str$ -- 48
+int.to.str$ -- 88
 missing$ -- 0
-newline$ -- 355
-num.names$ -- 128
-pop$ -- 338
+newline$ -- 619
+num.names$ -- 224
+pop$ -- 687
 preamble$ -- 1
-purify$ -- 64
+purify$ -- 112
 quote$ -- 0
-skip$ -- 2789
+skip$ -- 4707
 stack$ -- 0
-substring$ -- 1284
-swap$ -- 240
-text.length$ -- 45
+substring$ -- 1923
+swap$ -- 412
+text.length$ -- 79
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 2360
+type$ -- 4040
 warning$ -- 0
-while$ -- 80
+while$ -- 140
 width$ -- 0
-write$ -- 386
-(There were 15 warnings)
+write$ -- 674
+(There were 25 warnings)
