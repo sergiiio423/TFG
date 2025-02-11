@@ -65,45 +65,45 @@ Warning--entry type for "django2025" isn't style-file defined
 Warning--entry type for "rails2025" isn't style-file defined
 --line 375 of file bibliografia.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 30 entries,
+You've used 33 entries,
             6951 wiz_defined-function locations,
-            1405 strings with 14736 characters,
-and the built_in function-call counts, 52915 in all, are:
-= -- 7527
-> -- 301
-< -- 2231
-+ -- 1901
-- -- 107
-* -- 2707
-:= -- 8626
-add.period$ -- 120
-call.type$ -- 30
-change.case$ -- 526
+            1418 strings with 14991 characters,
+and the built_in function-call counts, 57511 in all, are:
+= -- 8090
+> -- 344
+< -- 2416
++ -- 2075
+- -- 113
+* -- 2961
+:= -- 9402
+add.period$ -- 132
+call.type$ -- 33
+change.case$ -- 577
 chr.to.int$ -- 0
-cite$ -- 60
-duplicate$ -- 964
-empty$ -- 2057
-format.name$ -- 420
-if$ -- 10907
+cite$ -- 66
+duplicate$ -- 1102
+empty$ -- 2279
+format.name$ -- 489
+if$ -- 11837
 int.to.chr$ -- 0
-int.to.str$ -- 94
+int.to.str$ -- 103
 missing$ -- 0
-newline$ -- 663
-num.names$ -- 240
-pop$ -- 746
+newline$ -- 735
+num.names$ -- 264
+pop$ -- 885
 preamble$ -- 1
-purify$ -- 120
+purify$ -- 132
 quote$ -- 0
-skip$ -- 4917
+skip$ -- 5215
 stack$ -- 0
-substring$ -- 2030
-swap$ -- 464
-text.length$ -- 83
+substring$ -- 2219
+swap$ -- 528
+text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 4200
+type$ -- 4440
 warning$ -- 0
-while$ -- 150
+while$ -- 174
 width$ -- 0
-write$ -- 722
+write$ -- 809
 (There were 25 warnings)

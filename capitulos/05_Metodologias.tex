@@ -15,7 +15,7 @@ para determinar cuál es la más adecuada para el desarrollo de la aplicación.
 Las metodologías de desarrollo de software son un conjunto de prácticas y técnicas que se utilizan para planificar, diseñar, implementar y probar un proyecto de software. A continuación,
 se describen las metodologías más utilizadas en la actualidad:
 
-\subsubsection{Modelo en cascada (Waterfall)}
+\subsection{Modelo en cascada (Waterfall)}
 \label{subsec:waterfall}
 
 Una de las metodologías más tradicionales y conocidas es el \textbf{Modelo en Cascada} (Waterfall), el cual sigue un enfoque secuencial en el que cada fase del 
@@ -26,7 +26,7 @@ generar retrasos y costos adicionales. Esta metodología sigue siedno utilizada 
 están bien definidos y no se esperan cambios significativos. \cite{sommerville2015}
 
 
-\subsubsection{Modelo en espiral}
+\subsection{Modelo en espiral}
 \label{subsec:espiral}
 
 El \textbf{Modelo en Espiral} introduce un enfoque iterativo que prioriza la gestión de riegos. En cada iteración se realiza actividades
@@ -34,5 +34,48 @@ de planificación, análisis de riegos, implementación y evaluación, lo que pe
 Esta metodología es útil en proyectos grandes y complejos, donde la incertidumbre es alta. No obstante su aplicación suele ser costosa y requiere un gestión constante del proceso,
 lo que lo hace menos adecuado para proyectos pequeños. \cite{boehm1988}
 
-\subsubsection{Desarrollo iterativo e Incremental}
+\subsection{Desarrollo iterativo e Incremental}
 \label{subsec:iterativo}
+El \textbf{Desarrollo Iterativo e Incremental} es otra alternativa que busca dividir el desarrollo en incrementos funcionales, donde cada iteración añade nuevas carácteristicas al sistema. 
+A diferencia del modelo en cascada, este enfoque permite obtener retroalimentación continua y realizar ajustes en cada fase del proyecto. Su flexibilidad es una de sus mejores 
+ventajas, ya que se pueden introducir mejoras en el software en función  de las necesidades del usuario. Sin embargo, gestionar adecuadamente un proyecto basado en 
+interaciones puede ser complejo y es díficil predecir costos y tiempos de finalización con precisión. \cite{larman2003}
+
+\subsection{Metodología Ágil}
+\label{subsec:agil}
+Recientemente, las \textbf{metodologías ágiles} han ganado popularidad en la industria del software debido a su
+capacidad de adaptación y entrega continua de software funcional. Estas metodologías incluyen enfoques como \textit{Scrum}, 
+que se basa en ciclos cortos de desarrollo llamadas \textit{sprints}, y \textit{Extreme Programming} (XP), que se centra en la calidad del código y la colaboración entre los miembros del equipo.
+También destaca \textit{Kanban}, que utiliza tableros visuales para gestionar el flujo de trabajo. \cite{beck1999}
+
+\subsection{DevOps}
+\label{subsec:devops}
+Por último, el enfoque \textbf{DevOps} ha emergido como una metodología clave en la industria del software, ya que integra el desarrollo y las operaciones
+en un único flujo de trabajo. Su principal objetivo es mejorar la eficiencia del desarrollo y la entrega de software, así como la colaboración entre los equipos de desarrollo y operaciones.
+Sin embargo, su adopción puede ser un reto para organizadores que no cuentan con la infraestructura y cultura adecuada. \cite{kim2016}
+
+\section{Comparativa de metodologías}
+\label{sec:comparativa}
+
+A continuación, se presenta una comparativa entre las metodologías de desarrollo de software más utilizadas en la actualidad:
+
+\begin{table}[ht]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Característica} & \textbf{Waterfall} & \textbf{Modelo en Espiral} & \textbf{Iterativo e Incremental} & \textbf{Ágil} \\ \hline
+        Flexibilidad & Baja & Alta & Alta & Muy Alta \\ \hline
+        Gestión de Riesgos & Baja & Muy Alta & Media & Alta \\ \hline
+        Coste & Bajo & Alto & Medio & Variable \\ \hline
+        Tiempo de Desarrollo & Largo & Largo & Medio & Corto \\ \hline
+        Retroalimentación & Baja & Alta & Alta & Muy Alta \\ \hline
+        Adaptabilidad & Baja & Alta & Alta & Muy Alta \\ \hline
+        Documentación & Alta & Media & Media & Baja \\ \hline
+        Ejemplos de Uso & Proyectos con requisitos bien definidos & Proyectos grandes y complejos & Proyectos con requisitos cambiantes & Proyectos con alta incertidumbre \\ \hline
+    \end{tabular}%
+    }
+    \caption{Comparativa de metodologías de desarrollo de software}
+    \label{tab:comparativa_metodologias}
+\end{table}
+
