@@ -45,7 +45,7 @@
 \contentsline {subsubsection}{\numberline {3.2.5.2}Modo de Uso}{39}{subsubsection.3.2.5.2}%
 \contentsline {subsubsection}{\numberline {3.2.5.3}Calificación}{40}{subsubsection.3.2.5.3}%
 \contentsline {subsection}{\numberline {3.2.6}Comparativa}{40}{subsection.3.2.6}%
-\contentsline {section}{\numberline {3.3}Legislación actual de protección de datos}{41}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Legislación actual de protección de datos}{42}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Estudio de usabilidad y accesibilidad}{43}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Estudio de usabilidad}{43}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Estudio de accesibilidad}{43}{subsection.3.4.2}%
@@ -69,13 +69,14 @@
 \contentsline {subsection}{\numberline {5.1.4}Metodología Ágil}{55}{subsection.5.1.4}%
 \contentsline {subsection}{\numberline {5.1.5}DevOps}{56}{subsection.5.1.5}%
 \contentsline {section}{\numberline {5.2}Comparativa de metodologías}{56}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Análisis de la aplicación}{57}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Especificación de requisitos}{57}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Requisitos funcionales}{57}{subsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.1}Grupo 1: Gestión de sesión}{58}{subsubsection.6.1.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{61}{subsubsection.6.1.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{63}{subsubsection.6.1.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{67}{subsubsection.6.1.1.4}%
-\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{68}{subsubsection.6.1.1.5}%
-\contentsline {chapter}{\numberline {7}Diseño}{69}{chapter.7}%
-\contentsline {section}{Referencias}{70}{section*.8}%
+\contentsline {section}{\numberline {5.3}Justificación de la metodología}{57}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Análisis de la aplicación}{58}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Especificación de requisitos}{58}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Requisitos funcionales}{58}{subsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.1}Grupo 1: Gestión de sesión}{59}{subsubsection.6.1.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{62}{subsubsection.6.1.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{64}{subsubsection.6.1.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{68}{subsubsection.6.1.1.4}%
+\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{71}{subsubsection.6.1.1.5}%
+\contentsline {chapter}{\numberline {7}Diseño}{72}{chapter.7}%
+\contentsline {section}{Referencias}{73}{section*.8}%

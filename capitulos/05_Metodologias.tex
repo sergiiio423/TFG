@@ -19,7 +19,7 @@ se describen las metodologías más utilizadas en la actualidad:
 \label{subsec:waterfall}
 
 Una de las metodologías más tradicionales y conocidas es el \textbf{Modelo en Cascada} (Waterfall), el cual sigue un enfoque secuencial en el que cada fase del 
-desarrollo debe completarse antes de avanzar a la siguiente. Esta metodología se compone principalmente de las estapas de recopilación de requisitos, diseño, implementación, pruebas, despliegue y mantenimiento. 
+desarrollo debe completarse antes de avanzar a la siguiente. Esta metodología se compone principalmente de las etapas de recopilación de requisitos, diseño, implementación, pruebas, despliegue y mantenimiento. 
 Su principal ventaja es la claridad de los requisitos desde el inicio, lo que facilita una buena planificación y documentación. Sin embargo, su principal inconveniente
 es la falta de flexibilidad, ya que cualquier cambio en los requisitos implica volver a fases anteriores, lo que puede
 generar retrasos y costos adicionales. Esta metodología sigue siedno utilizada en proyectos donde los requisitos 
@@ -59,23 +59,40 @@ Sin embargo, su adopción puede ser un reto para organizadores que no cuentan co
 
 A continuación, se presenta una comparativa entre las metodologías de desarrollo de software más utilizadas en la actualidad:
 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
+    \renewcommand{\arraystretch}{1.5}
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|c|c|c|c|c|}
+    \begin{tabular}{|p{3cm}|p{2.5cm}|p{3cm}|p{2.5cm}|p{2.5cm}|p{3cm}|p{3cm}|}
         \hline
-        \textbf{Característica} & \textbf{Waterfall} & \textbf{Modelo en Espiral} & \textbf{Iterativo e Incremental} & \textbf{Ágil} \\ \hline
-        Flexibilidad & Baja & Alta & Alta & Muy Alta \\ \hline
-        Gestión de Riesgos & Baja & Muy Alta & Media & Alta \\ \hline
-        Coste & Bajo & Alto & Medio & Variable \\ \hline
-        Tiempo de Desarrollo & Largo & Largo & Medio & Corto \\ \hline
-        Retroalimentación & Baja & Alta & Alta & Muy Alta \\ \hline
-        Adaptabilidad & Baja & Alta & Alta & Muy Alta \\ \hline
-        Documentación & Alta & Media & Media & Baja \\ \hline
-        Ejemplos de Uso & Proyectos con requisitos bien definidos & Proyectos grandes y complejos & Proyectos con requisitos cambiantes & Proyectos con alta incertidumbre \\ \hline
-    \end{tabular}%
+        \rowcolor[HTML]{C0C0C0} 
+        \textbf{Metodología} & \textbf{Flexibilidad} & \textbf{Gestión de Riesgos} & \textbf{Coste} & \textbf{Tiempo} & \textbf{Adaptabilidad} & \textbf{Documentación} \\ \hline
+        \textbf{Waterfall} & Baja & Baja & Bajo & Largo & Baja & Alta \\ \hline
+        \textbf{Modelo en Espiral} & Alta & Muy Alta & Alto & Largo & Alta & Media \\ \hline
+        \textbf{Iterativo e Incremental} & Alta & Media & Medio & Medio & Alta & Media \\ \hline
+        \textbf{Ágil} & Muy Alta & Alta & Variable & Corto & Muy Alta & Baja \\ \hline
+        \textbf{DevOps} & Alta & Alta & Variable & Variable & Muy Alta & Baja \\ \hline
+    \end{tabular}
     }
-    \caption{Comparativa de metodologías de desarrollo de software}
+    \caption{Comparativa de metodologías de desarrollo de software.}
     \label{tab:comparativa_metodologias}
 \end{table}
 
+
+Los aparatados de la tabla \ref{tab:comparativa_metodologias} se describen a continuación:
+
+\begin{enumerate}
+    \item \textbf{Flexibilidad:} Indica la capacidad de la metodología para adaptarse a cambios durante el proceso de desarrollo. Por ejemplo, las metodologías Ágil y DevOps tienen una flexibilidad muy alta, lo que significa que pueden adaptarse rápidamente a los cambios.
+    \item \textbf{Gestión de Riesgos:} Se refiere a la capacidad de la metodología para identificar, evaluar y mitigar riesgos durante el desarrollo del proyecto. El Modelo en Espiral tiene una gestión de riesgos muy alta, lo que significa que se enfoca mucho en la identificación y mitigación de riesgos.
+    \item \textbf{Coste:} Representa el costo asociado con la implementación de la metodología. Puede variar desde bajo hasta alto. Por ejemplo, el Modelo en Espiral tiene un coste alto debido a su enfoque en la gestión de riesgos y la iteración.
+    \item \textbf{Tiempo:} Indica la duración del proceso de desarrollo. Puede variar desde corto hasta largo. Por ejemplo, el Modelo en Cascada tiene un tiempo largo debido a su enfoque secuencial.
+    \item \textbf{Adaptabilidad:} Se refiere a la capacidad de la metodología para adaptarse a diferentes tipos de proyectos y entornos. Las metodologías Ágil y DevOps tienen una adaptabilidad muy alta, lo que significa que pueden ser aplicadas en una amplia variedad de contextos.
+    \item \textbf{Documentación:} Indica el nivel de documentación requerido por la metodología. Por ejemplo, la metodología Waterfall requiere una alta cantidad de documentación, mientras que Ágil y DevOps requieren menos documentación.
+\end{enumerate}
+
+En conclusión, la elección de una metodología de desarrollo de software dependerá de las características del proyecto, el equipo de desarrollo y las necesidades del cliente.
+
+\section{Justificación de la metodología}
+\label{sec:justificacion_metodologia}
+Para mi proyecto he decido usar, el modelo en cascada, ya que los requisitos del proyecto están bien definidos y no se esperan cambios significativos. Además, la claridad de los requisitos desde el inicio me facilitará una buena planificación y documentación.
+La facilidad de implementación y la baja complejidad del proyecto hacen que el modelo en cascada sea la mejor opción para el desarrollo de la aplicación.

@@ -105,31 +105,26 @@ tenga un comportamiento y apariencia similares. Algunos ejemplos de esta tecnolo
 La siguiente tabla ofrece una comparación entre las tecnologías más populares en el desarrollo frontend de aplicaciones móviles, 
 evaluando aspectos clave como el lenguaje de programación, rendimiento, disponibilidad de componentes de UI, tamaño de la comunidad, soporte de funcionalidad \textit{Hot Reload} e 
 integración con otros sistemas y herramientas. Esta información proporciona una visión global de las fortalezas y limitaciones de cada opción, facilitando así la selección de la tecnología que mejor se ajuste a los requisitos específicos del proyecto.
-\begin{table}[ht]
+\begin{table}[H]
     \centering
-    \scalebox{0.7}{
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \renewcommand{\arraystretch}{1.5}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{3cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{3.5cm}|p{2.5cm}|p{3cm}|}
         \hline
         \rowcolor[HTML]{C0C0C0} 
-        \textbf{} & \textbf{Lenguaje} & \textbf{Rendimiento} & \textbf{Componentes UI} & \textbf{Comunidad} & \textbf{Hot Reload} & \textbf{Integración} \\
-        \hline
-         \textbf{Kotlin} & Java & Nativo & Componentes Nativos & Grande & No  & Herramientas Nativas \\
-        \hline
-        \textbf{Swift} & Swift & Nativo & Componentes Nativos & Grande & No & Herramientas Nativas \\
-        \hline
-        \textbf{Ionic} & JavaScript & Buen Rendimiento & Componentes Nativos & Grande & Sí & Buen Soporte \\
-        \hline
-        \textbf{Flutter} & Dart & Cercano a Nativo & Personalizados & Activa & Sí & Buen Soporte \\
-        \hline
-        \textbf{React Native} & JavaScript & Buen Rendimiento & Componentes Nativos & Grande & Sí & Buen Soporte \\
-        \hline
-        \textbf{Xamarin} & C\# & Buen Rendimiento & Componentes Nativos & Grande & Sí & Integración Microsoft \\
-        \hline
+        \textbf{Tecnología} & \textbf{Lenguaje} & \textbf{Rendimiento} & \textbf{Componentes UI} & \textbf{Comunidad} & \textbf{Hot Reload} & \textbf{Integración} \\ \hline
+        \textbf{Kotlin} & Java & Nativo & Componentes Nativos & Amplia & No & Herramientas Nativas \\ \hline
+        \textbf{Swift} & Swift & Nativo & Componentes Nativos & Amplia & No & Herramientas Nativas \\ \hline
+        \textbf{Ionic} & JavaScript & Bueno & Basado en Web & Amplia & Sí & Buen Soporte \\ \hline
+        \textbf{Flutter} & Dart & Cercano a Nativo & Personalizados & Activa & Sí & Buen Soporte \\ \hline
+        \textbf{React Native} & JavaScript & Bueno & Componentes Nativos & Amplia & Sí & Buen Soporte \\ \hline
+        \textbf{Xamarin} & C\# & Bueno & Componentes Nativos & Amplia & Sí & Integración Microsoft \\ \hline
     \end{tabular}
     }
-    \caption{Tabla comparativa de tecnologías front-end}
+    \caption{Comparativa de tecnologías para desarrollo de aplicaciones móviles.}
     \label{tab:comparativa}
 \end{table}
+
 
 En conclusión, la tabla destaca cómo cada tecnología ofrece un conjunto único de beneficios. Las opciones nativas como Kotlin y Swift son preferibles para aplicaciones que requieran un rendimiento óptimo y un uso extensivo de componentes específicos de la plataforma. 
 Sin embargo, soluciones como Flutter y React Native se presentan como alternativas atractivas para el desarrollo multiplataforma debido a su rendimiento cercano al nativo, su comunidad activa y sus herramientas avanzadas de desarrollo rápido como \textit{Hot Reload}. 
@@ -209,25 +204,22 @@ La tabla siguiente compara algunas de las tecnologías back-end más comunes en 
 evaluando aspectos como el lenguaje de programación, las bases de datos soportadas, la gestión del estado, la integración con APIs y la popularidad general. 
 \begin{table}[H]
     \centering
-    \resizebox{1.3\textwidth}{!}{
-    \begin{tabular}{|c|c|c|c|c|c|}
+    \renewcommand{\arraystretch}{1.5}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{3cm}|p{2.5cm}|p{3.5cm}|p{3cm}|p{3.5cm}|p{2.5cm}|}
         \hline
         \rowcolor[HTML]{C0C0C0} 
-        \textbf{} & \textbf{Lenguaje} & \textbf{BD Soportada} & \textbf{Gestión del estado} & \textbf{Integración con API} & \textbf{Popularidad} \\
-        \hline
-        \textbf{Firebase} & - & Firebase, Realtime DB & Serverless, en tiempo real & APIs nativas de Firebase & Muy alta \\
-        \hline
-        \textbf{Node.js} & JavaScript & MongoDB, MySQL, PostgreSQL & Depende de la implementación & Muy flexible & Muy alta \\
-        \hline
-        \textbf{Django} & Python & PostgreSQL, MySQL & ORM Propio & Django REST Framework & Alta \\
-        \hline
-        \textbf{Ruby on Rails} & Ruby & PostgreSQL, MySQL & ActiveRecord ORM & RESTful API fácil de implementar & Media \\
-        \hline
+        \textbf{Tecnología} & \textbf{Lenguaje} & \textbf{Base de Datos Soportada} & \textbf{Gestión del Estado} & \textbf{Integración con API} & \textbf{Popularidad} \\ \hline
+        \textbf{Firebase} & - & Firebase, Realtime DB & Serverless, en tiempo real & APIs nativas de Firebase & Muy alta \\ \hline
+        \textbf{Node.js} & JavaScript & MongoDB, MySQL, PostgreSQL & Depende de la implementación & Muy flexible & Muy alta \\ \hline
+        \textbf{Django} & Python & PostgreSQL, MySQL & ORM Propio & Django REST Framework & Alta \\ \hline
+        \textbf{Ruby on Rails} & Ruby & PostgreSQL, MySQL & ActiveRecord ORM & RESTful API fácil de implementar & Media \\ \hline
     \end{tabular}
     }
-    \caption{Tabla comparativa de tecnologías back-end}
+    \caption{Comparativa de tecnologías para el desarrollo back-end.}
     \label{tab:comparativa2}
 \end{table}
+
 
 En conclusión, esta tabla muestra cómo cada tecnología back-end aporta ventajas específicas. Firebase destaca en aplicaciones en tiempo real y serverless, ideal para proyectos rápidos 
 que requieren menos mantenimiento de servidores. Node.js es muy flexible y compatible con diferentes bases de datos, adaptándose bien a aplicaciones escalables. Django y Ruby on Rails ofrecen 

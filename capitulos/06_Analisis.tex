@@ -441,8 +441,126 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 \end{table}
 
 
+\clearpage
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_15} & \textbf{Modificar gasto} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario modificar un gasto.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para modificar un gasto.
+                \item Al pulsar el botón, se mostrará un formulario con los campos del gasto a modificar.
+                \item Verificar que los campos no estén vacíos.
+                \item Si los campos no son válidos, mostrar un mensaje de error.
+                \item Tras la modificación del gasto, se redirigirá a la pantalla principal del hogar.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_15}
+
+\end{table}
+
 
 \clearpage
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_16} & \textbf{Eliminar gasto} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario eliminar un gasto.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para eliminar un gasto.
+                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Si el usuario confirma, el gasto se eliminará y se actualizará la información en la base de datos.
+                \item Si el usuario cancela, no se realizará ninguna acción.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_16}
+\end{table}
+
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_17} & \textbf{Saldar deuda} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario saldar una deuda.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener un botón para saldar una deuda.
+                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Si el usuario confirma, la deuda se marcará como saldada y se actualizará la información en la base de datos.
+                \item Si el usuario cancela, no se realizará ninguna acción.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_17}
+\end{table}
+
+\clearpage
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_18} & \textbf{Ver deudas} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario ver las deudas pendientes.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La interfaz de la aplicación debe contener una sección para ver las deudas pendientes.
+                \item Al acceder a la sección, se mostrará una lista con las deudas pendientes, incluyendo el nombre del deudor, la cantidad y la fecha.
+                \item Si no hay deudas pendientes, mostrar un mensaje indicando que no hay deudas pendientes.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_18}
+\end{table}
+
+
+
+
+
+
+
+
 
 \subsubsection{Grupo 5: Gestión de compra}
 \label{subsubsec:grupo5}
