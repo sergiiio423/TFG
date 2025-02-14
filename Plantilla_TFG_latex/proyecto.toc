@@ -74,9 +74,10 @@
 \contentsline {section}{\numberline {6.1}Especificación de requisitos}{58}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}Requisitos funcionales}{58}{subsection.6.1.1}%
 \contentsline {subsubsection}{\numberline {6.1.1.1}Grupo 1: Gestión de sesión}{59}{subsubsection.6.1.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{62}{subsubsection.6.1.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{64}{subsubsection.6.1.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{68}{subsubsection.6.1.1.4}%
-\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{71}{subsubsection.6.1.1.5}%
-\contentsline {chapter}{\numberline {7}Diseño}{72}{chapter.7}%
-\contentsline {section}{Referencias}{73}{section*.8}%
+\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{63}{subsubsection.6.1.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{66}{subsubsection.6.1.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{71}{subsubsection.6.1.1.4}%
+\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{75}{subsubsection.6.1.1.5}%
+\contentsline {subsection}{\numberline {6.1.2}Requisitos no funcionales}{80}{subsection.6.1.2}%
+\contentsline {chapter}{\numberline {7}Diseño}{81}{chapter.7}%
+\contentsline {section}{Referencias}{82}{section*.8}%

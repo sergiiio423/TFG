@@ -700,6 +700,30 @@ Staff, C.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Talent.com%
+}{%
+Talent.com%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+Talent2025}
+\APACinsertmetastar {%
+Talent2025}%
+\begin{APACrefauthors}%
+Talent.com.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Salario de Programador Junior en España.} {Salario de
+  programador junior en españa.}
+\newblock
+\begin{APACrefURL} \url{https://es.talent.com/salary?job=programador+junior}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 ThoughtWorks%
 }{%
 ThoughtWorks%
