@@ -66,46 +66,48 @@ Warning--entry type for "rails2025" isn't style-file defined
 --line 375 of file bibliografia.bib
 Warning--entry type for "Talent2025" isn't style-file defined
 --line 495 of file bibliografia.bib
+Warning--entry type for "atlassian_iterative" isn't style-file defined
+--line 509 of file bibliografia.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 34 entries,
+You've used 35 entries,
             6951 wiz_defined-function locations,
-            1423 strings with 15112 characters,
-and the built_in function-call counts, 59168 in all, are:
-= -- 8334
-> -- 354
-< -- 2475
-+ -- 2122
-- -- 117
-* -- 3036
-:= -- 9645
-add.period$ -- 136
-call.type$ -- 34
-change.case$ -- 594
+            1427 strings with 15249 characters,
+and the built_in function-call counts, 60737 in all, are:
+= -- 8570
+> -- 364
+< -- 2526
++ -- 2157
+- -- 121
+* -- 3101
+:= -- 9854
+add.period$ -- 140
+call.type$ -- 35
+change.case$ -- 611
 chr.to.int$ -- 0
-cite$ -- 68
-duplicate$ -- 1134
-empty$ -- 2347
-format.name$ -- 503
-if$ -- 12193
+cite$ -- 70
+duplicate$ -- 1166
+empty$ -- 2415
+format.name$ -- 517
+if$ -- 12545
 int.to.chr$ -- 0
-int.to.str$ -- 106
+int.to.str$ -- 109
 missing$ -- 0
-newline$ -- 757
-num.names$ -- 272
-pop$ -- 905
+newline$ -- 779
+num.names$ -- 280
+pop$ -- 927
 preamble$ -- 1
-purify$ -- 136
+purify$ -- 140
 quote$ -- 0
-skip$ -- 5390
+skip$ -- 5563
 stack$ -- 0
-substring$ -- 2270
-swap$ -- 542
-text.length$ -- 92
+substring$ -- 2309
+swap$ -- 556
+text.length$ -- 95
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 4592
+type$ -- 4744
 warning$ -- 0
-while$ -- 179
+while$ -- 184
 width$ -- 0
-write$ -- 833
-(There were 26 warnings)
+write$ -- 857
+(There were 27 warnings)

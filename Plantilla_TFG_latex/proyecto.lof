@@ -2,37 +2,45 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Pantalla Inicio.}}{27}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Lista de grupos.}}{27}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Añadir un nuevo grupo.}}{28}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Pantalla del perfil.}}{28}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Detalles de un nuevo grupo.}}{29}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Enviar invitación a los miembros del grupo.}}{29}{figure.3.6}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Pantalla Inicio.}}{28}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Lista de grupos.}}{28}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Añadir un nuevo grupo.}}{29}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Pantalla del perfil.}}{29}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Detalles de un nuevo grupo.}}{30}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Enviar invitación a los miembros del grupo.}}{30}{figure.3.6}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Añadir un gasto.}}{30}{figure.3.7}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Resumen de los gastos y deudas.}}{30}{figure.3.8}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Pantalla de registro.}}{32}{figure.3.9}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Elegir el ámbito de la aplicación.}}{32}{figure.3.10}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Pantalla principal.}}{33}{figure.3.11}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Añadir una tarea.}}{33}{figure.3.12}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Pantalla con la tarea añadida.}}{34}{figure.3.13}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Calendario de tareas.}}{34}{figure.3.14}%
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Registro.}}{37}{figure.3.15}%
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Crear una familia.}}{37}{figure.3.16}%
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Añadir un evento.}}{38}{figure.3.17}%
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Calendario.}}{38}{figure.3.18}%
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Listas de la compra.}}{39}{figure.3.19}%
-\contentsline {figure}{\numberline {3.20}{\ignorespaces Recetas.}}{39}{figure.3.20}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Pantalla de registro.}}{33}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Elegir el ámbito de la aplicación.}}{33}{figure.3.10}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Pantalla principal.}}{34}{figure.3.11}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Añadir una tarea.}}{34}{figure.3.12}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Pantalla con la tarea añadida.}}{35}{figure.3.13}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Calendario de tareas.}}{35}{figure.3.14}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Registro.}}{39}{figure.3.15}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Crear una familia.}}{39}{figure.3.16}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Añadir un evento.}}{40}{figure.3.17}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Calendario.}}{40}{figure.3.18}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Listas de la compra.}}{41}{figure.3.19}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Recetas.}}{41}{figure.3.20}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Logo de Kotlin}}{46}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Logo de Swift}}{46}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Logo de Ionic}}{47}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Logo de Flutter}}{47}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Logo de React Native}}{48}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Logo de Xamarin}}{48}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Logo de Firebase}}{50}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Logo de Node.js}}{51}{figure.4.8}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Logo de Django}}{51}{figure.4.9}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Logo de Ruby on Rails}}{52}{figure.4.10}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Logo de Kotlin}}{49}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Logo de Swift}}{49}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Logo de Ionic}}{50}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Logo de Flutter}}{50}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Logo de React Native}}{51}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Logo de Xamarin}}{51}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Logo de Firebase}}{53}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Logo de Node.js}}{54}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Logo de Django}}{54}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Logo de Ruby on Rails}}{55}{figure.4.10}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Diseño de la pantalla de bienvenida.}}{85}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Diseño de la pantalla de inicio de sesión.}}{85}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Diseño de la pantalla de registro.}}{86}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Diseño de la pantalla de cierre de sesión y datos de usuario.}}{86}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Diseño de la pantalla para unirte a un hogar o crear uno nuevo.}}{87}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Diseño de la pantalla para unirte a un hogar.}}{87}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Diseño de la pantalla para crear un nuevo hogar.}}{88}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Diseño de la pantalla para abandonar a un hogar.}}{88}{figure.7.8}%

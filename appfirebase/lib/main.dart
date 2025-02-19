@@ -9,6 +9,7 @@ import 'inicio_sesion.dart';
 import 'inicio_sesion_correo.dart';
 import 'principal.dart';
 import 'crear_hogar.dart';
+import  'welcome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,7 +53,7 @@ class AuthGate extends StatelessWidget {
           if (snapshot.hasData && snapshot.data!.emailVerified) {
             return const HomePage();
           } else {
-            return const SignInPage();
+            return  WelcomeScreen();
           }
         } else {
           return const Center(child: CircularProgressIndicator());

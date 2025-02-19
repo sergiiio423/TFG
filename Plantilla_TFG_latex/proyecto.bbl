@@ -74,6 +74,30 @@ swift2025}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Atlassian%
+}{%
+Atlassian%
+}{%
+{\protect \APACyear {2025}}%
+}]{%
+atlassian_iterative}
+\APACinsertmetastar {%
+atlassian_iterative}%
+\begin{APACrefauthors}%
+Atlassian.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock
+\APACrefbtitle {Guía de procesos iterativos.} {Guía de procesos iterativos.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.atlassian.com/es/work-management/project-management/iterative-process}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Beck%
 }{%
 Beck%
