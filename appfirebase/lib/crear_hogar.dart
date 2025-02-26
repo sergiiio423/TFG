@@ -1,131 +1,93 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class CrearHogarPage extends StatefulWidget {
-  const CrearHogarPage({Key? key}) : super(key: key);
+class CrearHogarScreen extends StatefulWidget {
+  const CrearHogarScreen({super.key});
 
   @override
-  _CrearHogarPageState createState() => _CrearHogarPageState();
+  _CrearHogarScreenState createState() => _CrearHogarScreenState();
 }
 
-class _CrearHogarPageState extends State<CrearHogarPage> {
+class _CrearHogarScreenState extends State<CrearHogarScreen> {
   final TextEditingController _nombreHogarController = TextEditingController();
-  final TextEditingController _miembroController = TextEditingController();
-  List<String> miembros = [];
-  bool isLoading = true;
-  bool hogarExiste = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  @override
-  void initState() {
-    super.initState();
-    _verificarHogarExistente();
+  String generarCodigoHogar() {
+    Random random = Random();
+    return List.generate(6, (index) => random.nextInt(10).toString()).join();
   }
 
-  Future<void> _verificarHogarExistente() async {
-    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    final User? _user = FirebaseAuth.instance.currentUser;
+  void crearHogar() async {
+    String nombreHogar = _nombreHogarController.text.trim();
+    String userId = _auth.currentUser!.uid;
 
-    if (_user != null) {
-      DocumentSnapshot hogarDoc = await _firestore.collection('hogar').doc(_user.uid).get();
-      if (hogarDoc.exists) {
-        setState(() {
-          hogarExiste = true;
-        });
-      }
-    }
-    setState(() {
-      isLoading = false;
-    });
-  }
-
-  Future<void> _crearNuevoHogar() async {
-    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    final User? _user = FirebaseAuth.instance.currentUser;
-
-    if (_user != null) {
-      await _firestore.collection('hogar').doc(_user.uid).set({
-        'uid': _user.uid,
-        'nombreHogar': _nombreHogarController.text,
-        'miembros': miembros, 
-      });
-
+    if (nombreHogar.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Hogar creado con éxito')),
+        const SnackBar(content: Text('Por favor, ingresa un nombre para el hogar')),
       );
-
-      // Aquí puedes redirigir a otra página después de crear el hogar
-      Navigator.pushReplacementNamed(context, '/');
+      return;
     }
-  }
 
-  void _agregarMiembro() {
-    if (_miembroController.text.isNotEmpty) {
-      setState(() {
-        miembros.add(_miembroController.text);
-        _miembroController.clear();
-      });
-    }
+    String codigoHogar = generarCodigoHogar();
+
+    await _firestore.collection('hogar').add({
+      'nombre': nombreHogar,
+      'codigo': codigoHogar,
+      'miembros': [userId], // Guarda el ID del usuario en la lista de miembros
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Hogar creado con éxito. Código: $codigoHogar')),
+    );
+
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
-
-    if (hogarExiste) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Mi Hogar'),
-        ),
-        body: const Center(
-          child: Text('Ya tienes un hogar registrado.'),
-        ),
-      );
-    }
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Crear Hogar'),
-      ),
+      backgroundColor: const Color(0xFFEFFAF5),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Crear un nuevo hogar',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              'Crea tu hogar',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF52A090),
+              ),
             ),
             const SizedBox(height: 20),
             TextField(
               controller: _nombreHogarController,
-              decoration: const InputDecoration(labelText: 'Nombre del hogar'),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _miembroController,
-              decoration: const InputDecoration(labelText: 'Agregar miembro'),
-              onSubmitted: (value) => _agregarMiembro(),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _agregarMiembro,
-              child: const Text('Añadir miembro'),
-            ),
-            const SizedBox(height: 20),
-            Text('Miembros del hogar:', style: TextStyle(fontWeight: FontWeight.bold)),
-            for (var miembro in miembros)
-              ListTile(
-                title: Text(miembro),
+              decoration: InputDecoration(
+                hintText: 'Nombre del hogar',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _crearNuevoHogar,
-              child: const Text('Crear Hogar'),
+              onPressed: crearHogar,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF52A090),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                minimumSize: const Size(double.infinity, 50),
+              ),
+              child: const Text(
+                'Crear tu hogar',
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
             ),
           ],
         ),

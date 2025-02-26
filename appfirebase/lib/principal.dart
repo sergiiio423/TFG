@@ -23,108 +23,135 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _obtenerNombreHogar() async {
     if (_user != null) {
-      DocumentSnapshot docSnapshot =
-          await _firestore.collection('hogar').doc(_user!.uid).get();
+      QuerySnapshot querySnapshot = await _firestore
+          .collection('hogar')
+          .where('miembros', arrayContains: _user!.uid)
+          .limit(1)
+          .get();
 
-      if (docSnapshot.exists && docSnapshot.data() != null) {
+      if (querySnapshot.docs.isNotEmpty) {
         setState(() {
-          nombreHogar =
-              (docSnapshot.data() as Map<String, dynamic>)['nombreHogar'] ??
-                  'Mi Hogar';
+          nombreHogar = querySnapshot.docs.first['nombre'] ?? 'Mi Hogar';
         });
       }
     }
   }
 
-  Future<bool> _isHogarEmpty() async {
-    DocumentSnapshot docSnapshot =
-        await _firestore.collection('hogar').doc(_user!.uid).get();
-
-    return !docSnapshot.exists ||
-        !docSnapshot.data().toString().contains('miembros');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(nombreHogar, style: const TextStyle(fontSize: 25 , fontFamily: 'Arial') ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              Navigator.pushReplacementNamed(context, '/');
-            },
-          ),
-        ],
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    nombreHogar,
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.person, size: 28),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(16.0),
+                children: [
+                  _buildSectionTitle('Planificación Semanal'),
+                  _buildWeekPlanner(),
+                  _buildSectionTitle('Deudas Pendientes'),
+                  _buildDebtList(),
+                  _buildSectionTitle('Lista de la Compra'),
+                  _buildShoppingList(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      body: FutureBuilder<bool>(
-        future: _isHogarEmpty(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return const Center(child: Text('Error al cargar los datos.'));
-          }
+      bottomNavigationBar: _buildBottomNavBar(),
+    );
+  }
 
-          final isHogarEmpty = snapshot.data ?? true;
-
-          return Center(
-            child:
-                isHogarEmpty ? _buildCreateHogarOption() : _buildHogarMembers(),
-          );
-        },
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black87,
+        ),
       ),
     );
   }
 
-  Widget _buildCreateHogarOption() {
+  Widget _buildWeekPlanner() {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.orange.shade100,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      
+      child: const Center(child: Text('Calendario aquí')),
+    );
+  }
+
+  Widget _buildDebtList() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          'No tienes un hogar creado.',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/crear_hogar');
-          },
-          child: const Text('Crear nuevo hogar'),
-        ),
+        _buildDebtTile('Cristina', '5,44 €', 'Sergio'),
+        _buildDebtTile('Lola', '0,50 €', 'Sergio'),
+        _buildDebtTile('Julia', '2,56 €', 'Sergio'),
       ],
     );
   }
 
-  Widget _buildHogarMembers() {
-    return FutureBuilder<DocumentSnapshot>(
-      future: _firestore.collection('hogar').doc(_user!.uid).get(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return const Text('Error al cargar los miembros del hogar.');
-        }
+  Widget _buildDebtTile(String from, String amount, String to) {
+    return ListTile(
+      leading: CircleAvatar(child: Text(from[0])),
+      title: Text('$from → $to'),
+      trailing: Text(amount, style: const TextStyle(color: Colors.teal)),
+    );
+  }
 
-        final hogarData = snapshot.data?.data() as Map<String, dynamic>?;
-        final List<dynamic> miembros = hogarData?['miembros'] ?? [];
+  Widget _buildShoppingList() {
+    return ListTile(
+      leading: const Icon(Icons.local_pizza, color: Colors.orange),
+      title: const Text('Pizza'),
+      trailing: const Text('1'),
+    );
+  }
 
-        if (miembros.isEmpty) {
-          return const Text('Tu hogar no tiene miembros.');
-        }
-
-        return ListView.builder(
-          itemCount: miembros.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(miembros[index].toString()),
-            );
-          },
-        );
-      },
+  Widget _buildBottomNavBar() {
+    return BottomNavigationBar(
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white70,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.teal,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
+      ],
     );
   }
 }

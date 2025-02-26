@@ -10,6 +10,7 @@ import 'inicio_sesion_correo.dart';
 import 'principal.dart';
 import 'crear_hogar.dart';
 import  'welcome.dart';
+import 'conectar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,15 +27,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     String user = "";
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        scaffoldBackgroundColor: Colors.white,
+      ),
       initialRoute: '/',
       routes: {
         '/': (context) => const AuthGate(),
         // ----------------------------------------------------------
-        '/inicio_sesion': (context) => const SignInPage(),
+        '/inicio_sesion': (context) => const SignInEmail(),
         // ----------------------------------------------------------
-        '/inicio_sesion_correo': (context) => const SignInEmail(),
+        '/crear_hogar': (context) => const CrearHogarScreen(),
         // ----------------------------------------------------------
-        '/crear_hogar': (context) => const CrearHogarPage(),
+        '/home': (context) => const HomePage(),
+        // ----------------------------------------------------------
+        '/registro': (context) => const RegistrationPage(),
+        // ----------------------------------------------------------
+        '/conectar': (context) => const ConnectHomeScreen(),
 
       },
     );
