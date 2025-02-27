@@ -79,12 +79,13 @@
 \contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{82}{subsubsection.6.1.1.5}%
 \contentsline {subsection}{\numberline {6.1.2}Requisitos no funcionales}{87}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}Modelos de casos de uso}{88}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Diseño}{89}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{89}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{89}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{89}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{93}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{95}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{96}{subsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{96}{subsection.7.2.5}%
-\contentsline {section}{Referencias}{97}{subsection.7.2.5}%
+\contentsline {subsection}{\numberline {6.2.1}Diagrama de casos de uso}{88}{subsection.6.2.1}%
+\contentsline {chapter}{\numberline {7}Diseño}{90}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{90}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{90}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{90}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{94}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{96}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{97}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{97}{subsection.7.2.5}%
+\contentsline {section}{Referencias}{98}{subsection.7.2.5}%
