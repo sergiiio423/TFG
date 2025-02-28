@@ -63,6 +63,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 		\hline
 	\end{tabular}
 	\caption{RF\_01}
+    \label{req:RF01}
 \end{table}
 
 \begin{table}[htb!]
@@ -91,7 +92,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \hline
     \end{tabular}
     \caption{RF\_02}
-
+    \label{req:RF02}
 \end{table}
 
 
@@ -144,6 +145,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \hline
     \end{tabular}
     \caption{RF\_04}
+    \label{req:RF04}
 
 \end{table}
 
@@ -171,6 +173,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \hline
     \end{tabular}
     \caption{RF\_05}
+    \label{req:RF05}
 \end{table}
 
 \begin{table}[htb!]
@@ -197,6 +200,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \end{minipage} \\
         \hline
     \end{tabular}
+    \label{req:RF06}
     \caption{RF\_06}
 \end{table}
 
@@ -1041,21 +1045,21 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 	\centering
 	\begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
 		\hline
-		\rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{inicioSesión} &  CU1\\ 
+		\rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{registro} &  CU1\\ 
 		\hline
-		Actores & \multicolumn{3}{l|}{Encargado} \\ 
+		Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
 		\hline
 		Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
 		\hline
-		Referencias & \multicolumn{3}{l|}{RF1} \\ 
+		Referencias & \multicolumn{3}{l|}{\hyperref[req:RF01]{RF\_01}} \\ 
 		\hline
-		Precondición & \multicolumn{3}{l|}{El encargado debe estar registrado en el sistema.} \\ 
+		Precondición & \multicolumn{3}{l|}{El usuario no debe estar registrado en el sistema.} \\ 
 		\hline
-		Postcondición & \multicolumn{3}{l|}{El encargado entra en el sistema.} \\ 
+        Postcondición & \multicolumn{3}{l|}{El usuario queda registrado en el sistema.} \\ 
 		\hline
-		Autor & \multicolumn{3}{l|}{Julia Cano} \\ 
+		Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
 		\hline
-		Fecha & 02/03/2024 & Versión & 1.0 \\
+		Fecha & 28/02/2025 & Versión & 1.0 \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -1064,9 +1068,9 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 	\centering
 	\begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
 		\hline
-		Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El encargado debe ser capaz de acceder al sistema.}   \\ 
+		Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crearse una cuenta en el sistema.}   \\ 
 		\hline
-		Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El encargado introduce sus credenciales y entra en el sistema.} \\ 
+		Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una cuenta.} \\ 
 		\hline
 	\end{tabular}
 \end{table}
@@ -1077,23 +1081,140 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 		\hline
 		\multicolumn{4}{|m{0.9\textwidth}|}{Curso normal}     \\ 
 		\hline
-		1. & Encargado: Introduce su nombre de usuario y su contraseña. & 2. &  Verifica que las credenciales sean correctas \\ 
+		1. & Usuario: Introduce su nombre, apellidos, correo electrónico y contraseña. 
+        & 2. & El sistema verifica que los campos no estén vacíos y que la información introducida sea válida. \\ 
 		\hline
-		3. & Encargado: Entra en el sistema & &  \\ 
+		3. & Usuario: Confirma el registro. & 4. & El sistema verifica que el correo electrónico no esté registrado previamente.   \\ 
 		\hline
+        5. & Usuario: Recibe un mensaje indicando que debe verificar su correo electrónico. & 6. & El sistema redirige al usuario a la pantalla de inicio de sesión. \\ 
+        \hline
+		\multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\
+        \hline 
+        2a. & \multicolumn{3}{l|}{Los campos están vacíos o la información no es válida.} \\ 
+        \hline
+        2b. & \multicolumn{3}{l|}{El correo electrónico ya está registrado.} \\ 
+        \hline
+        2c. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
 	\end{tabular}
+	\caption{Caso de uso - Registro}
 \end{table}
 
 \begin{table}[H]
-	\centering
-	\begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
-		\hline
-		\multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\ 
-		\hline
-		2a & \multicolumn{3}{l|}{Las credenciales no son correctas.} \\ 
-		\hline
-	\end{tabular}
-	\caption{Caso de uso - Inicio de sesión}
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{iniciarSesion} &  CU2\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF02]{RF\_02}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{l|}{El usuario debe estar registrado en el sistema.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{l|}{El usuario accede al sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\
+        \hline
+    \end{tabular}
 \end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de iniciar sesión en el sistema.}   \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce su correo electrónico y contraseña para autenticarse.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal}     \\ 
+        \hline
+        1. & Usuario: Introduce su correo electrónico y contraseña. 
+        & 2. & El sistema verifica que los campos no estén vacíos y que la información introducida sea válida. \\ 
+        \hline
+        3. & Usuario: Confirma el inicio de sesión. & 4. & El sistema verifica que el correo electrónico y la contraseña sean correctos.   \\ 
+        \hline
+        5. & Usuario: Accede a la pantalla principal de la aplicación. & 6. & El sistema redirige al usuario a la pantalla principal de la aplicación. \\ 
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\
+        \hline 
+        2a. & \multicolumn{3}{l|}{Los campos están vacíos o la información no es válida.} \\ 
+        \hline
+        2b. & \multicolumn{3}{l|}{El correo electrónico o la contraseña son incorrectos.} \\ 
+        \hline
+        2c. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Iniciar Sesión}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{cerrarSesion} &  CU3\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF04]{RF\_04}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{l|}{El usuario debe estar autenticado en el sistema.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{l|}{El usuario cierra su sesión en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de cerrar su sesión en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario cierra su sesión para finalizar su uso del sistema.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Pulsa el botón de cerrar sesión. 
+        & 2. & El sistema muestra un mensaje de confirmación. \\ 
+        \hline
+        3. & Usuario: Confirma que desea cerrar sesión. 
+        & 4. & El sistema cierra la sesión del usuario y redirige a la pantalla de inicio de sesión. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Cerrar Sesión}
+\end{table}
+
+
+La explicación de los casos de uso restantes se encuentra en el Apéndice \ref{anexo:casos_de_uso}.
+\clearpage 
 
 
