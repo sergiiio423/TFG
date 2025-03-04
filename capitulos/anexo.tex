@@ -1,6 +1,8 @@
 \chapter{Descripción de casos de uso}
 \label{anexo:casos_de_uso}
 
+\section{Casos de uso de la gestión de sesión}
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
@@ -295,7 +297,7 @@
         \hline
         Actores & \multicolumn{3}{l|}{Administrador} \\ 
         \hline
-        Tipo & \multicolumn{3}{l|}{Opcional} \\ 
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
         Referencias & \multicolumn{3}{l|}{} \\ 
         \hline
@@ -338,4 +340,1363 @@
         \hline
     \end{tabular}
     \caption{Caso de uso - Eliminar Usuario}
+\end{table}
+
+\newpage
+
+
+\section{Casos de uso de la gestión de hogar}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearHogar} &  CU7\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF07]{RF\_07}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{l|}{El usuario no debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{l|}{El usuario crea un nuevo hogar en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear un nuevo hogar en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear un hogar.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Introduce el nombre del hogar. 
+        & 2. & El sistema verifica que los datos. \\ 
+        \hline
+        
+        &  &  &\\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Crear Hogar}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{unirMiembroHogar} &  CU8\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF08]{RF\_08}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario no debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario se une a un hogar existente en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de unirse a un hogar existente en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce un código de invitación para unirse a un hogar.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Introduce el código del hogar. 
+        & 2. & El sistema verifica que el código sea válido. \\ 
+        \hline
+         & 
+        & 3. & El sistema añade al usuario al hogar. \\ 
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
+        \hline 
+        2a. & \multicolumn{3}{l|}{El código no es válido.} \\ 
+        \hline
+        2b. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Unir Miembro a Hogar}
+\end{table}
+
+\newpage
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{abandonarHogar} &  CU9\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF09]{RF\_09}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{l|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{l|}{El usuario abandona el hogar en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de abandonar un hogar en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario selecciona la opción para abandonar el hogar.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Selecciona la opción de abandonar hogar. 
+        & 2. & El sistema muestra un mensaje de confirmación. \\ 
+        \hline
+        3. & Usuario: Confirma que desea abandonar el hogar. 
+        & 4. & El sistema elimina al usuario del hogar y muestra un mensaje de confirmación. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Abandonar Hogar}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarHogar} &  CU10\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF11]{RF\_11}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario modifica la información del hogar en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de modificar la información de un hogar en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de hogar y modifica la información del hogar.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de hogar. 
+        & 2. & El sistema muestra la información del hogar. \\ 
+        \hline
+        3. & Usuario: Modifica la información deseada. 
+        & 4. & El sistema verifica que la información introducida sea válida. \\ 
+        \hline
+        5. & Usuario: Guarda los cambios. 
+        & 6. & El sistema actualiza la información del hogar y muestra un mensaje de confirmación. \\ 
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
+        \hline 
+        4a. & \multicolumn{3}{l|}{La información introducida no es válida.} \\ 
+        \hline
+        4b. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Modificar Hogar}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verHogar} &  CU11\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF10]{RF\_10}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza la información del hogar en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de ver la información de un hogar en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de hogar para visualizar la información del hogar.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de hogar. 
+        & 2. & El sistema muestra la información del hogar. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Ver Hogar}
+\end{table}
+
+\clearpage
+
+\section{Casos de uso de la gestión de tareas}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTareaSemanal} &  CU12\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF12]{RF\_12}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|} {El usuario crea una nueva tarea semanal en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear una nueva tarea semanal en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una tarea semanal.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Introduce el nombre y la descripción de la tarea. 
+        &  &  \\ 
+        \hline
+        2. & Usuario: Selecciona los miembros que tienen que hacerla. 
+        & 3. & El sistema guarda la tarea. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Crear Tarea Semanal}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTareaPuntual} &  CU13\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF13]{RF\_13}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|} {El usuario crea una nueva tarea puntual en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear una nueva tarea puntual en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una tarea puntual.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Introduce el nombre y la descripción de la tarea. 
+        &  &  \\ 
+        \hline
+        2. & Usuario: Selecciona la fecha y hora de la tarea. 
+        & 3. & El sistema guarda la tarea. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Crear Tarea Puntual}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{consultarPlanificaciónSemanal} &  CU14\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF14]{RF\_14}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza la planificación semanal de tareas asociadas a él en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de consultar la planificación semanal de tareas en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de planificación semanal para visualizar las tareas programadas.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de planificación semanal. 
+        & 2. & El sistema muestra la planificación semanal de tareas. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Consultar Planificación Semanal}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarTarea} &  CU15\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF16]{RF\_16}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario modifica la información de una tarea en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de modificar una tarea existente en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de tareas y modifica la información de una tarea existente.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de tareas. 
+        & 2. & El sistema muestra la lista de tareas. \\ 
+        \hline
+        3. & Usuario: Selecciona la tarea a modificar. 
+        & 4. & El sistema muestra la información de la tarea seleccionada. \\ 
+        \hline
+        5. & Usuario: Modifica la información deseada. 
+        & 6. & El sistema verifica que la información introducida sea válida. \\ 
+        \hline
+        7. & Usuario: Guarda los cambios. 
+        & 8. & El sistema actualiza la información de la tarea. \\ 
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
+        \hline 
+        6a. & \multicolumn{3}{l|}{La información introducida no es válida.} \\ 
+        \hline
+        6b. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Modificar Tarea}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{marcarTareaRealizada} &  CU16\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF15]{RF\_15}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario marca una tarea como realizada en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de marcar una tarea como realizada en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de tareas y marca una tarea como realizada.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de tareas. 
+        & 2. & El sistema muestra la lista de tareas. \\ 
+        \hline
+        3. & Usuario: Selecciona la tarea a marcar como realizada. 
+        & 4. & El sistema actualiza el estado de la tarea a realizada. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Marcar Tarea Realizada}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarTarea} &  CU17\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF17]{RF\_17}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario elimina una tarea en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de eliminar una tarea en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de tareas y elimina una tarea existente.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de tareas. 
+        & 2. & El sistema muestra la lista de tareas. \\ 
+        \hline
+        3. & Usuario: Selecciona la tarea a eliminar. 
+        & 4. & El sistema muestra un mensaje de confirmación. \\ 
+        \hline
+        5. & Usuario: Confirma la eliminación de la tarea. 
+        & 6. & El sistema elimina la tarea. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Eliminar Tarea}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verTarea} &  CU18\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF18]{RF\_18}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza la información de una tarea en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de ver la información de una tarea en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de tareas para visualizar la información de una tarea.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de tareas. 
+        & 2. & El sistema muestra la lista de tareas. \\ 
+        \hline
+        3. & Usuario: Selecciona la tarea a visualizar. 
+        & 4. & El sistema muestra la información de la tarea seleccionada. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Ver Tarea}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verCalendario} &  CU19\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF19]{RF\_19}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza el calendario de tareas en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de ver el calendario de tareas en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de calendario para visualizar las tareas programadas.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de calendario. 
+        & 2. & El sistema muestra el calendario de tareas. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Ver Calendario}
+\end{table}
+
+\clearpage
+
+\section{Casos de uso de la gestión de gastos}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearGasto} &  CU20\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF20]{RF\_20}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario crea un nuevo gasto en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear un nuevo gasto en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear un gasto.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Introduce el nombre y la cantidad del gasto. 
+        &  &  \\ 
+        \hline
+        2. & Usuario: Selecciona quien pagó el gasto y quien debe pagar. 
+        & 3. & El sistema guarda el gasto.  \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Crear Gasto}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarGasto} &  CU21\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF21]{RF\_21}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener un gasto registrado.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario modifica la información de un gasto en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de modificar un gasto existente en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de gastos y modifica la información de un gasto existente.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de gastos. 
+        & 2. & El sistema muestra la lista de gastos. \\ 
+        \hline
+        3. & Usuario: Selecciona el gasto a modificar. 
+        & 4. & El sistema muestra la información del gasto seleccionado. \\ 
+        \hline
+        5. & Usuario: Modifica la información deseada. 
+        & 6. & El sistema verifica que la información introducida sea válida. \\ 
+        \hline
+        7. & Usuario: Guarda los cambios. 
+        & 8. & El sistema actualiza la información del gasto. \\ 
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
+        \hline 
+        6a. & \multicolumn{3}{l|}{La información introducida no es válida.} \\ 
+        \hline
+        6b. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Modificar Gasto}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarGasto} &  CU22\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF22]{RF\_22}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener un gasto registrado.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario elimina un gasto en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de eliminar un gasto en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de gastos y elimina un gasto existente.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de gastos. 
+        & 2. & El sistema muestra la lista de gastos. \\ 
+        \hline
+        3. & Usuario: Selecciona el gasto a eliminar. 
+        & 4. & El sistema muestra un mensaje de confirmación. \\ 
+        \hline
+        5. & Usuario: Confirma la eliminación del gasto. 
+        & 6. & El sistema elimina el gasto. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Eliminar Gasto}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{saldarDeuda} &  CU23\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF23]{RF\_23}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una deuda registrada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario salda una deuda en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de saldar una deuda en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de deudas y salda una deuda existente.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de deudas. 
+        & 2. & El sistema muestra la lista de deudas. \\ 
+        \hline
+        3. & Usuario: Selecciona la deuda a saldar. 
+        & 4. & El sistema muestra un mensaje de confirmación. \\ 
+        \hline
+        5. & Usuario: Confirma el saldo de la deuda. 
+        & 6. & El sistema actualiza el estado de la deuda a saldada. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Saldar Deuda}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verDeudas} &  CU24\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF24]{RF\_24}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener deudas registradas.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza la lista de deudas en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de ver la lista de deudas en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de deudas para visualizar las deudas registradas.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de deudas. 
+        & 2. & El sistema muestra la lista de deudas. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Ver Deudas}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verGasto} &  CU25\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF25]{RF\_25}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener un gasto registrado.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza la información de un gasto en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de ver la información de un gasto en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la sección de gastos para visualizar la información de un gasto.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la sección de gastos. 
+        & 2. & El sistema muestra la lista de gastos. \\ 
+        \hline
+        3. & Usuario: Selecciona el gasto a visualizar. 
+        & 4. & El sistema muestra la información del gasto seleccionado. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Ver Gasto}
+\end{table}
+
+\clearpage
+
+\section{Casos de uso de la gestión compra}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearLista} &  CU26\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF26]{RF\_26}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe estar autenticado en el sistema.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario crea una nueva lista de compra en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear una nueva lista de compra en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una lista de compra.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Introduce el nombre de la lista. 
+        & 2. & El sistema guarda la lista. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Crear Lista}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{añadirProducto} &  CU27\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF27]{RF\_27}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario añade un producto a la lista de compra en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de añadir un producto a una lista de compra en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para añadir un producto a la lista de compra.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Selecciona la lista de compra. 
+        & 2. & Usuario: Introduce el nombre y la cantidad del producto. \\ 
+        \hline
+        3. & Usuario: Guarda el producto en la lista. 
+        & 4. & El sistema actualiza la lista con el nuevo producto. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Añadir Producto}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarProducto} &  CU28\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF28]{RF\_28}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario elimina un producto de la lista de compra en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de eliminar un producto de una lista de compra en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario selecciona el producto a eliminar de la lista de compra.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Selecciona la lista de compra. 
+        & 2. & Usuario: Selecciona el producto a eliminar. \\ 
+        \hline
+        3. & Usuario: Confirma la eliminación del producto. 
+        & 4. & El sistema actualiza la lista eliminando el producto. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Eliminar Producto}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarLista} &  CU29\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF29]{RF\_29}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario elimina una lista de compra en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de eliminar una lista de compra en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario selecciona la lista de compra a eliminar.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Selecciona la lista de compra. 
+        & 2. & Usuario: Confirma la eliminación de la lista. \\ 
+        \hline
+        3. & El sistema elimina la lista de compra. 
+        & 4. & El sistema muestra un mensaje de confirmación. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Eliminar Lista}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verProducto} &  CU30\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF30]{RF\_30}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario visualiza la información de un producto en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de ver la información de un producto en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la lista de compra para visualizar la información de un producto.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la lista de compra. 
+        & 2. & El sistema muestra la lista de productos. \\ 
+        \hline
+        3. & Usuario: Selecciona el producto a visualizar. 
+        & 4. & El sistema muestra la información del producto seleccionado. \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Ver Producto}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{editarProducto} &  CU31\\ 
+        \hline
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
+        \hline
+        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
+        \hline
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF31]{RF\_31}} \\ 
+        \hline
+        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
+        \hline
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario edita la información de un producto en el sistema.} \\ 
+        \hline
+        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
+        \hline
+        Fecha & 28/02/2025 & Versión & 1.0 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
+        \hline
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de editar la información de un producto en el sistema.} \\ 
+        \hline
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario accede a la lista de compra y modifica la información de un producto.} \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
+        \hline
+        1. & Usuario: Accede a la lista de compra. 
+        & 2. & El sistema muestra la lista de productos. \\ 
+        \hline
+        3. & Usuario: Selecciona el producto a editar. 
+        & 4. & El sistema muestra la información del producto seleccionado. \\ 
+        \hline
+        5. & Usuario: Modifica la información deseada. 
+        & 6. & El sistema verifica que la información introducida sea válida. \\ 
+        \hline
+        7. & Usuario: Guarda los cambios. 
+        & 8. & El sistema actualiza la información del producto. \\ 
+        \hline
+        \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
+        \hline 
+        6a. & \multicolumn{3}{l|}{La información introducida no es válida.} \\ 
+        \hline
+        6b. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        \hline
+    \end{tabular}
+    \caption{Caso de uso - Editar Producto}
 \end{table}

@@ -1,93 +1,98 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\numberline {1}Introducción}{17}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Motivación}{17}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Objetivos del proyecto}{18}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Estructura de la memoria}{19}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Planificación y presupuesto}{21}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Fases}{21}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Fase Inicial}{21}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Fase de Investigación}{21}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Fase de Analisis}{22}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Fase de Diseño}{22}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}Fase de Desarrollo}{22}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6}Documentación}{22}{subsection.2.1.6}%
-\contentsline {subsection}{\numberline {2.1.7}Diagrama de Gantt}{22}{subsection.2.1.7}%
-\contentsline {section}{\numberline {2.2}Presupuesto}{24}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Recursos Hardware}{24}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Recursos Software}{24}{subsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.2.1}Recursos Humanos}{25}{subsubsection.2.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.3}Licencias}{25}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}Costes indirectos}{25}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}Presupuesto Total}{25}{subsection.2.2.5}%
-\contentsline {chapter}{\numberline {3}Estado del arte}{27}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Estudios sobre la gestión del hogar y las finanzas en viviendas compartidas}{27}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Aplicaciones similares y comparativas}{30}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tricount}{30}{subsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.1.1}Funciones Principales}{30}{subsubsection.3.2.1.1}%
-\contentsline {subsubsection}{\numberline {3.2.1.2}Modo de Uso}{31}{subsubsection.3.2.1.2}%
-\contentsline {subsubsection}{\numberline {3.2.1.3}Calificación}{32}{subsubsection.3.2.1.3}%
-\contentsline {subsection}{\numberline {3.2.2}Todoist}{34}{subsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.2.1}Funciones Principales}{34}{subsubsection.3.2.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2.2}Modo de Uso}{35}{subsubsection.3.2.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.2.3}Calificación}{35}{subsubsection.3.2.2.3}%
-\contentsline {subsection}{\numberline {3.2.3}MeToca}{39}{subsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.3.1}Funciones Principales}{39}{subsubsection.3.2.3.1}%
-\contentsline {subsubsection}{\numberline {3.2.3.2}Modo de Uso}{39}{subsubsection.3.2.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.3.3}Calificación}{40}{subsubsection.3.2.3.3}%
-\contentsline {subsection}{\numberline {3.2.4}Cozi Family Organizer}{40}{subsection.3.2.4}%
-\contentsline {subsubsection}{\numberline {3.2.4.1}Funciones Principales}{40}{subsubsection.3.2.4.1}%
-\contentsline {subsubsection}{\numberline {3.2.4.2}Modo de Uso}{41}{subsubsection.3.2.4.2}%
-\contentsline {subsubsection}{\numberline {3.2.4.3}Calificación}{42}{subsubsection.3.2.4.3}%
-\contentsline {subsection}{\numberline {3.2.5}OurHome}{45}{subsection.3.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.5.1}Funciones Principales}{45}{subsubsection.3.2.5.1}%
-\contentsline {subsubsection}{\numberline {3.2.5.2}Modo de Uso}{45}{subsubsection.3.2.5.2}%
-\contentsline {subsubsection}{\numberline {3.2.5.3}Calificación}{45}{subsubsection.3.2.5.3}%
-\contentsline {subsection}{\numberline {3.2.6}Comparativa}{46}{subsection.3.2.6}%
-\contentsline {section}{\numberline {3.3}Legislación actual de protección de datos}{48}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Estudio de usabilidad y accesibilidad}{50}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Estudio de usabilidad}{50}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Estudio de accesibilidad}{50}{subsection.3.4.2}%
-\contentsline {chapter}{\numberline {4}Análisis de tecnologías}{52}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Análisis de las tecnologías Frontend}{52}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Desarrollo nativo}{52}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Desarrollo Híbrido}{53}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Tabla comparativa de tecnologías front-end}{55}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Analisis de las tecnologías Backend}{57}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Firebase}{57}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Node.js con Express}{57}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Django}{58}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Ruby on Rails}{58}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Tabla comparativa de tecnologías back-end}{59}{subsection.4.2.5}%
-\contentsline {section}{\numberline {4.3}Justificación de la elección de tecnologías}{60}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Análisis de metodologías de desarrollo}{61}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Metodologías de desarrollo de software}{61}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Modelo en cascada (Waterfall)}{61}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Modelo en espiral}{62}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Metodología iterativa}{62}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Desarrollo iterativo e Incremental}{62}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Metodología Ágil}{63}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}DevOps}{63}{subsection.5.1.6}%
-\contentsline {section}{\numberline {5.2}Comparativa de metodologías}{63}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Justificación de la metodología}{64}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Análisis de la aplicación}{65}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Especificación de requisitos}{65}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Requisitos funcionales}{65}{subsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.1}Grupo 1: Gestión de sesión}{66}{subsubsection.6.1.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{71}{subsubsection.6.1.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{74}{subsubsection.6.1.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{79}{subsubsection.6.1.1.4}%
-\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{83}{subsubsection.6.1.1.5}%
-\contentsline {subsection}{\numberline {6.1.2}Requisitos no funcionales}{88}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Modelos de casos de uso}{89}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Diagrama de casos de uso}{89}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Descripción de los casos de uso}{93}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Diseño}{96}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{96}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{96}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{96}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{100}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{102}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{103}{subsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{103}{subsection.7.2.5}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{104}{appendix.Alph1}%
-\contentsline {section}{Referencias}{111}{table.Alph1.6}%
+\contentsline {chapter}{\numberline {1}Introducción}{18}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivación}{18}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos del proyecto}{19}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Estructura de la memoria}{20}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Planificación y presupuesto}{22}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Fases}{22}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Fase Inicial}{22}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Fase de Investigación}{22}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Fase de Analisis}{23}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Fase de Diseño}{23}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Fase de Desarrollo}{23}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Documentación}{23}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Diagrama de Gantt}{23}{subsection.2.1.7}%
+\contentsline {section}{\numberline {2.2}Presupuesto}{25}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Recursos Hardware}{25}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Recursos Software}{25}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}Recursos Humanos}{26}{subsubsection.2.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.3}Licencias}{26}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Costes indirectos}{26}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Presupuesto Total}{26}{subsection.2.2.5}%
+\contentsline {chapter}{\numberline {3}Estado del arte}{28}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Estudios sobre la gestión del hogar y las finanzas en viviendas compartidas}{28}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Aplicaciones similares y comparativas}{31}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tricount}{31}{subsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Funciones Principales}{31}{subsubsection.3.2.1.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.2}Modo de Uso}{32}{subsubsection.3.2.1.2}%
+\contentsline {subsubsection}{\numberline {3.2.1.3}Calificación}{33}{subsubsection.3.2.1.3}%
+\contentsline {subsection}{\numberline {3.2.2}Todoist}{35}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Funciones Principales}{35}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Modo de Uso}{36}{subsubsection.3.2.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.3}Calificación}{36}{subsubsection.3.2.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}MeToca}{40}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}Funciones Principales}{40}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}Modo de Uso}{40}{subsubsection.3.2.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.3.3}Calificación}{41}{subsubsection.3.2.3.3}%
+\contentsline {subsection}{\numberline {3.2.4}Cozi Family Organizer}{41}{subsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.4.1}Funciones Principales}{41}{subsubsection.3.2.4.1}%
+\contentsline {subsubsection}{\numberline {3.2.4.2}Modo de Uso}{42}{subsubsection.3.2.4.2}%
+\contentsline {subsubsection}{\numberline {3.2.4.3}Calificación}{43}{subsubsection.3.2.4.3}%
+\contentsline {subsection}{\numberline {3.2.5}OurHome}{46}{subsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.5.1}Funciones Principales}{46}{subsubsection.3.2.5.1}%
+\contentsline {subsubsection}{\numberline {3.2.5.2}Modo de Uso}{46}{subsubsection.3.2.5.2}%
+\contentsline {subsubsection}{\numberline {3.2.5.3}Calificación}{46}{subsubsection.3.2.5.3}%
+\contentsline {subsection}{\numberline {3.2.6}Comparativa}{47}{subsection.3.2.6}%
+\contentsline {section}{\numberline {3.3}Legislación actual de protección de datos}{49}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Estudio de usabilidad y accesibilidad}{51}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Estudio de usabilidad}{51}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Estudio de accesibilidad}{51}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Análisis de tecnologías}{53}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Análisis de las tecnologías Frontend}{53}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Desarrollo nativo}{53}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Desarrollo Híbrido}{54}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Tabla comparativa de tecnologías front-end}{56}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Analisis de las tecnologías Backend}{58}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Firebase}{58}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Node.js con Express}{58}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Django}{59}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Ruby on Rails}{59}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Tabla comparativa de tecnologías back-end}{60}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Justificación de la elección de tecnologías}{61}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Análisis de metodologías de desarrollo}{62}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Metodologías de desarrollo de software}{62}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Modelo en cascada (Waterfall)}{62}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Modelo en espiral}{63}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Metodología iterativa}{63}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Desarrollo iterativo e Incremental}{63}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Metodología Ágil}{64}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}DevOps}{64}{subsection.5.1.6}%
+\contentsline {section}{\numberline {5.2}Comparativa de metodologías}{64}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Justificación de la metodología}{65}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Análisis de la aplicación}{66}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Especificación de requisitos}{66}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Requisitos funcionales}{66}{subsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.1}Grupo 1: Gestión de sesión}{67}{subsubsection.6.1.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{72}{subsubsection.6.1.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{75}{subsubsection.6.1.1.3}%
+\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{80}{subsubsection.6.1.1.4}%
+\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{84}{subsubsection.6.1.1.5}%
+\contentsline {subsection}{\numberline {6.1.2}Requisitos no funcionales}{89}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Modelos de casos de uso}{90}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Diagrama de casos de uso}{90}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Descripción de los casos de uso}{94}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Diseño}{97}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{97}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{97}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{97}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{101}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{103}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{104}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{104}{subsection.7.2.5}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{105}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{105}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{112}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{117}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{125}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{131}{section.Alph1.5}%
+\contentsline {section}{Referencias}{137}{table.Alph1.31}%
