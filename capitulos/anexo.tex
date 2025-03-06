@@ -630,7 +630,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTareaSemanal} &  CU12\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTarea} &  CU12\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -640,7 +640,7 @@
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
         \hline
-        Postcondición & \multicolumn{3}{m{0.67\textwidth}|} {El usuario crea una nueva tarea semanal en el sistema.} \\ 
+        Postcondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario crea una nueva tarea en el sistema.} \\ 
         \hline
         Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
         \hline
@@ -653,9 +653,9 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear una nueva tarea semanal en el sistema.} \\ 
+        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear una nueva tarea en el sistema.} \\ 
         \hline
-        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una tarea semanal.} \\ 
+        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una tarea.} \\ 
         \hline
     \end{tabular}
 \end{table}
@@ -666,14 +666,14 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Introduce el nombre y la descripción de la tarea. 
-        &  &  \\ 
+        1. & Usuario: Introduce el nombre y la descripción de la tarea y el tipo de tareaa. 
+        & 2. & El sistema verifica que los datos sean válidos. \\ 
         \hline
-        2. & Usuario: Selecciona los miembros que tienen que hacerla. 
-        & 3. & El sistema guarda la tarea. \\ 
+        3. & Usuario: Guarda la tarea. 
+        & 4. & El sistema guarda la tarea. \\ 
         \hline
     \end{tabular}
-    \caption{Caso de uso - Crear Tarea Semanal}
+    \caption{Caso de uso - Crear Tarea}
 \end{table}
 
 \newpage
@@ -682,65 +682,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTareaPuntual} &  CU13\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{consultarPlanificaciónSemanal} &  CU13\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
         Referencias & \multicolumn{3}{l|}{\hyperref[req:RF13]{RF\_13}} \\ 
-        \hline
-        Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
-        \hline
-        Postcondición & \multicolumn{3}{m{0.67\textwidth}|} {El usuario crea una nueva tarea puntual en el sistema.} \\ 
-        \hline
-        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
-        \hline
-        Fecha & 28/02/2025 & Versión & 1.0 \\ 
-        \hline
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
-        \hline
-        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe ser capaz de crear una nueva tarea puntual en el sistema.} \\ 
-        \hline
-        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El usuario introduce los datos necesarios para crear una tarea puntual.} \\ 
-        \hline
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
-        \hline
-        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
-        \hline
-        1. & Usuario: Introduce el nombre y la descripción de la tarea. 
-        &  &  \\ 
-        \hline
-        2. & Usuario: Selecciona la fecha y hora de la tarea. 
-        & 3. & El sistema guarda la tarea. \\ 
-        \hline
-    \end{tabular}
-    \caption{Caso de uso - Crear Tarea Puntual}
-\end{table}
-
-\newpage
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
-        \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{consultarPlanificaciónSemanal} &  CU14\\ 
-        \hline
-        Actores & \multicolumn{3}{l|}{Usuario} \\ 
-        \hline
-        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
-        \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF14]{RF\_14}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
         \hline
@@ -783,13 +731,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarTarea} &  CU15\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarTarea} &  CU14\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF16]{RF\_16}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF15]{RF\_15}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
         \hline
@@ -847,13 +795,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{marcarTareaRealizada} &  CU16\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{marcarTareaRealizada} &  CU15\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF15]{RF\_15}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF14]{RF\_14}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
         \hline
@@ -899,13 +847,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarTarea} &  CU17\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarTarea} &  CU16\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF17]{RF\_17}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF16]{RF\_16}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
         \hline
@@ -954,13 +902,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verTarea} &  CU18\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verTarea} &  CU17\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF18]{RF\_18}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF17]{RF\_17}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una tarea asignada.} \\ 
         \hline
@@ -1006,13 +954,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verCalendario} &  CU19\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verCalendario} &  CU18\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF19]{RF\_19}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF18]}{RF\_18} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
         \hline
@@ -1057,13 +1005,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearGasto} &  CU20\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearGasto} &  CU19\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF20]{RF\_20}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF19]{RF\_19}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
         \hline
@@ -1109,13 +1057,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarGasto} &  CU21\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarGasto} &  CU20\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF21]{RF\_21}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF20]{RF\_20}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener un gasto registrado.} \\ 
         \hline
@@ -1173,13 +1121,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarGasto} &  CU22\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarGasto} &  CU21\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF22]{RF\_22}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF21]{RF\_21}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener un gasto registrado.} \\ 
         \hline
@@ -1228,13 +1176,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{saldarDeuda} &  CU23\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{saldarDeuda} &  CU22\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF23]{RF\_23}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF22]{RF\_22}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener una deuda registrada.} \\ 
         \hline
@@ -1283,13 +1231,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verDeudas} &  CU24\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verDeudas} &  CU23\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF24]{RF\_24}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF23]{RF\_23}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener deudas registradas.} \\ 
         \hline
@@ -1332,13 +1280,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verGasto} &  CU25\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verGasto} &  CU24\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF25]{RF\_25}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF24]{RF\_24}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar y tener un gasto registrado.} \\ 
         \hline
@@ -1386,13 +1334,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearLista} &  CU26\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearLista} &  CU25\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF26]{RF\_26}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF25]{RF\_25}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe estar autenticado en el sistema.} \\ 
         \hline
@@ -1435,13 +1383,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{añadirProducto} &  CU27\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{añadirProducto} &  CU26\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF27]{RF\_27}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF26]{RF\_26}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
         \hline
@@ -1487,13 +1435,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarProducto} &  CU28\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarProducto} &  CU27\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF28]{RF\_28}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF27]{RF\_27}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
         \hline
@@ -1539,13 +1487,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarLista} &  CU29\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarLista} &  CU28\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF29]{RF\_29}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF28]{RF\_28}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
         \hline
@@ -1591,13 +1539,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verProducto} &  CU30\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verProducto} &  CU29\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF30]{RF\_30}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF29]{RF\_29}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
         \hline
@@ -1643,13 +1591,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{editarProducto} &  CU31\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{editarProducto} &  CU30\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF31]{RF\_31}} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF30]{RF\_30}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe tener una lista de compra creada.} \\ 
         \hline

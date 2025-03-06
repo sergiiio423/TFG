@@ -169,6 +169,57 @@ Burriel, T.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Carpena%
+}{%
+Carpena%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+seo2021}
+\APACinsertmetastar {%
+seo2021}%
+\begin{APACrefauthors}%
+Carpena, M\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {9 buenas prácticas de accesibilidad web que puede imitar.} {9
+  buenas prácticas de accesibilidad web que puede imitar.}
+\newblock
+\begin{APACrefURL} \url{https://www.seo.com/es/basics/technical/accessibility/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Chisholm%
+\ \BBA {} Vanderheiden%
+}{%
+Chisholm%
+\ \BBA {} Vanderheiden%
+}{%
+{\protect \APACyear {1999}}%
+}]{%
+w3c1999}
+\APACinsertmetastar {%
+w3c1999}%
+\begin{APACrefauthors}%
+Chisholm, W.%
+\BCBT {}\ \BBA {} Vanderheiden, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1999}{}{}.
+\newblock
+\APACrefbtitle {Guía de Accesibilidad para el Desarrollo de Contenidos Web.}
+  {Guía de accesibilidad para el desarrollo de contenidos web.}
+\newblock
+\begin{APACrefURL} \url{http://www.w3.org/TR/1999/WAI-WEBCONTENT-19990505/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 {Cozi Inc.}%
 }{%
 {Cozi Inc.}%

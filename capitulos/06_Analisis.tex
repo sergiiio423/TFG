@@ -548,6 +548,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
                 \item Debe existir una opción en la interfaz para crear un gasto.
                 \item El sistema debe pedir la información del gasto.
                 \item Verificar que los campos obligatorios no estén vacíos y que la información sea válida.
+                \item El sistema debe recalcular las deudas pendientes.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -575,6 +576,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
                 \item El sistema debe pedir la información del gasto.
                 \item Verificar que los campos obligatorios no estén vacíos y que la información sea válida.
                 \item Tras la modificación del gasto, se actualizará la información en la base de datos.
+                \item El sistema debe recalcular las deudas pendientes.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -588,7 +590,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_22} & \textbf{Eliminar gasto} \\
+        \textbf{RF\_21} & \textbf{Eliminar gasto} \\
         \hline
         \textbf{Prioridad} & Alta \\
         \hline
@@ -598,10 +600,34 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para eliminar un gasto.
-                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
+                \item Debe existir una opción en la interfaz para eliminar un gasto.
                 \item Si el usuario confirma, el gasto se eliminará y se actualizará la información en la base de datos.
-                \item Si el usuario cancela, no se realizará ninguna acción.
+                \item El sistema debe recalcular las deudas pendientes.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_21}
+    \label{req:RF21}
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_22} & \textbf{Saldar deuda} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario saldar una deuda.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item Debe existir una opción en la interfaz para saldar una deuda.
+                \item Si el usuario confirma, la deuda se marcará como saldada y se actualizará la información en la base de datos.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -615,20 +641,19 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_23} & \textbf{Saldar deuda} \\
+        \textbf{RF\_23} & \textbf{Ver deudas} \\
         \hline
         \textbf{Prioridad} & Alta \\
         \hline
-        \textbf{Descripción} & El sistema debe permitir al usuario saldar una deuda.  \\
+        \textbf{Descripción} & El sistema debe permitir al usuario ver las deudas pendientes.  \\
         \hline
         \vspace{0.5mm}
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para saldar una deuda.
-                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
-                \item Si el usuario confirma, la deuda se marcará como saldada y se actualizará la información en la base de datos.
-                \item Si el usuario cancela, no se realizará ninguna acción.
+                \item Debe existir una sección en la interfaz para ver las deudas pendientes.
+                \item Al acceder a la sección, se mostrarán las deudas pendientes.
+                \item Si no hay deudas pendientes, mostrar un mensaje indicando que no hay deudas pendientes.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -642,35 +667,9 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_24} & \textbf{Ver deudas} \\
+        \textbf{RF\_24} & \textbf{Ver detalles de un gasto} \\
         \hline
         \textbf{Prioridad} & Alta \\
-        \hline
-        \textbf{Descripción} & El sistema debe permitir al usuario ver las deudas pendientes.  \\
-        \hline
-        \vspace{0.5mm}
-        \textbf{Criterios de aceptación} & 
-        \begin{minipage}[t]{0.9\linewidth}
-            \begin{enumerate}
-                \item La interfaz de la aplicación debe contener una sección para ver las deudas pendientes.
-                \item Al acceder a la sección, se mostrará una lista con las deudas pendientes, incluyendo el nombre del deudor, la cantidad y la fecha.
-                \item Si no hay deudas pendientes, mostrar un mensaje indicando que no hay deudas pendientes.
-            \end{enumerate}
-            \vspace{2mm}
-        \end{minipage} \\
-        \hline
-    \end{tabular}
-    \caption{RF\_24}
-    \label{req:RF24}
-\end{table}
-
-\begin{table}[htb!]
-    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
-        \hline
-        \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_25} & \textbf{Ver detalles de un gasto} \\
-        \hline
-        \textbf{Prioridad} & Media \\
         \hline
         \textbf{Descripción} & El sistema debe permitir al usuario ver los detalles de un gasto.  \\
         \hline
@@ -679,15 +678,15 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
                 \item La interfaz de la aplicación debe contener una sección para ver los detalles de un gasto.
-                \item Al acceder a la sección, se mostrarán los campos: nombre del gasto, descripción, cantidad, fecha y miembros que lo han realizado.
+                \item Al acceder a la sección, se mostrarán los detalles del gasto.
                 \item Si no hay datos disponibles, mostrar un mensaje indicando que no hay datos disponibles.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
         \hline
     \end{tabular}
-    \caption{RF\_25}
-    \label{req:RF25}
+    \caption{RF\_24}
+    \label{req:RF24}
 \end{table}
 \clearpage
 
@@ -701,7 +700,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_26} & \textbf{Crear lista de la compra} \\ 
+        \textbf{RF\_25} & \textbf{Crear lista de la compra} \\ 
         \hline
         \textbf{Prioridad} & Alta \\ 
         \hline
@@ -711,11 +710,35 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para crear una lista de la compra.
-                \item Al pulsar el botón, se mostrará un formulario con los campos: nombre de la lista.
-                \item Verificar que los campos no estén vacíos.
-                \item Si los campos no son válidos, mostrar un mensaje de error.
-                \item Tras la creación de la lista, se redirigirá a la pantalla principal de la lista de la compra.
+                \item Debe existir una opción en la interfaz para crear una lista de la compra.
+                \item El sistema debe pedir el nombre de la lista de la compra.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\ 
+        \hline
+    \end{tabular}
+    \caption{RF\_25}
+    \label{req:RF25}
+\end{table}
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_26} & \textbf{Añadir producto a la lista de la compra} \\ 
+        \hline
+        \textbf{Prioridad} & Alta \\ 
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario añadir un producto a la lista de la compra. \\ 
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item Debe existir una opción en la interfaz para añadir un producto a la lista de la compra.
+                \item El sistema debe la información del producto.
+                \item Verificar que los campos obligatorios no estén vacíos.
+                \item Tras añadir el producto, se actualizará la lista de la compra. 
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\ 
@@ -729,21 +752,18 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_27} & \textbf{Añadir producto a la lista de la compra} \\ 
+        \textbf{RF\_27} & \textbf{Eliminar producto de la lista de la compra} \\ 
         \hline
         \textbf{Prioridad} & Alta \\ 
         \hline
-        \textbf{Descripción} & El sistema debe permitir al usuario añadir un producto a la lista de la compra. \\ 
+        \textbf{Descripción} & El sistema debe permitir al usuario eliminar un producto de la lista de la compra. \\ 
         \hline
         \vspace{0.5mm}
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para añadir un producto a la lista de la compra.
-                \item Al pulsar el botón, se mostrará un formulario con los campos: nombre del producto y cantidad.
-                \item Verificar que los campos no estén vacíos.
-                \item Si los campos no son válidos, mostrar un mensaje de error.
-                \item Tras añadir el producto, se actualizará la lista de la compra y se redirigirá a la pantalla principal de la lista de la compra.
+                \item Debe existir una opción en la interfaz para eliminar un producto de la lista de la compra.
+                \item Si el usuario confirma, el producto se eliminará de la lista de la compra y se actualizará la información en la base de datos.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\ 
@@ -757,20 +777,18 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_28} & \textbf{Eliminar producto de la lista de la compra} \\ 
+        \textbf{RF\_28} & \textbf{Eliminar lista de la compra} \\ 
         \hline
         \textbf{Prioridad} & Alta \\ 
         \hline
-        \textbf{Descripción} & El sistema debe permitir al usuario eliminar un producto de la lista de la compra. \\ 
+        \textbf{Descripción} & El sistema debe permitir al usuario eliminar una lista de la compra. \\ 
         \hline
         \vspace{0.5mm}
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para eliminar un producto de la lista de la compra.
-                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
-                \item Si el usuario confirma, el producto se eliminará de la lista de la compra y se actualizará la información en la base de datos.
-                \item Si el usuario cancela, no se realizará ninguna acción.
+                \item Debe existir una opción en la interfaz para eliminar una lista de la compra.
+                \item Si el usuario confirma, la lista de la compra se eliminará y los productos asociados a ella  y se actualizará la información en la base de datos.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\ 
@@ -784,20 +802,19 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_29} & \textbf{Eliminar lista de la compra} \\ 
+        \textbf{RF\_29} & \textbf{Ver productos de la lista de la compra} \\ 
         \hline
         \textbf{Prioridad} & Alta \\ 
         \hline
-        \textbf{Descripción} & El sistema debe permitir al usuario eliminar una lista de la compra. \\ 
+        \textbf{Descripción} & El sistema debe permitir al usuario ver los productos de una lista de la compra. \\ 
         \hline
         \vspace{0.5mm}
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para eliminar una lista de la compra.
-                \item Al pulsar el botón, se mostrará un mensaje de confirmación.
-                \item Si el usuario confirma, la lista de la compra se eliminará y se actualizará la información en la base de datos.
-                \item Si el usuario cancela, no se realizará ninguna acción.
+                \item Debe existir una sección en la interfaz para ver los productos de la lista de la compra.
+                \item Al acceder a la sección, se mostrarán los productos de la lista de la compra.
+                \item Si no hay productos en la lista, mostrar un mensaje indicando que no hay productos en la lista.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\ 
@@ -811,33 +828,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_30} & \textbf{Ver productos de la lista de la compra} \\ 
-        \hline
-        \textbf{Prioridad} & Alta \\ 
-        \hline
-        \textbf{Descripción} & El sistema debe permitir al usuario ver los productos de una lista de la compra. \\ 
-        \hline
-        \vspace{0.5mm}
-        \textbf{Criterios de aceptación} & 
-        \begin{minipage}[t]{0.9\linewidth}
-            \begin{enumerate}
-                \item La interfaz de la aplicación debe contener una sección para ver los productos de una lista de la compra.
-                \item Al acceder a la sección, se mostrará una lista con los productos, incluyendo el nombre del producto y la cantidad.
-                \item Si no hay productos en la lista, mostrar un mensaje indicando que no hay productos en la lista.
-            \end{enumerate}
-            \vspace{2mm}
-        \end{minipage} \\ 
-        \hline
-    \end{tabular}
-    \caption{RF\_30}
-    \label{req:RF30}
-\end{table}
-
-\begin{table}[htb!]
-    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
-        \hline
-        \rowcolor[HTML]{C0C0C0}  
-        \textbf{RF\_31} & \textbf{Editar producto de la lista de la compra} \\ 
+        \textbf{RF\_30} & \textbf{Editar producto de la lista de la compra} \\ 
         \hline
         \textbf{Prioridad} & Alta \\ 
         \hline
@@ -847,18 +838,16 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item La interfaz de la aplicación debe contener un botón para editar un producto de la lista de la compra.
-                \item Al pulsar el botón, se mostrará un formulario con los campos del producto a editar: nombre del producto y cantidad.
-                \item Verificar que los campos no estén vacíos.
-                \item Si los campos no son válidos, mostrar un mensaje de error.
-                \item Tras la edición del producto, se actualizará la lista de la compra y se redirigirá a la pantalla principal de la lista de la compra.
+                \item Debe existir una opción en la interfaz para editar un producto de la lista de la compra.
+                \item Verificar que los campos obligatorios no estén vacíos y que la información sea válida.
+                \item Tras la edición del producto, se actualizará la lista de la compra.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\ 
         \hline
     \end{tabular}
-    \caption{RF\_31}
-    \label{req:RF31}
+    \caption{RF\_30}
+    \label{req:RF30}
 \end{table}
 
 
@@ -878,12 +867,14 @@ Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabili
         \hline
         \textbf{Prioridad} & Alta \\
         \hline
-        \textbf{Descripción} & El sistema debe proteger los datos que los usuarios introduzcan. \\
+        \textbf{Descripción} & 
+        El sistema protegerá los datos de los usuarios mediante autenticación con Firebase Authentication, 
+        reglas de seguridad en Firestore y cifrado en la comunicación de datos. \\
         \hline
     \end{tabular}
-    \caption{RNF\_01}   
-
+    \caption{RNF\_01}
 \end{table}
+
 
 \begin{table}[htb!]
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
@@ -893,12 +884,15 @@ Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabili
         \hline
         \textbf{Prioridad} & Alta \\
         \hline
-        \textbf{Descripción} & El sistema debe ser fácil de usar y comprender para los usuarios. \\
+        \textbf{Descripción} & 
+        El sistema debe ser fácil de usar y comprender para los usuarios. 
+        Para ello, se implementará una interfaz intuitiva con una navegación clara y un diseño consistente. 
+        Además, se realizarán pruebas con usuarios reales para identificar mejoras en la experiencia de uso. \\
         \hline
     \end{tabular}
     \caption{RNF\_02}
-
 \end{table}
+
 
 \begin{table}[htb!]
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
@@ -908,11 +902,13 @@ Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabili
         \hline
         \textbf{Prioridad} & Bajo \\
         \hline
-        \textbf{Descripción} & El sistema debe ser rápido y eficiente en la ejecución de las tareas. \\
+        \textbf{Descripción} & 
+        El sistema optimizará el rendimiento mediante consultas eficientes en Firestore y una interfaz ligera para mejorar la velocidad de respuesta. \\
         \hline
     \end{tabular}
     \caption{RNF\_03}
 \end{table}
+
 
 
 \begin{table}[htb!]
@@ -937,11 +933,13 @@ Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabili
         \hline
         \textbf{Prioridad} & Baja \\
         \hline
-        \textbf{Descripción} & El sistema debe ser accesible para usuarios con discapacidades, cumpliendo con las pautas de accesibilidad web. \\
+        \textbf{Descripción} & 
+        El sistema implementará etiquetas accesibles y un diseño con buen contraste para mejorar la usabilidad para personas con discapacidades. \\
         \hline
     \end{tabular}
     \caption{RNF\_05}
 \end{table}
+
 
 \clearpage
 
