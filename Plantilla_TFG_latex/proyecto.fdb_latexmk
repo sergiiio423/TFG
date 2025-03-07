@@ -1,27 +1,27 @@
 # Fdb version 4
-["bibtex proyecto"] 1741281635.57477 "proyecto.aux" "proyecto.bbl" "proyecto" 1741281644.06839 0
+["bibtex proyecto"] 1741346058.55647 "proyecto.aux" "proyecto.bbl" "proyecto" 1741346480.9279 0
   "./bibliografia.bib" 1741281625 8777 b1ef0a7806d83488c12fc3ccc0ea928a ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "proyecto.aux" 1741281642 50454 39b13c381aa1427068bc0026e78b3e36 "pdflatex"
+  "proyecto.aux" 1741346479 50792 0f072484a573fc3ed27b84eb11a23261 "pdflatex"
   (generated)
   "proyecto.bbl"
   "proyecto.blg"
   (rewritten before read)
-["makeindex proyecto.idx"] 1741280491.57517 "proyecto.idx" "proyecto.ind" "proyecto" 1741281644.06762 0
-  "proyecto.idx" 1741281637 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex proyecto.idx"] 1741280491.57517 "proyecto.idx" "proyecto.ind" "proyecto" 1741346480.92707 0
+  "proyecto.idx" 1741346474 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "proyecto.ilg"
   "proyecto.ind"
   (rewritten before read)
-["pdflatex"] 1741281636.05118 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1741281644.06945 0
+["pdflatex"] 1741346473.01588 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1741346480.92924 0
   "../capitulos/01_Introduccion.tex" 1740562367 7963 46ae9201a14a2aa4a5bb59c8a1453e5b ""
   "../capitulos/02_Planificacion.tex" 1739528964 9413 c020f3e82ffbbdee7149f69763369b49 ""
   "../capitulos/03_Estado_del_arte.tex" 1741281399 45866 44acb3cc130d02a2d7528e2396bf9058 ""
   "../capitulos/04_Tecnologias.tex" 1739442002 18995 af303db4cadc2839cdcdfc7b365152c8 ""
   "../capitulos/05_Metodologias.tex" 1739968653 8890 2365694fe3262a4a156851caa283d4cb ""
-  "../capitulos/06_Analisis.tex" 1741278059 46056 c86acfc3a6d71626ca9054c03f26e41c ""
+  "../capitulos/06_Analisis.tex" 1741346470 47795 d9af8ad1b4d68a7d7d803fb4a2acd90b ""
   "../capitulos/07_Diseno.tex" 1740045984 4244 9fb8a3144678df7b634b0ad349f6e3a2 ""
-  "../capitulos/anexo.tex" 1741275795 65022 b17dd461fe1c7f54f17b48d61477cfff ""
+  "../capitulos/anexo.tex" 1741341803 65007 252269dda19390fa953e30f6f2817ba1 ""
   "../capitulos/img/Firebase.png" 1729941650 17150 b1cf89805130c05be3003b143040769a ""
   "../capitulos/img/Kotlin_logo.svg.png" 1729940653 68388 da55f02afe259eee36b6e1d94911ac39 ""
   "../capitulos/img/Node.js.png" 1729941756 18526 d1e102335f550e068043ca99799b847d ""
@@ -34,12 +34,12 @@
   "../capitulos/img/conect_screen.png" 1739985321 133965 72706107e331195b06605b3b7d316e78 ""
   "../capitulos/img/creado.jpg" 1725375365 119097 eb960314c755f00a0bb8d85d558ca08d ""
   "../capitulos/img/crear.jpg" 1725375365 140621 fc429267c8d3c2e9684b7b1bc019fd1d ""
-  "../capitulos/img/diagrama_compra.jpg" 1740684671 28064 6802317983bf80f9557027ded66aba5a ""
-  "../capitulos/img/diagrama_gastos.jpg" 1740678263 30659 ba012e005b8a797f8bf38e7e75a3b5aa ""
-  "../capitulos/img/diagrama_hogar.jpg" 1740658652 20140 06f98cece558ff15e593d4f2b146279b ""
+  "../capitulos/img/diagrama_compra.jpg" 1741341491 23487 3bfcf82a15eb7770080edc408e34c627 ""
+  "../capitulos/img/diagrama_gastos.jpg" 1741341659 21945 8ab5fac7875a8174acd46f415be69b21 ""
+  "../capitulos/img/diagrama_hogar.jpg" 1741341778 19485 6f027fae66badc0fcfaf655d02ad31cf ""
   "../capitulos/img/diagrama_paquetes.jpg" 1740570639 17741 86cb6207ca72570a973d1f3c005b8319 ""
   "../capitulos/img/diagrama_sesion.jpg" 1740654681 24075 e7c116b7573fddf8dc744ba09b1615e4 ""
-  "../capitulos/img/diagrama_tareas.jpg" 1740677449 38864 acd4ce68fc7c01c86d647682b3ac1130 ""
+  "../capitulos/img/diagrama_tareas.jpg" 1741341731 25654 fc70e142bb21ee889becfdaaebad383c ""
   "../capitulos/img/django.png" 1729941888 16735 59e3a16e4b049a300659864f138ae8d0 ""
   "../capitulos/img/edit_profile_screen.png" 1740045900 90978 9cedaa865bf4260af7bb729c796f47d4 ""
   "../capitulos/img/evento_cozi.jpg" 1725616504 72084 7c9872feb9a62fa1292147b8505e3325 ""
@@ -53,6 +53,7 @@
   "../capitulos/img/join_screen.png" 1739986035 117005 7f619d1300418c80d77fc21fe32cc525 ""
   "../capitulos/img/listas_cozi.jpg" 1725616504 63274 e206a8b28b6847269a1ae36affaab4e1 ""
   "../capitulos/img/login_screen.png" 1739985189 141265 98d3d94d684adf6fae71fb017a851329 ""
+  "../capitulos/img/modelo_conceptual.jpg" 1741345444 19660 b1348ae3692fcf3176f73f3fafa427d0 ""
   "../capitulos/img/new_home_screen.png" 1739985557 106845 4f231a7d922896501bd435b2a463df64 ""
   "../capitulos/img/participantes.jpg" 1725375365 152705 f4ca8a16eab22336697d7b164842b093 ""
   "../capitulos/img/principal.jpg" 1725358671 83073 5cf7f784e00e1c7befc136ffcacb6834 ""
@@ -199,14 +200,14 @@
   "imagenes/logo_ugr.jpg" 1228354992 85532 25866cc28cc667a1cdd972180571e7be ""
   "portada/portada.tex" 1737367880 1078 1c2fe0a8f5546a43996c48d26be77a2a ""
   "prefacios/prefacio.tex" 1737368597 2436 a2f51b8f8963a0db5bac768a2e03c7bd ""
-  "proyecto.aux" 1741281642 50454 39b13c381aa1427068bc0026e78b3e36 "pdflatex"
-  "proyecto.bbl" 1741281635 21534 63bf14a0527919ad384d5d1bfe014cdc "bibtex proyecto"
+  "proyecto.aux" 1741346479 50792 0f072484a573fc3ed27b84eb11a23261 "pdflatex"
+  "proyecto.bbl" 1741346058 21534 63bf14a0527919ad384d5d1bfe014cdc "bibtex proyecto"
   "proyecto.ind" 1741280491 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
-  "proyecto.lof" 1741281642 5242 cc40de70d94b9b84f8370ddf26808bc2 "pdflatex"
-  "proyecto.lot" 1741281642 7278 e95bee48cb5631df3e425ad7c701d38d "pdflatex"
-  "proyecto.out" 1741281642 14684 8c884f4f3b64098d87475348e2458830 "pdflatex"
+  "proyecto.lof" 1741346479 5338 81f1bbc6088c284d3e4694ab88e9b327 "pdflatex"
+  "proyecto.lot" 1741346479 7278 6ee3ab10cd31ed1748f6454c5991bb25 "pdflatex"
+  "proyecto.out" 1741346479 14827 b7c1ba2850abf854292a490debbfa83a "pdflatex"
   "proyecto.tex" 1741275611 4472 0262f535a0218ce5d5cf0ad738f3f21b ""
-  "proyecto.toc" 1741281642 9155 fea1216cb1f9897e9969daf2c937cc4c "pdflatex"
+  "proyecto.toc" 1741346479 9234 256fa0c23e513f162e2ceec5ea28800c "pdflatex"
   (generated)
   "proyecto.aux"
   "proyecto.idx"

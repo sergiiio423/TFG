@@ -1191,6 +1191,27 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 
 
 La explicación de los casos de uso restantes se encuentra en el Apéndice \ref{anexo:casos_de_uso}.
-\clearpage 
 
+\clearpage
 
+\section{Modelo conceptual}
+A continuación, se muestra el modelo conceptual de la aplicación, que representa las entidades, las relaciones entre ellas y que información almacenan.
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{../capitulos/img/modelo_conceptual.jpg}
+    \caption{Modelo conceptual}
+    \label{fig:modelo_conceptual}
+\end{figure}
+
+En este diagramas se pueden observar las entidades principales de la aplicación, que son:
+
+\begin{itemize}
+    \item \textbf{Usuario}: Representa a los usuarios que va a usar la aplicación. De cada usuario se almacena información como el nombre, apellidos y correo electrónico.
+    \item \textbf{Hogar}: Representa a los hogares de los usuarios. Almacena información como el nombre del hogar, la lista de usuarios que pertenecen a él y un código identificativo.
+    \item \textbf{Tarea}: Representa las tareas que pueden crear los usuarios. Almacena información relevante para la gestión de la misma.
+    \item \textbf{Gasto}: Representa los gastos que se pueden generar entre los miembros del hogar o de forma individual. Almacena información como el nombre del gasto, la cantidad y la fecha de creación.
+    \item \textbf{Deuda}: Representan las deudas que se generan a través de los gastos. Contiene información como quien debe dinero a quién y la cantidad.
+    \item \textbf{Lista de la compra}: Representa las listas de la compra que se pueden crear. Almacena información como el nombre de la lista y la lista de productos asociados a ella.
+    \item \textbf{Producto}: Representa los productos que se pueden añadir a una lista de la compra. Almacena información como el nombre del producto y la cantidad.
+\end{itemize}

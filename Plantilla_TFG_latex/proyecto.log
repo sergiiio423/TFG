@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.17)  6 MAR 2025 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.17)  7 MAR 2025 12:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -503,7 +503,7 @@ LaTeX Info: Redefining \BPBI on input line 138.
 LaTeX Info: Redefining \BHBI on input line 139.
 ) (portada/portada.tex
 \centeroffset=\skip78
-<imagenes/logo_ugr.jpg, id=307, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=311, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
@@ -516,7 +516,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
  (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<imagenes/etsiit_logo.png, id=308, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=312, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 31.
@@ -656,7 +656,7 @@ Cap\'{\i }tulo 2.
 
 [27]) (../capitulos/03_Estado_del_arte.tex
 Cap\'{\i }tulo 3.
-<../capitulos/img/residentes_vivienda.png, id=787, 713.66624pt x 450.18187pt>
+<../capitulos/img/residentes_vivienda.png, id=794, 713.66624pt x 450.18187pt>
 File: ../capitulos/img/residentes_vivienda.png Graphic file (type png)
 <use ../capitulos/img/residentes_vivienda.png>
 Package pdftex.def Info: ../capitulos/img/residentes_vivienda.png  used on input line 13.
@@ -672,22 +672,22 @@ Package pdftex.def Info: ../capitulos/img/residentes_vivienda.png  used on input
 [30]
 
 [31]
-<../capitulos/img/principal.jpg, id=831, 1541.76pt x 2055.68pt>
+<../capitulos/img/principal.jpg, id=838, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/principal.jpg Graphic file (type jpg)
 <use ../capitulos/img/principal.jpg>
 Package pdftex.def Info: ../capitulos/img/principal.jpg  used on input line 112.
 (pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
-<../capitulos/img/inicio.jpg, id=832, 1541.76pt x 2055.68pt>
+<../capitulos/img/inicio.jpg, id=839, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/inicio.jpg Graphic file (type jpg)
 <use ../capitulos/img/inicio.jpg>
 Package pdftex.def Info: ../capitulos/img/inicio.jpg  used on input line 119.
 (pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
-<../capitulos/img/añadir.jpg, id=835, 1541.76pt x 2055.68pt>
+<../capitulos/img/añadir.jpg, id=842, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/añadir.jpg Graphic file (type jpg)
 <use ../capitulos/img/añadir.jpg>
 Package pdftex.def Info: ../capitulos/img/añadir.jpg  used on input line 141.
 (pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
-<../capitulos/img/incio_sesion.jpg, id=836, 1541.76pt x 2055.68pt>
+<../capitulos/img/incio_sesion.jpg, id=843, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/incio_sesion.jpg Graphic file (type jpg)
 <use ../capitulos/img/incio_sesion.jpg>
 Package pdftex.def Info: ../capitulos/img/incio_sesion.jpg  used on input line 148.
@@ -695,22 +695,22 @@ Package pdftex.def Info: ../capitulos/img/incio_sesion.jpg  used on input line 1
 
 
 [32 <../capitulos/img/principal.jpg> <../capitulos/img/inicio.jpg>]
-<../capitulos/img/crear.jpg, id=846, 1541.76pt x 2055.68pt>
+<../capitulos/img/crear.jpg, id=853, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/crear.jpg Graphic file (type jpg)
 <use ../capitulos/img/crear.jpg>
 Package pdftex.def Info: ../capitulos/img/crear.jpg  used on input line 166.
 (pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
-<../capitulos/img/creado.jpg, id=847, 1541.76pt x 2055.68pt>
+<../capitulos/img/creado.jpg, id=854, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/creado.jpg Graphic file (type jpg)
 <use ../capitulos/img/creado.jpg>
 Package pdftex.def Info: ../capitulos/img/creado.jpg  used on input line 173.
 (pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
-<../capitulos/img/participantes.jpg, id=850, 1541.76pt x 2055.68pt>
+<../capitulos/img/participantes.jpg, id=857, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/participantes.jpg Graphic file (type jpg)
 <use ../capitulos/img/participantes.jpg>
 Package pdftex.def Info: ../capitulos/img/participantes.jpg  used on input line 189.
 (pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
-<../capitulos/img/gastos.jpg, id=851, 1541.76pt x 2055.68pt>
+<../capitulos/img/gastos.jpg, id=858, 1541.76pt x 2055.68pt>
 File: ../capitulos/img/gastos.jpg Graphic file (type jpg)
 <use ../capitulos/img/gastos.jpg>
 Package pdftex.def Info: ../capitulos/img/gastos.jpg  used on input line 196.
@@ -729,32 +729,32 @@ Overfull \hbox (4.66583pt too wide) in paragraph at lines 234--235
 [35
 
 ]
-<../capitulos/img/registro_todoist.jpg, id=888, 741.77126pt x 1606.0pt>
+<../capitulos/img/registro_todoist.jpg, id=895, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/registro_todoist.jpg Graphic file (type jpg)
 <use ../capitulos/img/registro_todoist.jpg>
 Package pdftex.def Info: ../capitulos/img/registro_todoist.jpg  used on input line 265.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/ambito_todoist.jpg, id=889, 741.77126pt x 1606.0pt>
+<../capitulos/img/ambito_todoist.jpg, id=896, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/ambito_todoist.jpg Graphic file (type jpg)
 <use ../capitulos/img/ambito_todoist.jpg>
 Package pdftex.def Info: ../capitulos/img/ambito_todoist.jpg  used on input line 272.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/principal_todoist.jpg, id=890, 741.77126pt x 1606.0pt>
+<../capitulos/img/principal_todoist.jpg, id=897, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/principal_todoist.jpg Graphic file (type jpg)
 <use ../capitulos/img/principal_todoist.jpg>
 Package pdftex.def Info: ../capitulos/img/principal_todoist.jpg  used on input line 282.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/añadir_todoist.jpg, id=891, 741.77126pt x 1606.0pt>
+<../capitulos/img/añadir_todoist.jpg, id=898, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/añadir_todoist.jpg Graphic file (type jpg)
 <use ../capitulos/img/añadir_todoist.jpg>
 Package pdftex.def Info: ../capitulos/img/añadir_todoist.jpg  used on input line 289.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/tarea_todoist.jpg, id=892, 741.77126pt x 1606.0pt>
+<../capitulos/img/tarea_todoist.jpg, id=899, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/tarea_todoist.jpg Graphic file (type jpg)
 <use ../capitulos/img/tarea_todoist.jpg>
 Package pdftex.def Info: ../capitulos/img/tarea_todoist.jpg  used on input line 299.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/calendario_todoist.jpg, id=893, 741.77126pt x 1606.0pt>
+<../capitulos/img/calendario_todoist.jpg, id=900, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/calendario_todoist.jpg Graphic file (type jpg)
 <use ../capitulos/img/calendario_todoist.jpg>
 Package pdftex.def Info: ../capitulos/img/calendario_todoist.jpg  used on input line 306.
@@ -774,32 +774,32 @@ Package pdftex.def Info: ../capitulos/img/calendario_todoist.jpg  used on input 
 ]
 
 [41]
-<../capitulos/img/registro_cozi.jpg, id=957, 741.77126pt x 1606.0pt>
+<../capitulos/img/registro_cozi.jpg, id=964, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/registro_cozi.jpg Graphic file (type jpg)
 <use ../capitulos/img/registro_cozi.jpg>
 Package pdftex.def Info: ../capitulos/img/registro_cozi.jpg  used on input line 419.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/familia_cozi.jpg, id=958, 741.77126pt x 1606.0pt>
+<../capitulos/img/familia_cozi.jpg, id=965, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/familia_cozi.jpg Graphic file (type jpg)
 <use ../capitulos/img/familia_cozi.jpg>
 Package pdftex.def Info: ../capitulos/img/familia_cozi.jpg  used on input line 426.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/evento_cozi.jpg, id=959, 741.77126pt x 1606.0pt>
+<../capitulos/img/evento_cozi.jpg, id=966, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/evento_cozi.jpg Graphic file (type jpg)
 <use ../capitulos/img/evento_cozi.jpg>
 Package pdftex.def Info: ../capitulos/img/evento_cozi.jpg  used on input line 436.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/calendario_cozi.jpg, id=960, 741.77126pt x 1606.0pt>
+<../capitulos/img/calendario_cozi.jpg, id=967, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/calendario_cozi.jpg Graphic file (type jpg)
 <use ../capitulos/img/calendario_cozi.jpg>
 Package pdftex.def Info: ../capitulos/img/calendario_cozi.jpg  used on input line 443.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/listas_cozi.jpg, id=961, 741.77126pt x 1606.0pt>
+<../capitulos/img/listas_cozi.jpg, id=968, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/listas_cozi.jpg Graphic file (type jpg)
 <use ../capitulos/img/listas_cozi.jpg>
 Package pdftex.def Info: ../capitulos/img/listas_cozi.jpg  used on input line 453.
 (pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
-<../capitulos/img/recetas_cozi.jpg, id=962, 741.77126pt x 1606.0pt>
+<../capitulos/img/recetas_cozi.jpg, id=969, 741.77126pt x 1606.0pt>
 File: ../capitulos/img/recetas_cozi.jpg Graphic file (type jpg)
 <use ../capitulos/img/recetas_cozi.jpg>
 Package pdftex.def Info: ../capitulos/img/recetas_cozi.jpg  used on input line 460.
@@ -854,7 +854,7 @@ Underfull \hbox (badness 4403) in paragraph at lines 529--529
 
 [54]
 Cap\'{\i }tulo 4.
-<../capitulos/img/Kotlin_logo.svg.png, id=1088, 2569.6pt x 571.13374pt>
+<../capitulos/img/Kotlin_logo.svg.png, id=1095, 2569.6pt x 571.13374pt>
 File: ../capitulos/img/Kotlin_logo.svg.png Graphic file (type png)
 <use ../capitulos/img/Kotlin_logo.svg.png>
 Package pdftex.def Info: ../capitulos/img/Kotlin_logo.svg.png  used on input line 26.
@@ -867,7 +867,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [55
 
 ]
-<../capitulos/img/images.png, id=1097, 405.515pt x 125.46875pt>
+<../capitulos/img/images.png, id=1104, 405.515pt x 125.46875pt>
 File: ../capitulos/img/images.png Graphic file (type png)
 <use ../capitulos/img/images.png>
 Package pdftex.def Info: ../capitulos/img/images.png  used on input line 40.
@@ -875,17 +875,17 @@ Package pdftex.def Info: ../capitulos/img/images.png  used on input line 40.
 
 
 [56 <../capitulos/img/Kotlin_logo.svg.png> <../capitulos/img/images.png>]
-<../capitulos/img/ionic-itop.png, id=1107, 1284.8pt x 433.62pt>
+<../capitulos/img/ionic-itop.png, id=1114, 1284.8pt x 433.62pt>
 File: ../capitulos/img/ionic-itop.png Graphic file (type png)
 <use ../capitulos/img/ionic-itop.png>
 Package pdftex.def Info: ../capitulos/img/ionic-itop.png  used on input line 63.
 (pdftex.def)             Requested size: 143.9978pt x 48.59819pt.
-<../capitulos/img/flutter.png, id=1110, 421.575pt x 120.45pt>
+<../capitulos/img/flutter.png, id=1117, 421.575pt x 120.45pt>
 File: ../capitulos/img/flutter.png Graphic file (type png)
 <use ../capitulos/img/flutter.png>
 Package pdftex.def Info: ../capitulos/img/flutter.png  used on input line 75.
 (pdftex.def)             Requested size: 143.9978pt x 41.14175pt.
-<../capitulos/img/react.png, id=1113, 863.225pt x 265.99374pt>
+<../capitulos/img/react.png, id=1120, 863.225pt x 265.99374pt>
 File: ../capitulos/img/react.png Graphic file (type png)
 <use ../capitulos/img/react.png>
 Package pdftex.def Info: ../capitulos/img/react.png  used on input line 85.
@@ -894,7 +894,7 @@ Package pdftex.def Info: ../capitulos/img/react.png  used on input line 85.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../capitulos/img/xamarin.png, id=1116, 2569.6pt x 1078.0275pt>
+<../capitulos/img/xamarin.png, id=1123, 2569.6pt x 1078.0275pt>
 File: ../capitulos/img/xamarin.png Graphic file (type png)
 <use ../capitulos/img/xamarin.png>
 Package pdftex.def Info: ../capitulos/img/xamarin.png  used on input line 94.
@@ -941,7 +941,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--123
 [58 <../capitulos/img/react.png> <../capitulos/img/xamarin.png>]
 
 [59]
-<../capitulos/img/Firebase.png, id=1139, 1284.8pt x 441.65pt>
+<../capitulos/img/Firebase.png, id=1146, 1284.8pt x 441.65pt>
 File: ../capitulos/img/Firebase.png Graphic file (type png)
 <use ../capitulos/img/Firebase.png>
 Package pdftex.def Info: ../capitulos/img/Firebase.png  used on input line 149.
@@ -949,12 +949,12 @@ Package pdftex.def Info: ../capitulos/img/Firebase.png  used on input line 149.
 
 
 [60 <../capitulos/img/Firebase.png>]
-<../capitulos/img/Node.js.png, id=1148, 592.2125pt x 362.35374pt>
+<../capitulos/img/Node.js.png, id=1155, 592.2125pt x 362.35374pt>
 File: ../capitulos/img/Node.js.png Graphic file (type png)
 <use ../capitulos/img/Node.js.png>
 Package pdftex.def Info: ../capitulos/img/Node.js.png  used on input line 165.
 (pdftex.def)             Requested size: 108.0011pt x 66.07787pt.
-<../capitulos/img/django.png, id=1151, 1204.5pt x 419.5675pt>
+<../capitulos/img/django.png, id=1158, 1204.5pt x 419.5675pt>
 File: ../capitulos/img/django.png Graphic file (type png)
 <use ../capitulos/img/django.png>
 Package pdftex.def Info: ../capitulos/img/django.png  used on input line 180.
@@ -962,7 +962,7 @@ Package pdftex.def Info: ../capitulos/img/django.png  used on input line 180.
 
 
 [61 <../capitulos/img/Node.js.png> <../capitulos/img/django.png>]
-<../capitulos/img/ruby.png, id=1162, 2569.6pt x 969.6225pt>
+<../capitulos/img/ruby.png, id=1169, 2569.6pt x 969.6225pt>
 File: ../capitulos/img/ruby.png Graphic file (type png)
 <use ../capitulos/img/ruby.png>
 Package pdftex.def Info: ../capitulos/img/ruby.png  used on input line 195.
@@ -1261,36 +1261,36 @@ Overfull \hbox (7.20438pt too wide) in paragraph at lines 929--940
 ]
 
 [86]
-<../capitulos/img/diagrama_paquetes.jpg, id=1395, 580.1675pt x 364.36125pt>
+<../capitulos/img/diagrama_paquetes.jpg, id=1402, 580.1675pt x 364.36125pt>
 File: ../capitulos/img/diagrama_paquetes.jpg Graphic file (type jpg)
 <use ../capitulos/img/diagrama_paquetes.jpg>
 Package pdftex.def Info: ../capitulos/img/diagrama_paquetes.jpg  used on input line 968.
 (pdftex.def)             Requested size: 360.0pt x 226.09067pt.
-<../capitulos/img/diagrama_sesion.jpg, id=1396, 602.25pt x 361.35pt>
+<../capitulos/img/diagrama_sesion.jpg, id=1403, 602.25pt x 361.35pt>
 File: ../capitulos/img/diagrama_sesion.jpg Graphic file (type jpg)
 <use ../capitulos/img/diagrama_sesion.jpg>
 Package pdftex.def Info: ../capitulos/img/diagrama_sesion.jpg  used on input line 976.
 (pdftex.def)             Requested size: 360.0pt x 216.00667pt.
-<../capitulos/img/diagrama_hogar.jpg, id=1397, 527.9725pt x 287.0725pt>
+<../capitulos/img/diagrama_hogar.jpg, id=1404, 527.9725pt x 287.0725pt>
 File: ../capitulos/img/diagrama_hogar.jpg Graphic file (type jpg)
 <use ../capitulos/img/diagrama_hogar.jpg>
 Package pdftex.def Info: ../capitulos/img/diagrama_hogar.jpg  used on input line 983.
 (pdftex.def)             Requested size: 360.0pt x 195.74112pt.
-<../capitulos/img/diagrama_tareas.jpg, id=1398, 706.64pt x 550.055pt>
+<../capitulos/img/diagrama_tareas.jpg, id=1405, 473.77pt x 469.755pt>
 File: ../capitulos/img/diagrama_tareas.jpg Graphic file (type jpg)
 <use ../capitulos/img/diagrama_tareas.jpg>
 Package pdftex.def Info: ../capitulos/img/diagrama_tareas.jpg  used on input line 990.
-(pdftex.def)             Requested size: 360.0pt x 280.23058pt.
-<../capitulos/img/diagrama_gastos.jpg, id=1399, 795.97375pt x 425.59pt>
+(pdftex.def)             Requested size: 360.0pt x 356.96017pt.
+<../capitulos/img/diagrama_gastos.jpg, id=1406, 471.7625pt x 425.59pt>
 File: ../capitulos/img/diagrama_gastos.jpg Graphic file (type jpg)
 <use ../capitulos/img/diagrama_gastos.jpg>
 Package pdftex.def Info: ../capitulos/img/diagrama_gastos.jpg  used on input line 998.
-(pdftex.def)             Requested size: 360.0pt x 192.48132pt.
-<../capitulos/img/diagrama_compra.jpg, id=1400, 711.65875pt x 436.63126pt>
+(pdftex.def)             Requested size: 360.0pt x 324.77002pt.
+<../capitulos/img/diagrama_compra.jpg, id=1407, 529.98pt x 436.63126pt>
 File: ../capitulos/img/diagrama_compra.jpg Graphic file (type jpg)
 <use ../capitulos/img/diagrama_compra.jpg>
 Package pdftex.def Info: ../capitulos/img/diagrama_compra.jpg  used on input line 1006.
-(pdftex.def)             Requested size: 360.0pt x 220.87346pt.
+(pdftex.def)             Requested size: 360.0pt x 296.5922pt.
 
 
 [87
@@ -1299,9 +1299,11 @@ Package pdftex.def Info: ../capitulos/img/diagrama_compra.jpg  used on input lin
 
 [88 <../capitulos/img/diagrama_sesion.jpg> <../capitulos/img/diagrama_hogar.jpg>]
 
-[89 <../capitulos/img/diagrama_tareas.jpg> <../capitulos/img/diagrama_gastos.jpg>]
+[89 <../capitulos/img/diagrama_tareas.jpg>]
 
-[90 <../capitulos/img/diagrama_compra.jpg>]
+[90 <../capitulos/img/diagrama_gastos.jpg>]
+
+[91 <../capitulos/img/diagrama_compra.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 1060--1061
 []|\OT1/cmr/m/n/10.95 Usuario: In-tro-du-ce su
  []
@@ -1328,7 +1330,7 @@ Overfull \hbox (2.58379pt too wide) in paragraph at lines 1073--1073
 
 
 
-[91
+[92
 
 ]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 1130--1130
@@ -1347,58 +1349,67 @@ Overfull \hbox (2.58379pt too wide) in paragraph at lines 1134--1134
 
 
 
-[92]
+[93]
 
-[93]) (../capitulos/07_Diseno.tex
+[94]
+<../capitulos/img/modelo_conceptual.jpg, id=1445, 765.86125pt x 244.915pt>
+File: ../capitulos/img/modelo_conceptual.jpg Graphic file (type jpg)
+<use ../capitulos/img/modelo_conceptual.jpg>
+Package pdftex.def Info: ../capitulos/img/modelo_conceptual.jpg  used on input line 1202.
+(pdftex.def)             Requested size: 360.0pt x 115.125pt.
+) (../capitulos/07_Diseno.tex
+
+[95
+
+ <../capitulos/img/modelo_conceptual.jpg>]
 Cap\'{\i }tulo 7.
-<../capitulos/img/welcome_screen.png, id=1438, 441.65pt x 932.48375pt>
+<../capitulos/img/welcome_screen.png, id=1454, 441.65pt x 932.48375pt>
 File: ../capitulos/img/welcome_screen.png Graphic file (type png)
 <use ../capitulos/img/welcome_screen.png>
 Package pdftex.def Info: ../capitulos/img/welcome_screen.png  used on input line 20.
 (pdftex.def)             Requested size: 161.9989pt x 342.03983pt.
-<../capitulos/img/login_screen.png, id=1439, 429.605pt x 929.4725pt>
+<../capitulos/img/login_screen.png, id=1455, 429.605pt x 929.4725pt>
 File: ../capitulos/img/login_screen.png Graphic file (type png)
 <use ../capitulos/img/login_screen.png>
 Package pdftex.def Info: ../capitulos/img/login_screen.png  used on input line 27.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
-<../capitulos/img/registro_screen.png, id=1440, 429.605pt x 929.4725pt>
+<../capitulos/img/registro_screen.png, id=1456, 429.605pt x 929.4725pt>
 File: ../capitulos/img/registro_screen.png Graphic file (type png)
 <use ../capitulos/img/registro_screen.png>
 Package pdftex.def Info: ../capitulos/img/registro_screen.png  used on input line 38.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
-<../capitulos/img/profile_screen.png, id=1441, 429.605pt x 929.4725pt>
+<../capitulos/img/profile_screen.png, id=1457, 429.605pt x 929.4725pt>
 File: ../capitulos/img/profile_screen.png Graphic file (type png)
 <use ../capitulos/img/profile_screen.png>
 Package pdftex.def Info: ../capitulos/img/profile_screen.png  used on input line 45.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
-<../capitulos/img/edit_profile_screen.png, id=1442, 429.605pt x 929.4725pt>
+<../capitulos/img/edit_profile_screen.png, id=1458, 429.605pt x 929.4725pt>
 File: ../capitulos/img/edit_profile_screen.png Graphic file (type png)
 <use ../capitulos/img/edit_profile_screen.png>
 Package pdftex.def Info: ../capitulos/img/edit_profile_screen.png  used on input line 53.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
 
 
-[94
-
+[96
 
 ]
 
-[95 <../capitulos/img/welcome_screen.png> <../capitulos/img/login_screen.png>]
+[97 <../capitulos/img/welcome_screen.png> <../capitulos/img/login_screen.png>]
 
-[96 <../capitulos/img/registro_screen.png> <../capitulos/img/profile_screen.png>]
+[98 <../capitulos/img/registro_screen.png> <../capitulos/img/profile_screen.png>]
 
-[97 <../capitulos/img/edit_profile_screen.png>]
-<../capitulos/img/conect_screen.png, id=1465, 429.605pt x 929.4725pt>
+[99 <../capitulos/img/edit_profile_screen.png>]
+<../capitulos/img/conect_screen.png, id=1481, 429.605pt x 929.4725pt>
 File: ../capitulos/img/conect_screen.png Graphic file (type png)
 <use ../capitulos/img/conect_screen.png>
 Package pdftex.def Info: ../capitulos/img/conect_screen.png  used on input line 66.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
-<../capitulos/img/join_screen.png, id=1466, 429.605pt x 929.4725pt>
+<../capitulos/img/join_screen.png, id=1482, 429.605pt x 929.4725pt>
 File: ../capitulos/img/join_screen.png Graphic file (type png)
 <use ../capitulos/img/join_screen.png>
 Package pdftex.def Info: ../capitulos/img/join_screen.png  used on input line 73.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
-<../capitulos/img/new_home_screen.png, id=1467, 429.605pt x 929.4725pt>
+<../capitulos/img/new_home_screen.png, id=1483, 429.605pt x 929.4725pt>
 File: ../capitulos/img/new_home_screen.png Graphic file (type png)
 <use ../capitulos/img/new_home_screen.png>
 Package pdftex.def Info: ../capitulos/img/new_home_screen.png  used on input line 83.
@@ -1409,28 +1420,28 @@ Package pdftex.def Info: ../capitulos/img/join_screen.png  used on input line 90
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
 
 
-[98
+[100
 
  <../capitulos/img/conect_screen.png> <../capitulos/img/join_screen.png>]
 
-[99 <../capitulos/img/new_home_screen.png>]
-<../capitulos/img/task_screen.png, id=1479, 429.605pt x 929.4725pt>
+[101 <../capitulos/img/new_home_screen.png>]
+<../capitulos/img/task_screen.png, id=1495, 429.605pt x 929.4725pt>
 File: ../capitulos/img/task_screen.png Graphic file (type png)
 <use ../capitulos/img/task_screen.png>
 Package pdftex.def Info: ../capitulos/img/task_screen.png  used on input line 106.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
-<../capitulos/img/add_tasks_screen.png, id=1480, 429.605pt x 929.4725pt>
+<../capitulos/img/add_tasks_screen.png, id=1496, 429.605pt x 929.4725pt>
 File: ../capitulos/img/add_tasks_screen.png Graphic file (type png)
 <use ../capitulos/img/add_tasks_screen.png>
 Package pdftex.def Info: ../capitulos/img/add_tasks_screen.png  used on input line 113.
 (pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
 
 
-[100
+[102
 
  <../capitulos/img/task_screen.png> <../capitulos/img/add_tasks_screen.png>]
 
-[101
+[103
 
 ]) (../capitulos/anexo.tex
 Ap\'{e}ndice A.
@@ -1461,11 +1472,11 @@ Overfull \hbox (2.58379pt too wide) in paragraph at lines 59--59
 
 
 
-[102
+[104
 
 ]
 
-[103]
+[105]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 118--118
 []|\OT1/cmr/m/n/10.95 2a.| 
  []
@@ -1482,11 +1493,11 @@ Overfull \hbox (2.58379pt too wide) in paragraph at lines 122--122
 
 
 
-[104]
-
-[105]
-
 [106]
+
+[107]
+
+[108]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 282--282
 []|\OT1/cmr/m/n/10.95 4a.| 
  []
@@ -1498,16 +1509,16 @@ Overfull \hbox (3.80046pt too wide) in paragraph at lines 284--284
 
 
 
-[107]
+[109]
 Underfull \hbox (badness 10000) in paragraph at lines 335--336
 []|\OT1/cmr/m/n/10.95 Administrador: Se-lec-cio-na
  []
 
 
 
-[108]
+[110]
 
-[109]
+[111]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 452--452
 []|\OT1/cmr/m/n/10.95 2a.| 
  []
@@ -1519,9 +1530,9 @@ Overfull \hbox (3.80046pt too wide) in paragraph at lines 454--454
 
 
 
-[110]
+[112]
 
-[111]
+[113]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 568--568
 []|\OT1/cmr/m/n/10.95 4a.| 
  []
@@ -1533,15 +1544,15 @@ Overfull \hbox (3.80046pt too wide) in paragraph at lines 570--570
 
 
 
-[112]
+[114]
 
-[113]
+[115]
 
-[114
+[116
 
 ]
 
-[115]
+[117]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 784--784
 []|\OT1/cmr/m/n/10.95 6a.| 
  []
@@ -1553,22 +1564,22 @@ Overfull \hbox (3.80046pt too wide) in paragraph at lines 786--786
 
 
 
-[116]
-
-[117]
-
 [118]
 
 [119]
 
 [120]
+
+[121]
+
+[122]
 Underfull \hbox (badness 3068) in paragraph at lines 1047--1048
 []|\OT1/cmr/m/n/10.95 Usuario: Se-lec-cio-na quien
  []
 
 
 
-[121
+[123
 
 ]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 1110--1110
@@ -1582,27 +1593,27 @@ Overfull \hbox (3.80046pt too wide) in paragraph at lines 1112--1112
 
 
 
-[122]
-
-[123]
-
 [124]
 
 [125]
 
 [126]
 
-[127
-
-]
+[127]
 
 [128]
 
-[129]
+[129
+
+]
 
 [130]
 
 [131]
+
+[132]
+
+[133]
 Overfull \hbox (3.19212pt too wide) in paragraph at lines 1644--1644
 []|\OT1/cmr/m/n/10.95 6a.| 
  []
@@ -1614,7 +1625,7 @@ Overfull \hbox (3.80046pt too wide) in paragraph at lines 1646--1646
 
 )
 
-[132] (proyecto.bbl
+[134] (proyecto.bbl
 Underfull \hbox (badness 1184) in paragraph at lines 14--27
 \OT1/cmr/m/n/10.95 car-ga-do 2025-02-04, de [][]$\OT1/cmtt/m/n/10.95 https :// adverthia [] .com / usabilidad [] -web []
  []
@@ -1636,7 +1647,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 348--363
 
 
 
-[133]
+[135]
 Underfull \hbox (badness 10000) in paragraph at lines 543--558
 \OT1/cmtt/m/n/10.95 notasprensa / igualdad [] -presenta [] -metoca [] -la [] -aplicacion [] -para []
  []
@@ -1648,7 +1659,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 543--558
 
 
 
-[134]
+[136]
 Underfull \hbox (badness 2103) in paragraph at lines 812--825
 []\OT1/cmr/m/n/10.95 ThoughtWorks.  (2020).  \OT1/cmr/m/it/10.95 Ma-nual de ac-ce-si-bi-li-dad pa-ra pro-fe-sio-na-
  []
@@ -1665,9 +1676,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 812--825
 
 )
 
-[135]
+[137]
 
-[136
+[138
 
 ] (proyecto.aux
 LaTeX Info: Redefining \. on input line 12.
@@ -1682,20 +1693,20 @@ L3 programming layer <2024-08-16>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `proyecto.out' has not changed.
-(rerunfilecheck)             Checksum: 8C884F4F3B64098D87475348E2458830;14684.
+(rerunfilecheck)             Checksum: B7C1BA2850ABF854292A490DEBBFA83A;14827.
  ) 
 Here is how much of TeX's memory you used:
- 16181 strings out of 473899
- 261166 string characters out of 5725556
+ 16194 strings out of 473899
+ 261553 string characters out of 5725556
  1950960 words of memory out of 5000000
- 38197 multiletter control sequences out of 15000+600000
+ 38206 multiletter control sequences out of 15000+600000
  568237 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,14n,79p,728b,783s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1095.pk> <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/eurosym/feybr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/eurosym/feymr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on proyecto.pdf (136 pages, 3830805 bytes).
+Output written on proyecto.pdf (138 pages, 3827210 bytes).
 PDF statistics:
- 1900 PDF objects out of 2073 (max. 8388607)
- 582 named destinations out of 1000 (max. 500000)
- 854 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1917 PDF objects out of 2073 (max. 8388607)
+ 586 named destinations out of 1000 (max. 500000)
+ 867 words of extra memory for PDF output out of 10000 (max. 10000000)
 

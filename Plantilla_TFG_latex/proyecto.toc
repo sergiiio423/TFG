@@ -80,19 +80,20 @@
 \contentsline {subsection}{\numberline {6.1.2}Requisitos no funcionales}{85}{subsection.6.1.2}%
 \contentsline {section}{\numberline {6.2}Modelos de casos de uso}{87}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Diagrama de casos de uso}{87}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Descripción de los casos de uso}{91}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Diseño}{94}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{94}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{94}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{94}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{98}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{100}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{101}{subsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{101}{subsection.7.2.5}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{102}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{102}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{109}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{114}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{121}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{127}{section.Alph1.5}%
-\contentsline {section}{Referencias}{133}{table.Alph1.30}%
+\contentsline {subsection}{\numberline {6.2.2}Descripción de los casos de uso}{92}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Modelo conceptual}{95}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Diseño}{96}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{96}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{96}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{96}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{100}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{102}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{103}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{103}{subsection.7.2.5}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{104}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{104}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{111}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{116}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{123}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{129}{section.Alph1.5}%
+\contentsline {section}{Referencias}{135}{table.Alph1.30}%
