@@ -1253,10 +1253,18 @@ la interfaz gráfica de la aplicación (cliente), la cual se comunica con la bas
 La interfaz gráfica se interactua directamente con la base de datos, sin necesidad de un servidor intermedio. Esta estructura simplifica el
 desarrolo, al delegar en Firebase la gestión de la base de datos y la sincronización en tiempo real.
 
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{../capitulos/img/diagrama_arquitectura.png}
+    \caption{Diagrama de la arquitectura del sistema}
+    \label{fig:arquitectura_sistema}
+\end{figure}
+
 \subsubsection{Componentes Principales}
 
 \begin{itemize}
-    \item \textbf{Interfaz gráfica:} La interfaz gráfica es la parte de la aplicación con la que el usuario interactúa. 
+    \item \textbf{Usuario:} El usuario es el componente principal de la aplicación, ya que es el que interactúa con la interfaz gráfica y realiza las acciones.
+    \item \textbf{App (Interfaz gráfica):} La interfaz gráfica es la parte de la aplicación con la que el usuario interactúa. 
     En este caso, la interfaz gráfica se ha diseñado para ser intuitiva y fácil de usar, con el objetivo de que el usuario pueda 
     realizar las tareas de forma rápida y sencilla.
     \item \textbf{Base de datos:} La base de datos es el componente encargado de almacenar y gestionar la información de la aplicación. 
@@ -1276,9 +1284,23 @@ desarrolo, al delegar en Firebase la gestión de la base de datos y la sincroniz
 
 \subsection{Diseño de la interfaz gráfica}
 \label{sec:interfaz}
-El objetivo principal es conseguir la usabilidad de la aplicación, ya que aunque la aplicaciónn esté dirigida a un público joven, 
-es importante que sea fácil de usar para cualquier usuario. Para ello, se va a diseñar una interfaz gráfica con un diseño sencillo 
-teniendo en cuenta los siguientes críterios para que una aplicación sea usable:
+El diseño de la interfaz gráfica de la aplicación se ha centrado en crear un experiencia de usuario fluida, intuitiva y visualmente atractiva.
+A pesar de que la aplicación está orientada a un público joven, el objetivo es asegurar que cualquier usuario independientemente de su edad pueda navegar
+de forma cómoda y sencilla. La estética y la usabilidad son los pilares del diseño y se va a trabajar para que la aplicación sea moderna y 
+fácil de usar.
+
+La interfaz gráfica se va ha diseñar utilizando una paleta de colores coherente. El color principal es un verde menta (\#4CAF97), un tono 
+de verde fresco y tranquilo. Este color se va a utilizar en los elementos más importantes y de acción, como en los botones de 
+``Registrar'' e ``Iniciar Sesión''. Además, se va a emplear en encabezados y otros elementos clave para dar coherencia al diseño y asegurar
+que la aplicación sea visualmente atractiva sin ser abrumadora.
+
+Por otro lado, el color naranja cálido (\#F4A261), se va a usar como color secundario. Este color se va a utilizar en elementos 
+que se requieren resaltar sin competir con el verde. Se aplica en, icono y botones secundarios y así proporcionar un contraste 
+con el color principal y asegurando que la aplicación mantenga un equilibrio visual adecuado.
+
+
+
+
 
 \begin{itemize}
     \item \textbf{Simplicidad:} El diseño debe ser sencillo , evitando elementos innecesarios que puedan confundir al usuario.
