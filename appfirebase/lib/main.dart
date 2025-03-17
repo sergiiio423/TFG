@@ -11,6 +11,7 @@ import 'principal.dart';
 import 'crear_hogar.dart';
 import  'welcome.dart';
 import 'conectar.dart';
+import 'calendar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +45,10 @@ class MyApp extends StatelessWidget {
         '/registro': (context) => const RegistrationPage(),
         // ----------------------------------------------------------
         '/conectar': (context) => const ConnectHomeScreen(),
+        // ----------------------------------------------------------
+        '/bienvenida': (context) =>  WelcomeScreen(),
+        // ----------------------------------------------------------
+        '/calendario': (context) =>  CalendarioScreen(),
 
       },
     );

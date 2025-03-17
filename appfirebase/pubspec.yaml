@@ -43,6 +43,7 @@ dependencies:
   share_plus:
   permission_handler:
   intl: 
+  table_calendar:
 
 
 dev_dependencies:

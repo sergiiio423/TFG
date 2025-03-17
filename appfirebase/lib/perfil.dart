@@ -1,0 +1,685 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'principal.dart';
+import 'lista_compra.dart';
+
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  String? email;
+  String? homeCode;
+  String? homeName;
+  List<String> members = [];
+  String? firstName;
+  String? lastName;
+  User? _currentUser;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentUser = _auth.currentUser;
+    _loadProfileData();
+  }
+
+  Future<void> _loadProfileData() async {
+    if (_currentUser != null) {
+      DocumentSnapshot userDoc =
+          await _firestore.collection('usuarios').doc(_currentUser!.uid).get();
+
+      if (userDoc.exists) {
+        setState(() {
+          firstName = userDoc['nombre'];
+          lastName = userDoc['apellidos'];
+          email = _currentUser!.email;
+        });
+
+        QuerySnapshot hogarSnapshot = await _firestore
+            .collection('hogar')
+            .where('miembros', arrayContains: _currentUser!.uid)
+            .limit(1)
+            .get();
+
+        if (hogarSnapshot.docs.isNotEmpty) {
+          var hogarData = hogarSnapshot.docs.first;
+          setState(() {
+            homeCode = hogarData['codigo'];
+            homeName = hogarData['nombre'];
+          });
+
+          List<dynamic> memberIds = hogarData['miembros'];
+          memberIds.remove(_currentUser!.uid);
+
+          if (memberIds.isNotEmpty) {
+            QuerySnapshot membersSnapshot = await _firestore
+                .collection('usuarios')
+                .where(FieldPath.documentId, whereIn: memberIds)
+                .get();
+
+            setState(() {
+              members = membersSnapshot.docs
+                  .map((doc) => "${doc['nombre']} ${doc['apellidos']}")
+                  .toList();
+            });
+          }
+        }
+      }
+    }
+  }
+
+  Future<void> _updateProfile(String newFirstName, String newLastName) async {
+    try {
+      await _firestore.collection('usuarios').doc(_currentUser!.uid).update({
+        'nombre': newFirstName,
+        'apellidos': newLastName,
+      });
+      
+      setState(() {
+        firstName = newFirstName;
+        lastName = newLastName;
+      });
+      
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error al actualizar: ${e.toString()}'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  void _showEditProfileModal() {
+    TextEditingController firstNameController = 
+      TextEditingController(text: firstName);
+    TextEditingController lastNameController = 
+      TextEditingController(text: lastName);
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+            left: 20,
+            right: 20,
+            top: 20,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Editar Perfil',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: firstNameController,
+                decoration: const InputDecoration(
+                  labelText: 'Nombre',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                validator: (value) =>
+                    value!.isEmpty ? 'Ingrese un nombre' : null,
+              ),
+              const SizedBox(height: 15),
+              TextFormField(
+                controller: lastNameController,
+                decoration: const InputDecoration(
+                  labelText: 'Apellidos',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.people),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                validator: (value) =>
+                    value!.isEmpty ? 'Ingrese apellidos' : null,
+              ),
+              const SizedBox(height: 15),
+              TextFormField(
+                initialValue: email,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.email),
+                  filled: true,
+                  enabled: false,
+                ),
+                readOnly: true,
+              ),
+              const SizedBox(height: 25),
+              ElevatedButton(
+                onPressed: () async {
+                  if (firstNameController.text.isEmpty ||
+                      lastNameController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Nombre y apellidos son requeridos'),
+                        backgroundColor: Colors.orange,
+                      ),
+                    );
+                    return;
+                  }
+
+                  await _updateProfile(
+                    firstNameController.text.trim(),
+                    lastNameController.text.trim(),
+                  );
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text(
+                  'Guardar Cambios',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: _showEditProfileModal,
+              child: _buildProfileHeader(),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: _buildProfileContent(),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: _buildBottomNavBar(),
+    );
+  }
+
+  Widget _buildProfileHeader() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            const Color(0xFFD39C82).withOpacity(0.9),
+            const Color(0xFFB87D64),
+          ],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.orange.withOpacity(0.2),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          )
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 72,
+            height: 72,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+            ),
+            child: Icon(Icons.person, size: 36, color: Colors.white),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$firstName $lastName',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  email ?? "Cargando...",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white.withOpacity(0.9),
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+          const Icon(Icons.edit, color: Colors.white, size: 22),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileContent() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 24),
+        _buildSectionCard(
+          title: 'Configuración del hogar',
+          children: [
+            GestureDetector(
+              onTap: _showEditHomeModal,
+              child: _buildInfoItem(Icons.home_filled, 'Nombre del hogar', homeName),
+            ),
+            const SizedBox(height: 12),
+            _buildInfoItem(Icons.info , 'Código del hogar', homeCode),
+            const SizedBox(height: 12),
+            _buildMembersList(),
+          ],
+        ),
+        const SizedBox(height: 16),
+        _buildSectionCard(
+          title: 'Preferencias',
+          children: [
+            _buildSwitchItem('Notificaciones', true),
+          ],
+        ),
+        const SizedBox(height: 16),
+        _buildSectionCard(
+          title: 'Acciones',
+          children: [
+            _buildActionItem(Icons.exit_to_app, 'Abandonar hogar'),
+            const Divider(height: 24),
+            _buildActionItem(Icons.logout, 'Cerrar sesión', isLogout: true),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Text(
+          "Versión 1.0.0",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.grey.shade600,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _updateHomeName(String newHomeName) async {
+  try {
+    QuerySnapshot hogarSnapshot = await _firestore
+        .collection('hogar')
+        .where('miembros', arrayContains: _currentUser!.uid)
+        .limit(1)
+        .get();
+
+    if (hogarSnapshot.docs.isNotEmpty) {
+      var hogarDoc = hogarSnapshot.docs.first;
+      await hogarDoc.reference.update({'nombre': newHomeName});
+      setState(() => homeName = newHomeName);
+    }
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Error al actualizar el hogar: ${e.toString()}'),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
+}
+
+void _showEditHomeModal() {
+  TextEditingController homeNameController = 
+    TextEditingController(text: homeName);
+
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+    ),
+    builder: (context) {
+      return Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+          left: 20,
+          right: 20,
+          top: 20,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Editar Hogar',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: homeNameController,
+              decoration: const InputDecoration(
+                labelText: 'Nombre del hogar',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.home),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              validator: (value) =>
+                  value!.isEmpty ? 'Ingrese un nombre' : null,
+            ),
+            const SizedBox(height: 25),
+            ElevatedButton(
+              onPressed: () async {
+                if (homeNameController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('El nombre del hogar es requerido'),
+                      backgroundColor: Colors.orange,
+                    ),
+                  );
+                  return;
+                }
+
+                await _updateHomeName(homeNameController.text.trim());
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: const Text(
+                'Guardar Cambios',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+  Widget _buildSectionCard({
+    required String title,
+    required List<Widget> children,
+  }) {
+    return Card(
+      color: Colors.white,
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.orange.shade50, width: 1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.teal,
+              ),
+            ),
+            const SizedBox(height: 12),
+            ...children,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoItem(IconData icon, String title, String? value) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.teal, size: 24),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                value ?? "No disponible",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMembersList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Icon(Icons.people_alt, color: Colors.teal, size: 24),
+            const SizedBox(width: 12),
+            Text(
+              'Miembros del hogar',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey.shade700,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        if (members.isEmpty)
+          Padding(
+            padding: const EdgeInsets.only(left: 36),
+            child: Text(
+              'No hay otros miembros registrados',
+              style: TextStyle(color: Colors.grey.shade500),
+            ),
+          )
+        else
+          ...members.map((member) => Padding(
+                padding: const EdgeInsets.only(left: 36, bottom: 8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.person_outline, size: 18, color: Colors.teal),
+                    const SizedBox(width: 8),
+                    Text(member, style: const TextStyle(fontSize: 14)),
+                  ],
+                ),
+              )),
+      ],
+    );
+  }
+
+  Widget _buildSwitchItem(String title, bool value) {
+    return Row(
+      children: [
+        Icon(Icons.notifications_active, color: Colors.teal, size: 24),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
+        Switch(
+          value: value,
+          onChanged: (bool newValue) {},
+          activeColor: Colors.teal,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildActionItem(IconData icon, String title, {bool isLogout = false}) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: Icon(icon, color: isLogout ? Colors.red : Colors.teal),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: isLogout ? Colors.red : Colors.black,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      trailing: Icon(Icons.chevron_right, color: Colors.grey.shade400),
+      onTap: () async {
+        if (isLogout) {
+          await _auth.signOut();
+          Navigator.pushReplacementNamed(context, '/bienvenida');
+        }
+      },
+    );
+  }
+
+  Widget _buildBottomNavBar() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        color: Colors.teal,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 2,
+          )
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        child: BottomNavigationBar(
+          elevation: 0,
+          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.5),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.teal,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: [
+            _buildNavItem(Icons.home, 'Inicio'),
+            _buildNavItem(Icons.list_alt, 'Listas'),
+            _buildNavItem(Icons.wallet, 'Wallet'),
+            _buildNavItem(Icons.shopping_basket, 'Compra'),
+          ],
+          onTap: (index) => _onBottomNavTapped(context, index),
+        ),
+      ),
+    );
+  }
+
+  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.transparent,
+        ),
+        child: Icon(icon, size: 28),
+      ),
+      label: label,
+      activeIcon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Icon(icon, size: 28),
+      ),
+    );
+  }
+
+  void _onBottomNavTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const HomePage(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const ListaScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+    }
+  }
+}

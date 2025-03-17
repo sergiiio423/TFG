@@ -68,30 +68,32 @@
 \contentsline {subsection}{\numberline {5.1.5}Metodología Ágil}{66}{subsection.5.1.5}%
 \contentsline {subsection}{\numberline {5.1.6}DevOps}{66}{subsection.5.1.6}%
 \contentsline {section}{\numberline {5.2}Comparativa de metodologías}{66}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Justificación de la metodología}{67}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Análisis de la aplicación}{68}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Especificación de requisitos}{68}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Requisitos funcionales}{68}{subsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.1}Grupo 1: Gestión de sesión}{69}{subsubsection.6.1.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.2}Grupo 2: Gestión del hogar}{72}{subsubsection.6.1.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.1.3}Grupo 3: Gestión de tareas}{75}{subsubsection.6.1.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.1.4}Grupo 4: Gestión de gastos}{78}{subsubsection.6.1.1.4}%
-\contentsline {subsubsection}{\numberline {6.1.1.5}Grupo 5: Gestión de compra}{82}{subsubsection.6.1.1.5}%
-\contentsline {subsection}{\numberline {6.1.2}Requisitos no funcionales}{85}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Modelos de casos de uso}{87}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Diagrama de casos de uso}{87}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Descripción de los casos de uso}{92}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Modelo conceptual}{95}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Diseño}{96}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Diseño de la arquitectura}{96}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Componentes Principales}{96}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Flujo de interacción}{96}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Diseño de la interfaz gráfica}{97}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{97}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{101}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{103}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{105}{subsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{107}{subsection.7.2.5}%
+\contentsline {chapter}{\numberline {6}Propuesta}{68}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Explicación de la propuesta}{68}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Análisis de la aplicación}{68}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Especificación de requisitos}{68}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.1}Requisitos funcionales}{69}{subsubsection.6.2.1.1}%
+\contentsline {paragraph}{Grupo 1: Gestión de sesión}{69}{subsubsection.6.2.1.1}%
+\contentsline {paragraph}{Grupo 2: Gestión del hogar}{73}{table.6.6}%
+\contentsline {paragraph}{Grupo 3: Gestión de tareas}{76}{table.6.11}%
+\contentsline {paragraph}{Grupo 4: Gestión de gastos}{79}{table.6.18}%
+\contentsline {paragraph}{Grupo 5: Gestión de compra}{82}{table.6.24}%
+\contentsline {subsubsection}{\numberline {6.2.1.2}Requisitos no funcionales}{85}{subsubsection.6.2.1.2}%
+\contentsline {subsection}{\numberline {6.2.2}Modelos de casos de uso}{86}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}Diagrama de casos de uso}{86}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}Descripción de los casos de uso}{92}{subsubsection.6.2.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Modelo conceptual}{94}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}Diseño}{95}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Diseño de la arquitectura}{95}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}Componentes Principales}{96}{subsubsection.6.3.1.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.2}Flujo de interacción}{96}{subsubsection.6.3.1.2}%
+\contentsline {subsection}{\numberline {6.3.2}Diseño de la interfaz gráfica}{96}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}Interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{97}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}Interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{100}{subsubsection.6.3.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.3}Interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{102}{subsubsection.6.3.2.3}%
+\contentsline {subsubsection}{\numberline {6.3.2.4}Interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{104}{subsubsection.6.3.2.4}%
+\contentsline {subsubsection}{\numberline {6.3.2.5}Interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{106}{subsubsection.6.3.2.5}%
+\contentsline {chapter}{\numberline {7}Desarrollo e implementación de la aplicación}{107}{chapter.7}%
 \contentsline {chapter}{\numberline {A}Descripción de casos de uso}{108}{appendix.Alph1}%
 \contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{108}{section.Alph1.1}%
 \contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{115}{section.Alph1.2}%

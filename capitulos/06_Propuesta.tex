@@ -1,9 +1,23 @@
-\chapter{Análisis de la aplicación}
-\label{cap:analisis_aplicacion} 
+\chapter{Propuesta}
+\label{cap:propuesta}
+
+\section{Explicación de la propuesta}
+\label{sec:explicacion_propuesta}
+
+La propuesta consiste en el desarrollo de una aplicación móvil destinada a la gestión del hogar compartido, facilitando la organización 
+de tareas domésticas y la administración de gastos comunes entre los miembros del hogar. La aplicación permitirá a los usuarios
+crear un hogar compartido y realizar funciones como la creación y asignación de tareas, la gestión de listas de compra y el seguimientos de  
+gastos compartidos, ofreciendo una solución centralizada y colaborativa para la convivencia en grupo. 
+
+Después de hacer un análisis de todas las metodologías de desarrollo en el {\hyperref[cap:analisis_metodologías]{Capitulo 5}} he decidido usar la metodología iterativa, ya que permite una mayor flexibilidad y adaptabilidad a lo largo del desarrollo. 
+Dado que los requisitos del proyecto pueden cambiar y evolucionar con el tiempo, esta metodología me permitirá revisar, probar y ajustar el software en cada iteración hasta alcanzar el resultado deseado. 
+Además, la posibilidad de realizar ajustes continuos y obtener retroalimentación en cada ciclo de desarrollo facilitará la mejora constante del proyecto.
 
 
+\section{Análisis de la aplicación}
 
-\section{Especificación de requisitos}
+
+\subsection{Especificación de requisitos}
 \label{sec:requisitos}
 La especificación de requisitos es una etapa clave en el desarrollo de un proyecto, ya que en ella se definen las funcionalidades y condiciones que debe cumplir el sistema. Su objetivo principal
 es establecer de manera clara y estructurada las expectativas del producto final.
@@ -15,7 +29,7 @@ para el correcto funcionamiento del software.
 Cada requisito contará con un código único que permitirá clasificarlo y referenciarlo fácilmente a lo largo del documento. Este método de organización facilita su seguimiento y garantiza que 
 todas las especificaciones sean consideradas durante el desarrollo del proyecto. 
 
-\subsection{Requisitos funcionales}
+\subsubsection{Requisitos funcionales}
 \label{subsec:requisitos_funcionales}
 Los requisitos funcionales son especificaciones detalladas que describen las funciones y comportamientos que un sistema debe cumplir para 
 satisfacer las necesidades del usuario. Estos requisitos definen las acciones que el sistema debe ser capaz de realizar, incluyendo las interacciones
@@ -33,36 +47,39 @@ Vamos a clasificar estos requisitos en diferentes grupos según su funcionalidad
 
 A continuación, se detallan los requisitos funcionales de cada grupo.
 
-\subsubsection{Grupo 1: Gestión de sesión}
+
+
+\paragraph{Grupo 1: Gestión de sesión}
 \label{subsubsec:grupo1}
 
+\parbox{\textwidth}{ 
+   
+}
 
-\begin{table}[htb!]
-	\centering 
-	\begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
-		\hline
-		\rowcolor[HTML]{C0C0C0}  
+\begin{table}[H]
+    \centering 
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
         \textbf{RF\_01} & \textbf{Registro} \\
-		\hline
-		\textbf{Prioridad} & Alta \\
-		\hline
-		\textbf{Descripción} & El sistema debe permitir al usuario registrarse.  \\
-		\hline
-		\vspace{0.5mm}
-		\textbf{Criterios de aceptación} & 
-		\begin{minipage}[t]{0.9\linewidth}
-			\begin{enumerate}
-                \item La pantalla de registro debe pedir el nombre, apellidos, correo electrónico y contraseña
-                \item Verificar de que toda la información esté completa.
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario registrarse.  \\
+        \hline
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item La pantalla de registro debe pedir el nombre, apellidos, correo electrónico y contraseña.
+                \item Verificar que toda la información esté completa.
                 \item Comprobar que la información proporcionada sea correcta.
                 \item Si hay algún error, mostrar un mensaje de advertencia.
-                \item Tras el registro, redirigir al usuario a la pantala de inicio de sesión.
-			\end{enumerate}
-			\vspace{2mm}
-		\end{minipage} \\
-		\hline
-	\end{tabular}
-	\caption{RF\_01}
+                \item Tras el registro, redirigir al usuario a la pantalla de inicio de sesión.
+            \end{enumerate}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_01}
     \label{req:RF01}
 \end{table}
 
@@ -200,10 +217,14 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 
 \clearpage
 
-\subsubsection{Grupo 2: Gestión del hogar}
+\paragraph{Grupo 2: Gestión del hogar}
 \label{subsubsec:grupo2}
 
-\begin{table}[htb!]
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{table}[H]
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
         \hline
         \rowcolor[HTML]{C0C0C0}  
@@ -340,8 +361,12 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 
 \clearpage
 
-\subsubsection{Grupo 3: Gestión de tareas}
+\paragraph{Grupo 3: Gestión de tareas}
 \label{subsubsec:grupo3}
+
+\parbox{\textwidth}{ 
+   
+}
 
 \begin{table}[htb!]
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
@@ -528,8 +553,12 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 
 \clearpage
 
-\subsubsection{Grupo 4: Gestión de gastos}
+\paragraph{Grupo 4: Gestión de gastos}
 \label{subsubsec:grupo4}
+
+\parbox{\textwidth}{ 
+   
+}
 
 \begin{table}[htb!]
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
@@ -693,7 +722,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 
 
 
-\subsubsection{Grupo 5: Gestión de compra}
+\paragraph{Grupo 5: Gestión de compra}
 \label{subsubsec:grupo5}
 
 \begin{table}[htb!]
@@ -853,7 +882,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 
 \clearpage
 
-\subsection{Requisitos no funcionales}
+\subsubsection{Requisitos no funcionales}
 
 Los \textbf{requisitos no funcionales} son aquellos que describen las características y restricciones del sistema, pero no están 
 directamentes relacionadas con sus funcionalidades. En lugar de especificar qué hace el sistema, establecen cómo debe hacerlo.
@@ -941,9 +970,9 @@ Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabili
 \end{table}
 
 
-\clearpage
 
-\section{Modelos de casos de uso}
+
+\subsection{Modelos de casos de uso}
 \label{sec:modelos-casos-uso}
 
 Los modelos de de casos de uso nos permiten representar las iteracciones entre los usuarios y el sistema de forma clara. En este apartado, se presentan los casos de uso de la aplicación 
@@ -957,7 +986,7 @@ Cada caso de uso describe una funcionalidad específica, estableciendo los actor
 \end{itemize}
 
 
-\subsection{Diagrama de casos de uso}
+\subsubsection{Diagrama de casos de uso}
 
 A continuación, se muestran los diagramas de casos de uso, que se han dividido en paquetes (cada paquete corresponde a un grupo de funcionales que ya establecimos en el apartado de requisitos funcionales)
 y así poder representar de forma más clara las funcionalidades de la aplicación.
@@ -1010,7 +1039,7 @@ y así poder representar de forma más clara las funcionalidades de la aplicaci�
 
 \clearpage
 
-\subsection{Descripción de los casos de uso}
+\subsubsection{Descripción de los casos de uso}
 
 En esta sección se describen los casos de uso de la aplicación, indicando los actores involucrados, 
 la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
@@ -1192,9 +1221,8 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 
 La explicación de los casos de uso restantes se encuentra en el Apéndice \ref{anexo:casos_de_uso}.
 
-\clearpage
 
-\section{Modelo conceptual}
+\subsection{Modelo conceptual}
 A continuación, se muestra el modelo conceptual de la aplicación, que representa las entidades, las relaciones entre ellas y que información almacenan.
 
 \begin{figure}[htb!]
@@ -1215,3 +1243,212 @@ En este diagramas se pueden observar las entidades principales de la aplicación
     \item \textbf{Lista de la compra}: Representa las listas de la compra que se pueden crear. Almacena información como el nombre de la lista y la lista de productos asociados a ella.
     \item \textbf{Producto}: Representa los productos que se pueden añadir a una lista de la compra. Almacena información como el nombre del producto y la cantidad.
 \end{itemize}
+
+\section{Diseño}
+
+\subsection{Diseño de la arquitectura}
+\label{sec:arquitectura}
+La arquitectura de este sistema se basa en un modelo \textbf{cliente-base de datos}, donde el usuario interactúa únicamente con 
+la interfaz gráfica de la aplicación (cliente), la cual se comunica con la base de datos \textit{Firebase Firestore} para obtener y almacenar la información. 
+La interfaz gráfica se interactua directamente con la base de datos, sin necesidad de un servidor intermedio. Esta estructura simplifica el
+desarrolo, al delegar en Firebase la gestión de la base de datos y la sincronización en tiempo real.
+
+\subsubsection{Componentes Principales}
+
+\begin{itemize}
+    \item \textbf{Interfaz gráfica:} La interfaz gráfica es la parte de la aplicación con la que el usuario interactúa. 
+    En este caso, la interfaz gráfica se ha diseñado para ser intuitiva y fácil de usar, con el objetivo de que el usuario pueda 
+    realizar las tareas de forma rápida y sencilla.
+    \item \textbf{Base de datos:} La base de datos es el componente encargado de almacenar y gestionar la información de la aplicación. 
+    En este caso, se ha utilizado Firebase Firestore como base de datos, ya que permite almacenar y sincronizar los datos en tiempo real, 
+    lo que facilita la gestión de la información.
+\end{itemize}
+
+\subsubsection{Flujo de interacción}
+
+\begin{enumerate}
+    \item El usuario accede a la aplicación y realiza una acción.
+    \item La interfaz gráfica procesa la acción y envía la solicitud a la base de datos a través de las funciones de Firebase.
+    \item La base de datos recibe la solicitud, la procesa y devuelve la información necesaria
+    \item La interfaz gráfica recibe la información y la muestra al usuario.
+\end{enumerate}
+
+
+\subsection{Diseño de la interfaz gráfica}
+\label{sec:interfaz}
+El objetivo principal es conseguir la usabilidad de la aplicación, ya que aunque la aplicaciónn esté dirigida a un público joven, 
+es importante que sea fácil de usar para cualquier usuario. Para ello, se va a diseñar una interfaz gráfica con un diseño sencillo 
+teniendo en cuenta los siguientes críterios para que una aplicación sea usable:
+
+\begin{itemize}
+    \item \textbf{Simplicidad:} El diseño debe ser sencillo , evitando elementos innecesarios que puedan confundir al usuario.
+    \item \textbf{Tamaño de los elementos:} Los elementos de la interfaz gráfica deben tener un tamaño adecuado para que el usuario pueda interactuar con ellos de forma cómoda.
+    \item \textbf{Contraste:} Los colores y la tipografía deben tener un contraste adecuado para que el usuario pueda leer la información de forma clara.
+    \item \textbf{Facilidad de navegación:} La interfaz gráfica debe ser fácil de navegar, permitiendo al usuario moverse de una pantalla a otra de forma rápida y sencilla.
+\end{itemize}
+    
+\subsubsection{Interfaces de gráficas del Grupo 1: \textit{Gestión de sesión}}
+
+En esta sección podemos ver todos los diseños de las interfaces gráficas del Grupo 1: \textit{Gestión de sesión}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/welcome_screen.png}
+        \caption{Diseño de la pantalla de bienvenida.}
+        \label{welcome}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/login_screen.png}
+        \caption{Diseño de la pantalla de inicio de sesión.}
+        \label{login}
+    \end{minipage}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/registro_screen.png}
+        \caption{Diseño de la pantalla de registro.}
+        \label{registro_app}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/profile_screen.png}
+        \caption{Diseño de la pantalla de cierre de sesión y datos de usuario.}
+        \label{cierre}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{../capitulos/img/edit_profile_screen.png}
+    \caption{Diseño de la pantalla de editar perfil.}
+    \label{edit_profile}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Interfaces de gráficas del Grupo 2: \textit{Gestión del hogar}}
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/conect_screen.png}
+        \caption{Diseño de la pantalla para unirte a un hogar o crear uno nuevo.}
+        \label{conect}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/join_screen.png}
+        \caption{Diseño de la pantalla para unirte a un hogar.}
+        \label{join}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{../capitulos/img/new_home_screen.png}
+    \caption{Diseño de la pantalla para crear un nuevo hogar.}
+    \label{create_home}
+\end{figure}
+
+
+
+\clearpage
+
+\subsubsection{Interfaces de gráficas del Grupo 3: \textit{Gestión de tareas}}
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/task_screen.png}
+        \caption{Diseño de la pantalla principal de tareas.}
+        \label{taks}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/add_tasks_screen.png}
+        \caption{Diseño de la pantalla para añadir una tarea.}
+        \label{add_task}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/edit_task.png}
+        \caption{Diseño de la pantalla para editar una tarea.}
+        \label{edit_task}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/calendar_screen.png}
+        \caption{Diseño de la pantalla del calendario.}
+        \label{calendar}
+    \end{minipage}
+\end{figure}
+
+
+\clearpage
+
+\subsubsection{Interfaces de gráficas del Grupo 4: \textit{Gestión de gastos}}
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/bills_screen.png}
+        \caption{Diseño de la pantalla principal de gastos.}
+        \label{expenses}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/debs_screen.png}
+        \caption{Diseño de la pantalla de deudas.}
+        \label{debts}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{../capitulos/img/pay_screen.png}
+    \caption{Diseño de la pantalla para saldar deudas.}
+    \label{settle_debts}
+\end{figure}
+
+\clearpage
+              
+\subsubsection{Interfaces de gráficas del Grupo 5: \textit{Gestión de la compra}}
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/list_screen.png}
+        \caption{Diseño de la pantalla de la lista de la compra.}
+        \label{shopping_list}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/product_screen.png}
+        \caption{Diseño de la pantalla de productos.}
+        \label{products}
+    \end{minipage}
+\end{figure}
+
+\newpage
