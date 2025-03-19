@@ -120,7 +120,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Fondo con imagen
           Positioned.fill(
             child: Image.asset(
               'assets/fondo.png',

@@ -107,6 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
+      backgroundColor: Colors.white, 
       builder: (context) {
         return Padding(
           padding: EdgeInsets.only(
@@ -120,30 +121,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Editar Perfil',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      color: Colors.teal,
                     ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
               TextFormField(
                 controller: firstNameController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Nombre',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.person),
+                  labelStyle: const TextStyle(color: Colors.teal),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.teal),
+                  ),
+                  prefixIcon: const Icon(Icons.person, color: Colors.teal),
                   filled: true,
                   fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.teal, width: 2),
+                  ),
                 ),
                 validator: (value) =>
                     value!.isEmpty ? 'Ingrese un nombre' : null,
@@ -151,12 +157,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 15),
               TextFormField(
                 controller: lastNameController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Apellidos',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.people),
+                  labelStyle: const TextStyle(color: Colors.teal),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.teal),
+                  ),
+                  prefixIcon: const Icon(Icons.people, color: Colors.teal),
                   filled: true,
                   fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.teal, width: 2),
+                  ),
                 ),
                 validator: (value) =>
                     value!.isEmpty ? 'Ingrese apellidos' : null,
@@ -164,10 +178,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 15),
               TextFormField(
                 initialValue: email,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
+                  labelStyle: const TextStyle(color: Colors.teal),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  prefixIcon: const Icon(Icons.email, color: Colors.teal),
                   filled: true,
                   enabled: false,
                 ),
@@ -381,6 +398,7 @@ void _showEditHomeModal() {
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
+    backgroundColor: Colors.white,
     builder: (context) {
       return Padding(
         padding: EdgeInsets.only(
@@ -394,30 +412,35 @@ void _showEditHomeModal() {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   'Editar Hogar',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    color: Colors.teal,
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () => Navigator.pop(context),
                 ),
               ],
             ),
             const SizedBox(height: 20),
             TextFormField(
               controller: homeNameController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Nombre del hogar',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.home),
+                labelStyle: const TextStyle(color: Colors.teal),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(color: Colors.teal),
+                ),
+                prefixIcon: const Icon(Icons.home, color: Colors.teal),
                 filled: true,
                 fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(color: Colors.teal, width: 2),
+                ),
               ),
               validator: (value) =>
                   value!.isEmpty ? 'Ingrese un nombre' : null,

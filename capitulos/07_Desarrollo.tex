@@ -1,2 +1,230 @@
 \chapter{Desarrollo e implementación de la aplicación}
 \label{chap:desarrollo}
+
+En este capítulo se va detallar el proceso de desarrollo de la aplicación, explicando las tecnologías y usadas y como 
+se han estructurado las iteracciones para construir la aplicación de manera progresiva.
+
+\section{Elección de tecnologías}
+\label{sec:justificacion}
+Tras analizar las diferentes tecnologías disponibles para el desarrollo de la aplicación en el \autoref{cap:analisis_tecnologias}, he decidido utilizar \textbf{Flutter} como tecnología front-end 
+porque presenta varias ventajas significativas frente al resto de alternativas. Una de las razones más destacadas es su capacidad de desarrollo multiplataforma, 
+que permite crear una única base de código que se ejecuta tanto en Android, como en iOS, web y aplicaciones de escritorio, lo que ahorra tiempo 
+y esfuerzo en comparación con desarrollar código nativo para cada plataforma por separado. Además, Flutter ofrece un rendimiento cercano al 
+de las aplicaciones nativas, gracias a su motor gráfico Dart, que se compila en código nativo. Otra ventaja es el sistema de Hot Reload, que permite 
+a los desarrolladores visualizar los cambios en tiempo real, sin tener que recompilar por completo. Tiene también una enorme capacidad de 
+personalización, simplificando la tarea. Además, al estar respaldado por Google,, recibe soporte continuo.
+
+
+
+En cuanto a la tecnología back-end, he decidido utilizar \textbf{Firebase} porque ofrece una serie de ventajas que lo hacen destacar frente a las
+otras alternativas. Para empezar, Firebase proporciona un backend completo, lo que significa que no es necesario gestionar servidores ni 
+preocuparse por la configuración y el mantenimiento. La integración de la autenticación de usuarios es también uno de sus puntos fuertes, ya que 
+Firebase Auth facilita la implementación de los mismos. Otra razón para elegir Firebase es su base de datos en tiempo real, que permite 
+sicronización instantánea de datos. Además, tiene una gran integración con servicios de Google, optimizando la monitorización del rendimiento.
+
+
+\section{Iteracciones de desarrollo}
+\label{sec:iteracciones}
+El desarrollo de la aplicación se ha estructurado en varias iteracciones, siguiendo una metología iterativa. 
+En cada iteración se va a desarrollar una serie de funcionalidades, asociados a los requisitos especificados anteriormente. 
+A continuación se detallan las iteracciones que se han llevado a cabo para el desarrollo de la aplicación:
+
+\subsection{Iteración 1}
+
+En esta primera iteracción se van a desarrollar los siguientes requisitos:
+\begin{itemize}
+    \item {\hyperref[req:RF01]{RF\_01}}: Registro.
+    \item {\hyperref[req:RF02]{RF\_02}}: Inicio de sesión.
+    \item {\hyperref[req:RF03]{RF\_03}}: Inicio de sesión con Google.
+    \item {\hyperref[req:RF04]{RF\_04}}: Cerrar sesión.
+    \item {\hyperref[req:RF05]{RF\_05}}: Ver datos de usuario.
+    \item {\hyperref[req:RF06]{RF\_06}}: Editar datos de usuario.
+    \item {\hyperref[req:RF07]{RF\_07}}: Crear hogar.
+    \item {\hyperref[req:RF08]{RF\_08}}: Unirse a un hogar.
+    \item {\hyperref[req:RF09]{RF\_09}}: Abandonar hogar.
+    \item {\hyperref[req:RF10]{RF\_10}}: Ver datos del hogar.
+    \item {\hyperref[req:RF11]{RF\_11}}: Editar hogar.
+\end{itemize}
+
+Antes de la implementación de los requisitos mencionados anteriomente es necesario realizar una configuración inicial del proyecto.
+Para ello, lo primero ees configurar el entorno de desarrollo, asegurando que todas las herramieentas necesarias estén correctamente 
+instaladas. Se utiliza Visual Studio Code como editor principal y se instala Flutter junto con las dependecias necesarias. 
+También es necesario configurar un emulador para poder realizar las pruebas de la aplicación posteriormente. 
+
+Una vez configurado el entorno de desarrollo, se procede a la creación de un nuevo proyecto de Flutter.
+Se configura un sistema de control de versiones con Git y se sube el código a un repositorio en GitHub para llevar un seguimiento. 
+
+Otra de las tareas a realizar antes de empezar con la implementación de los requisitos es la configuración de Firebase.
+Para ello se crea un nuevo proyecto en Firebase y se configuran los servicios necesarios (como Firebase Auth para la autenticación de usuarios y Firebase Firestore para almacenar datos).
+
+Por último antes de empezar con la implementación de los requisitos, se realizan pruebas de conexion entre la app y Firebase para confirmar
+que la base de datos está correctamente configurada y que la aplicación puede comunicarse con ella sin problemas. 
+
+Al usar Flutter como tecnología de desarrollo, se está cumpliendo el {\hyperref[req:RNF_04]{RNF\_04}} - Compatibilidad, 
+ya que Flutter permite desarrollar aplicaciones multiplataforma que se ejecutan en Android e iOS. Además, Flutter también 
+es compatible con aplicaciones web y de escritorio, lo que amplía aún más el alcance de la aplicación y asegura que pueda 
+ser utilizada en una variedad de dispositivos y sistemas operativos. Esto no solo mejora la experiencia del usuario al 
+permitirle acceder a la aplicación desde diferentes plataformas, sino que también optimiza los recursos de desarrollo al 
+reducir la necesidad de mantener bases de código separadas para cada plataforma.
+
+Firebase contribuye al cumplimiento del {\hyperref[req:RNF_01]{RNF\_01}} - Seguridad, gracias a las características de seguridad que ofrece. 
+En primer lugar, Firebase Auth proporciona un sistema de autenticación de usuarios, permitiendo implementar métodos de inicio de sesión seguros, 
+como autenticación mediante correo electrónico y contraseña, o autenticación con proveedores externos como Google. 
+
+Además, Firebase Firestore incluye reglas de seguridad que permiten definir políticas de acceso a los datos almacenados en la base de datos.
+Tambien utiliza conexiones seguras para la comunicación entre la aplicación y los servicios de backend, asegurando que los datos transmitidos 
+estén cifrados y protegidos.
+
+Para los datos relacionados con los usuarios y los hogares, se crearán colecciones en Firebase Firestore para almacenar la información de forma estructurada.
+
+\subsubsection{Implementacion}
+La implementación se ha realizado a partir de los bocetos iniciales presentados anteriormente, aunque ha hecho falta crear alguno más para
+detallar mejor la interfaz de usuario a la hora editar los datos por tanto se han creado los siguientes bocetos:
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/edit_profile_screen.png}
+        \caption{Diseño de la pantalla de editar usuario.}
+        \label{edit_profile}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/edit_home.png}
+        \caption{Diseño de la pantalla de editar hogar.}
+        \label{edit_home}
+    \end{minipage}
+\end{figure}
+
+
+
+
+
+Una vez creados los bocetos, se ha procedido a la implementación de los requisitos. Para ello, se han creado las siguientes pantallas:
+
+\newpage
+
+\paragraph{Pantalla de bienvenida}
+
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/bienvenida_implementado.png}
+    \caption{Interfaz gráfica pantalla bienvenida.}
+    \label{welcome_screen}
+\end{figure}
+
+\paragraph{Pantalla de registro}
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/registro_implementado.png}
+    \caption{Interfaz gráfica pantalla de registro.}
+    \label{register_screen}
+\end{figure}
+
+\newpage
+
+\paragraph{Pantalla de inicio de sesión}
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/inicio_sesion_implementado.png}
+    \caption{Interfaz gráfica pantalla de inicio de sesión.}
+    \label{login_screen}
+\end{figure}
+
+\paragraph{Pantalla de ver datos de hogar y usuario}
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.25\textwidth]{../capitulos/img/datos_implementado.png}
+    \caption{Interfaz gráfica pantalla de ver datos de hogar y usuario.}
+    \label{view_home_user_data_screen}
+\end{figure}
+
+\newpage
+
+\paragraph{Pantalla de editar datos de usuario}
+
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/editar_perfil_implementado.png}
+    \caption{Interfaz gráfica pantalla de editar datos de usuario.}
+    \label{edit_user_data_screen}
+\end{figure}
+
+\paragraph{Pantalla de editar hogar}
+
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/editar_hogar_implementado.png}
+    \caption{Interfaz gráfica pantalla de editar hogar.}
+    \label{edit_home_screen}
+\end{figure}
+
+\newpage
+
+\paragraph{Pantalla para participar en un hogar}
+
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/opciones_impletementado.png}
+    \caption{Interfaz gráfica pantalla para participar en un hogar.}
+    \label{join_home_screen}
+\end{figure}
+
+\paragraph{Pantalla para crear un hogar}
+
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_hogar_implementado.png}
+    \caption{Interfaz gráfica pantalla para crear un hogar.}
+    \label{create_home_screen}
+\end{figure}
+
+\newpage
+
+\paragraph{Pantalla de unirse a un hogar}
+
+\parbox{\textwidth}{ 
+   
+}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/unirse_hoga_implementado.png}
+    \caption{Interfaz gráfica pantalla de unirse a un hogar.}
+    \label{join_home_screen}
+\end{figure}
