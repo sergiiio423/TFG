@@ -99,7 +99,7 @@ class ConnectHomeScreen extends StatelessWidget {
                   ),
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut();
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/bienvenida');
                   },
                 ),
               ],
@@ -242,7 +242,7 @@ class ConnectHomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               
-              // Botón de confirmación
+           
               ElevatedButton(
                 onPressed: () async {
                   final code = controllers.map((c) => c.text).join();

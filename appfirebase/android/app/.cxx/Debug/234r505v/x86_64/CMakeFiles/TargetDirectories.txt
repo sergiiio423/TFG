@@ -1,0 +1,2 @@
+C:/Users/USUARIO/Documents/Sergio/TFG/appfirebase/android/app/.cxx/Debug/234r505v/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/USUARIO/Documents/Sergio/TFG/appfirebase/android/app/.cxx/Debug/234r505v/x86_64/CMakeFiles/rebuild_cache.dir

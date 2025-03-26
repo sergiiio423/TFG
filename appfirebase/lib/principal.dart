@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'perfil.dart';
 import 'lista_compra.dart';
 import 'tareas_screen.dart';
+import 'gastos.dart' ; 
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -86,6 +87,13 @@ class _HomePageState extends State<HomePage> {
         );
         break;
       case 1:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const TareasScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
         break;
       case 3:
         Navigator.pushReplacement(
@@ -213,7 +221,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Resto de métodos sin cambios...
+
   Widget _buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -236,7 +244,7 @@ class _HomePageState extends State<HomePage> {
 
     return GestureDetector(
       onTap: () {
-        // Navegar a la pantalla del calendario
+      
         Navigator.pushNamed(context, '/calendario');
       },
       child: Container(

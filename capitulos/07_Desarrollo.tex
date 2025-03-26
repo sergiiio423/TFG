@@ -194,11 +194,13 @@ Una vez creados los bocetos, se ha procedido a la implementación de los requisi
    
 }
 
+Esta pantalla se muestra cuando un usuario se registra o inicia sesión y no pertenece a ningún hogar. En ella se da la opción de 
+crear un hogar o unirse a uno nuevo a través de un código, que nos deberá proporcionar alguno de los miembros del hogar.  
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.40\textwidth]{../capitulos/img/opciones_impletementado.png}
     \caption{Interfaz gráfica pantalla para participar en un hogar.}
-    \label{join_home_screen}
 \end{figure}
 
 \paragraph{Pantalla para crear un hogar}
@@ -222,9 +224,98 @@ Una vez creados los bocetos, se ha procedido a la implementación de los requisi
    
 }
 
+En esta pantalla se debe añadir el código del hogar al que se quiere unir, previamente proporcionado por alguno de los miembros del hogar.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.40\textwidth]{../capitulos/img/unirse_hoga_implementado.png}
     \caption{Interfaz gráfica pantalla de unirse a un hogar.}
     \label{join_home_screen}
 \end{figure}
+
+\subsubsection{Pruebas de funcionalidad}
+
+Para probar la implementación que se ha realizado se ha llevado a cabo un serie de pruebas de funcionalidad.
+
+\begin{itemize}
+    \item Comprobación que el usuario puede registrarse correctamente.
+    \item Comprobación de accso a la aplicación con un usuario registrado.
+    \item Comprobación de que en caso de que el usuario no este registrado, se muestre mensaje de error.
+    \item Comprobación de que el usuario puede iniciar sesión con Google.
+    \item Comprobación de que el usuario puede cerrar sesión.
+    \item Comprobación de que el usuario puede ver sus datos.
+    \item Comprobación de que el usuario puede editar sus datos.
+    \item Comprobación de que el usuario puede crear un hogar.
+    \item Comprobación de que el usuario puede unirse a un hogar.
+    \item Comprobación de que el usuario puede ver los datos de su hogar.
+    \item Comprobación de que el usuario puede editar los datos de su hogar.
+    \item Comprobación de que el usuario puede abandonar un hogar.
+\end{itemize}
+
+\subsubsection{Revisión de la iteracción}
+
+
+\subsubsection{Plan para la siguiente iteracción}
+
+Para la siguiente iteracción se propone: 
+
+
+\subsection{Iteración 2}
+
+En esta segunda iteracción se van a desarrollar los siguientes requisitos:
+
+\begin{itemize}
+    \item {\hyperref[req:RF25]{RF\_25}}: Crear lista de la compra.
+    \item {\hyperref[req:RF26]{RF\_26}}: Añadir producto a la lista de la compra.
+    \item {\hyperref[req:RF27]{RF\_27}}: Eliminar producto de la lista de la compra.
+    \item {\hyperref[req:RF28]{RF\_28}}: Eliminar lista de la compra.
+    \item {\hyperref[req:RF29]{RF\_29}}: Ver productos de la lista de la compra.
+    \item {\hyperref[req:RF30]{RF\_30}}: Editar productos de la lista de la compra.
+\end{itemize}
+
+
+\subsubsection{Implementacion}
+
+Durante la implementación de los requisitos se ha seguido el diseño propuesto en los bocetos iniciales, que 
+mostramos en el cápitulo anterior. Al realizar la implementación, ha sido necesario añadir un requisito adicional: 
+
+\begin{table}[htb!]
+    \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
+        \hline
+        \rowcolor[HTML]{C0C0C0}  
+        \textbf{RF\_31} & \textbf{Marcar producto como comprado} \\
+        \hline
+        \textbf{Prioridad} & Alta \\
+        \hline
+        \textbf{Descripción} & El sistema debe permitir al usuario marcar un producto como marcado.  \\
+        \hline
+        \vspace{0.5mm}
+        \textbf{Criterios de aceptación} & 
+        \begin{minipage}[t]{0.9\linewidth}
+            \begin{enumerate}
+                \item Debe existir una opción en la interfaz para marcar como comprado un producto.
+                \item Se actualizará la información en la base de datos.
+            \end{enumerate}
+            \vspace{2mm}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \caption{RF\_31}
+    \label{req:RF31}
+\end{table}
+\clearpage
+
+Este requisito era necesario para poder tener una lista de la compra totalmente funcional, ya que 
+permite al usuario marcar los productos que ha comprado y que ya no necesita.
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,7 @@ class _ListaScreenState extends State<ListaScreen> {
 
   void _onBottomNavTapped(BuildContext context, int index) {
     setState(() => _currentIndex = index);
-    
+
     switch (index) {
       case 0:
         Navigator.pushReplacement(
@@ -38,7 +38,6 @@ class _ListaScreenState extends State<ListaScreen> {
         );
         break;
       case 3:
-        // Ejemplo para otra pantalla
         Navigator.pushReplacement(
           context,
           PageRouteBuilder(
@@ -55,6 +54,7 @@ class _ListaScreenState extends State<ListaScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
         title: const Text(
           "Mis listas",
           style: TextStyle(
@@ -63,10 +63,7 @@ class _ListaScreenState extends State<ListaScreen> {
             color: Colors.teal,
             letterSpacing: 0.5,
           ),
-          
         ),
-        elevation: 1,
-        //shadowColor: Colors.teal.withOpacity(0.1),
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
@@ -78,7 +75,7 @@ class _ListaScreenState extends State<ListaScreen> {
               icon: const Icon(Icons.person_rounded, color: Colors.teal),
               onPressed: () {},
             ),
-          )
+          ),
         ],
       ),
       body: Column(
@@ -135,7 +132,7 @@ class _ListaScreenState extends State<ListaScreen> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator(color: Colors.teal));
         }
-        
+
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           return Center(
             child: Text(
@@ -170,7 +167,8 @@ class _ListaScreenState extends State<ListaScreen> {
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(16),
-      elevation: 1,
+      elevation: 2,
+      shadowColor: Colors.black.withOpacity(0.1),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: () => Navigator.push(
@@ -183,24 +181,24 @@ class _ListaScreenState extends State<ListaScreen> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(20), // Aumentado el padding
           child: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(14), // Aumentado el padding
                 decoration: BoxDecoration(
-                  color: isGrupal 
-                     ? Colors.orange.withOpacity(0.1)
-                     : Colors.teal.withOpacity(0.1),
+                  color: isGrupal
+                      ? Colors.orange.withOpacity(0.1)
+                      : Colors.teal.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                   isGrupal ? Icons.group_rounded : Icons.person_rounded,
                   color: isGrupal ? Colors.orange : Colors.teal,
-                  size: 24,
+                  size: 28, // Aumentado el tamaño del ícono
                 ),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 20), // Aumentado el espacio
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,11 +207,11 @@ class _ListaScreenState extends State<ListaScreen> {
                       lista['nombre'],
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
+                        fontSize: 18, // Aumentado el tamaño del texto
                         color: Colors.black87,
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 6), // Aumentado el espacio
                     Text(
                       isGrupal ? "Lista compartida" : "Lista personal",
                       style: TextStyle(
@@ -227,7 +225,19 @@ class _ListaScreenState extends State<ListaScreen> {
               Icon(
                 Icons.chevron_right_rounded,
                 color: Colors.grey.shade400,
-                size: 28,
+                size: 32, // Aumentado el tamaño del ícono
+              ),
+              IconButton(
+                icon: Icon(Icons.delete, color: Colors.red.shade400),
+                onPressed: () async {
+                  await FirebaseFirestore.instance.collection('lista').doc(lista.id).delete();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text("Lista eliminada"),
+                      backgroundColor: Colors.green.shade400,
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -243,9 +253,10 @@ class _ListaScreenState extends State<ListaScreen> {
         color: Colors.teal,
         boxShadow: [
           BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              spreadRadius: 2)
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
         ],
       ),
       child: ClipRRect(
@@ -306,6 +317,7 @@ void _mostrarModalCrearLista(BuildContext context) {
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
+    backgroundColor: Colors.white,
     builder: (context) {
       return StatefulBuilder(
         builder: (context, setState) {
@@ -328,6 +340,7 @@ void _mostrarModalCrearLista(BuildContext context) {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
+                        color: Colors.teal,
                       ),
                     ),
                     IconButton(
@@ -347,7 +360,6 @@ void _mostrarModalCrearLista(BuildContext context) {
                     fillColor: Colors.grey.shade100,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16,
@@ -390,7 +402,7 @@ void _mostrarModalCrearLista(BuildContext context) {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => _guardarListaEnFirestore(
+                    onPressed: () => _crearLista(
                       nombreController.text,
                       esGrupal,
                       context,
@@ -421,64 +433,31 @@ void _mostrarModalCrearLista(BuildContext context) {
   );
 }
 
-void _guardarListaEnFirestore(String nombre, bool esGrupal, BuildContext context) async {
-  if (nombre.isEmpty) return;
+void _crearLista(String nombre, bool esGrupal, BuildContext context) async {
+  final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+  final usuario = [userId];
 
-  final user = FirebaseAuth.instance.currentUser;
-  if (user == null) return;
-
-  try {
-    final usuarios = esGrupal 
-        ? await _obtenerMiembrosHogar(user.uid, context)
-        : [user.uid];
-
-    await FirebaseFirestore.instance.collection('lista').add({
-      'nombre': nombre,
-      'usuario': usuarios,
-      'esGrupal': esGrupal,
-      'fechaCreacion': FieldValue.serverTimestamp(),
-    });
-
-    Navigator.pop(context);
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text("Error al crear la lista"),
-        backgroundColor: Colors.red.shade400,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      ),
-    );
-  }
-}
-
-Future<List<String>> _obtenerMiembrosHogar(String userId, BuildContext context) async {
-  try {
-    final snapshot = await FirebaseFirestore.instance
-        .collection('hogar')
-        .where('miembros', arrayContains: userId)
-        .limit(1)
-        .get();
-
-    if (snapshot.docs.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text("No perteneces a ningún hogar"),
-          backgroundColor: Colors.orange.shade400,
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
-      return [userId];
+  if (esGrupal) {
+    final hogarRef = FirebaseFirestore.instance.collection('hogar').doc(userId);
+    final hogarSnapshot = await hogarRef.get();
+    if (hogarSnapshot.exists) {
+      final hogar = hogarSnapshot.data();
+      final miembros = List<String>.from(hogar?['miembros'] ?? []);
+      usuario.addAll(miembros);
     }
-
-    return List<String>.from(snapshot.docs.first['miembros']);
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text("Error al obtener miembros"),
-        backgroundColor: Colors.red.shade400,
-      ),
-    );
-    return [userId];
   }
+
+  await FirebaseFirestore.instance.collection('lista').add({
+    'nombre': nombre,
+    'esGrupal': esGrupal,
+    'usuario': usuario,
+  });
+
+  Navigator.pop(context);
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text("Lista creada exitosamente"),
+      backgroundColor: Colors.green,
+    ),
+  );
 }

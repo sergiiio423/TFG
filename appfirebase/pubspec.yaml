@@ -44,6 +44,7 @@ dependencies:
   permission_handler:
   intl: 
   table_calendar:
+  firebase_messaging:
 
 
 dev_dependencies:

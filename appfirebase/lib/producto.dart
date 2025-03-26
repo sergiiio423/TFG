@@ -7,7 +7,11 @@ class ProductosListaScreen extends StatelessWidget {
   final String listaId;
   final String nombreLista;
 
-  const ProductosListaScreen({super.key, required this.listaId, required this.nombreLista});
+  const ProductosListaScreen({
+    super.key,
+    required this.listaId,
+    required this.nombreLista,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,53 +28,25 @@ class ProductosListaScreen extends StatelessWidget {
         backgroundColor: Colors.teal,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.check_circle_outline),
+            onPressed: () => _marcarTodosComoComprados(),
+          ),
+        ],
       ),
       body: _buildProductosLista(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _mostrarModalAgregarProducto(context),
         backgroundColor: Colors.teal,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
+        ),
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      bottomNavigationBar: _buildBottomNavBar(context),
     );
-  }
-
-  Widget _buildBottomNavBar(BuildContext context) {
-    return BottomNavigationBar(
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white70,
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.teal,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Lista'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet), label: 'Wallet'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart), label: 'Compra'),
-      ],
-      onTap: (index) => _onBottomNavTapped(context, index),
-    );
-  }
-
-  void _onBottomNavTapped(BuildContext context, int index) {
-    switch (index) {
-      case 0:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomePage()));
-        break;
-      case 1:
-        break;
-      case 2:
-        // Navegar a WalletScreen
-        break;
-      case 3:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ListaScreen()));
-        break;
-    }
   }
 
   Widget _buildProductosLista() {
@@ -81,12 +57,18 @@ class ProductosListaScreen extends StatelessWidget {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(color: Colors.teal));
         }
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return const Center(
-              child: Text("No hay productos en esta lista.",
-                  style: TextStyle(color: Colors.teal)));
+          return Center(
+            child: Text(
+              "No hay productos en esta lista.",
+              style: TextStyle(
+                color: Colors.teal.withOpacity(0.8),
+                fontSize: 16,
+              ),
+            ),
+          );
         }
 
         return ListView.separated(
@@ -99,102 +81,7 @@ class ProductosListaScreen extends StatelessWidget {
               producto: producto,
               onUpdate: (cambio) => _cambiarCantidad(producto, cambio),
               onDelete: () => _eliminarProducto(producto.id),
-            );
-          },
-        );
-      },
-    );
-  }
-
-  void _mostrarModalAgregarProducto(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    TextEditingController nombreController = TextEditingController();
-    TextEditingController cantidadController = TextEditingController(text: "1");
-    String selectedIcon = "📦";
-    final List<String> emoticons = ["📦", "🍎", "🥑", "🍞", "🥛"];
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return Padding(
-              padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: MediaQuery.of(context).viewInsets.bottom + 20,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Text("Agregar Producto",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.teal)),
-                  const SizedBox(height: 15),
-                  TextField(
-                    controller: nombreController,
-                    decoration: const InputDecoration(
-                      labelText: "Nombre del producto",
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.shopping_basket, color: Colors.teal),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    height: 50,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: emoticons.length,
-                      separatorBuilder: (_, __) => const SizedBox(width: 10),
-                      itemBuilder: (context, index) => GestureDetector(
-                        onTap: () => setState(() => selectedIcon = emoticons[index]),
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: selectedIcon == emoticons[index]
-                                ? Colors.teal.withOpacity(0.2)
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            emoticons[index],
-                            style: const TextStyle(fontSize: 24),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  TextField(
-                    controller: cantidadController,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      labelText: "Cantidad",
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.numbers, color: Colors.teal),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      _agregarProducto(
-                          nombreController.text, selectedIcon, cantidadController.text);
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    child: const Text("AGREGAR",
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                ],
-              ),
+              onToggleComprado: () => _marcarComoComprado(producto),
             );
           },
         );
@@ -208,11 +95,12 @@ class ProductosListaScreen extends StatelessWidget {
       'icono': icono,
       'cantidad': int.parse(cantidad),
       'listaId': listaId,
+      'comprado': false,  // Nuevo campo para indicar si el producto ha sido comprado
     });
   }
 
   void _cambiarCantidad(DocumentSnapshot producto, int cambio) {
-    int nuevaCantidad = producto['cantidad'] + cambio;
+    int nuevaCantidad = (producto['cantidad'] as int) + cambio;
     if (nuevaCantidad <= 0) {
       _eliminarProducto(producto.id);
     } else {
@@ -226,50 +114,169 @@ class ProductosListaScreen extends StatelessWidget {
   void _eliminarProducto(String productoId) {
     FirebaseFirestore.instance.collection('producto').doc(productoId).delete();
   }
+
+  void _marcarComoComprado(DocumentSnapshot producto) {
+    bool comprado = producto['comprado'] ?? false;
+    FirebaseFirestore.instance
+        .collection('producto')
+        .doc(producto.id)
+        .update({'comprado': !comprado});
+  }
+
+  void _marcarTodosComoComprados() {
+    FirebaseFirestore.instance
+        .collection('producto')
+        .where('listaId', isEqualTo: listaId)
+        .get()
+        .then((querySnapshot) {
+      for (var doc in querySnapshot.docs) {
+        FirebaseFirestore.instance
+            .collection('producto')
+            .doc(doc.id)
+            .update({'comprado': true});
+      }
+    });
+  }
+
+  void _mostrarModalAgregarProducto(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    TextEditingController nombreController = TextEditingController();
+    TextEditingController cantidadController = TextEditingController(text: "1");
+    String selectedIcon = "📦";
+    final List<String> emoticons = ["📦", "🍎", "🥑", "🍞", "🥛", "🍗", "🥕"];
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      backgroundColor: Colors.white,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Padding(
+              padding: EdgeInsets.only(
+                left: 24,
+                right: 24,
+                top: 24,
+                bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Agregar Producto",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: nombreController,
+                    decoration: InputDecoration(
+                      labelText: "Nombre del producto",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Wrap(
+                    spacing: 10,
+                    children: emoticons.map((emoji) {
+                      return GestureDetector(
+                        onTap: () => setState(() => selectedIcon = emoji),
+                        child: Text(
+                          emoji,
+                          style: TextStyle(
+                            fontSize: 28,
+                            backgroundColor: selectedIcon == emoji ? Colors.teal.withOpacity(0.2) : Colors.transparent,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: cantidadController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: "Cantidad",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton(
+                    onPressed: () {
+                      _agregarProducto(
+                        nombreController.text,
+                        selectedIcon,
+                        cantidadController.text,
+                      );
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Agregar"),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 }
 
 class _ProductoItem extends StatelessWidget {
   final DocumentSnapshot producto;
   final Function(int) onUpdate;
   final VoidCallback onDelete;
+  final VoidCallback onToggleComprado;
 
   const _ProductoItem({
     required this.producto,
     required this.onUpdate,
     required this.onDelete,
-  });
+    required this.onToggleComprado,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.teal.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Text(producto['icono'], style: const TextStyle(fontSize: 24)),
+      leading: Text(
+        producto['icono'],
+        style: const TextStyle(fontSize: 24),
       ),
-      title: Text(
-        producto['nombre'],
-        style: const TextStyle(fontWeight: FontWeight.w500),
-      ),
+      title: Text(producto['nombre']),
+      subtitle: Text("Cantidad: ${producto['cantidad']}"),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: const Icon(Icons.remove, color: Colors.teal),
+            icon: const Icon(Icons.remove, color: Colors.red),
             onPressed: () => onUpdate(-1),
           ),
-          Text(producto['cantidad'].toString(),
-              style: const TextStyle(color: Colors.teal)),
           IconButton(
-            icon: const Icon(Icons.add, color: Colors.teal),
+            icon: const Icon(Icons.add, color: Colors.green),
             onPressed: () => onUpdate(1),
           ),
           IconButton(
-            icon: const Icon(Icons.delete, color: Colors.red),
+            icon: const Icon(Icons.delete, color: Colors.grey),
             onPressed: onDelete,
+          ),
+          IconButton(
+            icon: Icon(
+              producto['comprado'] ? Icons.check_circle : Icons.radio_button_unchecked,
+              color: producto['comprado'] ? Colors.green : Colors.grey,
+            ),
+            onPressed: onToggleComprado,
           ),
         ],
       ),

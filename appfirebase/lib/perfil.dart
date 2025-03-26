@@ -1,8 +1,10 @@
+import 'package:appfirebase/main.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'principal.dart';
 import 'lista_compra.dart';
+import 'gastos.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -604,25 +606,111 @@ void _showEditHomeModal() {
   }
 
   Widget _buildActionItem(IconData icon, String title, {bool isLogout = false}) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: Icon(icon, color: isLogout ? Colors.red : Colors.teal),
-      title: Text(
-        title,
-        style: TextStyle(
-          color: isLogout ? Colors.red : Colors.black,
-          fontWeight: FontWeight.w500,
-        ),
+  return ListTile(
+    contentPadding: EdgeInsets.zero,
+    leading: Icon(icon, color: isLogout ? Colors.red : Colors.teal),
+    title: Text(
+      title,
+      style: TextStyle(
+        color: isLogout ? Colors.red : Colors.black,
+        fontWeight: FontWeight.w500,
       ),
-      trailing: Icon(Icons.chevron_right, color: Colors.grey.shade400),
-      onTap: () async {
-        if (isLogout) {
-          await _auth.signOut();
-          Navigator.pushReplacementNamed(context, '/bienvenida');
-        }
-      },
-    );
+    ),
+    trailing: Icon(Icons.chevron_right, color: Colors.grey.shade400),
+    onTap: () async {
+      if (isLogout) {
+        await _auth.signOut();
+        Navigator.pushReplacementNamed(context, '/bienvenida');
+      } else if (title == "Abandonar hogar") {
+        _confirmarAbandonoHogar();
+      }
+    },
+  );
+}
+
+void _confirmarAbandonoHogar() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.white, 
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16), 
+        ),
+        elevation: 4, 
+        title: Text(
+          "Abandonar Hogar",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal, 
+          ),
+        ),
+        content: Text(
+          "¿Estás seguro de que deseas abandonar este hogar? Esta acción no se puede deshacer.",
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey.shade700, 
+          ),
+        ),
+        actions: [
+          TextButton(
+            child: Text(
+              "Cancelar",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey.shade700, 
+              ),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          TextButton(
+            child: Text(
+              "Sí, Abandonar",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.orange, 
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onPressed: () async {
+              Navigator.pop(context); 
+              await _abandonarHogar(); 
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> _abandonarHogar() async {
+  try {
+    User? user = _auth.currentUser;
+    if (user == null) return;
+
+    String userId = user.uid;
+
+    DocumentSnapshot hogarSnapshot = await _firestore
+        .collection('hogar')
+        .where('miembros', arrayContains: userId)
+        .limit(1)
+        .get()
+        .then((querySnapshot) => querySnapshot.docs.first);
+
+    if (hogarSnapshot.exists) {
+      String hogarId = hogarSnapshot.id;
+
+      await _firestore.collection('hogar').doc(hogarId).update({
+        'miembros': FieldValue.arrayRemove([userId])
+      });
+
+      Navigator.pushReplacementNamed(context, '/conectar');
+    }
+  } catch (e) {
+    print("Error al abandonar el hogar: $e");
   }
+}
 
   Widget _buildBottomNavBar() {
     return Container(
@@ -703,6 +791,17 @@ void _showEditHomeModal() {
           ),
         );
         break;
+
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) =>  GastosScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
     }
+
   }
 }

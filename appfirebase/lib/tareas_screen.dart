@@ -153,15 +153,15 @@ Widget _buildListaTareas() {
       
       final tasks = snapshot.data!.docs.where((doc) {
         final data = doc.data() as Map<String, dynamic>;
-        final esCreador = data['usuarioId'] == userId;
+        //final esCreador = data['usuarioId'] == userId;
         final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
         
-        if (!esCreador && !estaAsignado) return false;
+        if (/*!esCreador && */ !estaAsignado) return false;
 
-        if (data['tipo'] == 'puntual') {
+        /*if (data['tipo'] == 'puntual') {
           final fecha = (data['fecha'] as Timestamp).toDate();
           return _obtenerSemanaMes(fecha) == semanaActual;
-        }
+        }*/
         return data['tipo'] == 'semanal' && (data['semanas'] as List).contains(semanaActual);
       }).toList();
 
@@ -192,8 +192,7 @@ Widget _buildListaTareas() {
             final fecha = (data['fecha'] as Timestamp).toDate();
             return DateUtils.isSameDay(fecha, hoy);
           }
-          return data['tipo'] == 'semanal' && 
-                 (data['semanas'] as List).contains(_obtenerSemanaMes(hoy));
+          return false ; 
         }).toList();
 
         return Column(
@@ -290,6 +289,7 @@ Widget _buildListaTareas() {
   void _mostrarModalCrearTarea() {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.white,
       isScrollControlled: true,
       builder: (context) => CrearTareaForm(
         userId: userId,
@@ -409,7 +409,7 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+        bottom: MediaQuery.of(context).viewInsets.bottom,
         left: 20,
         right: 20,
         top: 20,
@@ -418,36 +418,83 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
         key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Nueva Tarea',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Nueva Tarea',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             TextFormField(
               controller: _tituloController,
-              decoration: const InputDecoration(labelText: 'Título'),
+              decoration: InputDecoration(
+                labelText: 'Título',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                prefixIcon: const Icon(Icons.title, color: Colors.teal),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
+              ),
               validator: (value) => value!.isEmpty ? 'Ingrese un título' : null,
             ),
+            const SizedBox(height: 15),
             TextFormField(
               controller: _descripcionController,
-              decoration: const InputDecoration(labelText: 'Descripción'),
+              decoration: InputDecoration(
+                labelText: 'Descripción',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal),
+                ),
+                prefixIcon: const Icon(Icons.description, color: Colors.teal),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
+              ),
             ),
             const SizedBox(height: 20),
             Row(
               children: [
-                const Text('Tipo de tarea:'),
+                const Text(
+                  'Tipo de tarea:',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
                 const SizedBox(width: 10),
                 ChoiceChip(
                   label: const Text('Puntual'),
+
                   selected: !_esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
+                  
                   onSelected: (val) => setState(() => _esSemanal = !val),
                 ),
                 const SizedBox(width: 10),
                 ChoiceChip(
                   label: const Text('Semanal'),
                   selected: _esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
                   onSelected: (val) => setState(() => _esSemanal = val),
                 ),
               ],
@@ -457,22 +504,40 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
               InkWell(
                 onTap: _seleccionarFecha,
                 child: InputDecorator(
-                  decoration: const InputDecoration(labelText: 'Fecha'),
+                  decoration: InputDecoration(
+                    labelText: 'Fecha',
+                    labelStyle: const TextStyle(color: Colors.teal),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon: const Icon(Icons.calendar_today, color: Colors.teal),
+                    filled: true,
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Colors.teal, width: 2),
+                    ),
+                  ),
                   child: Row(
                     children: [
                       Text(
                         _fechaSeleccionada != null
                             ? DateFormat('dd/MM/yyyy').format(_fechaSeleccionada!)
                             : 'Seleccionar fecha',
+                        style: const TextStyle(color: Colors.black),
                       ),
                       const Spacer(),
-                      const Icon(Icons.calendar_today),
+                      const Icon(Icons.arrow_drop_down, color: Colors.teal),
                     ],
                   ),
                 ),
               ),
             if (_esSemanal) ...[
-              const Text('Semanas del mes:'),
+              const Text(
+                'Semanas del mes:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
               Wrap(
                 spacing: 8,
                 children: List.generate(5, (index) {
@@ -480,12 +545,17 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                   return FilterChip(
                     label: Text('Semana $semana'),
                     selected: _semanasSeleccionadas.contains(semana),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
                     onSelected: (val) => _toggleSemana(semana),
                   );
                 }),
               ),
               const SizedBox(height: 10),
-              const Text('Asignar a miembros:'),
+              const Text(
+                'Asignar a miembros:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
               Wrap(
                 spacing: 8,
                 children: _miembrosHogar.map((miembro) {
@@ -498,6 +568,8 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                       },
                     ),
                     selected: _miembrosSeleccionados.contains(miembro),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
                     onSelected: (val) => setState(() {
                       if (val) {
                         _miembrosSeleccionados.add(miembro);
@@ -514,10 +586,17 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
               onPressed: _crearTarea,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                minimumSize: const Size(double.infinity, 50),
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
-              child: const Text('Crear Tarea', style: TextStyle(color: Colors.white)),
+              child: const Text(
+                'Crear Tarea',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

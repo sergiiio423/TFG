@@ -106,10 +106,15 @@
 \contentsline {paragraph}{Pantalla para participar en un hogar}{111}{figure.7.8}%
 \contentsline {paragraph}{Pantalla para crear un hogar}{111}{figure.7.9}%
 \contentsline {paragraph}{Pantalla de unirse a un hogar}{112}{figure.7.10}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{113}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{113}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{120}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{125}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{132}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{138}{section.Alph1.5}%
-\contentsline {section}{Referencias}{144}{table.Alph1.30}%
+\contentsline {subsubsection}{\numberline {7.2.1.2}Pruebas de funcionalidad}{112}{subsubsection.7.2.1.2}%
+\contentsline {subsubsection}{\numberline {7.2.1.3}Revisión de la iteracción}{113}{subsubsection.7.2.1.3}%
+\contentsline {subsubsection}{\numberline {7.2.1.4}Plan para la siguiente iteracción}{113}{subsubsection.7.2.1.4}%
+\contentsline {subsection}{\numberline {7.2.2}Iteración 2}{113}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}Implementacion}{113}{subsubsection.7.2.2.1}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{116}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{116}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{123}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{128}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{135}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{141}{section.Alph1.5}%
+\contentsline {section}{Referencias}{147}{table.Alph1.30}%
