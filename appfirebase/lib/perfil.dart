@@ -368,93 +368,93 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> _updateHomeName(String newHomeName) async {
-  try {
-    QuerySnapshot hogarSnapshot = await _firestore
-        .collection('hogar')
-        .where('miembros', arrayContains: _currentUser!.uid)
-        .limit(1)
-        .get();
+    try {
+      QuerySnapshot hogarSnapshot = await _firestore
+          .collection('hogar')
+          .where('miembros', arrayContains: _currentUser!.uid)
+          .limit(1)
+          .get();
 
-    if (hogarSnapshot.docs.isNotEmpty) {
-      var hogarDoc = hogarSnapshot.docs.first;
-      await hogarDoc.reference.update({'nombre': newHomeName});
-      setState(() => homeName = newHomeName);
-    }
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error al actualizar el hogar: ${e.toString()}'),
-        backgroundColor: Colors.red,
-      ),
-    );
-  }
-}
-
-void _showEditHomeModal() {
-  TextEditingController homeNameController = 
-    TextEditingController(text: homeName);
-
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-    ),
-    backgroundColor: Colors.white,
-    builder: (context) {
-      return Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-          left: 20,
-          right: 20,
-          top: 20,
+      if (hogarSnapshot.docs.isNotEmpty) {
+        var hogarDoc = hogarSnapshot.docs.first;
+        await hogarDoc.reference.update({'nombre': newHomeName});
+        setState(() => homeName = newHomeName);
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error al actualizar el hogar: ${e.toString()}'),
+          backgroundColor: Colors.red,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Editar Hogar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
+      );
+    }
+  }
+
+  void _showEditHomeModal() {
+    TextEditingController homeNameController = 
+      TextEditingController(text: homeName);
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      backgroundColor: Colors.white,
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+            left: 20,
+            right: 20,
+            top: 20,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Editar Hogar',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: homeNameController,
+                decoration: InputDecoration(
+                  labelText: 'Nombre del hogar',
+                  labelStyle: const TextStyle(color: Colors.teal),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.teal),
+                  ),
+                  prefixIcon: const Icon(Icons.home, color: Colors.teal),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.teal, width: 2),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: homeNameController,
-              decoration: InputDecoration(
-                labelText: 'Nombre del hogar',
-                labelStyle: const TextStyle(color: Colors.teal),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.teal),
-                ),
-                prefixIcon: const Icon(Icons.home, color: Colors.teal),
-                filled: true,
-                fillColor: Colors.white,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.teal, width: 2),
-                ),
+                validator: (value) =>
+                    value!.isEmpty ? 'Ingrese un nombre' : null,
               ),
-              validator: (value) =>
-                  value!.isEmpty ? 'Ingrese un nombre' : null,
-            ),
-            const SizedBox(height: 25),
-            ElevatedButton(
-              onPressed: () async {
-                if (homeNameController.text.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('El nombre del hogar es requerido'),
-                      backgroundColor: Colors.orange,
+              const SizedBox(height: 25),
+              ElevatedButton(
+                onPressed: () async {
+                  if (homeNameController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('El nombre del hogar es requerido'),
+                        backgroundColor: Colors.orange,
                     ),
                   );
                   return;
@@ -483,129 +483,129 @@ void _showEditHomeModal() {
   );
 }
 
-  Widget _buildSectionCard({
-    required String title,
-    required List<Widget> children,
-  }) {
-    return Card(
-      color: Colors.white,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.orange.shade50, width: 1),
-        borderRadius: BorderRadius.circular(12),
+Widget _buildSectionCard({
+  required String title,
+  required List<Widget> children,
+}) {
+  return Card(
+    color: Colors.white,
+    elevation: 2,
+    shape: RoundedRectangleBorder(
+      side: BorderSide(color: Colors.orange.shade50, width: 1),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.teal,
+            ),
+          ),
+          const SizedBox(height: 12),
+          ...children,
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
+    ),
+  );
+}
+
+Widget _buildInfoItem(IconData icon, String title, String? value) {
+  return Row(
+    children: [
+      Icon(icon, color: Colors.teal, size: 24),
+      const SizedBox(width: 12),
+      Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
+              style: const TextStyle(fontSize: 14, color: Colors.grey),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              value ?? "No disponible",
               style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.teal,
+                fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 12),
-            ...children,
           ],
         ),
       ),
-    );
-  }
+    ],
+  );
+}
 
-  Widget _buildInfoItem(IconData icon, String title, String? value) {
-    return Row(
-      children: [
-        Icon(icon, color: Colors.teal, size: 24),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                value ?? "No disponible",
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
+Widget _buildMembersList() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        children: [
+          Icon(Icons.people_alt, color: Colors.teal, size: 24),
+          const SizedBox(width: 12),
+          Text(
+            'Miembros del hogar',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey.shade700,
+            ),
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMembersList() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Icon(Icons.people_alt, color: Colors.teal, size: 24),
-            const SizedBox(width: 12),
-            Text(
-              'Miembros del hogar',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey.shade700,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        if (members.isEmpty)
-          Padding(
-            padding: const EdgeInsets.only(left: 36),
-            child: Text(
-              'No hay otros miembros registrados',
-              style: TextStyle(color: Colors.grey.shade500),
-            ),
-          )
-        else
-          ...members.map((member) => Padding(
-                padding: const EdgeInsets.only(left: 36, bottom: 8),
-                child: Row(
-                  children: [
-                    const Icon(Icons.person_outline, size: 18, color: Colors.teal),
-                    const SizedBox(width: 8),
-                    Text(member, style: const TextStyle(fontSize: 14)),
-                  ],
-                ),
-              )),
-      ],
-    );
-  }
-
-  Widget _buildSwitchItem(String title, bool value) {
-    return Row(
-      children: [
-        Icon(Icons.notifications_active, color: Colors.teal, size: 24),
-        const SizedBox(width: 12),
-        Expanded(
+        ],
+      ),
+      const SizedBox(height: 12),
+      if (members.isEmpty)
+        Padding(
+          padding: const EdgeInsets.only(left: 36),
           child: Text(
-            title,
-            style: const TextStyle(fontSize: 16),
+            'No hay otros miembros registrados',
+            style: TextStyle(color: Colors.grey.shade500),
           ),
-        ),
-        Switch(
-          value: value,
-          onChanged: (bool newValue) {},
-          activeColor: Colors.teal,
-        ),
-      ],
-    );
-  }
+        )
+      else
+        ...members.map((member) => Padding(
+              padding: const EdgeInsets.only(left: 36, bottom: 8),
+              child: Row(
+                children: [
+                  const Icon(Icons.person_outline, size: 18, color: Colors.teal),
+                  const SizedBox(width: 8),
+                  Text(member, style: const TextStyle(fontSize: 14)),
+                ],
+              ),
+            )),
+    ],
+  );
+}
 
-  Widget _buildActionItem(IconData icon, String title, {bool isLogout = false}) {
+Widget _buildSwitchItem(String title, bool value) {
+  return Row(
+    children: [
+      Icon(Icons.notifications_active, color: Colors.teal, size: 24),
+      const SizedBox(width: 12),
+      Expanded(
+        child: Text(
+          title,
+          style: const TextStyle(fontSize: 16),
+        ),
+      ),
+      Switch(
+        value: value,
+        onChanged: (bool newValue) {},
+        activeColor: Colors.teal,
+      ),
+    ],
+  );
+}
+
+Widget _buildActionItem(IconData icon, String title, {bool isLogout = false}) {
   return ListTile(
     contentPadding: EdgeInsets.zero,
     leading: Icon(icon, color: isLogout ? Colors.red : Colors.teal),
@@ -617,10 +617,9 @@ void _showEditHomeModal() {
       ),
     ),
     trailing: Icon(Icons.chevron_right, color: Colors.grey.shade400),
-    onTap: () async {
+    onTap: () {
       if (isLogout) {
-        await _auth.signOut();
-        Navigator.pushReplacementNamed(context, '/bienvenida');
+        _confirmarCerrarSesion();
       } else if (title == "Abandonar hogar") {
         _confirmarAbandonoHogar();
       }
@@ -633,24 +632,24 @@ void _confirmarAbandonoHogar() {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        backgroundColor: Colors.white, 
+        backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16), 
+          borderRadius: BorderRadius.circular(16),
         ),
-        elevation: 4, 
+        elevation: 4,
         title: Text(
           "Abandonar Hogar",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.teal, 
+            color: Colors.teal,
           ),
         ),
         content: Text(
           "¿Estás seguro de que deseas abandonar este hogar? Esta acción no se puede deshacer.",
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey.shade700, 
+            color: Colors.grey.shade700,
           ),
         ),
         actions: [
@@ -659,7 +658,7 @@ void _confirmarAbandonoHogar() {
               "Cancelar",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey.shade700, 
+                color: Colors.grey.shade700,
               ),
             ),
             onPressed: () => Navigator.pop(context),
@@ -669,13 +668,70 @@ void _confirmarAbandonoHogar() {
               "Sí, Abandonar",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.orange, 
+                color: Colors.orange,
                 fontWeight: FontWeight.bold,
               ),
             ),
             onPressed: () async {
-              Navigator.pop(context); 
-              await _abandonarHogar(); 
+              Navigator.pop(context);
+              await _abandonarHogar();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void _confirmarCerrarSesion() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        elevation: 4,
+        title: Text(
+          "Cerrar Sesión",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal,
+          ),
+        ),
+        content: Text(
+          "¿Estás seguro de que deseas cerrar tu sesión?",
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey.shade700,
+          ),
+        ),
+        actions: [
+          TextButton(
+            child: Text(
+              "Cancelar",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey.shade700,
+              ),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          TextButton(
+            child: Text(
+              "Sí, Cerrar Sesión",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.orange,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onPressed: () async {
+              Navigator.pop(context);
+              await _auth.signOut();
+              Navigator.pushReplacementNamed(context, '/bienvenida');
             },
           ),
         ],
@@ -712,96 +768,94 @@ Future<void> _abandonarHogar() async {
   }
 }
 
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        color: Colors.teal,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            spreadRadius: 2,
-          )
+Widget _buildBottomNavBar() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+      color: Colors.teal,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.1),
+          blurRadius: 10,
+          spreadRadius: 2,
+        )
+      ],
+    ),
+    child: ClipRRect(
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+      child: BottomNavigationBar(
+        elevation: 0,
+        selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+        unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(0.5),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.teal,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        items: [
+          _buildNavItem(Icons.home, 'Inicio'),
+          _buildNavItem(Icons.list_alt, 'Listas'),
+          _buildNavItem(Icons.wallet, 'Wallet'),
+          _buildNavItem(Icons.shopping_basket, 'Compra'),
         ],
+        onTap: (index) => _onBottomNavTapped(context, index),
       ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        child: BottomNavigationBar(
-          elevation: 0,
-          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(0.5),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.teal,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          items: [
-            _buildNavItem(Icons.home, 'Inicio'),
-            _buildNavItem(Icons.list_alt, 'Listas'),
-            _buildNavItem(Icons.wallet, 'Wallet'),
-            _buildNavItem(Icons.shopping_basket, 'Compra'),
-          ],
-          onTap: (index) => _onBottomNavTapped(context, index),
+    ),
+  );
+}
+
+BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+  return BottomNavigationBarItem(
+    icon: Container(
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.transparent,
+      ),
+      child: Icon(icon, size: 28),
+    ),
+    label: label,
+    activeIcon: Container(
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white.withOpacity(0.2),
+      ),
+      child: Icon(icon, size: 28),
+    ),
+  );
+}
+
+void _onBottomNavTapped(BuildContext context, int index) {
+  switch (index) {
+    case 0:
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const HomePage(),
+          transitionDuration: Duration.zero,
         ),
-      ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
-    return BottomNavigationBarItem(
-      icon: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.transparent,
+      );
+      break;
+    case 1:
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const ListaScreen(),
+          transitionDuration: Duration.zero,
         ),
-        child: Icon(icon, size: 28),
-      ),
-      label: label,
-      activeIcon: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.white.withOpacity(0.2),
+      );
+      break;
+    case 2:
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => GastosScreen(),
+          transitionDuration: Duration.zero,
         ),
-        child: Icon(icon, size: 28),
-      ),
-    );
+      );
+      break;
   }
-
-  void _onBottomNavTapped(BuildContext context, int index) {
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const HomePage(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const ListaScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) =>  GastosScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-    }
-
-  }
+}
 }

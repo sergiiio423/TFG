@@ -9,7 +9,7 @@
 		\hline
 		\rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{registro} &  CU1\\ 
 		\hline
-		Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+		Actores & \multicolumn{3}{l|}{Usuario} \\ 
 		\hline
 		Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
 		\hline
@@ -48,7 +48,7 @@
 		\hline
 		3. & Usuario: Confirma el registro. & 4. & El sistema verifica que el correo electrónico no esté registrado previamente.   \\ 
 		\hline
-        5. & Usuario: Recibe un mensaje indicando que debe verificar su correo electrónico. & 6. & El sistema redirige al usuario a la pantalla de inicio de sesión. \\ 
+        5. & Usuario: Recibe un mensaje indicando que debe verificar su correo electrónico. &  &  \\ 
         \hline
 		\multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\
         \hline 
@@ -111,15 +111,15 @@
         \hline
         3. & Usuario: Confirma el inicio de sesión. & 4. & El sistema verifica que el correo electrónico y la contraseña sean correctos.   \\ 
         \hline
-        5. & Usuario: Accede a la pantalla principal de la aplicación. & 6. & El sistema redirige al usuario a la pantalla principal de la aplicación. \\ 
-        \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\
         \hline 
         2a. & \multicolumn{3}{l|}{Los campos están vacíos o la información no es válida.} \\ 
         \hline
         2b. & \multicolumn{3}{l|}{El correo electrónico o la contraseña son incorrectos.} \\ 
         \hline
-        2c. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
+        2c. & \multicolumn{3}{l|}{El correo electrónico no está verificado.} \\
+        \hline
+        2d. & \multicolumn{3}{l|}{El sistema muestra un mensaje de error.} \\ 
         \hline
     \end{tabular}
     \caption{Caso de uso - Iniciar Sesión}
@@ -167,11 +167,11 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Pulsa el botón de cerrar sesión. 
+        1. & Usuario: Accede a la opción de cerrar sesión. 
         & 2. & El sistema muestra un mensaje de confirmación. \\ 
         \hline
         3. & Usuario: Confirma que desea cerrar sesión. 
-        & 4. & El sistema cierra la sesión del usuario y redirige a la pantalla de inicio de sesión. \\ 
+        & 4. & El sistema cierra la sesión del usuario. \\ 
         \hline
     \end{tabular}
     \caption{Caso de uso - Cerrar Sesión}
@@ -183,9 +183,9 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verUsuario} &  CU4\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verPerfil} &  CU4\\ 
         \hline
-        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
@@ -219,7 +219,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de perfil. 
+        1. & Usuario: Ingresa a su área personal. 
         & 2. & El sistema muestra la información del perfil del usuario. \\ 
         \hline
     \end{tabular}
@@ -234,7 +234,7 @@
         \hline
         \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{editarUsuario} &  CU5\\ 
         \hline
-        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
@@ -268,14 +268,14 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de perfil. 
+        1. & Usuario: Ingresa a su área personal.
         & 2. & El sistema muestra la información del perfil del usuario. \\ 
         \hline
         3. & Usuario: Modifica la información deseada. 
         & 4. & El sistema verifica que la información introducida sea válida. \\ 
         \hline
         5. & Usuario: Guarda los cambios. 
-        & 6. & El sistema actualiza la información del usuario y muestra un mensaje de confirmación. \\ 
+        & 6. & El sistema actualiza la información del usuario. \\ 
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
         \hline 
@@ -289,61 +289,6 @@
 
 \newpage
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
-        \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarUsuario} &  CU6\\ 
-        \hline
-        Actores & \multicolumn{3}{l|}{Administrador} \\ 
-        \hline
-        Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
-        \hline
-        Referencias & \multicolumn{3}{l|}{} \\ 
-        \hline
-        Precondición & \multicolumn{3}{l|}{El usuario debe estar autenticado en el sistema.} \\ 
-        \hline
-        Postcondición & \multicolumn{3}{l|}{El usuario es eliminado del sistema.} \\ 
-        \hline
-        Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
-        \hline
-        Fecha & 28/02/2025 & Versión & 1.0 \\ 
-        \hline
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
-        \hline
-        Propósito & \multicolumn{3}{m{0.67\textwidth}|}{El administrador debe ser capaz de eliminar un usuario del sistema.} \\ 
-        \hline
-        Resumen & \multicolumn{3}{m{0.67\textwidth}|}{El administrador selecciona un usuario y lo elimina del sistema.} \\ 
-        \hline
-    \end{tabular}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{| m{0.03\textwidth} | m{0.37\textwidth} | m{0.03\textwidth} | m{0.37\textwidth} |}
-        \hline
-        \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
-        \hline
-        1. & Administrador: Accede a la lista de usuarios. 
-        & 2. & El sistema muestra la lista de usuarios registrados. \\ 
-        \hline
-        3. & Administrador: Selecciona el usuario a eliminar. 
-        & 4. & El sistema muestra un mensaje de confirmación. \\ 
-        \hline
-        5. & Administrador: Confirma la eliminación del usuario. 
-        & 6. & El sistema elimina al usuario y muestra un mensaje de confirmación. \\ 
-        \hline
-    \end{tabular}
-    \caption{Caso de uso - Eliminar Usuario}
-\end{table}
-
-\newpage
-
 
 \section{Casos de uso de la gestión de hogar}
 
@@ -351,9 +296,9 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearHogar} &  CU7\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearHogar} &  CU6\\ 
         \hline
-        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
@@ -388,7 +333,7 @@
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
         1. & Usuario: Introduce el nombre del hogar. 
-        & 2. & El sistema verifica que los datos. \\ 
+        & 2. & El sistema crea el hogar. \\ 
         \hline
         
         &  &  &\\ 
@@ -403,9 +348,9 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{unirMiembroHogar} &  CU8\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{unirMiembroHogar} &  CU7\\ 
         \hline
-        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
@@ -464,7 +409,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{abandonarHogar} &  CU9\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{abandonarHogar} &  CU8\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -506,7 +451,7 @@
         & 2. & El sistema muestra un mensaje de confirmación. \\ 
         \hline
         3. & Usuario: Confirma que desea abandonar el hogar. 
-        & 4. & El sistema elimina al usuario del hogar y muestra un mensaje de confirmación. \\ 
+        & 4. & El sistema elimina al usuario del hogar. \\ 
         \hline
     \end{tabular}
     \caption{Caso de uso - Abandonar Hogar}
@@ -518,9 +463,9 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarHogar} &  CU10\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarHogar} &  CU9\\ 
         \hline
-        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
@@ -554,14 +499,14 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de hogar. 
+        1. & Usuario: Ingresa al área personal. 
         & 2. & El sistema muestra la información del hogar. \\ 
         \hline
         3. & Usuario: Modifica la información deseada. 
         & 4. & El sistema verifica que la información introducida sea válida. \\ 
         \hline
-        5. & Usuario: Guarda los cambios. 
-        & 6. & El sistema actualiza la información del hogar y muestra un mensaje de confirmación. \\ 
+        &
+        & 5.. & El sistema actualiza la información del hogar. \\ 
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
         \hline 
@@ -579,9 +524,9 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verHogar} &  CU11\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verHogar} &  CU10\\ 
         \hline
-        Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+        Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
@@ -615,7 +560,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de hogar. 
+        1. & Usuario: Ingresa al área personal. 
         & 2. & El sistema muestra la información del hogar. \\ 
         \hline
     \end{tabular}
@@ -630,7 +575,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTarea} &  CU12\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearTarea} &  CU11\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -666,11 +611,11 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Introduce el nombre y la descripción de la tarea y el tipo de tareaa. 
-        & 2. & El sistema verifica que los datos sean válidos. \\ 
+        1. & Usuario: Introduce el nombre y la descripción de la tarea y el tipo de tarea. 
+        & 2. & El sistema verifica que los datos sean válidos y guarda la tarea. \\ 
         \hline
-        3. & Usuario: Guarda la tarea. 
-        & 4. & El sistema guarda la tarea. \\ 
+         &  
+        &  & \\ 
         \hline
     \end{tabular}
     \caption{Caso de uso - Crear Tarea}
@@ -682,7 +627,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{consultarPlanificaciónSemanal} &  CU13\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{consultarPlanificaciónSemanal} &  CU12\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -718,7 +663,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de planificación semanal. 
+        1. & Usuario: Consulta la planificación semanal. 
         & 2. & El sistema muestra la planificación semanal de tareas. \\ 
         \hline
     \end{tabular}
@@ -731,7 +676,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarTarea} &  CU14\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarTarea} &  CU13\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -767,17 +712,14 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de tareas. 
+        1. & Usuario: Ingresa al área destinada para gestionar tareas. 
         & 2. & El sistema muestra la lista de tareas. \\ 
         \hline
         3. & Usuario: Selecciona la tarea a modificar. 
         & 4. & El sistema muestra la información de la tarea seleccionada. \\ 
         \hline
         5. & Usuario: Modifica la información deseada. 
-        & 6. & El sistema verifica que la información introducida sea válida. \\ 
-        \hline
-        7. & Usuario: Guarda los cambios. 
-        & 8. & El sistema actualiza la información de la tarea. \\ 
+        & 6. & El sistema verifica que la información introducida sea válida y actualiza la tarea. \\  
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
         \hline 
@@ -795,7 +737,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{marcarTareaRealizada} &  CU15\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{marcarTareaRealizada} &  CU14\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -831,7 +773,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de tareas. 
+        1. & Usuario: Ingresa al área destinada para gestionar tareas.
         & 2. & El sistema muestra la lista de tareas. \\ 
         \hline
         3. & Usuario: Selecciona la tarea a marcar como realizada. 
@@ -847,7 +789,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarTarea} &  CU16\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarTarea} &  CU15\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -883,7 +825,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de tareas. 
+        1. & Usuario: Ingresa al área destinada para gestionar tareas.
         & 2. & El sistema muestra la lista de tareas. \\ 
         \hline
         3. & Usuario: Selecciona la tarea a eliminar. 
@@ -902,7 +844,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verTarea} &  CU17\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verTarea} &  CU16\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -938,7 +880,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de tareas. 
+        1. & Usuario: Ingresa al área destinada para gestionar tareas.
         & 2. & El sistema muestra la lista de tareas. \\ 
         \hline
         3. & Usuario: Selecciona la tarea a visualizar. 
@@ -954,13 +896,13 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verCalendario} &  CU18\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verCalendario} &  CU17\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
         Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
         \hline
-        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF18]}{RF\_18} \\ 
+        Referencias & \multicolumn{3}{l|}{\hyperref[req:RF18]{RF\_18}} \\ 
         \hline
         Precondición & \multicolumn{3}{m{0.67\textwidth}|}{El usuario debe pertenecer a un hogar.} \\ 
         \hline
@@ -990,7 +932,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de calendario. 
+        1. & Usuario: Ingresa al área destinada para el calendario.
         & 2. & El sistema muestra el calendario de tareas. \\ 
         \hline
     \end{tabular}
@@ -1005,7 +947,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearGasto} &  CU19\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearGasto} &  CU18\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1057,7 +999,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarGasto} &  CU20\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{modificarGasto} &  CU19\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1093,17 +1035,14 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de gastos. 
+        1. & Usuario: Ingresa al área destinada para gestionar gastos. 
         & 2. & El sistema muestra la lista de gastos. \\ 
         \hline
         3. & Usuario: Selecciona el gasto a modificar. 
         & 4. & El sistema muestra la información del gasto seleccionado. \\ 
         \hline
         5. & Usuario: Modifica la información deseada. 
-        & 6. & El sistema verifica que la información introducida sea válida. \\ 
-        \hline
-        7. & Usuario: Guarda los cambios. 
-        & 8. & El sistema actualiza la información del gasto. \\ 
+        & 6. & El sistema verifica que la información introducida sea válida y actualiza el gasto. \\ 
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
         \hline 
@@ -1121,7 +1060,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarGasto} &  CU21\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarGasto} &  CU20\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1176,7 +1115,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{saldarDeuda} &  CU22\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{saldarDeuda} &  CU21\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1212,14 +1151,11 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de deudas. 
+        1. & Usuario: Ingresa al área destinada para gestionar deudas. 
         & 2. & El sistema muestra la lista de deudas. \\ 
         \hline
         3. & Usuario: Selecciona la deuda a saldar. 
-        & 4. & El sistema muestra un mensaje de confirmación. \\ 
-        \hline
-        5. & Usuario: Confirma el saldo de la deuda. 
-        & 6. & El sistema actualiza el estado de la deuda a saldada. \\ 
+        & 4. & El sistema actualiza el estado de la deuda a saldada. \\ 
         \hline
     \end{tabular}
     \caption{Caso de uso - Saldar Deuda}
@@ -1231,7 +1167,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verDeudas} &  CU23\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verDeudas} &  CU22\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1267,7 +1203,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de deudas. 
+        1. & Usuario: Ingresa al área destinada para gestionar deudas.
         & 2. & El sistema muestra la lista de deudas. \\ 
         \hline
     \end{tabular}
@@ -1280,7 +1216,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verGasto} &  CU24\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verGasto} &  CU23\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1316,7 +1252,7 @@
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Accede a la sección de gastos. 
+        1. & Usuario: Ingresa al área destinada para gestionar gastos.
         & 2. & El sistema muestra la lista de gastos. \\ 
         \hline
         3. & Usuario: Selecciona el gasto a visualizar. 
@@ -1334,7 +1270,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearLista} &  CU25\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{crearLista} &  CU24\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1383,7 +1319,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{añadirProducto} &  CU26\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{añadirProducto} &  CU25\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1435,7 +1371,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarProducto} &  CU27\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarProducto} &  CU26\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1487,7 +1423,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarLista} &  CU28\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{eliminarLista} &  CU27\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1539,7 +1475,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verProducto} &  CU29\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{verProducto} &  CU28\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1591,7 +1527,7 @@
     \centering
     \begin{tabular}{| m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} | m{0.2\textwidth} |}
         \hline
-        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{editarProducto} &  CU30\\ 
+        \rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{editarProducto} &  CU29\\ 
         \hline
         Actores & \multicolumn{3}{l|}{Usuario} \\ 
         \hline
@@ -1634,10 +1570,7 @@
         & 4. & El sistema muestra la información del producto seleccionado. \\ 
         \hline
         5. & Usuario: Modifica la información deseada. 
-        & 6. & El sistema verifica que la información introducida sea válida. \\ 
-        \hline
-        7. & Usuario: Guarda los cambios. 
-        & 8. & El sistema actualiza la información del producto. \\ 
+        & 6. & El sistema verifica que la información introducida sea válida y actualiza el producto. \\ 
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos} \\ 
         \hline 

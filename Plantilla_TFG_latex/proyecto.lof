@@ -44,29 +44,29 @@
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Diagrama de casos de uso de la gestion de compra}}{90}{figure.6.6}%
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Modelo conceptual}}{94}{figure.6.7}%
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Diagrama de la arquitectura del sistema}}{95}{figure.6.8}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Diseño de la pantalla de bienvenida.}}{97}{figure.6.9}%
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Diseño de la pantalla de inicio de sesión.}}{97}{figure.6.10}%
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Diseño de la pantalla de registro.}}{98}{figure.6.11}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Diseño de la pantalla de cierre de sesión y datos de usuario.}}{98}{figure.6.12}%
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Diseño de la pantalla para unirte a un hogar o crear uno nuevo.}}{99}{figure.6.13}%
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Diseño de la pantalla para unirte a un hogar.}}{99}{figure.6.14}%
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Diseño de la pantalla principal de tareas.}}{100}{figure.6.15}%
-\contentsline {figure}{\numberline {6.16}{\ignorespaces Diseño de la pantalla del calendario.}}{100}{figure.6.16}%
-\contentsline {figure}{\numberline {6.17}{\ignorespaces Diseño de la pantalla principal de gastos.}}{101}{figure.6.17}%
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Diseño de la pantalla de deudas.}}{101}{figure.6.18}%
-\contentsline {figure}{\numberline {6.19}{\ignorespaces Diseño de la pantalla para saldar deudas.}}{102}{figure.6.19}%
-\contentsline {figure}{\numberline {6.20}{\ignorespaces Diseño de la pantalla de la lista de la compra.}}{103}{figure.6.20}%
-\contentsline {figure}{\numberline {6.21}{\ignorespaces Diseño de la pantalla de productos.}}{103}{figure.6.21}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Diseño de la pantalla de bienvenida.}}{98}{figure.6.9}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Diseño de la pantalla de inicio de sesión.}}{98}{figure.6.10}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Diseño de la pantalla de registro.}}{99}{figure.6.11}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Diseño de la pantalla de cierre de sesión y datos de usuario.}}{99}{figure.6.12}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Diseño de la pantalla para unirte a un hogar o crear uno nuevo.}}{100}{figure.6.13}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Diseño de la pantalla para unirte a un hogar.}}{100}{figure.6.14}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Diseño de la pantalla principal de tareas.}}{101}{figure.6.15}%
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Diseño de la pantalla del calendario.}}{101}{figure.6.16}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Diseño de la pantalla principal de gastos.}}{102}{figure.6.17}%
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Diseño de la pantalla de deudas.}}{102}{figure.6.18}%
+\contentsline {figure}{\numberline {6.19}{\ignorespaces Diseño de la pantalla para saldar deudas.}}{103}{figure.6.19}%
+\contentsline {figure}{\numberline {6.20}{\ignorespaces Diseño de la pantalla de la lista de la compra.}}{104}{figure.6.20}%
+\contentsline {figure}{\numberline {6.21}{\ignorespaces Diseño de la pantalla de productos.}}{104}{figure.6.21}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Diseño de la pantalla de editar usuario.}}{107}{figure.7.1}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Diseño de la pantalla de editar hogar.}}{107}{figure.7.2}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Interfaz gráfica pantalla bienvenida.}}{108}{figure.7.3}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Interfaz gráfica pantalla de registro.}}{108}{figure.7.4}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Interfaz gráfica pantalla de inicio de sesión.}}{109}{figure.7.5}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Interfaz gráfica pantalla de ver datos de hogar y usuario.}}{109}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Interfaz gráfica pantalla de editar datos de usuario.}}{110}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Interfaz gráfica pantalla de editar hogar.}}{110}{figure.7.8}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Interfaz gráfica pantalla para participar en un hogar.}}{111}{figure.7.9}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Interfaz gráfica pantalla para crear un hogar.}}{111}{figure.7.10}%
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Interfaz gráfica pantalla de unirse a un hogar.}}{112}{figure.7.11}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Diseño de la pantalla de editar usuario.}}{108}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Diseño de la pantalla de editar hogar.}}{108}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Interfaz gráfica pantalla bienvenida.}}{109}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Interfaz gráfica pantalla de registro.}}{109}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Interfaz gráfica pantalla de inicio de sesión.}}{110}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Interfaz gráfica pantalla de ver datos de hogar y usuario.}}{110}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Interfaz gráfica pantalla de editar datos de usuario.}}{111}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Interfaz gráfica pantalla de editar hogar.}}{111}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Interfaz gráfica pantalla para participar en un hogar.}}{112}{figure.7.9}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Interfaz gráfica pantalla para crear un hogar.}}{112}{figure.7.10}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Interfaz gráfica pantalla de unirse a un hogar.}}{113}{figure.7.11}%
 \addvspace {10\p@ }

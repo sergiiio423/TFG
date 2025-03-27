@@ -1059,7 +1059,7 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 		\hline
 		\rowcolor[HTML]{C0C0C0} Caso de Uso & \multicolumn{2}{|m{0.43\textwidth}|}{registro} &  CU1\\ 
 		\hline
-		Actores & \multicolumn{3}{l|}{Usuario, Administrador} \\ 
+		Actores & \multicolumn{3}{l|}{Usuario} \\ 
 		\hline
 		Tipo & \multicolumn{3}{l|}{Obligatorio} \\ 
 		\hline
@@ -1098,7 +1098,7 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 		\hline
 		3. & Usuario: Confirma el registro. & 4. & El sistema verifica que el correo electrónico no esté registrado previamente.   \\ 
 		\hline
-        5. & Usuario: Recibe un mensaje indicando que debe verificar su correo electrónico. & 6. & El sistema redirige al usuario a la pantalla de inicio de sesión. \\ 
+        5. & Usuario: Recibe un mensaje indicando que debe verificar su correo electrónico. &  &  \\ 
         \hline
 		\multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\
         \hline 
@@ -1159,8 +1159,6 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
         \hline
         3. & Usuario: Confirma el inicio de sesión. & 4. & El sistema verifica que el correo electrónico y la contraseña sean correctos.   \\ 
         \hline
-        5. & Usuario: Accede a la pantalla principal de la aplicación. & 6. & El sistema redirige al usuario a la pantalla principal de la aplicación. \\ 
-        \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Cursos alternos}     \\
         \hline 
         2a. & \multicolumn{3}{l|}{Los campos están vacíos o la información no es válida.} \\ 
@@ -1215,11 +1213,11 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
         \hline
         \multicolumn{4}{|m{0.9\textwidth}|}{Curso normal} \\ 
         \hline
-        1. & Usuario: Pulsa el botón de cerrar sesión. 
+        1. & Usuario: Accede a la opción de cerrar sesión.
         & 2. & El sistema muestra un mensaje de confirmación. \\ 
         \hline
         3. & Usuario: Confirma que desea cerrar sesión. 
-        & 4. & El sistema cierra la sesión del usuario y redirige a la pantalla de inicio de sesión. \\ 
+        & 4. & El sistema cierra la sesión del usuario. \\ 
         \hline
     \end{tabular}
     \caption{Caso de uso - Cerrar Sesión}
@@ -1251,11 +1249,23 @@ En este diagramas se pueden observar las entidades principales de la aplicación
     \item \textbf{Producto}: Representa los productos que se pueden añadir a una lista de la compra. Almacena información como el nombre del producto y la cantidad.
 \end{itemize}
 
+También se pueden observar las relaciones entre las entidades : 
+\begin{itemize}
+    \item \textbf{Usuario-Hogar:} Un usuario tiene que pertenecer a uno y solo un hogar. Un hogar puede tener varios usuarios.
+    \item \textbf{Usuario-Tarea:} Un usuario puede crear y asignar varias tareas. Una tarea puede pertencer a uno o varios usuarios (como por ejemplo las tareas semanales).
+    \item \textbf{Usuario-Lista:} Un usuario puede crear varias listas de la compra. Una lista de la compra puede pertenecer a uno o varios usuarios.
+    \item \textbf{Usuario-Gasto:} Un usuario puede crear varios gastos. Un gasto puede pertenecer a uno o varios usuarios.
+    \item \textbf{Usuario-Deuda:} Un usuario puede tener varias deudas. Una deuda puede pertenecer a uno o varios usuarios.
+    \item \textbf{Lista-Producto:} Una lista de la compra puede tener varios productos. Un producto pertenece a una lista.
+    \item \textbf{Gasto-Deuda:} Un gasto puede generar varias deudas. Una deuda se genera a partir de un gasto.
+    \item 
+\end{itemize}
+
 \section{Diseño}
 
 \subsection{Diseño de la arquitectura}
 \label{sec:arquitectura}
-La arquitectura de este sistema se basa en un modelo \textbf{cliente-base de datos}, donde el usuario interactúa únicamente con 
+La arquitectura de este sistema se basa en un modelo \textbf{cliente-servidor}, donde el usuario interactúa únicamente con 
 la interfaz gráfica de la aplicación (cliente), la cual se comunica con la base de datos \textit{Firebase Firestore} para obtener y almacenar la información. 
 La interfaz gráfica se interactua directamente con la base de datos, sin necesidad de un servidor intermedio. Esta estructura simplifica el
 desarrolo, al delegar en Firebase la gestión de la base de datos y la sincronización en tiempo real.
@@ -1274,7 +1284,7 @@ desarrolo, al delegar en Firebase la gestión de la base de datos y la sincroniz
     \item \textbf{App (Interfaz gráfica):} La interfaz gráfica es la parte de la aplicación con la que el usuario interactúa. 
     En este caso, la interfaz gráfica se ha diseñado para ser intuitiva y fácil de usar, con el objetivo de que el usuario pueda 
     realizar las tareas de forma rápida y sencilla.
-    \item \textbf{Base de datos:} La base de datos es el componente encargado de almacenar y gestionar la información de la aplicación. 
+    \item \textbf{Base de datos:} (Servidor) La base de datos es el componente encargado de almacenar y gestionar la información de la aplicación. 
     En este caso, se ha utilizado Firebase Firestore como base de datos, ya que permite almacenar y sincronizar los datos en tiempo real, 
     lo que facilita la gestión de la información.
 \end{itemize}
