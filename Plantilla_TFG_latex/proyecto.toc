@@ -108,13 +108,19 @@
 \contentsline {paragraph}{Pantalla de unirse a un hogar}{113}{figure.7.10}%
 \contentsline {subsubsection}{\numberline {7.2.1.2}Pruebas de funcionalidad}{113}{subsubsection.7.2.1.2}%
 \contentsline {subsubsection}{\numberline {7.2.1.3}Revisión de la iteracción}{114}{subsubsection.7.2.1.3}%
-\contentsline {subsubsection}{\numberline {7.2.1.4}Plan para la siguiente iteracción}{114}{subsubsection.7.2.1.4}%
-\contentsline {subsection}{\numberline {7.2.2}Iteración 2}{114}{subsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.2.1}Implementacion}{114}{subsubsection.7.2.2.1}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{117}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{117}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{123}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{128}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{135}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{141}{section.Alph1.5}%
-\contentsline {section}{Referencias}{147}{table.Alph1.29}%
+\contentsline {paragraph}{Registro}{114}{subsubsection.7.2.1.3}%
+\contentsline {paragraph}{Inicio de sesión}{114}{subsubsection.7.2.1.3}%
+\contentsline {paragraph}{Crear hogar}{114}{subsubsection.7.2.1.3}%
+\contentsline {paragraph}{Visualización y edición de datos de usuario y hogar}{114}{subsubsection.7.2.1.3}%
+\contentsline {paragraph}{Abandonar hogar y unirse a otro hogar}{114}{subsubsection.7.2.1.3}%
+\contentsline {paragraph}{Cerrar sesión}{115}{subsubsection.7.2.1.3}%
+\contentsline {subsubsection}{\numberline {7.2.1.4}Plan para la siguiente iteracción}{115}{subsubsection.7.2.1.4}%
+\contentsline {subsection}{\numberline {7.2.2}Iteración 2}{115}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}Implementacion}{115}{subsubsection.7.2.2.1}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{118}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{118}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{124}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{129}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{136}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{142}{section.Alph1.5}%
+\contentsline {section}{Referencias}{148}{table.Alph1.29}%
