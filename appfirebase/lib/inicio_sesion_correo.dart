@@ -103,53 +103,63 @@ class _SignInEmailState extends State<SignInEmail> {
     setState(() => _errorMessage = errorMessage);
   }
 
-  void _showEmailNotVerifiedDialog(User user) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset('assets/no-confirmado.png', height: 100),
-            const SizedBox(height: 20),
-            const Text(
-              'Correo no verificado',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-              ),
+ void _showEmailNotVerifiedDialog(User user) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) => AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset('assets/no-confirmado.png', height: 100),
+          const SizedBox(height: 20),
+          const Text(
+            'Correo no verificado',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.teal,
             ),
-            const SizedBox(height: 10),
-            const Text(
-              'Por favor verifica tu correo electrónico antes de iniciar sesión.',
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Aceptar'),
           ),
-          TextButton(
-            onPressed: () async {
-              await user.sendEmailVerification();
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Correo de verificación reenviado.'),
-                  backgroundColor: Colors.teal,
-                ),
-              );
-            },
-            child: const Text('Reenviar correo'),
+          const SizedBox(height: 10),
+          const Text(
+            'Por favor verifica tu correo electrónico antes de iniciar sesión. '
+            'Revisa tu bandeja de entrada o spam.',
+            textAlign: TextAlign.center,
           ),
         ],
       ),
-    );
-  }
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text(
+            'Aceptar',
+            style: TextStyle(color: Colors.teal),
+          ),
+        ),
+        TextButton(
+          onPressed: () async {
+            await user.sendEmailVerification();
+            Navigator.pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Correo de verificación reenviado.'),
+                backgroundColor: Colors.teal,
+                behavior: SnackBarBehavior.floating,
+                
+              ),
+            );
+          },
+          child: const Text(
+            'Reenviar correo',
+            style: TextStyle(color: Colors.orange),
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {

@@ -45,17 +45,70 @@ class _RegistrationPageState extends State<RegistrationPage> {
       await userCredential.user!.sendEmailVerification();
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Registro completado. Verifica tu correo.'),
-          backgroundColor: Colors.teal,
-        ),
-      );
+      _showRegistrationSuccessDialog(userCredential.user!);
     } on FirebaseAuthException catch (e) {
       setState(() => _errorMessage = _parseAuthError(e.code));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
+  }
+
+  void _showRegistrationSuccessDialog(User user) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset('assets/confirmado.png', height: 100),
+            const SizedBox(height: 20),
+            const Text(
+              '¡Registro exitoso!',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.teal,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Hemos enviado un correo de verificación a tu dirección de email. Por favor verifícalo para completar el registro y vuelve a iniciar sesión.',
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, '/inicio_sesion');
+            },
+            child: const Text(
+              'Aceptar',
+              style: TextStyle(color: Colors.teal),
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              await user.sendEmailVerification();
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Correo de verificación reenviado.'),
+                  backgroundColor: Colors.teal,
+                ),
+              );
+            },
+            child: const Text(
+              'Reenviar correo',
+              style: TextStyle(color: Colors.orange),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Future<void> _signInWithGoogle() async {
@@ -250,7 +303,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: const Text(
                         '¿Ya tienes cuenta? Inicia sesión',
                         style: TextStyle(
-                          color: Colors.teal,
+                        color: Colors.teal,
                         ),
                       ),
                     ),

@@ -154,6 +154,7 @@ class _CrearHogarScreenState extends State<CrearHogarScreen> {
               color: Colors.teal,
             ),
             hintText: 'Ej: Casa familiar, Piso compartido...',
+            hintStyle: TextStyle(color: Colors.grey.shade500),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             prefixIcon: Icon(Icons.home_rounded, color: Colors.teal),
             border: OutlineInputBorder(

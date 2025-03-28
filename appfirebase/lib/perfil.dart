@@ -328,12 +328,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         _buildSectionCard(
           title: 'Configuración del hogar',
           children: [
-            GestureDetector(
-              onTap: _showEditHomeModal,
-              child: _buildInfoItem(Icons.home_filled, 'Nombre del hogar', homeName),
-            ),
+            _buildEditableHomeNameItem(),
             const SizedBox(height: 12),
-            _buildInfoItem(Icons.info , 'Código del hogar', homeCode),
+            _buildInfoItem(Icons.info, 'Código del hogar', homeCode),
             const SizedBox(height: 12),
             _buildMembersList(),
           ],
@@ -367,6 +364,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget _buildEditableHomeNameItem() {
+    return Row(
+      children: [
+        Icon(Icons.home_filled, color: Colors.teal, size: 24),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Nombre del hogar',
+                style: TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      homeName ?? "No disponible",
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.edit, size: 20, color: Colors.teal),
+                    onPressed: _showEditHomeModal,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Future<void> _updateHomeName(String newHomeName) async {
     try {
       QuerySnapshot hogarSnapshot = await _firestore
@@ -380,7 +417,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         await hogarDoc.reference.update({'nombre': newHomeName});
         setState(() => homeName = newHomeName);
       }
-    } catch (e) {
+    } catch ( e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error al actualizar el hogar: ${e.toString()}'),
@@ -455,407 +492,407 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SnackBar(
                         content: Text('El nombre del hogar es requerido'),
                         backgroundColor: Colors.orange,
-                    ),
-                  );
-                  return;
-                }
+                      ),
+                    );
+                    return;
+                  }
 
-                await _updateHomeName(homeNameController.text.trim());
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  await _updateHomeName(homeNameController.text.trim());
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text(
+                  'Guardar Cambios',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
-              child: const Text(
-                'Guardar Cambios',
-                style: TextStyle(fontSize: 16, color: Colors.white),
-              ),
-            ),
-            const SizedBox(height: 20),
-          ],
-        ),
-      );
-    },
-  );
-}
-
-Widget _buildSectionCard({
-  required String title,
-  required List<Widget> children,
-}) {
-  return Card(
-    color: Colors.white,
-    elevation: 2,
-    shape: RoundedRectangleBorder(
-      side: BorderSide(color: Colors.orange.shade50, width: 1),
-      borderRadius: BorderRadius.circular(12),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.teal,
-            ),
+              const SizedBox(height: 20),
+            ],
           ),
-          const SizedBox(height: 12),
-          ...children,
-        ],
-      ),
-    ),
-  );
-}
+        );
+      },
+    );
+  }
 
-Widget _buildInfoItem(IconData icon, String title, String? value) {
-  return Row(
-    children: [
-      Icon(icon, color: Colors.teal, size: 24),
-      const SizedBox(width: 12),
-      Expanded(
+  Widget _buildSectionCard({
+    required String title,
+    required List<Widget> children,
+  }) {
+    return Card(
+      color: Colors.white,
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.orange.shade50, width: 1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: const TextStyle(fontSize: 14, color: Colors.grey),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              value ?? "No disponible",
               style: const TextStyle(
                 fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.teal,
+              ),
+            ),
+            const SizedBox(height: 12),
+            ...children,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoItem(IconData icon, String title, String? value) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.teal, size: 24),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                value ?? "No disponible",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMembersList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Icon(Icons.people_alt, color: Colors.teal, size: 24),
+            const SizedBox(width: 12),
+            Text(
+              'Miembros del hogar',
+              style: TextStyle(
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
+                color: Colors.grey.shade700,
               ),
             ),
           ],
         ),
-      ),
-    ],
-  );
-}
+        const SizedBox(height: 12),
+        if (members.isEmpty)
+          Padding(
+            padding: const EdgeInsets.only(left: 36),
+            child: Text(
+              'No hay otros miembros registrados',
+              style: TextStyle(color: Colors.grey.shade500),
+            ),
+          )
+        else
+          ...members.map((member) => Padding(
+                padding: const EdgeInsets.only(left: 36, bottom: 8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.person_outline, size: 18, color: Colors.teal),
+                    const SizedBox(width: 8),
+                    Text(member, style: const TextStyle(fontSize: 14)),
+                  ],
+                ),
+              )),
+      ],
+    );
+  }
 
-Widget _buildMembersList() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Row(
-        children: [
-          Icon(Icons.people_alt, color: Colors.teal, size: 24),
-          const SizedBox(width: 12),
-          Text(
-            'Miembros del hogar',
+  Widget _buildSwitchItem(String title, bool value) {
+    return Row(
+      children: [
+        Icon(Icons.notifications_active, color: Colors.teal, size: 24),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
+        Switch(
+          value: value,
+          onChanged: (bool newValue) {},
+          activeColor: Colors.teal,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildActionItem(IconData icon, String title, {bool isLogout = false}) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: Icon(icon, color: isLogout ? Colors.red : Colors.teal),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: isLogout ? Colors.red : Colors.black,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      trailing: Icon(Icons.chevron_right, color: Colors.grey.shade400),
+      onTap: () {
+        if (isLogout) {
+          _confirmarCerrarSesion();
+        } else if (title == "Abandonar hogar") {
+          _confirmarAbandonoHogar();
+        }
+      },
+    );
+  }
+
+  void _confirmarAbandonoHogar() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 4,
+          title: Text(
+            "Abandonar Hogar",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.teal,
+            ),
+          ),
+          content: Text(
+            "¿Estás seguro de que deseas abandonar este hogar? Esta acción no se puede deshacer.",
             style: TextStyle(
               fontSize: 16,
-              fontWeight: FontWeight.w500,
               color: Colors.grey.shade700,
             ),
           ),
-        ],
-      ),
-      const SizedBox(height: 12),
-      if (members.isEmpty)
-        Padding(
-          padding: const EdgeInsets.only(left: 36),
-          child: Text(
-            'No hay otros miembros registrados',
-            style: TextStyle(color: Colors.grey.shade500),
-          ),
-        )
-      else
-        ...members.map((member) => Padding(
-              padding: const EdgeInsets.only(left: 36, bottom: 8),
-              child: Row(
-                children: [
-                  const Icon(Icons.person_outline, size: 18, color: Colors.teal),
-                  const SizedBox(width: 8),
-                  Text(member, style: const TextStyle(fontSize: 14)),
-                ],
+          actions: [
+            TextButton(
+              child: Text(
+                "Cancelar",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey.shade700,
+                ),
               ),
-            )),
-    ],
-  );
-}
+              onPressed: () => Navigator.pop(context),
+            ),
+            TextButton(
+              child: Text(
+                "Sí, Abandonar",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.orange,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () async {
+                Navigator.pop(context);
+                await _abandonarHogar();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
-Widget _buildSwitchItem(String title, bool value) {
-  return Row(
-    children: [
-      Icon(Icons.notifications_active, color: Colors.teal, size: 24),
-      const SizedBox(width: 12),
-      Expanded(
-        child: Text(
-          title,
-          style: const TextStyle(fontSize: 16),
-        ),
-      ),
-      Switch(
-        value: value,
-        onChanged: (bool newValue) {},
-        activeColor: Colors.teal,
-      ),
-    ],
-  );
-}
+  void _confirmarCerrarSesion() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 4,
+          title: Text(
+            "Cerrar Sesión",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.teal,
+            ),
+          ),
+          content: Text(
+            "¿Estás seguro de que deseas cerrar tu sesión?",
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey.shade700,
+            ),
+          ),
+          actions: [
+            TextButton(
+              child: Text(
+                "Cancelar",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey.shade700,
+                ),
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
+            TextButton(
+              child: Text(
+                "Sí, Cerrar Sesión",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.orange,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () async {
+                Navigator.pop(context);
+                await _auth.signOut();
+                Navigator.pushReplacementNamed(context, '/bienvenida');
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
-Widget _buildActionItem(IconData icon, String title, {bool isLogout = false}) {
-  return ListTile(
-    contentPadding: EdgeInsets.zero,
-    leading: Icon(icon, color: isLogout ? Colors.red : Colors.teal),
-    title: Text(
-      title,
-      style: TextStyle(
-        color: isLogout ? Colors.red : Colors.black,
-        fontWeight: FontWeight.w500,
-      ),
-    ),
-    trailing: Icon(Icons.chevron_right, color: Colors.grey.shade400),
-    onTap: () {
-      if (isLogout) {
-        _confirmarCerrarSesion();
-      } else if (title == "Abandonar hogar") {
-        _confirmarAbandonoHogar();
+  Future<void> _abandonarHogar() async {
+    try {
+      User? user = _auth.currentUser;
+      if (user == null) return;
+
+      String userId = user.uid;
+
+      DocumentSnapshot hogarSnapshot = await _firestore
+          .collection('hogar')
+          .where('miembros', arrayContains: userId)
+          .limit(1)
+          .get()
+          .then((querySnapshot) => querySnapshot.docs.first);
+
+      if (hogarSnapshot.exists) {
+        String hogarId = hogarSnapshot.id;
+
+        await _firestore.collection('hogar').doc(hogarId).update({
+          'miembros': FieldValue.arrayRemove([userId])
+        });
+
+        Navigator.pushReplacementNamed(context, '/conectar');
       }
-    },
-  );
-}
-
-void _confirmarAbandonoHogar() {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        elevation: 4,
-        title: Text(
-          "Abandonar Hogar",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.teal,
-          ),
-        ),
-        content: Text(
-          "¿Estás seguro de que deseas abandonar este hogar? Esta acción no se puede deshacer.",
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey.shade700,
-          ),
-        ),
-        actions: [
-          TextButton(
-            child: Text(
-              "Cancelar",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey.shade700,
-              ),
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
-          TextButton(
-            child: Text(
-              "Sí, Abandonar",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.orange,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () async {
-              Navigator.pop(context);
-              await _abandonarHogar();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
-
-void _confirmarCerrarSesion() {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        elevation: 4,
-        title: Text(
-          "Cerrar Sesión",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.teal,
-          ),
-        ),
-        content: Text(
-          "¿Estás seguro de que deseas cerrar tu sesión?",
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey.shade700,
-          ),
-        ),
-        actions: [
-          TextButton(
-            child: Text(
-              "Cancelar",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey.shade700,
-              ),
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
-          TextButton(
-            child: Text(
-              "Sí, Cerrar Sesión",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.orange,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () async {
-              Navigator.pop(context);
-              await _auth.signOut();
-              Navigator.pushReplacementNamed(context, '/bienvenida');
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
-
-Future<void> _abandonarHogar() async {
-  try {
-    User? user = _auth.currentUser;
-    if (user == null) return;
-
-    String userId = user.uid;
-
-    DocumentSnapshot hogarSnapshot = await _firestore
-        .collection('hogar')
-        .where('miembros', arrayContains: userId)
-        .limit(1)
-        .get()
-        .then((querySnapshot) => querySnapshot.docs.first);
-
-    if (hogarSnapshot.exists) {
-      String hogarId = hogarSnapshot.id;
-
-      await _firestore.collection('hogar').doc(hogarId).update({
-        'miembros': FieldValue.arrayRemove([userId])
-      });
-
-      Navigator.pushReplacementNamed(context, '/conectar');
+    } catch (e) {
+      print("Error al abandonar el hogar: $e");
     }
-  } catch (e) {
-    print("Error al abandonar el hogar: $e");
   }
-}
 
-Widget _buildBottomNavBar() {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-      color: Colors.teal,
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.1),
-          blurRadius: 10,
-          spreadRadius: 2,
-        )
-      ],
-    ),
-    child: ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-      child: BottomNavigationBar(
-        elevation: 0,
-        selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-        unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withOpacity(0.5),
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.teal,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        items: [
-          _buildNavItem(Icons.home, 'Inicio'),
-          _buildNavItem(Icons.list_alt, 'Listas'),
-          _buildNavItem(Icons.wallet, 'Wallet'),
-          _buildNavItem(Icons.shopping_basket, 'Compra'),
+  Widget _buildBottomNavBar() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        color: Colors.teal,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 2,
+          )
         ],
-        onTap: (index) => _onBottomNavTapped(context, index),
       ),
-    ),
-  );
-}
-
-BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
-  return BottomNavigationBarItem(
-    icon: Container(
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.transparent,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        child: BottomNavigationBar(
+          elevation: 0,
+          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.5),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.teal,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: [
+            _buildNavItem(Icons.home, 'Inicio'),
+            _buildNavItem(Icons.list_alt, 'Listas'),
+            _buildNavItem(Icons.wallet, 'Wallet'),
+            _buildNavItem(Icons.shopping_basket, 'Compra'),
+          ],
+          onTap: (index) => _onBottomNavTapped(context, index),
+        ),
       ),
-      child: Icon(icon, size: 28),
-    ),
-    label: label,
-    activeIcon: Container(
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.white.withOpacity(0.2),
-      ),
-      child: Icon(icon, size: 28),
-    ),
-  );
-}
-
-void _onBottomNavTapped(BuildContext context, int index) {
-  switch (index) {
-    case 0:
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (_, __, ___) => const HomePage(),
-          transitionDuration: Duration.zero,
-        ),
-      );
-      break;
-    case 1:
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (_, __, ___) => const ListaScreen(),
-          transitionDuration: Duration.zero,
-        ),
-      );
-      break;
-    case 2:
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (_, __, ___) => GastosScreen(),
-          transitionDuration: Duration.zero,
-        ),
-      );
-      break;
+    );
   }
-}
+
+  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.transparent,
+        ),
+        child: Icon(icon, size: 28),
+      ),
+      label: label,
+      activeIcon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Icon(icon, size: 28),
+      ),
+    );
+  }
+
+  void _onBottomNavTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const HomePage(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const ListaScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => GastosScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+    }
+  }
 }
