@@ -1,26 +1,26 @@
 # Fdb version 4
-["bibtex proyecto"] 1743156204.15232 "proyecto.aux" "proyecto.bbl" "proyecto" 1743156214.53329 0
+["bibtex proyecto"] 1743411995.88313 "proyecto.aux" "proyecto.bbl" "proyecto" 1743412007.0525 0
   "./bibliografia.bib" 1741281625 8777 b1ef0a7806d83488c12fc3ccc0ea928a ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "proyecto.aux" 1743156213 58176 e39099747f516fe407e392934721489b "pdflatex"
+  "proyecto.aux" 1743412005 58176 8a98a320b4f584b3154234c9374240bf "pdflatex"
   (generated)
   "proyecto.bbl"
   "proyecto.blg"
   (rewritten before read)
-["makeindex proyecto.idx"] 1743156192.30318 "proyecto.idx" "proyecto.ind" "proyecto" 1743156214.53237 0
-  "proyecto.idx" 1743156205 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex proyecto.idx"] 1743411985.06299 "proyecto.idx" "proyecto.ind" "proyecto" 1743412007.05144 0
+  "proyecto.idx" 1743411997 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "proyecto.ilg"
   "proyecto.ind"
   (rewritten before read)
-["pdflatex"] 1743156204.62947 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1743156214.53532 0
+["pdflatex"] 1743411996.42739 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1743412007.05451 0
   "../capitulos/01_Introduccion.tex" 1742149538 7897 19edc84ab25e4df3bf5bf4133ddd4a6c ""
   "../capitulos/02_Planificacion.tex" 1739528964 9413 c020f3e82ffbbdee7149f69763369b49 ""
   "../capitulos/03_Estado_del_arte.tex" 1741281399 45866 44acb3cc130d02a2d7528e2396bf9058 ""
   "../capitulos/04_Tecnologias.tex" 1742297179 17141 e9f84c970f12b648563d96c03a0db0e9 ""
   "../capitulos/05_Metodologias.tex" 1742215747 8295 28a86d839fec25b0e7a245eb93eb1460 ""
   "../capitulos/06_Propuesta.tex" 1743074643 59306 19600155bfe36c5926419de324d8dab2 ""
-  "../capitulos/07_Desarrollo.tex" 1743156180 16076 822d64890dfb100f4847974bc8640885 ""
+  "../capitulos/07_Desarrollo.tex" 1743411978 16526 865dcd1a08d7809c028f11aae372cdb7 ""
   "../capitulos/anexo.tex" 1743071882 62038 23ff3b64f7894027698c849ea8fa55da ""
   "../capitulos/img/Firebase.png" 1729941650 17150 b1cf89805130c05be3003b143040769a ""
   "../capitulos/img/Kotlin_logo.svg.png" 1729940653 68388 da55f02afe259eee36b6e1d94911ac39 ""
@@ -215,14 +215,14 @@
   "imagenes/logo_ugr.jpg" 1228354992 85532 25866cc28cc667a1cdd972180571e7be ""
   "portada/portada.tex" 1737367880 1078 1c2fe0a8f5546a43996c48d26be77a2a ""
   "prefacios/prefacio.tex" 1741462549 4032 66a6fbfe532b40478d556967a313cc50 ""
-  "proyecto.aux" 1743156213 58176 e39099747f516fe407e392934721489b "pdflatex"
-  "proyecto.bbl" 1743156204 21534 63bf14a0527919ad384d5d1bfe014cdc "bibtex proyecto"
-  "proyecto.ind" 1743156192 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
-  "proyecto.lof" 1743156213 7032 6e304080f0bc8ae44f7cfd52f491824e "pdflatex"
-  "proyecto.lot" 1743156213 7248 e374e13efcf9ace74da7707216887f32 "pdflatex"
-  "proyecto.out" 1743156213 12957 04ec59eb89acceb674163b35cc981dc3 "pdflatex"
+  "proyecto.aux" 1743412005 58176 8a98a320b4f584b3154234c9374240bf "pdflatex"
+  "proyecto.bbl" 1743411996 21534 63bf14a0527919ad384d5d1bfe014cdc "bibtex proyecto"
+  "proyecto.ind" 1743411985 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
+  "proyecto.lof" 1743412005 7032 6e304080f0bc8ae44f7cfd52f491824e "pdflatex"
+  "proyecto.lot" 1743412005 7248 e374e13efcf9ace74da7707216887f32 "pdflatex"
+  "proyecto.out" 1743412005 12957 04ec59eb89acceb674163b35cc981dc3 "pdflatex"
   "proyecto.tex" 1742984820 4477 941a0c052e7dda2d9d89e34480886f15 ""
-  "proyecto.toc" 1743156213 11577 4e5b0c7d8c1d6e400201e4cab2ae7b58 "pdflatex"
+  "proyecto.toc" 1743412005 11577 6902f9001dcab0d8ecde9c0103479795 "pdflatex"
   (generated)
   "proyecto.aux"
   "proyecto.idx"

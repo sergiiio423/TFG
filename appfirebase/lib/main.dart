@@ -12,12 +12,14 @@ import 'crear_hogar.dart';
 import  'welcome.dart';
 import 'conectar.dart';
 import 'calendar.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await initializeDateFormatting('es_ES', null);
   runApp(const MyApp());
 }
 

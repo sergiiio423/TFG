@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'lista_compra.dart';
+import 'principal.dart';
+import 'perfil.dart';
 
 class TareasScreen extends StatefulWidget {
   const TareasScreen({super.key});
@@ -16,6 +20,11 @@ class _TareasScreenState extends State<TareasScreen> {
   final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
   final _firestore = FirebaseFirestore.instance;
 
+ 
+
+  int _currentIndex = 1;
+  String nombreHogar = 'Tareas';
+
   @override
   void initState() {
     super.initState();
@@ -29,59 +38,103 @@ class _TareasScreenState extends State<TareasScreen> {
   }
 
   int _obtenerSemanaMes(DateTime fecha) {
-    final firstDay = DateTime(fecha.year, fecha.month, 1);
-    return ((fecha.difference(firstDay).inDays + firstDay.weekday) / 7).ceil();
+    DateTime fechaAjustada = fecha;
+
+    if (fecha.day > 28) {
+      int diasEnProximoMes = 0;
+      for (int i = 0; i < 7; i++) {
+        DateTime diaSemana = fecha
+            .subtract(Duration(days: fecha.weekday - 1))
+            .add(Duration(days: i));
+        if (diaSemana.month != fecha.month) {
+          diasEnProximoMes++;
+        }
+      }
+
+      if (diasEnProximoMes >= 4) {
+        fechaAjustada = fecha.add(Duration(days: 7 - fecha.weekday + 1));
+      }
+    }
+
+    final firstDay = DateTime(fechaAjustada.year, fechaAjustada.month, 1);
+    return ((fechaAjustada.difference(firstDay).inDays + firstDay.weekday) / 7)
+        .ceil();
   }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: Colors.white,
-    appBar: _buildAppBar(),
-    body: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildPlanificacionSemanal(),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: Text(
-              "Tareas Semanales",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
-            ),
-          ),
-          _buildListaTareas(),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: Text(
-              "Tareas de Hoy",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black54),
-            ),
-          ),
-          _buildListaTareasHoy(),
-        ],
-      ),
-    ),
-    floatingActionButton: _buildFloatingActionButton(),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    bottomNavigationBar: _buildBottomNavBar(),
-  );
-}
-
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       backgroundColor: Colors.white,
-      elevation: 0,
-      title: const Text(
-        "Mis tareas",
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.teal),
-      ),
-      actions: const [
-        Padding(
-          padding: EdgeInsets.only(right: 16),
-          child: Icon(Icons.person_outline, color: Colors.black54),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Mis Tareas',
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.person, size: 28),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildPlanificacionSemanal(),
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      child: Text(
+                        "Tareas Semanales",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87),
+                      ),
+                    ),
+                    _buildListaTareas(),
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      child: Text(
+                        "Tareas de Hoy",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ),
+                    _buildListaTareasHoy(),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
+      floatingActionButton: _buildFloatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 
@@ -105,7 +158,13 @@ Widget build(BuildContext context) {
   Widget _buildDiaItem(DateTime fecha) {
     final isSelected = fecha.day == _fechaSeleccionada.day;
     return GestureDetector(
-      onTap: () => setState(() => _fechaSeleccionada = fecha),
+      onTap: () {
+        setState(() {
+          _fechaSeleccionada = fecha;
+          _semanaActual =
+              _generarSemana(fecha); // Actualizar la semana completa
+        });
+      },
       child: Column(
         children: [
           Text(
@@ -140,60 +199,162 @@ Widget build(BuildContext context) {
     return dias[weekday - 1];
   }
 
-Widget _buildListaTareas() {
-  final semanaActual = _obtenerSemanaMes(_fechaSeleccionada);
-  return StreamBuilder<QuerySnapshot>(
-    stream: _firestore
-        .collection('tareas')
-        .where('mes', isEqualTo: _fechaSeleccionada.month)
-        .where('año', isEqualTo: _fechaSeleccionada.year)
-        .snapshots(),
-    builder: (context, snapshot) {
-      if (!snapshot.hasData) return const LinearProgressIndicator();
-      
-      final tasks = snapshot.data!.docs.where((doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        //final esCreador = data['usuarioId'] == userId;
-        final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
-        
-        if (/*!esCreador && */ !estaAsignado) return false;
+  Widget _buildListaTareas() {
+    final semanaActual = _obtenerSemanaMes(_fechaSeleccionada);
+    final mesActual = _fechaSeleccionada.month;
+    final anoActual = _fechaSeleccionada.year;
 
-        /*if (data['tipo'] == 'puntual') {
-          final fecha = (data['fecha'] as Timestamp).toDate();
-          return _obtenerSemanaMes(fecha) == semanaActual;
-        }*/
-        return data['tipo'] == 'semanal' && (data['semanas'] as List).contains(semanaActual);
-      }).toList();
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore
+          .collection('tareas')
+          .where('mes', isEqualTo: mesActual)
+          .where('ano', isEqualTo: anoActual)
+          .where('tipo', isEqualTo: 'semanal')
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const LinearProgressIndicator();
 
-      return Container(
-        height: 200, // Ajusta el alto según tus necesidades
-        child: ListView(
-          children: tasks.map((doc) => _buildTareaCard(doc)).toList(),
+        // Filtrar tareas de la semana actual
+        final tareasSemanaActual = snapshot.data!.docs.where((doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          final estaAsignado =
+              (data['asignados'] as List?)?.contains(userId) ?? false;
+          final semanas = List<int>.from(data['semanas'] ?? []);
+
+          return estaAsignado && semanas.contains(semanaActual);
+        }).toList();
+
+        final hoy = DateTime.now();
+        final esSemanaCambioMes = _esSemanaCambioDeMes(hoy);
+
+        if (esSemanaCambioMes) {
+          final mesSiguiente = hoy.month == 12 ? 1 : hoy.month + 1;
+          final anoSiguiente = hoy.month == 12 ? hoy.year + 1 : hoy.year;
+
+          return StreamBuilder<QuerySnapshot>(
+            stream: _firestore
+                .collection('tareas')
+                .where('mes', isEqualTo: mesSiguiente)
+                .where('año', isEqualTo: anoSiguiente)
+                .where('tipo', isEqualTo: 'semanal')
+                .snapshots(),
+            builder: (context, snapshotSiguiente) {
+              if (!snapshotSiguiente.hasData)
+                return const LinearProgressIndicator();
+
+              final tareasPrimeraSemanaSiguiente =
+                  snapshotSiguiente.data!.docs.where((doc) {
+                final data = doc.data() as Map<String, dynamic>;
+                final estaAsignado =
+                    (data['asignados'] as List?)?.contains(userId) ?? false;
+                final semanas = List<int>.from(data['semanas'] ?? []);
+
+                return estaAsignado && semanas.contains(1); // Primera semana
+              }).toList();
+
+              if (tareasPrimeraSemanaSiguiente.isEmpty) {
+                return _buildMensajeSinTareas(
+                    "No hay tareas para la primera semana del próximo mes");
+              }
+
+              return ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  ...tareasPrimeraSemanaSiguiente
+                      .map((doc) => _buildTareaCard(doc))
+                      .toList(),
+                ],
+              );
+            },
+          );
+        }
+
+        if (tareasSemanaActual.isEmpty) {
+          return _buildMensajeSinTareas("No hay tareas para esta semana");
+        }
+
+        return ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              child: Text(
+                "Tareas de esta semana",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+            ),
+            ...tareasSemanaActual.map((doc) => _buildTareaCard(doc)).toList(),
+          ],
+        );
+      },
+    );
+  }
+
+  bool _esSemanaCambioDeMes(DateTime fecha) {
+    // Verificar si estamos en los últimos días del mes (última semana)
+    final ultimoDiaMes = DateTime(fecha.year, fecha.month + 1, 0);
+    final diferenciaDias = ultimoDiaMes.day - fecha.day;
+
+    // Consideramos semana de cambio si estamos en los últimos 3 días del mes
+    return diferenciaDias <= 3;
+  }
+
+  Widget _buildMensajeSinTareas(String mensaje) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: Text(
+          mensaje,
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey.shade600,
+          ),
         ),
-      );
-    },
-  );
-}
+      ),
+    );
+  }
+
   Widget _buildListaTareasHoy() {
-    final hoy = DateTime.now();
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore.collection('tareas').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return Container();
-        
+
         final tasks = snapshot.data!.docs.where((doc) {
           final data = doc.data() as Map<String, dynamic>;
           final esCreador = data['usuarioId'] == userId;
-          final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
+          final estaAsignado =
+              (data['asignados'] as List?)?.contains(userId) ?? false;
 
           if (!esCreador && !estaAsignado) return false;
 
           if (data['tipo'] == 'puntual') {
             final fecha = (data['fecha'] as Timestamp).toDate();
-            return DateUtils.isSameDay(fecha, hoy);
+            return DateUtils.isSameDay(fecha, _fechaSeleccionada);
           }
-          return false ; 
+          return false;
         }).toList();
+
+        if (tasks.isEmpty) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Center(
+              child: Text(
+                "No hay tareas para el día seleccionado",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey.shade600,
+                ),
+              ),
+            ),
+          );
+        }
 
         return Column(
           children: tasks.map((doc) => _buildTareaCard(doc)).toList(),
@@ -214,7 +375,10 @@ Widget _buildListaTareas() {
           color: completada ? Colors.teal : Colors.white,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
-            BoxShadow(color: Colors.grey.shade300, blurRadius: 5, offset: const Offset(2, 2))
+            BoxShadow(
+                color: Colors.grey.shade300,
+                blurRadius: 5,
+                offset: const Offset(2, 2))
           ],
         ),
         child: ListTile(
@@ -246,15 +410,19 @@ Widget _buildListaTareas() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(data['descripcion'],
-                  style: TextStyle(color: completada ? Colors.white70 : Colors.black54)),
+                  style: TextStyle(
+                      color: completada ? Colors.white70 : Colors.black54)),
               if (data['asignados'] != null)
                 Wrap(
                   spacing: 4,
                   children: (data['asignados'] as List)
                       .map<Widget>((uid) => FutureBuilder<DocumentSnapshot>(
-                            future: _firestore.collection('usuarios').doc(uid).get(),
+                            future: _firestore
+                                .collection('usuarios')
+                                .doc(uid)
+                                .get(),
                             builder: (context, snapshot) {
-                              final nombre = snapshot.hasData 
+                              final nombre = snapshot.hasData
                                   ? snapshot.data!['nombre'] ?? 'Usuario'
                                   : '...';
                               return Chip(
@@ -268,14 +436,88 @@ Widget _buildListaTareas() {
                 ),
             ],
           ),
-          trailing: const Icon(Icons.more_horiz, color: Colors.black54),
+          trailing: PopupMenuButton<String>(
+      
+            icon: Icon(Icons.more_vert,
+                color: completada ? Colors.white : Colors.black54),
+            onSelected: (value) {
+              if (value == 'editar') {
+                _mostrarModalEditarTarea(doc);
+              } else if (value == 'eliminar') {
+                _eliminarTarea(doc.id);
+              }
+            },
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem<String>(
+                value: 'editar',
+                child: Row(
+                  children: const [
+                    Icon(Icons.edit, color: Colors.teal),
+                    SizedBox(width: 8),
+                    Text('Editar'),
+                  ],
+                ),
+              ),
+              PopupMenuItem<String>(
+                value: 'eliminar',
+                child: Row(
+                  children: const [
+                    Icon(Icons.delete, color: Colors.red),
+                    SizedBox(width: 8),
+                    Text('Eliminar'),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
+  Future<void> _eliminarTarea(String taskId) async {
+    try {
+      await _firestore.collection('tareas').doc(taskId).delete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Tarea eliminada correctamente')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al eliminar tarea: $e')),
+      );
+    }
+  }
+
+  void _mostrarModalEditarTarea(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+      builder: (context) => EditarTareaForm(
+        tareaId: doc.id,
+        tituloInicial: data['titulo'],
+        descripcionInicial: data['descripcion'],
+        tipoInicial: data['tipo'],
+        fechaInicial: data['tipo'] == 'puntual'
+            ? (data['fecha'] as Timestamp).toDate()
+            : null,
+        semanasIniciales: List<int>.from(data['semanas'] ?? []),
+        asignadosIniciales: List<String>.from(data['asignados'] ?? []),
+        mesInicial: data['mes'],
+        anoInicial: data['año'],
+        userId: userId,
+        onTaskUpdated: () => setState(() {}),
+      ),
+    );
+  }
+
   Future<void> _actualizarEstadoTarea(String taskId, bool completada) async {
-    await _firestore.collection('tareas').doc(taskId).update({'completada': completada});
+    await _firestore
+        .collection('tareas')
+        .doc(taskId)
+        .update({'completada': completada});
   }
 
   Widget _buildFloatingActionButton() {
@@ -299,21 +541,96 @@ Widget _buildListaTareas() {
   }
 
   Widget _buildBottomNavBar() {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 8.0,
-      color: Colors.teal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(icon: const Icon(Icons.home, color: Colors.white), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.list, color: Colors.white), onPressed: () {}),
-          const SizedBox(width: 40),
-          IconButton(icon: const Icon(Icons.account_balance_wallet, color: Colors.white), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.shopping_cart, color: Colors.white), onPressed: () {}),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        color: Colors.teal,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 2)
         ],
       ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          elevation: 0,
+          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.5),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.teal,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: [
+            _buildNavItem(Icons.home, 'Inicio'),
+            _buildNavItem(Icons.list_alt, 'Tareas'),
+            _buildNavItem(Icons.wallet, 'Gastos'),
+            _buildNavItem(Icons.shopping_basket, 'Compra'),
+          ],
+          onTap: (index) => _onBottomNavTapped(context, index),
+        ),
+      ),
     );
+  }
+
+  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.transparent,
+        ),
+        child: Icon(icon, size: 28),
+      ),
+      label: label,
+      activeIcon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Icon(icon, size: 28),
+      ),
+    );
+  }
+
+  void _onBottomNavTapped(BuildContext context, int index) {
+    setState(() => _currentIndex = index);
+
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const HomePage(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const TareasScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 3:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const ListaScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+    }
   }
 }
 
@@ -321,7 +638,8 @@ class CrearTareaForm extends StatefulWidget {
   final String userId;
   final VoidCallback onTaskCreated;
 
-  const CrearTareaForm({super.key, required this.userId, required this.onTaskCreated});
+  const CrearTareaForm(
+      {super.key, required this.userId, required this.onTaskCreated});
 
   @override
   State<CrearTareaForm> createState() => _CrearTareaFormState();
@@ -336,11 +654,32 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
   List<String> _miembrosSeleccionados = [];
   bool _esSemanal = false;
   List<String> _miembrosHogar = [];
+  int _mesSeleccionado = DateTime.now().month;
+  int _anoSeleccionado = DateTime.now().year;
 
   @override
   void initState() {
     super.initState();
     _cargarMiembrosHogar();
+    _verificarSemanaCambioMes();
+  }
+
+  void _verificarSemanaCambioMes() {
+    final hoy = DateTime.now();
+    final ultimoDiaMes = DateTime(hoy.year, hoy.month + 1, 0);
+    final diferenciaDias = ultimoDiaMes.day - hoy.day;
+
+    if (diferenciaDias <= 3) {
+      setState(() {
+        if (hoy.month == 12) {
+          _mesSeleccionado = 1;
+          _anoSeleccionado = hoy.year + 1;
+        } else {
+          _mesSeleccionado = hoy.month + 1;
+          _anoSeleccionado = hoy.year;
+        }
+      });
+    }
   }
 
   Future<void> _cargarMiembrosHogar() async {
@@ -352,12 +691,15 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
     if (hogarSnapshot.docs.isNotEmpty) {
       setState(() {
-        _miembrosHogar = List<String>.from(hogarSnapshot.docs.first['miembros']);
+        _miembrosHogar =
+            List<String>.from(hogarSnapshot.docs.first['miembros']);
       });
     }
   }
 
   Future<void> _seleccionarFecha() async {
+    await initializeDateFormatting('es_ES', null);
+
     final fecha = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -389,8 +731,8 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
       'usuarioId': widget.userId,
       'tipo': _esSemanal ? 'semanal' : 'puntual',
       'fechaCreacion': Timestamp.now(),
-      'mes': DateTime.now().month,
-      'año': DateTime.now().year,
+      'mes': _esSemanal ? _mesSeleccionado : _fechaSeleccionada!.month,
+      'año': _esSemanal ? _anoSeleccionado : _fechaSeleccionada!.year,
       'asignados': _miembrosSeleccionados,
     };
 
@@ -407,6 +749,8 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
   @override
   Widget build(BuildContext context) {
+    final meses = DateFormat.MMMM('es').dateSymbols.MONTHS;
+
     return SingleChildScrollView(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -482,11 +826,9 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                 const SizedBox(width: 10),
                 ChoiceChip(
                   label: const Text('Puntual'),
-
                   selected: !_esSemanal,
                   selectedColor: Colors.orange,
                   backgroundColor: Colors.white,
-                  
                   onSelected: (val) => setState(() => _esSemanal = !val),
                 ),
                 const SizedBox(width: 10),
@@ -511,19 +853,22 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                       borderRadius: BorderRadius.circular(20),
                       borderSide: const BorderSide(color: Colors.teal),
                     ),
-                    prefixIcon: const Icon(Icons.calendar_today, color: Colors.teal),
+                    prefixIcon:
+                        const Icon(Icons.calendar_today, color: Colors.teal),
                     filled: true,
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(color: Colors.teal, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.teal, width: 2),
                     ),
                   ),
                   child: Row(
                     children: [
                       Text(
                         _fechaSeleccionada != null
-                            ? DateFormat('dd/MM/yyyy').format(_fechaSeleccionada!)
+                            ? DateFormat('dd/MM/yyyy')
+                                .format(_fechaSeleccionada!)
                             : 'Seleccionar fecha',
                         style: const TextStyle(color: Colors.black),
                       ),
@@ -534,6 +879,38 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                 ),
               ),
             if (_esSemanal) ...[
+              const SizedBox(height: 20),
+              const Text(
+                'Mes para las tareas semanales:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<int>(
+                value: _mesSeleccionado,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                items: List.generate(12, (index) {
+                  final mesNumero = index + 1;
+                  return DropdownMenuItem<int>(
+                    value: mesNumero,
+                    child: Text(
+                      '${meses[index]} ${_anoSeleccionado}',
+                      style: const TextStyle(color: Colors.black87),
+                    ),
+                  );
+                }),
+                onChanged: (value) {
+                  setState(() {
+                    _mesSeleccionado = value!;
+                  });
+                },
+              ),
+              const SizedBox(height: 20),
               const Text(
                 'Semanas del mes:',
                 style: TextStyle(fontSize: 16, color: Colors.teal),
@@ -561,9 +938,14 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                 children: _miembrosHogar.map((miembro) {
                   return FilterChip(
                     label: FutureBuilder<DocumentSnapshot>(
-                      future: FirebaseFirestore.instance.collection('usuarios').doc(miembro).get(),
+                      future: FirebaseFirestore.instance
+                          .collection('usuarios')
+                          .doc(miembro)
+                          .get(),
                       builder: (context, snapshot) {
-                        final nombre = snapshot.hasData ? snapshot.data!['nombre'] ?? 'Usuario' : '...';
+                        final nombre = snapshot.hasData
+                            ? snapshot.data!['nombre'] ?? 'Usuario'
+                            : '...';
                         return Text(nombre);
                       },
                     ),
@@ -593,6 +975,377 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
               ),
               child: const Text(
                 'Crear Tarea',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class EditarTareaForm extends StatefulWidget {
+  final String tareaId;
+  final String tituloInicial;
+  final String descripcionInicial;
+  final String tipoInicial;
+  final DateTime? fechaInicial;
+  final List<int> semanasIniciales;
+  final List<String> asignadosIniciales;
+  final int mesInicial;
+  final int anoInicial;
+  final String userId;
+  final VoidCallback onTaskUpdated;
+  
+
+  const EditarTareaForm({
+    super.key,
+    required this.tareaId,
+    required this.tituloInicial,
+    required this.descripcionInicial,
+    required this.tipoInicial,
+    this.fechaInicial,
+    required this.semanasIniciales,
+    required this.asignadosIniciales,
+    required this.mesInicial,
+    required this.anoInicial,
+    required this.userId,
+    required this.onTaskUpdated,
+  });
+
+  @override
+  State<EditarTareaForm> createState() => _EditarTareaFormState();
+}
+
+class _EditarTareaFormState extends State<EditarTareaForm> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late final TextEditingController _tituloController;
+  late final TextEditingController _descripcionController;
+
+  Future<void> _seleccionarFecha() async {
+    final fecha = await showDatePicker(
+      context: context,
+      initialDate: _fechaSeleccionada ?? DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+    if (fecha != null) {
+      setState(() => _fechaSeleccionada = fecha);
+    }
+  }
+  DateTime? _fechaSeleccionada;
+  List<int> _semanasSeleccionadas = [];
+  List<String> _miembrosSeleccionados = [];
+  bool _esSemanal = false;
+  List<String> _miembrosHogar = [];
+  int _mesSeleccionado = DateTime.now().month;
+  int _anoSeleccionado = DateTime.now().year;
+
+  void _toggleSemana(int semana) {
+    setState(() {
+      if (_semanasSeleccionadas.contains(semana)) {
+        _semanasSeleccionadas.remove(semana);
+      } else {
+        _semanasSeleccionadas.add(semana);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _tituloController = TextEditingController(text: widget.tituloInicial);
+    _descripcionController =
+        TextEditingController(text: widget.descripcionInicial);
+    _esSemanal = widget.tipoInicial == 'semanal';
+    _fechaSeleccionada = widget.fechaInicial;
+    _semanasSeleccionadas = widget.semanasIniciales;
+    _miembrosSeleccionados = widget.asignadosIniciales;
+    _mesSeleccionado = widget.mesInicial;
+    _anoSeleccionado = widget.anoInicial;
+    _cargarMiembrosHogar();
+  }
+
+  Future<void> _cargarMiembrosHogar() async {
+    final hogarSnapshot = await FirebaseFirestore.instance
+        .collection('hogar')
+        .where('miembros', arrayContains: widget.userId)
+        .limit(1)
+        .get();
+
+    if (hogarSnapshot.docs.isNotEmpty) {
+      setState(() {
+        _miembrosHogar =
+            List<String>.from(hogarSnapshot.docs.first['miembros']);
+      });
+    }
+  }
+
+  Future<void> _actualizarTarea() async {
+    final taskData = {
+      'titulo': _tituloController.text,
+      'descripcion': _descripcionController.text,
+      'tipo': _esSemanal ? 'semanal' : 'puntual',
+      'mes': _esSemanal ? _mesSeleccionado : _fechaSeleccionada!.month,
+      'año': _esSemanal ? _anoSeleccionado : _fechaSeleccionada!.year,
+      'asignados': _miembrosSeleccionados,
+    };
+
+    if (_esSemanal) {
+      taskData['semanas'] = _semanasSeleccionadas;
+    } else {
+      taskData['fecha'] = Timestamp.fromDate(_fechaSeleccionada!);
+    }
+
+    try {
+      await _firestore
+          .collection('tareas')
+          .doc(widget.tareaId)
+          .update(taskData);
+      widget.onTaskUpdated();
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Tarea actualizada correctamente')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al actualizar tarea: $e')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final meses = DateFormat.MMMM('es').dateSymbols.MONTHS;
+    late List<DateTime> _semanaActual;
+    final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+    final _firestore = FirebaseFirestore.instance;
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+        left: 20,
+        right: 20,
+        top: 20,
+      ),
+      child: Form(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Editar Tarea',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: _tituloController,
+              decoration: InputDecoration(
+                labelText: 'Título',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                prefixIcon: const Icon(Icons.title, color: Colors.teal),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
+              ),
+              validator: (value) => value!.isEmpty ? 'Ingrese un título' : null,
+            ),
+            const SizedBox(height: 15),
+            TextFormField(
+              controller: _descripcionController,
+              decoration: InputDecoration(
+                labelText: 'Descripción',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal),
+                ),
+                prefixIcon: const Icon(Icons.description, color: Colors.teal),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const Text(
+                  'Tipo de tarea:',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Puntual'),
+                  selected: !_esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
+                  onSelected: (val) => setState(() => _esSemanal = !val),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Semanal'),
+                  selected: _esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
+                  onSelected: (val) => setState(() => _esSemanal = val),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            if (!_esSemanal)
+              InkWell(
+                onTap: _seleccionarFecha,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Fecha',
+                    labelStyle: const TextStyle(color: Colors.teal),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon:
+                        const Icon(Icons.calendar_today, color: Colors.teal),
+                    filled: true,
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide:
+                          const BorderSide(color: Colors.teal, width: 2),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        _fechaSeleccionada != null
+                            ? DateFormat('dd/MM/yyyy')
+                                .format(_fechaSeleccionada!)
+                            : 'Seleccionar fecha',
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      const Spacer(),
+                      const Icon(Icons.arrow_drop_down, color: Colors.teal),
+                    ],
+                  ),
+                ),
+              ),
+            if (_esSemanal) ...[
+              const SizedBox(height: 20),
+              const Text(
+                'Mes para las tareas semanales:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<int>(
+                value: _mesSeleccionado,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                items: List.generate(12, (index) {
+                  final mesNumero = index + 1;
+                  return DropdownMenuItem<int>(
+                    value: mesNumero,
+                    child: Text(
+                      '${meses[index]} ${_anoSeleccionado}',
+                      style: const TextStyle(color: Colors.black87),
+                    ),
+                  );
+                }),
+                onChanged: (value) {
+                  setState(() {
+                    _mesSeleccionado = value!;
+                  });
+                },
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Semanas del mes:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              Wrap(
+                spacing: 8,
+                children: List.generate(5, (index) {
+                  final semana = index + 1;
+                  return FilterChip(
+                    label: Text('Semana $semana'),
+                    selected: _semanasSeleccionadas.contains(semana),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
+                    onSelected: (val) => _toggleSemana(semana),
+                  );
+                }),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Asignar a miembros:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              Wrap(
+                spacing: 8,
+                children: _miembrosHogar.map((miembro) {
+                  return FilterChip(
+                    label: FutureBuilder<DocumentSnapshot>(
+                      future: FirebaseFirestore.instance
+                          .collection('usuarios')
+                          .doc(miembro)
+                          .get(),
+                      builder: (context, snapshot) {
+                        final nombre = snapshot.hasData
+                            ? snapshot.data!['nombre'] ?? 'Usuario'
+                            : '...';
+                        return Text(nombre);
+                      },
+                    ),
+                    selected: _miembrosSeleccionados.contains(miembro),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
+                    onSelected: (val) => setState(() {
+                      if (val) {
+                        _miembrosSeleccionados.add(miembro);
+                      } else {
+                        _miembrosSeleccionados.remove(miembro);
+                      }
+                    }),
+                  );
+                }).toList(),
+              ),
+            ],
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _actualizarTarea,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: const Text(
+                'Actualizar Tarea',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
