@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -12,285 +13,1200 @@ class CalendarioScreen extends StatefulWidget {
 class _CalendarioScreenState extends State<CalendarioScreen> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-  Map<DateTime, List<Map<String, dynamic>>> _events = {};
+  Map<DateTime, List<Map<String, dynamic>>> _dailyTasks = {};
+  List<Map<String, dynamic>> _weeklyTasks = [];
+  Map<String, String> _userNames = {};
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
 
-@override
-void initState() {
-  super.initState();
-  initializeDateFormatting('es_ES', null).then((_) {
-    setState(() {}); // Para recargar después de la inicialización
-  });
-  _selectedDay = _focusedDay;
-  _loadTasksFromFirestore();
-}
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting('es_ES', null).then((_) {
+      setState(() {});
+    });
+    _selectedDay = _focusedDay;
+    _loadUserNames();
+    _loadTasksFromFirestore();
+  }
 
-  /// Carga las tareas desde Firestore
-  Future<void> _loadTasksFromFirestore() async {
+  Future<void> _loadUserNames() async {
+    try {
+      final usersSnapshot = await FirebaseFirestore.instance.collection('usuarios').get();
+      setState(() {
+        _userNames = {
+          for (var doc in usersSnapshot.docs) doc.id: doc['nombre'] ?? 'Usuario desconocido'
+        };
+      });
+    } catch (e) {
+      print('Error al cargar nombres de usuarios: $e');
+    }
+  }
+
+  void _loadTasksFromFirestore() {
     FirebaseFirestore.instance.collection('tareas').snapshots().listen((snapshot) {
-      Map<DateTime, List<Map<String, dynamic>>> tempEvents = {};
+      Map<DateTime, List<Map<String, dynamic>>> tempDailyTasks = {};
+      List<Map<String, dynamic>> tempWeeklyTasks = [];
+
       for (var doc in snapshot.docs) {
         var data = doc.data();
-        DateTime taskDate = DateFormat('yyyy-MM-dd').parse(data['fecha']);
-        tempEvents.putIfAbsent(taskDate, () => []).add(data);
+        data['id'] = doc.id;
+
+        if (data['tipo'] == 'puntual' && data['fecha'] is Timestamp) {
+          DateTime taskDate = (data['fecha'] as Timestamp).toDate();
+          DateTime normalizedDate = DateTime(taskDate.year, taskDate.month, taskDate.day);
+          tempDailyTasks.putIfAbsent(normalizedDate, () => []).add(data);
+        } else if (data['tipo'] == 'semanal') {
+          tempWeeklyTasks.add(data);
+        }
       }
+
       setState(() {
-        _events = tempEvents;
+        _dailyTasks = tempDailyTasks;
+        _weeklyTasks = tempWeeklyTasks;
       });
     });
   }
 
-  /// Obtiene las tareas para Aun día específico
-  List<Map<String, dynamic>> _getTasksForDay(DateTime day) {
-    return _events[DateTime(day.year, day.month, day.day)] ?? [];
+  List<Map<String, dynamic>> _getDailyTasks(DateTime day) {
+    return _dailyTasks[DateTime(day.year, day.month, day.day)] ?? [];
+  }
+
+  List<Map<String, dynamic>> _getWeeklyTasksForDay(DateTime day) {
+    return _weeklyTasks.where((task) {
+      final semanas = List<int>.from(task['semanas'] ?? []);
+      final mes = task['mes'] as int?;
+      final ano = task['año'] as int?;
+      
+      if (mes == null || ano == null) return false;
+      
+      final weekOfMonth = ((day.day - 1) ~/ 7) + 1;
+      return semanas.contains(weekOfMonth) && 
+             day.month == mes && 
+             day.year == ano;
+    }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
+    final dailyTasks = _getDailyTasks(_selectedDay!);
+    final weeklyTasks = _getWeeklyTasksForDay(_selectedDay!);
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Calendario")),
+      appBar: AppBar(
+        title: const Text("Calendario de Tareas"),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
           _buildCalendar(),
-          Expanded(child: _buildTaskList()),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  if (weeklyTasks.isNotEmpty) ...[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Tareas Semanales',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: weeklyTasks.map((task) => _buildTaskCard(task)).toList(),
+                    ),
+                  ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Tareas del Día',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ),
+                  ),
+                  dailyTasks.isEmpty
+                      ? const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text("No hay tareas para este día"),
+                        )
+                      : Column(
+                          children: dailyTasks.map((task) => _buildTaskCard(task)).toList(),
+                        ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddTaskModal(context),
+        onPressed: () => _mostrarModalCrearTarea(context),
         child: const Icon(Icons.add),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.teal,
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 
-  /// Construye el calendario
- Widget _buildCalendar() {
-  return Container(
-    margin: const EdgeInsets.all(16),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(16),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.2),
-          blurRadius: 10,
-          offset: const Offset(0, 4),
-        ),
-      ],
-    ),
-    child: TableCalendar(
-      locale: 'es_ES',
-      firstDay: DateTime.utc(2020, 1, 1),
-      lastDay: DateTime.utc(2030, 12, 31),
-      focusedDay: _focusedDay,
-      selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-      calendarFormat: CalendarFormat.month,
-      startingDayOfWeek: StartingDayOfWeek.monday,
-      availableGestures: AvailableGestures.all,
-      calendarStyle: CalendarStyle(
-        todayDecoration: BoxDecoration(
-          color: Colors.orange.shade100,
-          shape: BoxShape.circle,
-        ),
-        selectedDecoration: BoxDecoration(
-          color: Colors.teal,
-          shape: BoxShape.circle,
-        ),
-        markersAlignment: Alignment.bottomCenter,
-        markerDecoration: BoxDecoration(
-          color: Colors.teal.withOpacity(0.6),
-          shape: BoxShape.circle,
-        ),
-        outsideDaysVisible: false,
-        weekendTextStyle: TextStyle(color: Colors.red.shade400),
-      ),
-      headerStyle: HeaderStyle(
-        formatButtonVisible: false,
-        titleCentered: true,
-        titleTextStyle: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Colors.teal,
-        ),
-      ),
-      onDaySelected: (selectedDay, focusedDay) {
-        setState(() {
-          _selectedDay = selectedDay;
-          _focusedDay = focusedDay;
-        });
-      },
-      eventLoader: _getTasksForDay,
-    ),
-  );
-}
-
-  /// Construye la lista de tareas
-  Widget _buildTaskList() {
-  List<Map<String, dynamic>> tasks = _getTasksForDay(_selectedDay!);
-  return tasks.isEmpty
-      ? const Center(
-          child: Text(
-            "No hay tareas para este día",
-            style: TextStyle(fontSize: 16, color: Colors.black54),
+  Widget _buildCalendar() {
+    return Container(
+      margin: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-        )
-      : ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          itemCount: tasks.length,
-          itemBuilder: (context, index) {
-            var task = tasks[index];
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 2,
-              child: ListTile(
-                leading: Icon(
-                  task['completado'] ? Icons.check_circle : Icons.radio_button_unchecked,
-                  color: task['completado'] ? Colors.teal : Colors.grey,
-                ),
-                title: Text(
-                  task['nombre'],
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+        ],
+      ),
+      child: TableCalendar(
+        locale: 'es_ES',
+        firstDay: DateTime.now().subtract(const Duration(days: 365)),
+        lastDay: DateTime.now().add(const Duration(days: 365)),
+        focusedDay: _focusedDay,
+        selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+        calendarFormat: _calendarFormat,
+        startingDayOfWeek: StartingDayOfWeek.monday,
+        availableGestures: AvailableGestures.all,
+        calendarStyle: CalendarStyle(
+          todayDecoration: BoxDecoration(
+            color: Colors.orange.shade100,
+            shape: BoxShape.circle,
+          ),
+          selectedDecoration: BoxDecoration(
+            color: Colors.teal,
+            shape: BoxShape.circle,
+          ),
+          markersAlignment: Alignment.bottomCenter,
+          markerDecoration: BoxDecoration(
+            color: Colors.teal.withOpacity(0.6),
+            shape: BoxShape.circle,
+          ),
+          outsideDaysVisible: false,
+          weekendTextStyle: TextStyle(color: Colors.red.shade400),
+        ),
+        headerStyle: HeaderStyle(
+          formatButtonVisible: true,
+          formatButtonShowsNext: false,
+          titleCentered: true,
+          titleTextStyle: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal,
+          ),
+        ),
+        onDaySelected: (selectedDay, focusedDay) {
+          setState(() {
+            _selectedDay = selectedDay;
+            _focusedDay = focusedDay;
+          });
+        },
+        onFormatChanged: (format) {
+          setState(() {
+            _calendarFormat = format;
+          });
+        },
+        onPageChanged: (focusedDay) {
+          _focusedDay = focusedDay;
+        },
+        eventLoader: (day) {
+          final dailyTasks = _getDailyTasks(day);
+          final weeklyTasks = _getWeeklyTasksForDay(day);
+          
+          if (dailyTasks.isNotEmpty && weeklyTasks.isNotEmpty) {
+            return [1, 2];
+          } else if (dailyTasks.isNotEmpty) {
+            return [1];
+          } else if (weeklyTasks.isNotEmpty) {
+            return [2];
+          }
+          return [];
+        },
+        calendarBuilders: CalendarBuilders(
+          markerBuilder: (context, day, events) {
+            if (events.isEmpty) return const SizedBox();
+
+            final hasDaily = events.contains(1);
+            final hasWeekly = events.contains(2);
+
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (hasDaily)
+                  Container(
+                    margin: const EdgeInsets.only(right: 2),
+                    width: 6,
+                    height: 6,
+                    decoration: const BoxDecoration(
+                      color: Colors.orange,
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                subtitle: Text(
-                  task['descripcion'] ?? '',
-                  style: TextStyle(color: Colors.black54),
-                ),
-                trailing: Checkbox(
-                  value: task['completado'],
-                  onChanged: (value) {
-                    FirebaseFirestore.instance
-                        .collection('tareas')
-                        .doc(task['id'])
-                        .update({'completado': value});
-                  },
-                ),
-              ),
+                if (hasWeekly)
+                  Container(
+                    width: 6,
+                    height: 6,
+                    decoration: const BoxDecoration(
+                      color: Colors.teal,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+              ],
             );
           },
-        );
-}
-  /// Muestra el modal para agregar una nueva tarea
-  void _showAddTaskModal(BuildContext context) {
-  TextEditingController nombreController = TextEditingController();
-  TextEditingController descripcionController = TextEditingController();
-  DateTime? selectedDate;
-
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-    ),
-    builder: (context) {
-      return Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-          left: 16,
-          right: 16,
-          top: 16,
         ),
+      ),
+    );
+  }
+
+  Widget _buildTaskCard(Map<String, dynamic> task) {
+    final bool completada = task['completada'] ?? false;
+    final String tipo = task['tipo'] ?? 'puntual';
+    final List<dynamic> asignados = task['asignados'] ?? [];
+    final Color cardColor = tipo == 'semanal' ? Colors.teal.shade50 : Colors.orange.shade50;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      child: Container(
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 5,
+              offset: const Offset(2, 2),
+            ),
+          ],
+        ),
+        child: ListTile(
+          leading: IconButton(
+            icon: Icon(
+              completada ? Icons.check_circle : Icons.radio_button_unchecked,
+              color: completada ? Colors.teal : Colors.grey,
+            ),
+            onPressed: () => _toggleTaskCompletion(task),
+          ),
+          title: Row(
+            children: [
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  task['titulo'] ?? 'Tarea sin nombre',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.black87,
+                    decoration: completada ? TextDecoration.lineThrough : null,
+                  ),
+                ),
+              ),
+              if (tipo == 'semanal')
+                const Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Icon(Icons.repeat, size: 16, color: Colors.teal),
+                ),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (task['descripcion'] != null && task['descripcion'].isNotEmpty)
+                Text(
+                  task['descripcion'],
+                  style: TextStyle(color: Colors.black54),
+                ),
+              const SizedBox(height: 4),
+              if (asignados.isNotEmpty)
+                Wrap(
+                  spacing: 4,
+                  children: asignados
+                      .map<Widget>((uid) => Chip(
+                            label: Text(
+                              _userNames[uid] ?? 'Usuario desconocido',
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                            backgroundColor: Colors.white,
+                            visualDensity: VisualDensity.compact,
+                          ))
+                      .toList(),
+                ),
+            ],
+          ),
+          trailing: PopupMenuButton<String>(
+            icon: const Icon(Icons.more_vert, color: Colors.black54),
+            onSelected: (value) => _handleTaskAction(value, task),
+            itemBuilder: (BuildContext context) => [
+              const PopupMenuItem<String>(
+                value: 'editar',
+                child: Row(
+                  children: [
+                    Icon(Icons.edit, color: Colors.teal),
+                    SizedBox(width: 8),
+                    Text('Editar'),
+                  ],
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'eliminar',
+                child: Row(
+                  children: [
+                    Icon(Icons.delete, color: Colors.red),
+                    SizedBox(width: 8),
+                    Text('Eliminar'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _toggleTaskCompletion(Map<String, dynamic> task) {
+    final bool currentStatus = task['completada'] ?? false;
+    FirebaseFirestore.instance
+        .collection('tareas')
+        .doc(task['id'])
+        .update({'completada': !currentStatus});
+  }
+
+  void _handleTaskAction(String action, Map<String, dynamic> task) {
+    if (action == 'editar') {
+      _mostrarModalEditarTarea(context, task);
+    } else if (action == 'eliminar') {
+      _confirmDeleteTask(task['id']);
+    }
+  }
+
+  void _confirmDeleteTask(String taskId) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Eliminar tarea'),
+        content: const Text('¿Estás seguro de que quieres eliminar esta tarea?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () {
+              FirebaseFirestore.instance.collection('tareas').doc(taskId).delete();
+              Navigator.pop(context);
+            },
+            child: const Text('Eliminar', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _mostrarModalCrearTarea(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+      builder: (context) => CrearTareaForm(
+        userId: userId,
+        onTaskCreated: () => setState(() {}),
+      ),
+    );
+  }
+
+  void _mostrarModalEditarTarea(BuildContext context, Map<String, dynamic> task) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+      builder: (context) => EditarTareaForm(
+        tareaId: task['id'],
+        tituloInicial: task['titulo'] ?? '',
+        descripcionInicial: task['descripcion'] ?? '',
+        tipoInicial: task['tipo'] ?? 'puntual',
+        fechaInicial: task['tipo'] == 'puntual' && task['fecha'] != null 
+            ? (task['fecha'] as Timestamp).toDate() 
+            : null,
+        semanasIniciales: List<int>.from(task['semanas'] ?? []),
+        asignadosIniciales: List<String>.from(task['asignados'] ?? []),
+        mesInicial: task['mes'] ?? DateTime.now().month,
+        anoInicial: task['año'] ?? DateTime.now().year,
+        userId: userId,
+        onTaskUpdated: () => setState(() {}),
+      ),
+    );
+  }
+}
+
+class CrearTareaForm extends StatefulWidget {
+  final String userId;
+  final VoidCallback onTaskCreated;
+
+  const CrearTareaForm(
+      {super.key, required this.userId, required this.onTaskCreated});
+
+  @override
+  State<CrearTareaForm> createState() => _CrearTareaFormState();
+}
+
+class _CrearTareaFormState extends State<CrearTareaForm> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _tituloController = TextEditingController();
+  final TextEditingController _descripcionController = TextEditingController();
+  DateTime? _fechaSeleccionada;
+  List<int> _semanasSeleccionadas = [];
+  List<String> _miembrosSeleccionados = [];
+  bool _esSemanal = false;
+  List<String> _miembrosHogar = [];
+  int _mesSeleccionado = DateTime.now().month;
+  int _anoSeleccionado = DateTime.now().year;
+
+  @override
+  void initState() {
+    super.initState();
+    _cargarMiembrosHogar();
+    _verificarSemanaCambioMes();
+  }
+
+  void _verificarSemanaCambioMes() {
+    final hoy = DateTime.now();
+    final ultimoDiaMes = DateTime(hoy.year, hoy.month + 1, 0);
+    final diferenciaDias = ultimoDiaMes.day - hoy.day;
+
+    if (diferenciaDias <= 3) {
+      setState(() {
+        if (hoy.month == 12) {
+          _mesSeleccionado = 1;
+          _anoSeleccionado = hoy.year + 1;
+        } else {
+          _mesSeleccionado = hoy.month + 1;
+          _anoSeleccionado = hoy.year;
+        }
+      });
+    }
+  }
+
+  Future<void> _cargarMiembrosHogar() async {
+    final hogarSnapshot = await FirebaseFirestore.instance
+        .collection('hogar')
+        .where('miembros', arrayContains: widget.userId)
+        .limit(1)
+        .get();
+
+    if (hogarSnapshot.docs.isNotEmpty) {
+      setState(() {
+        _miembrosHogar =
+            List<String>.from(hogarSnapshot.docs.first['miembros']);
+      });
+    }
+  }
+
+  Future<void> _seleccionarFecha() async {
+    await initializeDateFormatting('es_ES', null);
+
+    final fecha = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+    if (fecha != null) {
+      setState(() => _fechaSeleccionada = fecha);
+    }
+  }
+
+  void _toggleSemana(int semana) {
+    setState(() {
+      if (_semanasSeleccionadas.contains(semana)) {
+        _semanasSeleccionadas.remove(semana);
+      } else {
+        _semanasSeleccionadas.add(semana);
+      }
+    });
+  }
+
+  Future<void> _crearTarea() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    if (!_esSemanal && _fechaSeleccionada == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona una fecha para tareas puntuales')),
+      );
+      return;
+    }
+
+    if (_esSemanal && _semanasSeleccionadas.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona al menos una semana')),
+      );
+      return;
+    }
+
+    final taskData = {
+      'titulo': _tituloController.text,
+      'descripcion': _descripcionController.text,
+      'completada': false,
+      'usuarioId': widget.userId,
+      'tipo': _esSemanal ? 'semanal' : 'puntual',
+      'fechaCreacion': Timestamp.now(),
+      'mes': _esSemanal ? _mesSeleccionado : _fechaSeleccionada!.month,
+      'año': _esSemanal ? _anoSeleccionado : _fechaSeleccionada!.year,
+      'asignados': _miembrosSeleccionados,
+    };
+
+    if (_esSemanal) {
+      taskData['semanas'] = _semanasSeleccionadas;
+    } else {
+      taskData['fecha'] = Timestamp.fromDate(_fechaSeleccionada!);
+    }
+
+    try {
+      await FirebaseFirestore.instance.collection('tareas').add(taskData);
+      widget.onTaskCreated();
+      Navigator.pop(context);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al crear tarea: ${e.toString()}')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final meses = DateFormat.MMMM('es').dateSymbols.MONTHS;
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+        left: 20,
+        right: 20,
+        top: 20,
+      ),
+      child: Form(
+        key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              "Añadir nueva tarea",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Nueva Tarea',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
-            TextField(
-              controller: nombreController,
-              decoration: const InputDecoration(
-                labelText: "Nombre de la tarea *",
-                border: OutlineInputBorder(),
+            TextFormField(
+              controller: _tituloController,
+              decoration: InputDecoration(
+                labelText: 'Título',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                prefixIcon: const Icon(Icons.title, color: Colors.teal),
                 filled: true,
                 fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
               ),
+              validator: (value) => value!.isEmpty ? 'Ingrese un título' : null,
             ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: descripcionController,
-              decoration: const InputDecoration(
-                labelText: "Descripción",
-                border: OutlineInputBorder(),
+            const SizedBox(height: 15),
+            TextFormField(
+              controller: _descripcionController,
+              decoration: InputDecoration(
+                labelText: 'Descripción',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal),
+                ),
+                prefixIcon: const Icon(Icons.description, color: Colors.teal),
                 filled: true,
                 fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
               ),
             ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const Text(
+                  'Tipo de tarea:',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Puntual'),
+                  selected: !_esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
+                  onSelected: (val) => setState(() => _esSemanal = !val),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Semanal'),
+                  selected: _esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
+                  onSelected: (val) => setState(() => _esSemanal = val),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            if (!_esSemanal)
+              InkWell(
+                onTap: _seleccionarFecha,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Fecha',
+                    labelStyle: const TextStyle(color: Colors.teal),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon:
+                        const Icon(Icons.calendar_today, color: Colors.teal),
+                    filled: true,
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide:
+                          const BorderSide(color: Colors.teal, width: 2),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        _fechaSeleccionada != null
+                            ? DateFormat('dd/MM/yyyy')
+                                .format(_fechaSeleccionada!)
+                            : 'Seleccionar fecha',
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      const Spacer(),
+                      const Icon(Icons.arrow_drop_down, color: Colors.teal),
+                    ],
+                  ),
+                ),
+              ),
+            if (_esSemanal) ...[
+              const SizedBox(height: 20),
+              const Text(
+                'Mes para las tareas semanales:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<int>(
+                value: _mesSeleccionado,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                items: List.generate(12, (index) {
+                  final mesNumero = index + 1;
+                  return DropdownMenuItem<int>(
+                    value: mesNumero,
+                    child: Text(
+                      '${meses[index]} ${_anoSeleccionado}',
+                      style: const TextStyle(color: Colors.black87),
+                    ),
+                  );
+                }),
+                onChanged: (value) {
+                  setState(() {
+                    _mesSeleccionado = value!;
+                  });
+                },
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Semanas del mes:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              Wrap(
+                spacing: 8,
+                children: List.generate(5, (index) {
+                  final semana = index + 1;
+                  return FilterChip(
+                    label: Text('Semana $semana'),
+                    selected: _semanasSeleccionadas.contains(semana),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
+                    onSelected: (val) => _toggleSemana(semana),
+                  );
+                }),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Asignar a miembros:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              Wrap(
+                spacing: 8,
+                children: _miembrosHogar.map((miembro) {
+                  return FilterChip(
+                    label: FutureBuilder<DocumentSnapshot>(
+                      future: FirebaseFirestore.instance
+                          .collection('usuarios')
+                          .doc(miembro)
+                          .get(),
+                      builder: (context, snapshot) {
+                        final nombre = snapshot.hasData
+                            ? snapshot.data!['nombre'] ?? 'Usuario'
+                            : '...';
+                        return Text(nombre);
+                      },
+                    ),
+                    selected: _miembrosSeleccionados.contains(miembro),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
+                    onSelected: (val) => setState(() {
+                      if (val) {
+                        _miembrosSeleccionados.add(miembro);
+                      } else {
+                        _miembrosSeleccionados.remove(miembro);
+                      }
+                    }),
+                  );
+                }).toList(),
+              ),
+            ],
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () async {
-                selectedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2022),
-                  lastDate: DateTime(2030),
-                );
-              },
+              onPressed: _crearTarea,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
               child: const Text(
-                "Seleccionar fecha",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                if (nombreController.text.isNotEmpty && selectedDate != null) {
-                  FirebaseFirestore.instance.collection('tareas').add({
-                    'nombre': nombreController.text,
-                    'descripcion': descripcionController.text,
-                    'fecha': DateFormat('yyyy-MM-dd').format(selectedDate!),
-                    'completado': false,
-                  });
-                  Navigator.pop(context);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: const Text(
-                "Añadir",
-                style: TextStyle(color: Colors.white),
+                'Crear Tarea',
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
             const SizedBox(height: 20),
           ],
         ),
-      );
-    },
-  );
+      ),
+    );
+  }
 }
-  /// Construye la barra de navegación inferior
-  Widget _buildBottomNavBar() {
-    return BottomNavigationBar(
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white70,
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.teal,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Lista'),
-        BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: 'Wallet'),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Compra'),
-      ],
+
+class EditarTareaForm extends StatefulWidget {
+  final String tareaId;
+  final String tituloInicial;
+  final String descripcionInicial;
+  final String tipoInicial;
+  final DateTime? fechaInicial;
+  final List<int> semanasIniciales;
+  final List<String> asignadosIniciales;
+  final int mesInicial;
+  final int anoInicial;
+  final String userId;
+  final VoidCallback onTaskUpdated;
+
+  const EditarTareaForm({
+    super.key,
+    required this.tareaId,
+    required this.tituloInicial,
+    required this.descripcionInicial,
+    required this.tipoInicial,
+    this.fechaInicial,
+    required this.semanasIniciales,
+    required this.asignadosIniciales,
+    required this.mesInicial,
+    required this.anoInicial,
+    required this.userId,
+    required this.onTaskUpdated,
+  });
+
+  @override
+  State<EditarTareaForm> createState() => _EditarTareaFormState();
+}
+
+class _EditarTareaFormState extends State<EditarTareaForm> {
+  final _formKey = GlobalKey<FormState>();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late final TextEditingController _tituloController;
+  late final TextEditingController _descripcionController;
+
+  Future<void> _seleccionarFecha() async {
+    final fecha = await showDatePicker(
+      context: context,
+      initialDate: _fechaSeleccionada ?? DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+    if (fecha != null) {
+      setState(() => _fechaSeleccionada = fecha);
+    }
+  }
+
+  DateTime? _fechaSeleccionada;
+  List<int> _semanasSeleccionadas = [];
+  List<String> _miembrosSeleccionados = [];
+  bool _esSemanal = false;
+  List<String> _miembrosHogar = [];
+  int _mesSeleccionado = DateTime.now().month;
+  int _anoSeleccionado = DateTime.now().year;
+
+  void _toggleSemana(int semana) {
+    setState(() {
+      if (_semanasSeleccionadas.contains(semana)) {
+        _semanasSeleccionadas.remove(semana);
+      } else {
+        _semanasSeleccionadas.add(semana);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _tituloController = TextEditingController(text: widget.tituloInicial);
+    _descripcionController =
+        TextEditingController(text: widget.descripcionInicial);
+    _esSemanal = widget.tipoInicial == 'semanal';
+    _fechaSeleccionada = widget.fechaInicial;
+    _semanasSeleccionadas = widget.semanasIniciales;
+    _miembrosSeleccionados = widget.asignadosIniciales;
+    _mesSeleccionado = widget.mesInicial;
+    _anoSeleccionado = widget.anoInicial;
+    _cargarMiembrosHogar();
+  }
+
+  Future<void> _cargarMiembrosHogar() async {
+    final hogarSnapshot = await FirebaseFirestore.instance
+        .collection('hogar')
+        .where('miembros', arrayContains: widget.userId)
+        .limit(1)
+        .get();
+
+    if (hogarSnapshot.docs.isNotEmpty) {
+      setState(() {
+        _miembrosHogar =
+            List<String>.from(hogarSnapshot.docs.first['miembros']);
+      });
+    }
+  }
+
+  Future<void> _actualizarTarea() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    if (!_esSemanal && _fechaSeleccionada == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona una fecha para tareas puntuales')),
+      );
+      return;
+    }
+
+    if (_esSemanal && _semanasSeleccionadas.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona al menos una semana')),
+      );
+      return;
+    }
+
+    final taskData = {
+      'titulo': _tituloController.text,
+      'descripcion': _descripcionController.text,
+      'tipo': _esSemanal ? 'semanal' : 'puntual',
+      'mes': _esSemanal ? _mesSeleccionado : _fechaSeleccionada!.month,
+      'año': _esSemanal ? _anoSeleccionado : _fechaSeleccionada!.year,
+      'asignados': _miembrosSeleccionados,
+      'fechaActualizacion': Timestamp.now(),
+    };
+
+    if (_esSemanal) {
+      taskData['semanas'] = _semanasSeleccionadas;
+    } else {
+      taskData['fecha'] = Timestamp.fromDate(_fechaSeleccionada!);
+    }
+
+    try {
+      await _firestore
+          .collection('tareas')
+          .doc(widget.tareaId)
+          .update(taskData);
+      widget.onTaskUpdated();
+      Navigator.pop(context);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al actualizar: ${e.toString()}')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final meses = DateFormat.MMMM('es').dateSymbols.MONTHS;
+
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+        left: 20,
+        right: 20,
+        top: 20,
+      ),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Editar Tarea',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: _tituloController,
+              decoration: InputDecoration(
+                labelText: 'Título',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                prefixIcon: const Icon(Icons.title, color: Colors.teal),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
+              ),
+              validator: (value) => value!.isEmpty ? 'Ingrese un título' : null,
+            ),
+            const SizedBox(height: 15),
+            TextFormField(
+              controller: _descripcionController,
+              decoration: InputDecoration(
+                labelText: 'Descripción',
+                labelStyle: const TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal),
+                ),
+                prefixIcon: const Icon(Icons.description, color: Colors.teal),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(color: Colors.teal, width: 2),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const Text(
+                  'Tipo de tarea:',
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Puntual'),
+                  selected: !_esSemanal,
+                  selectedColor: Colors.orange,
+                 backgroundColor: Colors.white,
+                  onSelected: (val) => setState(() => _esSemanal = !val),
+                ),
+                const SizedBox(width: 10),
+                ChoiceChip(
+                  label: const Text('Semanal'),
+                  selected: _esSemanal,
+                  selectedColor: Colors.orange,
+                  backgroundColor: Colors.white,
+                  onSelected: (val) => setState(() => _esSemanal = val),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            if (!_esSemanal)
+              InkWell(
+                onTap: _seleccionarFecha,
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Fecha',
+                    labelStyle: const TextStyle(color: Colors.teal),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Colors.teal),
+                    ),
+                    prefixIcon:
+                        const Icon(Icons.calendar_today, color: Colors.teal),
+                    filled: true,
+                    fillColor: Colors.white,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide:
+                          const BorderSide(color: Colors.teal, width: 2),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        _fechaSeleccionada != null
+                            ? DateFormat('dd/MM/yyyy')
+                                .format(_fechaSeleccionada!)
+                            : 'Seleccionar fecha',
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      const Spacer(),
+                      const Icon(Icons.arrow_drop_down, color: Colors.teal),
+                    ],
+                  ),
+                ),
+              ),
+            if (_esSemanal) ...[
+              const SizedBox(height: 20),
+              const Text(
+                'Mes para las tareas semanales:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<int>(
+                value: _mesSeleccionado,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                items: List.generate(12, (index) {
+                  final mesNumero = index + 1;
+                  return DropdownMenuItem<int>(
+                    value: mesNumero,
+                    child: Text(
+                      '${meses[index]} ${_anoSeleccionado}',
+                      style: const TextStyle(color: Colors.black87),
+                    ),
+                  );
+                }),
+                onChanged: (value) {
+                  if (value != null) {
+                    setState(() {
+                      _mesSeleccionado = value;
+                    });
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Semanas del mes:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              Wrap(
+                spacing: 8,
+                children: List.generate(5, (index) {
+                  final semana = index + 1;
+                  return FilterChip(
+                    label: Text('Semana $semana'),
+                    selected: _semanasSeleccionadas.contains(semana),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
+                    onSelected: (val) => _toggleSemana(semana),
+                  );
+                }),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Asignar a miembros:',
+                style: TextStyle(fontSize: 16, color: Colors.teal),
+              ),
+              Wrap(
+                spacing: 8,
+                children: _miembrosHogar.map((miembro) {
+                  return FilterChip(
+                    label: FutureBuilder<DocumentSnapshot>(
+                      future: FirebaseFirestore.instance
+                          .collection('usuarios')
+                          .doc(miembro)
+                          .get(),
+                      builder: (context, snapshot) {
+                        final nombre = snapshot.hasData
+                            ? snapshot.data!['nombre'] ?? 'Usuario'
+                            : '...';
+                        return Text(nombre);
+                      },
+                    ),
+                    selected: _miembrosSeleccionados.contains(miembro),
+                    selectedColor: Colors.orange,
+                    backgroundColor: Colors.white,
+                    onSelected: (val) => setState(() {
+                      if (val) {
+                        _miembrosSeleccionados.add(miembro);
+                      } else {
+                        _miembrosSeleccionados.remove(miembro);
+                      }
+                    }),
+                  );
+                }).toList(),
+              ),
+            ],
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _actualizarTarea,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: const Text(
+                'Actualizar Tarea',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
     );
   }
 }

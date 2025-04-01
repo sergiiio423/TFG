@@ -20,8 +20,6 @@ class _TareasScreenState extends State<TareasScreen> {
   final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
   final _firestore = FirebaseFirestore.instance;
 
- 
-
   int _currentIndex = 1;
   String nombreHogar = 'Tareas';
 
@@ -199,111 +197,92 @@ class _TareasScreenState extends State<TareasScreen> {
     return dias[weekday - 1];
   }
 
-  Widget _buildListaTareas() {
-    final semanaActual = _obtenerSemanaMes(_fechaSeleccionada);
-    final mesActual = _fechaSeleccionada.month;
-    final anoActual = _fechaSeleccionada.year;
-
-    return StreamBuilder<QuerySnapshot>(
-      stream: _firestore
-          .collection('tareas')
-          .where('mes', isEqualTo: mesActual)
-          .where('ano', isEqualTo: anoActual)
-          .where('tipo', isEqualTo: 'semanal')
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return const LinearProgressIndicator();
-
-        // Filtrar tareas de la semana actual
-        final tareasSemanaActual = snapshot.data!.docs.where((doc) {
-          final data = doc.data() as Map<String, dynamic>;
-          final estaAsignado =
-              (data['asignados'] as List?)?.contains(userId) ?? false;
-          final semanas = List<int>.from(data['semanas'] ?? []);
-
-          return estaAsignado && semanas.contains(semanaActual);
-        }).toList();
-
-        final hoy = DateTime.now();
-        final esSemanaCambioMes = _esSemanaCambioDeMes(hoy);
-
-        if (esSemanaCambioMes) {
-          final mesSiguiente = hoy.month == 12 ? 1 : hoy.month + 1;
-          final anoSiguiente = hoy.month == 12 ? hoy.year + 1 : hoy.year;
-
-          return StreamBuilder<QuerySnapshot>(
-            stream: _firestore
-                .collection('tareas')
-                .where('mes', isEqualTo: mesSiguiente)
-                .where('año', isEqualTo: anoSiguiente)
-                .where('tipo', isEqualTo: 'semanal')
-                .snapshots(),
-            builder: (context, snapshotSiguiente) {
-              if (!snapshotSiguiente.hasData)
-                return const LinearProgressIndicator();
-
-              final tareasPrimeraSemanaSiguiente =
-                  snapshotSiguiente.data!.docs.where((doc) {
-                final data = doc.data() as Map<String, dynamic>;
-                final estaAsignado =
-                    (data['asignados'] as List?)?.contains(userId) ?? false;
-                final semanas = List<int>.from(data['semanas'] ?? []);
-
-                return estaAsignado && semanas.contains(1); // Primera semana
-              }).toList();
-
-              if (tareasPrimeraSemanaSiguiente.isEmpty) {
-                return _buildMensajeSinTareas(
-                    "No hay tareas para la primera semana del próximo mes");
-              }
-
-              return ListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  ...tareasPrimeraSemanaSiguiente
-                      .map((doc) => _buildTareaCard(doc))
-                      .toList(),
-                ],
-              );
-            },
-          );
-        }
-
-        if (tareasSemanaActual.isEmpty) {
-          return _buildMensajeSinTareas("No hay tareas para esta semana");
-        }
-
-        return ListView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Text(
-                "Tareas de esta semana",
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
-                ),
-              ),
-            ),
-            ...tareasSemanaActual.map((doc) => _buildTareaCard(doc)).toList(),
-          ],
-        );
-      },
-    );
-  }
-
-  bool _esSemanaCambioDeMes(DateTime fecha) {
-    // Verificar si estamos en los últimos días del mes (última semana)
+    bool _esSemanaCambioDeMes(DateTime fecha) {
     final ultimoDiaMes = DateTime(fecha.year, fecha.month + 1, 0);
-    final diferenciaDias = ultimoDiaMes.day - fecha.day;
-
-    // Consideramos semana de cambio si estamos en los últimos 3 días del mes
-    return diferenciaDias <= 3;
+    final diferenciaDias = ultimoDiaMes.difference(fecha).inDays;
+    return diferenciaDias < 7;
   }
+
+
+Widget _buildListaTareas() {
+  final semanaActual = _obtenerSemanaMes(_fechaSeleccionada);
+  final mesActual = _fechaSeleccionada.month;
+  final anoActual = _fechaSeleccionada.year;
+
+  final hoy = DateTime.now();
+  final esSemanaCambioMes = _esSemanaCambioDeMes(hoy);
+
+
+  // Stream base para el mes actual
+  final streamMesActual = _firestore
+      .collection('tareas')
+      .where('mes', isEqualTo: mesActual)
+      .where('año', isEqualTo: anoActual)
+      .where('tipo', isEqualTo: 'semanal')
+      .snapshots();
+
+  // Stream para el mes siguiente (si la semana cruza el mes)
+  final streamMesSiguiente = esSemanaCambioMes
+      ? _firestore
+          .collection('tareas')
+          .where('mes', isEqualTo: mesActual == 12 ? 1 : mesActual + 1)
+          .where('año', isEqualTo: mesActual == 12 ? anoActual + 1 : anoActual)
+          .where('tipo', isEqualTo: 'semanal')
+          .snapshots()
+      : null;
+
+  return StreamBuilder<QuerySnapshot>(
+    stream: streamMesActual,
+    builder: (context, snapshot) {
+      if (!snapshot.hasData) return const LinearProgressIndicator();
+
+      List<DocumentSnapshot> tareasSemanaActual = snapshot.data!.docs.where((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
+        final semanas = List<int>.from(data['semanas'] ?? []);
+
+        return estaAsignado && semanas.contains(semanaActual);
+      }).toList();
+
+      if (streamMesSiguiente == null) {
+        return _mostrarListaTareas(tareasSemanaActual);
+      }
+
+      return StreamBuilder<QuerySnapshot>(
+        stream: streamMesSiguiente,
+        builder: (context, snapshotSiguiente) {
+          if (snapshotSiguiente.hasData) {
+            final tareasMesSiguiente = snapshotSiguiente.data!.docs.where((doc) {
+              final data = doc.data() as Map<String, dynamic>;
+              final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
+              final semanas = List<int>.from(data['semanas'] ?? []);
+
+              return estaAsignado && semanas.contains(1);
+            }).toList();
+
+            tareasSemanaActual.addAll(tareasMesSiguiente);
+          }
+
+          return _mostrarListaTareas(tareasSemanaActual);
+        },
+      );
+    },
+  );
+}
+
+Widget _mostrarListaTareas(List<DocumentSnapshot> tareas) {
+  if (tareas.isEmpty) {
+    return _buildMensajeSinTareas("No hay tareas para esta semana");
+  }
+
+  return ListView(
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
+    children: [
+      ...tareas.map((doc) => _buildTareaCard(doc)).toList(),
+    ],
+  );
+}
 
   Widget _buildMensajeSinTareas(String mensaje) {
     return Padding(
@@ -437,14 +416,13 @@ class _TareasScreenState extends State<TareasScreen> {
             ],
           ),
           trailing: PopupMenuButton<String>(
-      
             icon: Icon(Icons.more_vert,
                 color: completada ? Colors.white : Colors.black54),
             onSelected: (value) {
               if (value == 'editar') {
                 _mostrarModalEditarTarea(doc);
               } else if (value == 'eliminar') {
-                _eliminarTarea(doc.id);
+                _mostrarDialogoConfirmacionEliminar(doc.id);
               }
             },
             itemBuilder: (BuildContext context) => [
@@ -475,18 +453,32 @@ class _TareasScreenState extends State<TareasScreen> {
     );
   }
 
-  Future<void> _eliminarTarea(String taskId) async {
-    try {
-      await _firestore.collection('tareas').doc(taskId).delete();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Tarea eliminada correctamente')),
+  void _mostrarDialogoConfirmacionEliminar(String taskId) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Confirmar eliminación'),
+        content: const Text('¿Estás seguro de que quieres eliminar esta tarea?'),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Cancelar'),
+            onPressed: () {
+              Navigator.of(context).pop(); // Cierra el diálogo
+            },
+          ),
+          TextButton(
+            child: const Text('Eliminar', style: TextStyle(color: Colors.red)),
+            onPressed: () {
+              _mostrarDialogoConfirmacionEliminar(taskId); // Llama al método de eliminación
+              Navigator.of(context).pop(); // Cierra el diálogo
+            },
+          ),
+        ],
       );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al eliminar tarea: $e')),
-      );
-    }
-  }
+    },
+  );
+}
 
   void _mostrarModalEditarTarea(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
@@ -722,7 +714,22 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
   }
 
   Future<void> _crearTarea() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (!_formKey.currentState!.validate()) return; // Validar formulario
+
+    if (!_esSemanal && _fechaSeleccionada == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Selecciona una fecha para tareas puntuales')),
+      );
+      return;
+    }
+
+    if (_esSemanal && _semanasSeleccionadas.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona al menos una semana')),
+      );
+      return;
+    }
 
     final taskData = {
       'titulo': _tituloController.text,
@@ -742,9 +749,15 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
       taskData['fecha'] = Timestamp.fromDate(_fechaSeleccionada!);
     }
 
-    await FirebaseFirestore.instance.collection('tareas').add(taskData);
-    widget.onTaskCreated();
-    Navigator.pop(context);
+    try {
+      await FirebaseFirestore.instance.collection('tareas').add(taskData);
+      widget.onTaskCreated();
+      Navigator.pop(context);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al crear tarea: ${e.toString()}')),
+      );
+    }
   }
 
   @override
@@ -998,7 +1011,6 @@ class EditarTareaForm extends StatefulWidget {
   final int anoInicial;
   final String userId;
   final VoidCallback onTaskUpdated;
-  
 
   const EditarTareaForm({
     super.key,
@@ -1020,6 +1032,7 @@ class EditarTareaForm extends StatefulWidget {
 }
 
 class _EditarTareaFormState extends State<EditarTareaForm> {
+  final _formKey = GlobalKey<FormState>();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late final TextEditingController _tituloController;
   late final TextEditingController _descripcionController;
@@ -1035,6 +1048,7 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
       setState(() => _fechaSeleccionada = fecha);
     }
   }
+
   DateTime? _fechaSeleccionada;
   List<int> _semanasSeleccionadas = [];
   List<String> _miembrosSeleccionados = [];
@@ -1084,6 +1098,23 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
   }
 
   Future<void> _actualizarTarea() async {
+    if (!_formKey.currentState!.validate()) return; // Validar formulario
+
+    if (!_esSemanal && _fechaSeleccionada == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Selecciona una fecha para tareas puntuales')),
+      );
+      return;
+    }
+
+    if (_esSemanal && _semanasSeleccionadas.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Selecciona al menos una semana')),
+      );
+      return;
+    }
+
     final taskData = {
       'titulo': _tituloController.text,
       'descripcion': _descripcionController.text,
@@ -1091,6 +1122,7 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
       'mes': _esSemanal ? _mesSeleccionado : _fechaSeleccionada!.month,
       'año': _esSemanal ? _anoSeleccionado : _fechaSeleccionada!.year,
       'asignados': _miembrosSeleccionados,
+      'fechaActualizacion': Timestamp.now(), // Añadir campo de actualización
     };
 
     if (_esSemanal) {
@@ -1106,12 +1138,9 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
           .update(taskData);
       widget.onTaskUpdated();
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Tarea actualizada correctamente')),
-      );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al actualizar tarea: $e')),
+        SnackBar(content: Text('Error al actualizar: ${e.toString()}')),
       );
     }
   }
@@ -1119,9 +1148,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
   @override
   Widget build(BuildContext context) {
     final meses = DateFormat.MMMM('es').dateSymbols.MONTHS;
-    late List<DateTime> _semanaActual;
-    final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
-    final _firestore = FirebaseFirestore.instance;
 
     return SingleChildScrollView(
       padding: EdgeInsets.only(
@@ -1131,6 +1157,7 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
         top: 20,
       ),
       child: Form(
+        key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1276,9 +1303,11 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
                   );
                 }),
                 onChanged: (value) {
-                  setState(() {
-                    _mesSeleccionado = value!;
-                  });
+                  if (value != null) {
+                    setState(() {
+                      _mesSeleccionado = value;
+                    });
+                  }
                 },
               ),
               const SizedBox(height: 20),
@@ -1356,3 +1385,5 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
     );
   }
 }
+
+
