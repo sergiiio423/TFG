@@ -4,6 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'lista_compra.dart';
+import 'principal.dart';
+import 'perfil.dart';
+import 'tareas_screen.dart';
 
 class CalendarioScreen extends StatefulWidget {
   @override
@@ -18,6 +22,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
   Map<String, String> _userNames = {};
   CalendarFormat _calendarFormat = CalendarFormat.month;
   final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+  int _currentIndex = 1; 
 
   @override
   void initState() {
@@ -32,10 +37,12 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
 
   Future<void> _loadUserNames() async {
     try {
-      final usersSnapshot = await FirebaseFirestore.instance.collection('usuarios').get();
+      final usersSnapshot =
+          await FirebaseFirestore.instance.collection('usuarios').get();
       setState(() {
         _userNames = {
-          for (var doc in usersSnapshot.docs) doc.id: doc['nombre'] ?? 'Usuario desconocido'
+          for (var doc in usersSnapshot.docs)
+            doc.id: doc['nombre'] ?? 'Usuario desconocido'
         };
       });
     } catch (e) {
@@ -44,7 +51,10 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
   }
 
   void _loadTasksFromFirestore() {
-    FirebaseFirestore.instance.collection('tareas').snapshots().listen((snapshot) {
+    FirebaseFirestore.instance
+        .collection('tareas')
+        .snapshots()
+        .listen((snapshot) {
       Map<DateTime, List<Map<String, dynamic>>> tempDailyTasks = {};
       List<Map<String, dynamic>> tempWeeklyTasks = [];
 
@@ -52,9 +62,13 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
         var data = doc.data();
         data['id'] = doc.id;
 
-        if (data['tipo'] == 'puntual' && data['fecha'] is Timestamp) {
+        // Solo mostrar tareas puntuales del usuario actual
+        if (data['tipo'] == 'puntual' &&
+            data['fecha'] is Timestamp &&
+            data['usuarioId'] == userId) {
           DateTime taskDate = (data['fecha'] as Timestamp).toDate();
-          DateTime normalizedDate = DateTime(taskDate.year, taskDate.month, taskDate.day);
+          DateTime normalizedDate =
+              DateTime(taskDate.year, taskDate.month, taskDate.day);
           tempDailyTasks.putIfAbsent(normalizedDate, () => []).add(data);
         } else if (data['tipo'] == 'semanal') {
           tempWeeklyTasks.add(data);
@@ -77,87 +91,133 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
       final semanas = List<int>.from(task['semanas'] ?? []);
       final mes = task['mes'] as int?;
       final ano = task['año'] as int?;
-      
+
       if (mes == null || ano == null) return false;
-      
+
       final weekOfMonth = ((day.day - 1) ~/ 7) + 1;
-      return semanas.contains(weekOfMonth) && 
-             day.month == mes && 
-             day.year == ano;
+      return semanas.contains(weekOfMonth) &&
+          day.month == mes &&
+          day.year == ano;
     }).toList();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final dailyTasks = _getDailyTasks(_selectedDay!);
-    final weeklyTasks = _getWeeklyTasksForDay(_selectedDay!);
+ @override
+Widget build(BuildContext context) {
+  final dailyTasks = _getDailyTasks(_selectedDay!);
+  final weeklyTasks = _getWeeklyTasksForDay(_selectedDay!);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Calendario de Tareas"),
-        centerTitle: true,
-      ),
-      body: Column(
+  return Scaffold(
+    backgroundColor: Colors.white,
+    body: SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _buildCalendar(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Calendario',
+                  style: const TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.person, size: 28),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProfileScreen()),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  if (weeklyTasks.isNotEmpty) ...[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Tareas Semanales',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.teal,
+            child: Column(
+              children: [
+                _buildCalendar(),
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.only(bottom: 80), // Espacio adicional aquí
+                    child: Column(
+                      children: [
+                        if (weeklyTasks.isNotEmpty) ...[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Tareas Semanales',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.teal,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            children: weeklyTasks
+                                .map((task) => _buildTaskCard(task))
+                                .toList(),
+                          ),
+                        ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Tareas del Día',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    Column(
-                      children: weeklyTasks.map((task) => _buildTaskCard(task)).toList(),
-                    ),
-                  ],
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Tareas del Día',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange,
-                        ),
-                      ),
+                        dailyTasks.isEmpty
+                            ? const Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text("No hay tareas para este día"),
+                              )
+                            : Column(
+                                children: dailyTasks
+                                    .map((task) => _buildTaskCard(task))
+                                    .toList(),
+                              ),
+                        const SizedBox(height: 60), // Espacio adicional al final
+                      ],
                     ),
                   ),
-                  dailyTasks.isEmpty
-                      ? const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text("No hay tareas para este día"),
-                        )
-                      : Column(
-                          children: dailyTasks.map((task) => _buildTaskCard(task)).toList(),
-                        ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _mostrarModalCrearTarea(context),
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.teal,
-      ),
-    );
-  }
+    ),
+    floatingActionButton: _buildFloatingActionButton(),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    bottomNavigationBar: _buildBottomNavBar(),
+  );
+}
+
+Widget _buildFloatingActionButton() {
+  return FloatingActionButton(
+    onPressed: () => _mostrarModalCrearTarea(context),
+    backgroundColor: Colors.orange,
+    child: const Icon(Icons.add, color: Colors.white),
+  );
+}
 
   Widget _buildCalendar() {
     return Container(
@@ -226,7 +286,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
         eventLoader: (day) {
           final dailyTasks = _getDailyTasks(day);
           final weeklyTasks = _getWeeklyTasksForDay(day);
-          
+
           if (dailyTasks.isNotEmpty && weeklyTasks.isNotEmpty) {
             return [1, 2];
           } else if (dailyTasks.isNotEmpty) {
@@ -277,105 +337,296 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
     final bool completada = task['completada'] ?? false;
     final String tipo = task['tipo'] ?? 'puntual';
     final List<dynamic> asignados = task['asignados'] ?? [];
-    final Color cardColor = tipo == 'semanal' ? Colors.teal.shade50 : Colors.orange.shade50;
+    final Color cardColor =
+        tipo == 'semanal' ? Colors.teal.shade50 : Colors.orange.shade50;
+    final fecha = task['tipo'] == 'puntual' && task['fecha'] != null
+        ? (task['fecha'] as Timestamp).toDate()
+        : null;
+    final fechaCreacion = task['fechaCreacion'] != null
+        ? (task['fechaCreacion'] as Timestamp).toDate()
+        : null;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      child: Container(
-        decoration: BoxDecoration(
-          color: cardColor,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade300,
-              blurRadius: 5,
-              offset: const Offset(2, 2),
-            ),
-          ],
-        ),
-        child: ListTile(
-          leading: IconButton(
-            icon: Icon(
-              completada ? Icons.check_circle : Icons.radio_button_unchecked,
-              color: completada ? Colors.teal : Colors.grey,
-            ),
-            onPressed: () => _toggleTaskCompletion(task),
-          ),
-          title: Row(
-            children: [
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  task['titulo'] ?? 'Tarea sin nombre',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.black87,
-                    decoration: completada ? TextDecoration.lineThrough : null,
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: Colors.white,
+          isScrollControlled: true,
+          builder: (context) => Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    task['titulo'] ?? 'Sin título',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
                   ),
                 ),
-              ),
-              if (tipo == 'semanal')
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Icon(Icons.repeat, size: 16, color: Colors.teal),
+                const SizedBox(height: 20),
+                _buildDetalleItem(
+                  icon: Icons.description,
+                  label: 'Descripción:',
+                  value: task['descripcion'] ?? 'Sin descripción',
                 ),
+                _buildDetalleItem(
+                  icon: Icons.calendar_today,
+                  label: 'Tipo:',
+                  value: task['tipo'] == 'puntual'
+                      ? 'Tarea puntual'
+                      : 'Tarea semanal',
+                ),
+                if (task['tipo'] == 'puntual' && fecha != null)
+                  _buildDetalleItem(
+                    icon: Icons.date_range,
+                    label: 'Fecha:',
+                    value: DateFormat('dd/MM/yyyy').format(fecha),
+                  ),
+                if (task['tipo'] == 'semanal')
+                  _buildDetalleItem(
+                    icon: Icons.calendar_view_week,
+                    label: 'Semanas:',
+                    value: (task['semanas'] as List?)?.join(', ') ?? '',
+                  ),
+                _buildDetalleItem(
+                  icon: Icons.calendar_month,
+                  label: 'Periodo:',
+                  value: '${_obtenerNombreMes(task['mes'])} ${task['año']}',
+                ),
+                FutureBuilder<DocumentSnapshot>(
+                  future: FirebaseFirestore.instance
+                      .collection('usuarios')
+                      .doc(task['usuarioId'])
+                      .get(),
+                  builder: (context, snapshot) {
+                    final creador = snapshot.hasData
+                        ? snapshot.data!['nombre'] ?? 'Usuario desconocido'
+                        : 'Cargando...';
+                    return _buildDetalleItem(
+                      icon: Icons.person,
+                      label: 'Creado por:',
+                      value: creador,
+                    );
+                  },
+                ),
+                if (fechaCreacion != null)
+                  _buildDetalleItem(
+                    icon: Icons.timer,
+                    label: 'Fecha creación:',
+                    value: DateFormat('dd/MM/yyyy').format(fechaCreacion),
+                  ),
+                if (asignados.isNotEmpty) ...[
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Asignada a:',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: (asignados as List).map<Widget>((uid) {
+                      return FutureBuilder<DocumentSnapshot>(
+                        future: FirebaseFirestore.instance
+                            .collection('usuarios')
+                            .doc(uid)
+                            .get(),
+                        builder: (context, snapshot) {
+                          final nombre = snapshot.hasData
+                              ? snapshot.data!['nombre'] ?? 'Usuario'
+                              : '...';
+                          return Chip(
+                            label: Text(nombre),
+                            backgroundColor: Colors.orange.shade100,
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+                const SizedBox(height: 20),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 12),
+                    ),
+                    child: const Text(
+                      'Cerrar',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        child: Container(
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade300,
+                blurRadius: 5,
+                offset: const Offset(2, 2),
+              ),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (task['descripcion'] != null && task['descripcion'].isNotEmpty)
-                Text(
-                  task['descripcion'],
-                  style: TextStyle(color: Colors.black54),
-                ),
-              const SizedBox(height: 4),
-              if (asignados.isNotEmpty)
-                Wrap(
-                  spacing: 4,
-                  children: asignados
-                      .map<Widget>((uid) => Chip(
-                            label: Text(
-                              _userNames[uid] ?? 'Usuario desconocido',
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                            backgroundColor: Colors.white,
-                            visualDensity: VisualDensity.compact,
-                          ))
-                      .toList(),
-                ),
-            ],
-          ),
-          trailing: PopupMenuButton<String>(
-            icon: const Icon(Icons.more_vert, color: Colors.black54),
-            onSelected: (value) => _handleTaskAction(value, task),
-            itemBuilder: (BuildContext context) => [
-              const PopupMenuItem<String>(
-                value: 'editar',
-                child: Row(
-                  children: [
-                    Icon(Icons.edit, color: Colors.teal),
-                    SizedBox(width: 8),
-                    Text('Editar'),
-                  ],
-                ),
+          child: ListTile(
+            leading: IconButton(
+              icon: Icon(
+                completada ? Icons.check_circle : Icons.radio_button_unchecked,
+                color: completada ? Colors.teal : Colors.grey,
               ),
-              const PopupMenuItem<String>(
-                value: 'eliminar',
-                child: Row(
-                  children: [
-                    Icon(Icons.delete, color: Colors.red),
-                    SizedBox(width: 8),
-                    Text('Eliminar'),
-                  ],
+              onPressed: () => _toggleTaskCompletion(task),
+            ),
+            title: Row(
+              children: [
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    task['titulo'] ?? 'Tarea sin nombre',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.black87,
+                      decoration:
+                          completada ? TextDecoration.lineThrough : null,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (task['descripcion'] != null &&
+                    task['descripcion'].isNotEmpty)
+                  Text(
+                    task['descripcion'],
+                    style: TextStyle(color: Colors.black54),
+                  ),
+                const SizedBox(height: 4),
+                if (asignados.isNotEmpty)
+                  Wrap(
+                    spacing: 4,
+                    children: asignados
+                        .map<Widget>((uid) => Chip(
+                              label: Text(
+                                _userNames[uid] ?? 'Usuario desconocido',
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                              backgroundColor: Colors.white,
+                              visualDensity: VisualDensity.compact,
+                            ))
+                        .toList(),
+                  ),
+              ],
+            ),
+            trailing: PopupMenuButton<String>(
+              icon: const Icon(Icons.more_vert, color: Colors.black54),
+              color: Colors.white, // Set the menu color to white
+              onSelected: (value) => _handleTaskAction(value, task),
+              itemBuilder: (BuildContext context) => [
+                const PopupMenuItem<String>(
+                  value: 'editar',
+                  child: Row(
+                    children: [
+                      Icon(Icons.edit, color: Colors.teal),
+                      SizedBox(width: 8),
+                      Text('Editar'),
+                    ],
+                  ),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'eliminar',
+                  child: Row(
+                    children: [
+                      Icon(Icons.delete, color: Colors.red),
+                      SizedBox(width: 8),
+                      Text('Eliminar'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildDetalleItem({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 20, color: Colors.teal),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.black54,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  value,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _obtenerNombreMes(int mes) {
+    final meses = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre'
+    ];
+    return meses[mes - 1];
   }
 
   void _toggleTaskCompletion(Map<String, dynamic> task) {
@@ -398,19 +649,30 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
         title: const Text('Eliminar tarea'),
-        content: const Text('¿Estás seguro de que quieres eliminar esta tarea?'),
+        content:
+            const Text('¿Estás seguro de que quieres eliminar esta tarea?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancelar'),
+            child: const Text(
+              'Cancelar',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           TextButton(
             onPressed: () {
-              FirebaseFirestore.instance.collection('tareas').doc(taskId).delete();
+              FirebaseFirestore.instance
+                  .collection('tareas')
+                  .doc(taskId)
+                  .delete();
               Navigator.pop(context);
             },
-            child: const Text('Eliminar', style: TextStyle(color: Colors.red)),
+            child: const Text(
+              'Eliminar',
+              style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
@@ -429,7 +691,8 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
     );
   }
 
-  void _mostrarModalEditarTarea(BuildContext context, Map<String, dynamic> task) {
+  void _mostrarModalEditarTarea(
+      BuildContext context, Map<String, dynamic> task) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
@@ -439,8 +702,8 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
         tituloInicial: task['titulo'] ?? '',
         descripcionInicial: task['descripcion'] ?? '',
         tipoInicial: task['tipo'] ?? 'puntual',
-        fechaInicial: task['tipo'] == 'puntual' && task['fecha'] != null 
-            ? (task['fecha'] as Timestamp).toDate() 
+        fechaInicial: task['tipo'] == 'puntual' && task['fecha'] != null
+            ? (task['fecha'] as Timestamp).toDate()
             : null,
         semanasIniciales: List<int>.from(task['semanas'] ?? []),
         asignadosIniciales: List<String>.from(task['asignados'] ?? []),
@@ -450,6 +713,99 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
         onTaskUpdated: () => setState(() {}),
       ),
     );
+  }
+
+  Widget _buildBottomNavBar() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        color: Colors.teal,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 2)
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          elevation: 0,
+          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.5),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.teal,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: [
+            _buildNavItem(Icons.home, 'Inicio'),
+            _buildNavItem(Icons.list_alt, 'Tareas'),
+            _buildNavItem(Icons.wallet, 'Gastos'),
+            _buildNavItem(Icons.shopping_basket, 'Compra'),
+          ],
+          onTap: (index) => _onBottomNavTapped(context, index),
+        ),
+      ),
+    );
+  }
+
+  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.transparent,
+        ),
+        child: Icon(icon, size: 28),
+      ),
+      label: label,
+      activeIcon: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Icon(icon, size: 28),
+      ),
+    );
+  }
+
+  void _onBottomNavTapped(BuildContext context, int index) {
+    setState(() => _currentIndex = index);
+
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const HomePage(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const TareasScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 3:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const ListaScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+    }
   }
 }
 
@@ -545,7 +901,8 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
     if (!_esSemanal && _fechaSeleccionada == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Selecciona una fecha para tareas puntuales')),
+        const SnackBar(
+            content: Text('Selecciona una fecha para tareas puntuales')),
       );
       return;
     }
@@ -928,7 +1285,8 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
     if (!_esSemanal && _fechaSeleccionada == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Selecciona una fecha para tareas puntuales')),
+        const SnackBar(
+            content: Text('Selecciona una fecha para tareas puntuales')),
       );
       return;
     }
@@ -1051,7 +1409,7 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
                   label: const Text('Puntual'),
                   selected: !_esSemanal,
                   selectedColor: Colors.orange,
-                 backgroundColor: Colors.white,
+                  backgroundColor: Colors.white,
                   onSelected: (val) => setState(() => _esSemanal = !val),
                 ),
                 const SizedBox(width: 10),

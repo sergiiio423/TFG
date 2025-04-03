@@ -6,6 +6,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'lista_compra.dart';
 import 'principal.dart';
 import 'perfil.dart';
+import 'calendar.dart';
 
 class TareasScreen extends StatefulWidget {
   const TareasScreen({super.key});
@@ -75,20 +76,43 @@ class _TareasScreenState extends State<TareasScreen> {
                   Text(
                     'Mis Tareas',
                     style: const TextStyle(
-                      fontSize: 26,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.teal,
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.person, size: 28),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfileScreen()),
-                      );
-                    },
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.calendar_month, size: 28),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CalendarioScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      IconButton(
+                        icon: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Colors.teal.withOpacity(0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.person,
+                              size: 24, color: Colors.teal),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfileScreen()),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -197,92 +221,95 @@ class _TareasScreenState extends State<TareasScreen> {
     return dias[weekday - 1];
   }
 
-    bool _esSemanaCambioDeMes(DateTime fecha) {
+  bool _esSemanaCambioDeMes(DateTime fecha) {
     final ultimoDiaMes = DateTime(fecha.year, fecha.month + 1, 0);
     final diferenciaDias = ultimoDiaMes.difference(fecha).inDays;
     return diferenciaDias < 7;
   }
 
+  Widget _buildListaTareas() {
+    final semanaActual = _obtenerSemanaMes(_fechaSeleccionada);
+    final mesActual = _fechaSeleccionada.month;
+    final anoActual = _fechaSeleccionada.year;
 
-Widget _buildListaTareas() {
-  final semanaActual = _obtenerSemanaMes(_fechaSeleccionada);
-  final mesActual = _fechaSeleccionada.month;
-  final anoActual = _fechaSeleccionada.year;
+    final hoy = DateTime.now();
+    final esSemanaCambioMes = _esSemanaCambioDeMes(hoy);
 
-  final hoy = DateTime.now();
-  final esSemanaCambioMes = _esSemanaCambioDeMes(hoy);
+    // Stream base para el mes actual
+    final streamMesActual = _firestore
+        .collection('tareas')
+        .where('mes', isEqualTo: mesActual)
+        .where('año', isEqualTo: anoActual)
+        .where('tipo', isEqualTo: 'semanal')
+        .snapshots();
 
+    // Stream para el mes siguiente (si la semana cruza el mes)
+    final streamMesSiguiente = esSemanaCambioMes
+        ? _firestore
+            .collection('tareas')
+            .where('mes', isEqualTo: mesActual == 12 ? 1 : mesActual + 1)
+            .where('año',
+                isEqualTo: mesActual == 12 ? anoActual + 1 : anoActual)
+            .where('tipo', isEqualTo: 'semanal')
+            .snapshots()
+        : null;
 
-  // Stream base para el mes actual
-  final streamMesActual = _firestore
-      .collection('tareas')
-      .where('mes', isEqualTo: mesActual)
-      .where('año', isEqualTo: anoActual)
-      .where('tipo', isEqualTo: 'semanal')
-      .snapshots();
+    return StreamBuilder<QuerySnapshot>(
+      stream: streamMesActual,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return const LinearProgressIndicator();
 
-  // Stream para el mes siguiente (si la semana cruza el mes)
-  final streamMesSiguiente = esSemanaCambioMes
-      ? _firestore
-          .collection('tareas')
-          .where('mes', isEqualTo: mesActual == 12 ? 1 : mesActual + 1)
-          .where('año', isEqualTo: mesActual == 12 ? anoActual + 1 : anoActual)
-          .where('tipo', isEqualTo: 'semanal')
-          .snapshots()
-      : null;
+        List<DocumentSnapshot> tareasSemanaActual =
+            snapshot.data!.docs.where((doc) {
+          final data = doc.data() as Map<String, dynamic>;
+          final estaAsignado =
+              (data['asignados'] as List?)?.contains(userId) ?? false;
+          final semanas = List<int>.from(data['semanas'] ?? []);
 
-  return StreamBuilder<QuerySnapshot>(
-    stream: streamMesActual,
-    builder: (context, snapshot) {
-      if (!snapshot.hasData) return const LinearProgressIndicator();
+          return estaAsignado && semanas.contains(semanaActual);
+        }).toList();
 
-      List<DocumentSnapshot> tareasSemanaActual = snapshot.data!.docs.where((doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
-        final semanas = List<int>.from(data['semanas'] ?? []);
-
-        return estaAsignado && semanas.contains(semanaActual);
-      }).toList();
-
-      if (streamMesSiguiente == null) {
-        return _mostrarListaTareas(tareasSemanaActual);
-      }
-
-      return StreamBuilder<QuerySnapshot>(
-        stream: streamMesSiguiente,
-        builder: (context, snapshotSiguiente) {
-          if (snapshotSiguiente.hasData) {
-            final tareasMesSiguiente = snapshotSiguiente.data!.docs.where((doc) {
-              final data = doc.data() as Map<String, dynamic>;
-              final estaAsignado = (data['asignados'] as List?)?.contains(userId) ?? false;
-              final semanas = List<int>.from(data['semanas'] ?? []);
-
-              return estaAsignado && semanas.contains(1);
-            }).toList();
-
-            tareasSemanaActual.addAll(tareasMesSiguiente);
-          }
-
+        if (streamMesSiguiente == null) {
           return _mostrarListaTareas(tareasSemanaActual);
-        },
-      );
-    },
-  );
-}
+        }
 
-Widget _mostrarListaTareas(List<DocumentSnapshot> tareas) {
-  if (tareas.isEmpty) {
-    return _buildMensajeSinTareas("No hay tareas para esta semana");
+        return StreamBuilder<QuerySnapshot>(
+          stream: streamMesSiguiente,
+          builder: (context, snapshotSiguiente) {
+            if (snapshotSiguiente.hasData) {
+              final tareasMesSiguiente =
+                  snapshotSiguiente.data!.docs.where((doc) {
+                final data = doc.data() as Map<String, dynamic>;
+                final estaAsignado =
+                    (data['asignados'] as List?)?.contains(userId) ?? false;
+                final semanas = List<int>.from(data['semanas'] ?? []);
+
+                return estaAsignado && semanas.contains(1);
+              }).toList();
+
+              tareasSemanaActual.addAll(tareasMesSiguiente);
+            }
+
+            return _mostrarListaTareas(tareasSemanaActual);
+          },
+        );
+      },
+    );
   }
 
-  return ListView(
-    shrinkWrap: true,
-    physics: const NeverScrollableScrollPhysics(),
-    children: [
-      ...tareas.map((doc) => _buildTareaCard(doc)).toList(),
-    ],
-  );
-}
+  Widget _mostrarListaTareas(List<DocumentSnapshot> tareas) {
+    if (tareas.isEmpty) {
+      return _buildMensajeSinTareas("No hay tareas para esta semana");
+    }
+
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        ...tareas.map((doc) => _buildTareaCard(doc)).toList(),
+      ],
+    );
+  }
 
   Widget _buildMensajeSinTareas(String mensaje) {
     return Padding(
@@ -349,136 +376,351 @@ Widget _mostrarListaTareas(List<DocumentSnapshot> tareas) {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      child: Container(
-        decoration: BoxDecoration(
-          color: completada ? Colors.teal : Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.shade300,
-                blurRadius: 5,
-                offset: const Offset(2, 2))
-          ],
-        ),
-        child: ListTile(
-          leading: IconButton(
-            icon: Icon(
-              completada ? Icons.check_circle : Icons.radio_button_unchecked,
-              color: completada ? Colors.white : Colors.teal,
-            ),
-            onPressed: () => _actualizarEstadoTarea(doc.id, !completada),
+      child: GestureDetector(
+        onTap: () {
+          _mostrarDetallesTarea(data);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: completada ? Colors.teal : Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.shade300,
+                  blurRadius: 5,
+                  offset: const Offset(2, 2))
+            ],
           ),
-          title: Row(
-            children: [
-              if (!esCreador)
-                const Icon(Icons.person, size: 16, color: Colors.orange),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  data['titulo'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: completada ? Colors.white : Colors.black87,
+          child: ListTile(
+            leading: IconButton(
+              icon: Icon(
+                completada ? Icons.check_circle : Icons.radio_button_unchecked,
+                color: completada ? Colors.white : Colors.teal,
+              ),
+              onPressed: () => _actualizarEstadoTarea(doc.id, !completada),
+            ),
+            title: Row(
+              children: [
+                if (!esCreador)
+                  const Icon(Icons.person, size: 16, color: Colors.orange),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    data['titulo'],
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: completada ? Colors.white : Colors.black87,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(data['descripcion'],
+              ],
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  data['descripcion'],
                   style: TextStyle(
-                      color: completada ? Colors.white70 : Colors.black54)),
-              if (data['asignados'] != null)
-                Wrap(
-                  spacing: 4,
-                  children: (data['asignados'] as List)
-                      .map<Widget>((uid) => FutureBuilder<DocumentSnapshot>(
-                            future: _firestore
-                                .collection('usuarios')
-                                .doc(uid)
-                                .get(),
-                            builder: (context, snapshot) {
-                              final nombre = snapshot.hasData
-                                  ? snapshot.data!['nombre'] ?? 'Usuario'
-                                  : '...';
-                              return Chip(
-                                label: Text(nombre),
-                                backgroundColor: Colors.orange.shade100,
-                                visualDensity: VisualDensity.compact,
-                              );
-                            },
-                          ))
-                      .toList(),
+                      color: completada ? Colors.white70 : Colors.black54),
                 ),
-            ],
-          ),
-          trailing: PopupMenuButton<String>(
-            icon: Icon(Icons.more_vert,
-                color: completada ? Colors.white : Colors.black54),
-            onSelected: (value) {
-              if (value == 'editar') {
-                _mostrarModalEditarTarea(doc);
-              } else if (value == 'eliminar') {
-                _mostrarDialogoConfirmacionEliminar(doc.id);
-              }
-            },
-            itemBuilder: (BuildContext context) => [
-              PopupMenuItem<String>(
-                value: 'editar',
-                child: Row(
-                  children: const [
-                    Icon(Icons.edit, color: Colors.teal),
-                    SizedBox(width: 8),
-                    Text('Editar'),
-                  ],
-                ),
+                if (data['asignados'] != null)
+                  Wrap(
+                    spacing: 4,
+                    children: (data['asignados'] as List)
+                        .map<Widget>((uid) => FutureBuilder<DocumentSnapshot>(
+                              future: _firestore
+                                  .collection('usuarios')
+                                  .doc(uid)
+                                  .get(),
+                              builder: (context, snapshot) {
+                                final nombre = snapshot.hasData
+                                    ? snapshot.data!['nombre'] ?? 'Usuario'
+                                    : '...';
+                                return Chip(
+                                  label: Text(nombre),
+                                  backgroundColor: Colors.orange.shade100,
+                                  visualDensity: VisualDensity.compact,
+                                );
+                              },
+                            ))
+                        .toList(),
+                  ),
+              ],
+            ),
+            trailing: PopupMenuButton<String>(
+              icon: Icon(
+                Icons.more_vert,
+                color: completada ? Colors.white : Colors.black54,
               ),
-              PopupMenuItem<String>(
-                value: 'eliminar',
-                child: Row(
-                  children: const [
-                    Icon(Icons.delete, color: Colors.red),
-                    SizedBox(width: 8),
-                    Text('Eliminar'),
-                  ],
+              color: Colors.white,
+              onSelected: (value) {
+                if (value == 'editar') {
+                  _mostrarModalEditarTarea(doc);
+                } else if (value == 'eliminar') {
+                  _mostrarDialogoConfirmacionEliminar(doc.id);
+                }
+              },
+              itemBuilder: (BuildContext context) => [
+                PopupMenuItem<String>(
+                  value: 'editar',
+                  child: Row(
+                    children: const [
+                      Icon(Icons.edit, color: Colors.teal),
+                      SizedBox(width: 8),
+                      Text('Editar'),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                PopupMenuItem<String>(
+                  value: 'eliminar',
+                  child: Row(
+                    children: const [
+                      Icon(Icons.delete, color: Colors.red),
+                      SizedBox(width: 8),
+                      Text('Eliminar'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  void _mostrarDialogoConfirmacionEliminar(String taskId) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('Confirmar eliminación'),
-        content: const Text('¿Estás seguro de que quieres eliminar esta tarea?'),
-        actions: <Widget>[
-          TextButton(
-            child: const Text('Cancelar'),
-            onPressed: () {
-              Navigator.of(context).pop(); // Cierra el diálogo
-            },
-          ),
-          TextButton(
-            child: const Text('Eliminar', style: TextStyle(color: Colors.red)),
-            onPressed: () {
-              _mostrarDialogoConfirmacionEliminar(taskId); // Llama al método de eliminación
-              Navigator.of(context).pop(); // Cierra el diálogo
-            },
+  void _mostrarDetallesTarea(Map<String, dynamic> data) {
+    final fecha =
+        data['fecha'] != null ? (data['fecha'] as Timestamp).toDate() : null;
+    final fechaCreacion = data['fechaCreacion'] != null
+        ? (data['fechaCreacion'] as Timestamp).toDate()
+        : null;
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+      builder: (context) => Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                data['titulo'] ?? 'Sin título',
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            _buildDetalleItem(
+              icon: Icons.description,
+              label: 'Descripción:',
+              value: data['descripcion'] ?? 'Sin descripción',
+            ),
+            _buildDetalleItem(
+              icon: Icons.calendar_today,
+              label: 'Tipo:',
+              value:
+                  data['tipo'] == 'puntual' ? 'Tarea puntual' : 'Tarea semanal',
+            ),
+            if (data['tipo'] == 'puntual' && fecha != null)
+              _buildDetalleItem(
+                icon: Icons.date_range,
+                label: 'Fecha:',
+                value: DateFormat('dd/MM/yyyy').format(fecha),
+              ),
+            if (data['tipo'] == 'semanal')
+              _buildDetalleItem(
+                icon: Icons.calendar_view_week,
+                label: 'Semanas:',
+                value: (data['semanas'] as List?)?.join(', ') ?? '',
+              ),
+            _buildDetalleItem(
+              icon: Icons.calendar_month,
+              label: 'Periodo:',
+              value: '${_obtenerNombreMes(data['mes'])} ${data['año']}',
+            ),
+            FutureBuilder<DocumentSnapshot>(
+              future: _firestore
+                  .collection('usuarios')
+                  .doc(data['usuarioId'])
+                  .get(),
+              builder: (context, snapshot) {
+                final creador = snapshot.hasData
+                    ? snapshot.data!['nombre'] ?? 'Usuario desconocido'
+                    : 'Cargando...';
+                return _buildDetalleItem(
+                  icon: Icons.person,
+                  label: 'Creado por:',
+                  value: creador,
+                );
+              },
+            ),
+            if (fechaCreacion != null)
+              _buildDetalleItem(
+                icon: Icons.timer,
+                label: 'Fecha creación:',
+                value: DateFormat('dd/MM/yyyy').format(fechaCreacion),
+              ),
+            if (data['asignados'] != null) ...[
+              const SizedBox(height: 16),
+              const Text(
+                'Asignada a:',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: (data['asignados'] as List).map<Widget>((uid) {
+                  return FutureBuilder<DocumentSnapshot>(
+                    future: _firestore.collection('usuarios').doc(uid).get(),
+                    builder: (context, snapshot) {
+                      final nombre = snapshot.hasData
+                          ? snapshot.data!['nombre'] ?? 'Usuario'
+                          : '...';
+                      return Chip(
+                        label: Text(nombre),
+                        backgroundColor: Colors.orange.shade100,
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+            ],
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
+                child: const Text(
+                  'Cerrar',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDetalleItem({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 20, color: Colors.teal),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.black54,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  value,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  String _obtenerNombreMes(int mes) {
+    final meses = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre'
+    ];
+    return meses[mes - 1];
+  }
+
+  void _mostrarDialogoConfirmacionEliminar(String taskId) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirmar eliminación'),
+          backgroundColor: Colors.white,
+          content:
+              const Text('¿Estás seguro de que quieres eliminar esta tarea?'),
+          actions: <Widget>[
+            TextButton(
+              child:
+                  const Text('Cancelar', style: TextStyle(color: Colors.black)),
+              onPressed: () {
+                Navigator.of(context).pop(); // Cierra el diálogo
+              },
+            ),
+            TextButton(
+              child: const Text('Eliminar',
+                  style: TextStyle(color: Colors.orange)),
+              onPressed: () {
+                _eliminarTarea(taskId); // Llama al método de eliminación
+                Navigator.of(context).pop(); // Cierra el diálogo
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _eliminarTarea(String taskId) async {
+    try {
+      await _firestore.collection('tareas').doc(taskId).delete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Tarea eliminada exitosamente')),
       );
-    },
-  );
-}
+      setState(() {});
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error al eliminar tarea: ${e.toString()}')),
+      );
+    }
+  }
 
   void _mostrarModalEditarTarea(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
@@ -1385,5 +1627,3 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
     );
   }
 }
-
-

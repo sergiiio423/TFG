@@ -368,10 +368,149 @@ mostramos en el cápitulo anterior. Al realizar la implementación, ha sido nece
     \caption{RF\_31}
     \label{req:RF31}
 \end{table}
-\clearpage
+
 
 Este requisito era necesario para poder tener una lista de la compra totalmente funcional, ya que 
-permite al usuario marcar los productos que ha comprado y que ya no necesita.
+permite al usuario marcar los productos que ha comprado y que ya no necesita. Tras completar la implementación, se han obtenido las siguientes pantallas: 
+
+\newpage 
+\paragraph{Pantalla de tareas}
+
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se puede consultar tanto las tareas semanales, que tiene asignadas el usuario para la semana actual, como 
+las tareas que ha creado el mismo para el día actual. Si se selecciona otro día de la semana, en la parte superior, donde 
+aperece la semana actual, se puede ver las tareas para el día seleccionado. Esta pantalla está pensada para actuar como planificación de la semana actual, 
+ya que solo podemos ver las tareas de dicha semana. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/tareas_implementado.png}
+    \caption{Interfaz gráfica pantalla de tareas.}
+    \label{tasks_screen}
+\end{figure}
+
+
+
+\paragraph{Pantalla de crear tarea}
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se puede crear una nueva tarea, indicando el nombre de la tarea, la descripción de la misma, podemos elegir también 
+si la tarea es semanal o puntual (solo para un día concreto), en caso de que sea semanal, se indica la semana del mes 
+y el mes en el que se va a realizar y a que miembros del hogar se les asigna la tarea. En caso de ser puntual lo único que se indica es el día 
+en el que se tiene que realizar la tarea. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_tarea_implementado.png}
+    \caption{Interfaz gráfica pantalla de crear tarea.}
+    \label{create_task_screen}
+\end{figure}
+
+
+\paragraph{Pantalla de ver datos de una tarea}
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se ven todos los datos que se han introducido al crear la tarea, además de la fecha de creación y quien ha creado la tarea. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/ver_tarea_implementado.png}
+    \caption{Interfaz gráfica pantalla de ver datos de una tarea.}
+    \label{view_task_screen}
+\end{figure}
+
+\newpage
+
+\paragraph{Pantalla para editar o eliminar una tarea}
+
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla se muestra cuando un usuario selecciona los tres puntos de la parte derecha de una tarea en concreto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/menu_tarea_implementado.png}
+    \caption{Interfaz gráfica pantalla para editar o eliminar una tarea.}
+    \label{edit_delete_task_screen}
+\end{figure}
+
+\paragraph{Pantalla editar tarea}
+
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla es igual que la de crear tarea, pero en este caso los campos ya vienen rellenados con los datos de la tarea que se va a editar.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/editar_tarea_implementado.png}
+    \caption{Interfaz gráfica pantalla de editar tarea.}
+    \label{edit_task_screen}
+\end{figure}
+
+
+\paragraph{Pantalla de calendario}
+
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se muestran todas las tareas semanales del hogar, que hay que realizar en la semana del día seleccionado en el calendario. 
+Ademas se pueden ver las tareas puntuales personales que tiene el usuario para el día seleccionado también. El resto de funcionalidades 
+de crear, ver, editar y eliminar tareas son las mismas que en la pantalla de tareas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/calendario_implementado.png}
+    \caption{Interfaz gráfica pantalla de calendario.}
+    \label{calendar_screen}
+\end{figure}
+
+
+\paragraph{Pantalla de lista de la compra}
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se pueden ver todas las listas de la compra que ha creado el usuario.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/lista_compra_implementado.png}
+    \caption{Interfaz gráfica pantalla de lista de la compra.}
+    \label{shopping_list_screen}
+\end{figure}
+ 
+\paragraph{Pantalla de crear lista de la compra}
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se puede crear una nueva lista de la compra, indicando el nombre de la lista y si la lista va a ser personal 
+o compartida. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_lista_implementado.png}
+    \caption{Interfaz gráfica pantalla de crear lista de la compra.}
+    \label{create_shopping_list_screen}
+    
+\end{figure}
+
+
+
+
 
 
 
