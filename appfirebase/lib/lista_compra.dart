@@ -288,6 +288,7 @@ class _ListaScreenState extends State<ListaScreen> {
               ),
               PopupMenuButton<String>(
                   icon: Icon(Icons.more_vert, color: Colors.grey[500]),
+                  color: Colors.white, 
                   itemBuilder: (context) => [
                         PopupMenuItem(
                           value: 'delete',
@@ -320,16 +321,20 @@ class _ListaScreenState extends State<ListaScreen> {
         title: const Text("Confirmar eliminación"),
         content:
             const Text("¿Estás seguro de que quieres eliminar esta lista?"),
+            backgroundColor: Colors.white,
         actions: [
-          TextButton(
+            TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text("Cancelar"),
+            child: const Text(
+              "Cancelar",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             child: Text(
               "Eliminar",
-              style: TextStyle(color: Colors.red[700]),
+              style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
             ),
           ),
         ],

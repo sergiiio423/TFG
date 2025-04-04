@@ -22,7 +22,6 @@ class ProductosListaScreen extends StatefulWidget {
 
 class _ProductosListaScreenState extends State<ProductosListaScreen> {
   final Map<String, GlobalKey<_ProductoItemState>> _productKeys = {};
-  final Map<String, DateTime> _compradosTimestamps = {};
   int _currentIndex = 3;
 
   @override
@@ -137,7 +136,6 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
     );
   }
 
-  // Método para cambiar la cantidad de un producto
   Future<void> _cambiarCantidad(DocumentSnapshot producto, int cambio) async {
     final int cantidadActual = producto['cantidad'] ?? 1;
     final int nuevaCantidad = cantidadActual + cambio;
@@ -150,7 +148,6 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
     }
   }
 
-  // Método para agregar un producto a la lista
   Future<void> _agregarProducto(String nombre, String icono, String cantidad) async {
     await FirebaseFirestore.instance.collection('producto').add({
       'nombre': nombre,
@@ -174,26 +171,13 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
           'fechaComprado': nuevoEstado ? FieldValue.serverTimestamp() : null,
         });
 
-    if (nuevoEstado) {
-      _compradosTimestamps[producto.id] = DateTime.now();
-      
-      if (_productKeys.containsKey(producto.id)) {
-        SchedulerBinding.instance.addPostFrameCallback((_) {
-          _productKeys[producto.id]?.currentState?.animateToBottom();
-        });
-      }
-
-      Future.delayed(const Duration(hours: 24), () {
-        if (_compradosTimestamps[producto.id] != null && 
-            DateTime.now().difference(_compradosTimestamps[producto.id]!) >= const Duration(hours: 24)) {
-          _eliminarProducto(producto.id);
-          _compradosTimestamps.remove(producto.id);
-        }
+    if (_productKeys.containsKey(producto.id)) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        _productKeys[producto.id]?.currentState?.updateCompradoState(nuevoEstado);
       });
     }
   }
 
-  // Método para eliminar un producto de la lista
   Future<void> _eliminarProducto(String productoId) async {
     await FirebaseFirestore.instance
         .collection('producto')
@@ -201,7 +185,6 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
         .delete();
   }
 
-  // Método para marcar todos los productos como comprados
   Future<void> _marcarTodosComoComprados() async {
     final productosSnapshot = await FirebaseFirestore.instance
         .collection('producto')
@@ -220,8 +203,8 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
     final formKey = GlobalKey<FormState>();
     final nombreController = TextEditingController();
     final cantidadController = TextEditingController(text: "1");
-    String selectedIcon = "📦";
-    final List<String> emoticons = ["📦", "🍎", "🥑", "🍞", "🥛", "🍗", "🥕"];
+    String selectedIcon = " 🍽️ ";
+    final List<String> emoticons = [" 🍽️ ", "🥩", "🐟", "🍞", "🍎", "🥚", "🥬","🥔","🫘","🍚","🍪"];
 
     showModalBottomSheet(
       context: context,
@@ -280,7 +263,7 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
                     ),
                     style: const TextStyle(
                       fontSize: 16,
-                      color: Colors.black87,
+      color: Colors.black87,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -298,7 +281,8 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
                       return ChoiceChip(
                         label: Text(emoji, style: const TextStyle(fontSize: 24)),
                         selected: selectedIcon == emoji,
-                        selectedColor: Colors.teal.withOpacity(0.2),
+                        selectedColor: Colors.orange.withOpacity(0.2),
+                        backgroundColor: Colors.grey[200],
                         onSelected: (selected) {
                           setState(() => selectedIcon = emoji);
                         },
@@ -481,172 +465,118 @@ class _ProductoItem extends StatefulWidget {
   _ProductoItemState createState() => _ProductoItemState();
 }
 
-class _ProductoItemState extends State<_ProductoItem> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> _offsetAnimation;
-  bool _isComprado = false;
+class _ProductoItemState extends State<_ProductoItem> {
+  late bool _isComprado;
 
   @override
   void initState() {
     super.initState();
     _isComprado = widget.producto['comprado'] ?? false;
-    
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
-    
-    _offsetAnimation = Tween<Offset>(
-      begin: Offset.zero,
-      end: const Offset(0, 1.5),
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
   }
 
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  void animateToBottom() {
-    _animationController.forward();
+  void updateCompradoState(bool comprado) {
+    setState(() {
+      _isComprado = comprado;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SlideTransition(
-      position: _offsetAnimation,
-      child: FadeTransition(
-        opacity: Tween<double>(begin: 1.0, end: 0.0).animate(
-          CurvedAnimation(
-            parent: _animationController,
-            curve: const Interval(0.5, 1.0),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ListTile(
+        leading: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.teal.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(
+            widget.producto['icono'],
+            style: const TextStyle(fontSize: 24),
           ),
         ),
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
+        title: Text(
+          widget.producto['nombre'],
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            decoration: _isComprado ? TextDecoration.lineThrough : null,
+            color: _isComprado ? Colors.grey : Colors.black87,
+          ),
+        ),
+        subtitle: Text(
+          "Cantidad: ${widget.producto['cantidad']}",
+          style: TextStyle(
+            decoration: _isComprado ? TextDecoration.lineThrough : null,
+            color: _isComprado ? Colors.grey : Colors.black54,
+          ),
+        ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (!_isComprado) ...[
+              IconButton(
+                icon: const Icon(Icons.remove, size: 20),
+                color: Colors.red[400],
+                onPressed: () => widget.onUpdate(-1),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
               ),
+              const SizedBox(width: 4),
+              IconButton(
+                icon: const Icon(Icons.add, size: 20),
+                color: Colors.teal[400],
+                onPressed: () => widget.onUpdate(1),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+              ),
+              const SizedBox(width: 8),
             ],
-          ),
-          child: ListTile(
-            leading: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.teal.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
+            IconButton(
+              icon: Icon(
+                _isComprado ? Icons.check_circle : Icons.radio_button_unchecked,
+                color: _isComprado ? Colors.teal : Colors.grey,
               ),
-              child: Text(
-                widget.producto['icono'],
-                style: const TextStyle(fontSize: 24),
-              ),
+              onPressed: () {
+                widget.onToggleComprado();
+              },
             ),
-            title: Text(
-              widget.producto['nombre'],
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                decoration: _isComprado ? TextDecoration.lineThrough : null,
-                color: _isComprado ? Colors.grey : Colors.black87,
-              ),
-            ),
-            subtitle: Text(
-              "Cantidad: ${widget.producto['cantidad']}",
-              style: TextStyle(
-                decoration: _isComprado ? TextDecoration.lineThrough : null,
-                color: _isComprado ? Colors.grey : Colors.black54,
-              ),
-            ),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (!_isComprado) ...[
-                  IconButton(
-                    icon: const Icon(Icons.remove, size: 20),
-                    color: Colors.red[400],
-                    onPressed: () => widget.onUpdate(-1),
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                  ),
-                  const SizedBox(width: 4),
-                  IconButton(
-                    icon: const Icon(Icons.add, size: 20),
-                    color: Colors.teal[400],
-                    onPressed: () => widget.onUpdate(1),
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                  ),
-                  const SizedBox(width: 8),
-                ],
-                IconButton(
-                  icon: Icon(
-                    _isComprado ? Icons.check_circle : Icons.radio_button_unchecked,
-                    color: _isComprado ? Colors.teal : Colors.grey,
-                  ),
-                  onPressed: () {
-                    setState(() => _isComprado = !_isComprado);
-                    widget.onToggleComprado();
-                  },
-                ),
-                PopupMenuButton<String>(
-                  icon: Icon(Icons.more_vert, color: Colors.grey[500]),
-                  onSelected: (value) {
-                    if (value == 'delete') {
-                      _mostrarDialogoConfirmacion(context);
-                    }
-                  },
-                  itemBuilder: (BuildContext context) => [
-                    PopupMenuItem<String>(
-                      value: 'delete',
-                      child: Row(
-                        children: const [
-                          Icon(Icons.delete, color: Colors.red),
-                          SizedBox(width: 8),
-                          Text('Eliminar producto'),
-                        ],
-                      ),
+            if (!_isComprado)
+              PopupMenuButton<String>(
+                icon: Icon(Icons.more_vert, color: Colors.grey[500]),
+                onSelected: (value) {
+                  widget.onDelete();
+                },
+                itemBuilder: (BuildContext context) => [
+                  PopupMenuItem<String>(
+                    value: 'delete',
+                    child: Row(
+                      children: const [
+                        Icon(Icons.delete, color: Colors.red),
+                        SizedBox(width: 8),
+                        Text('Eliminar producto'),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                  ),
+                ],
+              ),
+          ],
         ),
       ),
     );
   }
 
-  void _mostrarDialogoConfirmacion(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirmar eliminación'),
-          content: const Text('¿Estás seguro de que quieres eliminar este producto?'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Cancelar'),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            TextButton(
-              child: const Text('Eliminar', style: TextStyle(color: Colors.red)),
-              onPressed: () {
-                widget.onDelete();
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 }
+
+  

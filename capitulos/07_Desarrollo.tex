@@ -235,11 +235,11 @@ En esta pantalla se debe añadir el código del hogar al que se quiere unir, pre
 
 \subsubsection{Pruebas de funcionalidad}
 
-Para probar la implementación que se ha realizado se ha llevado a cabo un serie de pruebas de funcionalidad.
+Para probar la implementación que se ha realizado se ha llevado a cabo una serie de pruebas de funcionalidad.
 
 \begin{itemize}
     \item Comprobación que el usuario puede registrarse correctamente.
-    \item Comprobación de accso a la aplicación con un usuario registrado.
+    \item Comprobación de acceso a la aplicación con un usuario registrado.
     \item Comprobación de que en caso de que el usuario no este registrado, se muestre mensaje de error.
     \item Comprobación de que el usuario puede iniciar sesión con Google.
     \item Comprobación de que el usuario puede cerrar sesión.
@@ -380,10 +380,15 @@ permite al usuario marcar los productos que ha comprado y que ya no necesita. Tr
    
 }
 
-En esta pantalla se puede consultar tanto las tareas semanales, que tiene asignadas el usuario para la semana actual, como 
-las tareas que ha creado el mismo para el día actual. Si se selecciona otro día de la semana, en la parte superior, donde 
-aperece la semana actual, se puede ver las tareas para el día seleccionado. Esta pantalla está pensada para actuar como planificación de la semana actual, 
-ya que solo podemos ver las tareas de dicha semana. 
+En esta pantalla se pueden consultar tanto las tareas semanales asignadas al usuario para la semana en curso, 
+como las tareas puntuales creadas por el mismo para el día seleccionado. 
+En la parte superior, se muestra la semana actual, y al seleccionar un día específico, 
+se actualiza la vista para mostrar las tareas correspondientes a ese día. 
+Esta funcionalidad permite al usuario planificar y organizar sus actividades de manera eficiente, 
+ya que proporciona una visión clara y estructurada de las tareas pendientes. 
+Además, esta pantalla está diseñada para actuar como una herramienta de planificación semanal, 
+enfocándose exclusivamente en las tareas de la semana actual, lo que facilita la gestión del tiempo y la priorización de actividades. 
+La interfaz también permite navegar fácilmente entre los días de la semana, ofreciendo una experiencia intuitiva y práctica para el usuario. 
 
 \begin{figure}[H]
     \centering
@@ -399,10 +404,9 @@ ya que solo podemos ver las tareas de dicha semana.
    
 }
 
-En esta pantalla se puede crear una nueva tarea, indicando el nombre de la tarea, la descripción de la misma, podemos elegir también 
-si la tarea es semanal o puntual (solo para un día concreto), en caso de que sea semanal, se indica la semana del mes 
-y el mes en el que se va a realizar y a que miembros del hogar se les asigna la tarea. En caso de ser puntual lo único que se indica es el día 
-en el que se tiene que realizar la tarea. 
+Esta pantalla permite crear una nueva tarea proporcionando su nombre, descripción y tipo. Si la tarea es semanal, 
+se debe especificar la semana y el mes en que se realizará, además de asignarla a los miembros del hogar correspondientes. 
+Si la tarea es puntual, únicamente se indica el día concreto en el que debe llevarse a cabo.
 
 \begin{figure}[H]
     \centering
@@ -417,7 +421,8 @@ en el que se tiene que realizar la tarea.
    
 }
 
-En esta pantalla se ven todos los datos que se han introducido al crear la tarea, además de la fecha de creación y quien ha creado la tarea. 
+Esta pantalla muestra todos los detalles de la tarea, incluyendo la información proporcionada durante su creación, 
+la fecha en que fue creada y el usuario que la creó.
 
 \begin{figure}[H]
     \centering
@@ -434,7 +439,7 @@ En esta pantalla se ven todos los datos que se han introducido al crear la tarea
    
 }
 
-Esta pantalla se muestra cuando un usuario selecciona los tres puntos de la parte derecha de una tarea en concreto.
+Esta pantalla aparece cuando el usuario selecciona el menú de opciones (tres puntos) ubicado a la derecha de una tarea específica.
 
 \begin{figure}[H]
     \centering
@@ -449,7 +454,11 @@ Esta pantalla se muestra cuando un usuario selecciona los tres puntos de la part
    
 }
 
-Esta pantalla es igual que la de crear tarea, pero en este caso los campos ya vienen rellenados con los datos de la tarea que se va a editar.
+Esta pantalla es similar a la de creación de tareas, pero con la diferencia de que los campos ya están pre-rellenados 
+con la información de la tarea seleccionada para su edición. Esto permite al usuario modificar únicamente los datos que desee actualizar, 
+sin necesidad de volver a introducir toda la información desde cero. 
+Además, la interfaz incluye validaciones para garantizar que los cambios realizados cumplan con los requisitos establecidos, 
+como evitar campos vacíos o fechas inválidas.
 
 
 \begin{figure}[H]
@@ -466,9 +475,14 @@ Esta pantalla es igual que la de crear tarea, pero en este caso los campos ya vi
    
 }
 
-En esta pantalla se muestran todas las tareas semanales del hogar, que hay que realizar en la semana del día seleccionado en el calendario. 
-Ademas se pueden ver las tareas puntuales personales que tiene el usuario para el día seleccionado también. El resto de funcionalidades 
-de crear, ver, editar y eliminar tareas son las mismas que en la pantalla de tareas.
+En esta pantalla se pueden ver todas las tareas semanales asignadas al hogar, organizadas según la semana correspondiente al día seleccionado 
+en el calendario. Además, se incluyen las tareas puntuales personales del usuario para el día seleccionado.
+Al seleccionar un día específico, se actualiza automáticamente la lista de tareas, mostrando tanto las tareas del hogar 
+como las personales asociadas a esa fecha. 
+
+Además de la visualización de tareas, esta pantalla incluye funcionalidades clave para la gestión de las mismas. 
+Los usuarios pueden crear nuevas tareas, ya sean semanales o puntuales, directamente desde esta vista. 
+También es posible acceder a los detalles de una tarea específica, editar su información o eliminarla si ya no es necesaria.
 
 \begin{figure}[H]
     \centering
@@ -483,7 +497,9 @@ de crear, ver, editar y eliminar tareas son las mismas que en la pantalla de tar
    
 }
 
-En esta pantalla se pueden ver todas las listas de la compra que ha creado el usuario.
+En esta pantalla se muestran todas las listas de la compra creadas por el usuario o en las que participa. 
+Además, se permite al usuario realizar diversas acciones, como seleccionar una lista para ver sus productos, 
+crear una nueva lista, o eliminar una lista existente mediante el menú de opciones.
 
 \begin{figure}[H]
     \centering
@@ -497,8 +513,8 @@ En esta pantalla se pueden ver todas las listas de la compra que ha creado el us
    
 }
 
-En esta pantalla se puede crear una nueva lista de la compra, indicando el nombre de la lista y si la lista va a ser personal 
-o compartida. 
+Esta pantalla permite al usuario crear una nueva lista de la compra, especificando el nombre de la lista y 
+seleccionando si será de uso personal o compartida con otros miembros del hogar.
 
 \begin{figure}[H]
     \centering
@@ -507,6 +523,90 @@ o compartida.
     \label{create_shopping_list_screen}
     
 \end{figure}
+
+\newpage
+
+\paragraph{Pantalla para eliminar lista de la compra}
+
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla se activa cuando el usuario selecciona el menú de opciones (representado por tres puntos)
+ubicado a la derecha de una lista de la compra específica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/eliminar_lista_implementado.png}
+    \caption{Interfaz gráfica pantalla para eliminar lista de la compra.}
+    \label{delete_shopping_list_screen}
+\end{figure}
+
+\paragraph{Pantalla de productos de la lista de la compra}
+\parbox{\textwidth}{ 
+   
+   
+}
+
+En esta pantalla se muestran los productos de la lista seleccionada, con su nombre, cantidad e icono representativo. 
+El usuario puede ajustar cantidades, añadir nuevos productos o eliminarlos fácilmente. 
+Los cambios se sincronizan automáticamente con los miembros del hogar, manteniendo la lista actualizada y compartida.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/productos_implementado.png}
+    \caption{Interfaz gráfica pantalla de productos de la lista de la compra.}
+    \label{shopping_list_products_screen}
+\end{figure}
+
+\paragraph{Pantalla de añadir producto a la lista de la compra}
+
+\parbox{\textwidth}{ 
+   
+}
+
+En esta pantalla se puede añadir un producto a la lista de la compra, 
+seleccionando además un icono representativo que facilite la identificación visual del producto en la lista.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_producto_implementado.png}
+    \caption{Interfaz gráfica pantalla de añadir producto a la lista de la compra.}
+    \label{add_product_screen}
+\end{figure}
+
+\subsubsection{Pruebas de funcionalidad}
+
+Para probar la implementación que se ha realizado se ha llevado a cabo una serie de pruebas de funcionalidad.
+
+\begin{itemize}
+    \item Comprobación de la creación de una nueva tarea. Esto incluye que la tarea se almacene correctamente en la base de datos con los datos correctos y que se muestre en la intefaz de tareas.
+    \item Comprobación de la visualización de la planificación semanal. Esto incluye que las tareas semanales se muestren correctamente en la interfaz de tareas y que se actualicen al seleccionar un día específico.
+    \item Comprobación de la edición de una tarea.
+    \item Comprobación de la eliminación de una tarea.
+    \item Comprobación de la visualización de los datos de una tarea.
+    \item Comprobación de la visualización del calendario de tareas. Esto incluye comprobar que todas las tareas semanales y puntuales se muestren correctamente en el calendario y que se actualicen al seleccionar un día específico.
+    \item Comprobación de marcar una tarea como realizada.
+    \item Comprobación de la creación de una lista de la compra. Esto incluye que la lista se almacene correctamente en la base de datos y que se muestre en la interfaz de listas de la compra.
+    \item Comprobación de la visualización de los productos de la lista de la compra. Esto incluye que todos los productos se muestren correctamente en la interfaz de productos de la lista de la compra.
+    \item Comprobación de la creación de un producto en la lista de la compra. Esto incluye que el producto se almacene correctamente en la base de datos y que se muestre en la interfaz de productos de la lista de la compra.
+    \item Comprobación de cambiar la cantidad de un producto en la lista de la compra.
+    \item Comprobación de la eliminación de un producto de la lista de la compra.
+    \item Comprobación de marcar un producto como comprado. 
+    \item Comprobación de la eliminación de una lista de la compra.
+\end{itemize}
+
+\subsubsection{Revisión de la iteracción}
+
+
+
+
+
+
+
+
+
+
 
 
 
