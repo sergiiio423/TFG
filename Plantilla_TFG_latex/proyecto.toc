@@ -130,10 +130,18 @@
 \contentsline {paragraph}{Pantalla de añadir producto a la lista de la compra}{125}{figure.7.21}%
 \contentsline {subsubsection}{\numberline {7.2.2.2}Pruebas de funcionalidad}{126}{subsubsection.7.2.2.2}%
 \contentsline {subsubsection}{\numberline {7.2.2.3}Revisión de la iteracción}{127}{subsubsection.7.2.2.3}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{128}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{128}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{134}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{139}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{146}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{152}{section.Alph1.5}%
-\contentsline {section}{Referencias}{158}{table.Alph1.29}%
+\contentsline {paragraph}{Crear una tarea}{127}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Consultar planificación semanal}{127}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Visualización, edición y eliminación de tareas}{127}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Visualización del calendario de tareas}{127}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Crear lista de la compra, añadir productos y eliminar productos}{127}{subsubsection.7.2.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.2.4}Plan para la siguiente iteracción}{128}{subsubsection.7.2.2.4}%
+\contentsline {subsection}{\numberline {7.2.3}Iteración 3}{128}{subsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.1}Implementacion}{128}{subsubsection.7.2.3.1}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{129}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{129}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{135}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{140}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{147}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{153}{section.Alph1.5}%
+\contentsline {section}{Referencias}{159}{table.Alph1.29}%

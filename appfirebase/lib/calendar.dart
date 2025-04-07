@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'lista_compra.dart';
+import 'dart:async';
 import 'principal.dart';
 import 'perfil.dart';
 import 'tareas_screen.dart';
@@ -22,7 +23,10 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
   Map<String, String> _userNames = {};
   CalendarFormat _calendarFormat = CalendarFormat.month;
   final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
-  int _currentIndex = 1; 
+  int _currentIndex = 1;
+  List<String> _householdMembers = [];
+  StreamSubscription? _householdSubscription;
+  StreamSubscription? _tasksSubscription;
 
   @override
   void initState() {
@@ -32,7 +36,75 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
     });
     _selectedDay = _focusedDay;
     _loadUserNames();
-    _loadTasksFromFirestore();
+    _setupHouseholdListener();
+  }
+
+  @override
+  void dispose() {
+    _householdSubscription?.cancel();
+    _tasksSubscription?.cancel();
+    super.dispose();
+  }
+
+  void _setupHouseholdListener() {
+    final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+
+    // Escuchar cambios en el hogar del usuario
+    _householdSubscription = FirebaseFirestore.instance
+        .collection('hogar')
+        .where('miembros', arrayContains: userId)
+        .snapshots()
+        .listen((snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        setState(() {
+          _householdMembers =
+              List<String>.from(snapshot.docs.first['miembros']);
+        });
+        // Cuando cambian los miembros, recargar las tareas
+        _loadTasksFromFirestore();
+      }
+    }, onError: (e) {
+      print('Error al escuchar hogar: $e');
+    });
+  }
+
+  void _loadTasksFromFirestore() {
+    _tasksSubscription?.cancel(); // Cancelar suscripción anterior
+
+    _tasksSubscription = FirebaseFirestore.instance
+        .collection('tareas')
+        .snapshots()
+        .listen((snapshot) {
+      Map<DateTime, List<Map<String, dynamic>>> tempDailyTasks = {};
+      List<Map<String, dynamic>> tempWeeklyTasks = [];
+
+      for (var doc in snapshot.docs) {
+        var data = doc.data();
+        data['id'] = doc.id;
+
+        // Tareas puntuales del usuario actual
+        if (data['tipo'] == 'puntual' &&
+            data['fecha'] is Timestamp &&
+            data['usuarioId'] == userId) {
+          DateTime taskDate = (data['fecha'] as Timestamp).toDate();
+          DateTime normalizedDate =
+              DateTime(taskDate.year, taskDate.month, taskDate.day);
+          tempDailyTasks.putIfAbsent(normalizedDate, () => []).add(data);
+        }
+        // Tareas semanales de miembros del hogar
+        else if (data['tipo'] == 'semanal' &&
+            _householdMembers.contains(data['usuarioId'])) {
+          tempWeeklyTasks.add(data);
+        }
+      }
+
+      setState(() {
+        _dailyTasks = tempDailyTasks;
+        _weeklyTasks = tempWeeklyTasks;
+      });
+    }, onError: (e) {
+      print('Error al cargar tareas: $e');
+    });
   }
 
   Future<void> _loadUserNames() async {
@@ -48,38 +120,6 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
     } catch (e) {
       print('Error al cargar nombres de usuarios: $e');
     }
-  }
-
-  void _loadTasksFromFirestore() {
-    FirebaseFirestore.instance
-        .collection('tareas')
-        .snapshots()
-        .listen((snapshot) {
-      Map<DateTime, List<Map<String, dynamic>>> tempDailyTasks = {};
-      List<Map<String, dynamic>> tempWeeklyTasks = [];
-
-      for (var doc in snapshot.docs) {
-        var data = doc.data();
-        data['id'] = doc.id;
-
-        // Solo mostrar tareas puntuales del usuario actual
-        if (data['tipo'] == 'puntual' &&
-            data['fecha'] is Timestamp &&
-            data['usuarioId'] == userId) {
-          DateTime taskDate = (data['fecha'] as Timestamp).toDate();
-          DateTime normalizedDate =
-              DateTime(taskDate.year, taskDate.month, taskDate.day);
-          tempDailyTasks.putIfAbsent(normalizedDate, () => []).add(data);
-        } else if (data['tipo'] == 'semanal') {
-          tempWeeklyTasks.add(data);
-        }
-      }
-
-      setState(() {
-        _dailyTasks = tempDailyTasks;
-        _weeklyTasks = tempWeeklyTasks;
-      });
-    });
   }
 
   List<Map<String, dynamic>> _getDailyTasks(DateTime day) {
@@ -101,123 +141,133 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
     }).toList();
   }
 
- @override
-Widget build(BuildContext context) {
-  final dailyTasks = _getDailyTasks(_selectedDay!);
-  final weeklyTasks = _getWeeklyTasksForDay(_selectedDay!);
+  @override
+  Widget build(BuildContext context) {
+    final dailyTasks = _getDailyTasks(_selectedDay!);
+    final weeklyTasks = _getWeeklyTasksForDay(_selectedDay!);
 
-  return Scaffold(
-    backgroundColor: Colors.white,
-    body: SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Calendario',
-                  style: const TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Calendario',
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.person, size: 28),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileScreen()),
-                    );
-                  },
-                ),
-              ],
+                  IconButton(
+                    icon: Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: Colors.teal.withOpacity(0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.person,
+                          size: 24, color: Colors.teal),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                _buildCalendar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.only(bottom: 80), // Espacio adicional aquí
-                    child: Column(
-                      children: [
-                        if (weeklyTasks.isNotEmpty) ...[
+            Expanded(
+              child: Column(
+                children: [
+                  _buildCalendar(),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.only(
+                          bottom: 80), // Espacio adicional aquí
+                      child: Column(
+                        children: [
+                          if (weeklyTasks.isNotEmpty) ...[
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Tareas Semanales',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Column(
+                              children: weeklyTasks
+                                  .map((task) => _buildTaskCard(task))
+                                  .toList(),
+                            ),
+                          ],
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Tareas Semanales',
+                                'Tareas del Día',
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.teal,
+                                  color: Colors.orange,
                                 ),
                               ),
                             ),
                           ),
-                          Column(
-                            children: weeklyTasks
-                                .map((task) => _buildTaskCard(task))
-                                .toList(),
-                          ),
+                          dailyTasks.isEmpty
+                              ? const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Text("No hay tareas para este día"),
+                                )
+                              : Column(
+                                  children: dailyTasks
+                                      .map((task) => _buildTaskCard(task))
+                                      .toList(),
+                                ),
+                          const SizedBox(
+                              height: 60), // Espacio adicional al final
                         ],
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Tareas del Día',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.orange,
-                              ),
-                            ),
-                          ),
-                        ),
-                        dailyTasks.isEmpty
-                            ? const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Text("No hay tareas para este día"),
-                              )
-                            : Column(
-                                children: dailyTasks
-                                    .map((task) => _buildTaskCard(task))
-                                    .toList(),
-                              ),
-                        const SizedBox(height: 60), // Espacio adicional al final
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-    floatingActionButton: _buildFloatingActionButton(),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    bottomNavigationBar: _buildBottomNavBar(),
-  );
-}
+      floatingActionButton: _buildFloatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: _buildBottomNavBar(),
+    );
+  }
 
-Widget _buildFloatingActionButton() {
-  return FloatingActionButton(
-    onPressed: () => _mostrarModalCrearTarea(context),
-    backgroundColor: Colors.orange,
-    child: const Icon(Icons.add, color: Colors.white),
-  );
-}
+  Widget _buildFloatingActionButton() {
+    return FloatingActionButton(
+      onPressed: () => _mostrarModalCrearTarea(context),
+      backgroundColor: Colors.orange,
+      child: const Icon(Icons.add, color: Colors.white),
+    );
+  }
 
   Widget _buildCalendar() {
     return Container(
@@ -671,7 +721,8 @@ Widget _buildFloatingActionButton() {
             },
             child: const Text(
               'Eliminar',
-              style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
             ),
           ),
         ],

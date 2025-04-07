@@ -956,8 +956,9 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
   }
 
   Future<void> _crearTarea() async {
-    if (!_formKey.currentState!.validate()) return; // Validar formulario
+    if (!_formKey.currentState!.validate()) return;
 
+    // Validación para tareas puntuales
     if (!_esSemanal && _fechaSeleccionada == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -966,11 +967,24 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
       return;
     }
 
-    if (_esSemanal && _semanasSeleccionadas.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Selecciona al menos una semana')),
-      );
-      return;
+    // Validación para tareas semanales
+    if (_esSemanal) {
+      if (_semanasSeleccionadas.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Selecciona al menos una semana')),
+        );
+        return;
+      }
+
+      // Nueva validación: al menos un miembro asignado para tareas semanales
+      if (_miembrosSeleccionados.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text(
+                  'Debes asignar la tarea a al menos un miembro del hogar')),
+        );
+        return;
+      }
     }
 
     final taskData = {
@@ -982,7 +996,9 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
       'fechaCreacion': Timestamp.now(),
       'mes': _esSemanal ? _mesSeleccionado : _fechaSeleccionada!.month,
       'año': _esSemanal ? _anoSeleccionado : _fechaSeleccionada!.year,
-      'asignados': _miembrosSeleccionados,
+      'asignados': _esSemanal
+          ? _miembrosSeleccionados
+          : [], // Solo asignar si es semanal
     };
 
     if (_esSemanal) {
@@ -1184,10 +1200,22 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                 }),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Asignar a miembros:',
-                style: TextStyle(fontSize: 16, color: Colors.teal),
+              Text(
+                'Asignar a miembros: *',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.teal,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+              if (_esSemanal && _miembrosSeleccionados.isEmpty)
+                const Text(
+                  'Debes seleccionar al menos un miembro',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
+                ),
               Wrap(
                 spacing: 8,
                 children: _miembrosHogar.map((miembro) {

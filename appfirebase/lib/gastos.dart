@@ -2,6 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'lista_compra.dart';
+import 'principal.dart';
+import 'perfil.dart';
+import 'tareas_screen.dart';
 
 class GastosScreen extends StatefulWidget {
   @override
@@ -11,136 +15,331 @@ class GastosScreen extends StatefulWidget {
 class _GastosScreenState extends State<GastosScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  List<String> _miembrosHogar = [];
+  Map<String, String> _nombresMiembros = {};
+  int _currentIndex = 2; // Índice para el menú inferior
+
+  @override
+  void initState() {
+    super.initState();
+    _cargarMiembrosHogar();
+  }
+
+  Future<void> _cargarMiembrosHogar() async {
+    final userId = _auth.currentUser?.uid ?? '';
+    final hogarSnapshot = await _firestore
+        .collection('hogar')
+        .where('miembros', arrayContains: userId)
+        .limit(1)
+        .get();
+
+    if (hogarSnapshot.docs.isNotEmpty) {
+      setState(() {
+        _miembrosHogar =
+            List<String>.from(hogarSnapshot.docs.first['miembros']);
+      });
+      _cargarNombresMiembros();
+    }
+  }
+
+  Future<void> _cargarNombresMiembros() async {
+    final usuariosSnapshot = await _firestore
+        .collection('usuarios')
+        .where(FieldPath.documentId, whereIn: _miembrosHogar)
+        .get();
+
+    setState(() {
+      _nombresMiembros = {
+        for (var doc in usuariosSnapshot.docs)
+          doc.id: doc['nombre'] ?? 'Usuario'
+      };
+    });
+  }
 
   void _mostrarModalAgregarGasto(BuildContext context) {
-    TextEditingController descripcionController = TextEditingController();
-    TextEditingController montoController = TextEditingController();
-    DateTime fechaSeleccionada = DateTime.now();
-    String? usuarioSeleccionado;
+    final TextEditingController _tituloController = TextEditingController();
+    final TextEditingController _montoController = TextEditingController();
+    DateTime _fechaSeleccionada = DateTime.now();
+    String? _pagadoPor;
+    List<String> _debenPagar = [];
+    double _montoPorPersona = 0.0;
+
+    void _actualizarMontoPorPersona() {
+      if (_montoController.text.isNotEmpty && _debenPagar.isNotEmpty) {
+        final monto = double.tryParse(_montoController.text) ?? 0;
+        setState(() {
+          _montoPorPersona = monto / _debenPagar.length;
+        });
+      } else {
+        setState(() {
+          _montoPorPersona = 0.0;
+        });
+      }
+    }
 
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-            left: 16,
-            right: 16,
-            top: 16,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Añadir Gasto",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
-                ),
-                SizedBox(height: 20),
-                TextField(
-                  controller: descripcionController,
-                  decoration: InputDecoration(
-                    labelText: 'Descripción',
-                    border: OutlineInputBorder(),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 10),
-                TextField(
-                  controller: montoController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: 'Monto (€)',
-                    border: OutlineInputBorder(),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () async {
-                    DateTime? picked = await showDatePicker(
-                      context: context,
-                      initialDate: fechaSeleccionada,
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    );
-                    if (picked != null) {
-                      setState(() {
-                        fechaSeleccionada = picked;
-                      });
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setModalState) {
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+                left: 24,
+                right: 24,
+                top: 24,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                      child: Text(
+                        "Nuevo Gasto",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal,
+                        ),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    "Seleccionar fecha: ${DateFormat('d MMM y').format(fechaSeleccionada)}",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 10),
-                DropdownButtonFormField<String>(
-                  value: usuarioSeleccionado,
-                  hint: Text("Pagado por"),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                  items: [
-                    DropdownMenuItem(
-                      value: _auth.currentUser!.uid,
-                      child: Text("Yo"),
+                    SizedBox(height: 24),
+                    TextField(
+                      controller: _tituloController,
+                      decoration: InputDecoration(
+                        labelText: 'Título',
+                        labelStyle: TextStyle(color: Colors.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        prefixIcon: Icon(Icons.title, color: Colors.teal),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal, width: 2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
                     ),
-                    // Aquí puedes cargar otros miembros del hogar si los tienes
+                    SizedBox(height: 16),
+                    TextField(
+                      controller: _montoController,
+                      keyboardType:
+                          TextInputType.numberWithOptions(decimal: true),
+                      onChanged: (value) => _actualizarMontoPorPersona(),
+                      decoration: InputDecoration(
+                        labelText: 'Cantidad (€)',
+                        labelStyle: TextStyle(color: Colors.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        prefixIcon: Icon(Icons.euro, color: Colors.teal),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal, width: 2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    InkWell(
+                      onTap: () async {
+                        final fecha = await showDatePicker(
+                          context: context,
+                          initialDate: _fechaSeleccionada,
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                        );
+                        if (fecha != null) {
+                          setModalState(() => _fechaSeleccionada = fecha);
+                        }
+                      },
+                      child: InputDecorator(
+                        decoration: InputDecoration(
+                          labelText: 'Fecha',
+                          labelStyle: TextStyle(color: Colors.teal),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          prefixIcon:
+                              Icon(Icons.calendar_today, color: Colors.teal),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.teal, width: 2),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              DateFormat('d MMM y').format(_fechaSeleccionada),
+                              style: TextStyle(color: Colors.black87),
+                            ),
+                            Spacer(),
+                            Icon(Icons.arrow_drop_down, color: Colors.teal),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    DropdownButtonFormField<String>(
+                      value: _pagadoPor,
+                      decoration: InputDecoration(
+                        labelText: 'Pagado por',
+                        labelStyle: TextStyle(color: Colors.teal),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        prefixIcon: Icon(Icons.person, color: Colors.teal),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal, width: 2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      items: _miembrosHogar.map((miembro) {
+                        return DropdownMenuItem<String>(
+                          value: miembro,
+                          child: Text(_nombresMiembros[miembro] ?? 'Usuario'),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setModalState(() => _pagadoPor = value);
+                      },
+                      validator: (value) =>
+                          value == null ? 'Selecciona quién pagó' : null,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Participantes en el gasto:',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Column(
+                      children: _miembrosHogar.map((miembro) {
+                        return CheckboxListTile(
+                          title: Text(_nombresMiembros[miembro] ?? 'Usuario'),
+                          value: _debenPagar.contains(miembro),
+                          onChanged: (selected) {
+                            setModalState(() {
+                              if (selected == true) {
+                                _debenPagar.add(miembro);
+                              } else {
+                                _debenPagar.remove(miembro);
+                              }
+                              _actualizarMontoPorPersona();
+                            });
+                          },
+                          secondary: CircleAvatar(
+                            child: Text(
+                              _nombresMiembros[miembro]?.substring(0, 1) ?? 'U',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            backgroundColor: Colors.teal,
+                          ),
+                          controlAffinity: ListTileControlAffinity.trailing,
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: 16),
+                    if (_debenPagar.isNotEmpty &&
+                        _montoController.text.isNotEmpty)
+                      Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.teal.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Total a dividir: ${_montoController.text}€',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.teal,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              'Cada participante pagará: ${_montoPorPersona.toStringAsFixed(2)}€',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.teal,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: () async {
+                        if (_tituloController.text.isEmpty ||
+                            _montoController.text.isEmpty ||
+                            _pagadoPor == null ||
+                            _debenPagar.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('Completa todos los campos requeridos'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                          return;
+                        }
+
+                        final monto =
+                            double.tryParse(_montoController.text) ?? 0;
+                        final montoPorPersona = monto / _debenPagar.length;
+
+                        await _firestore.collection('gastos').add({
+                          'titulo': _tituloController.text.trim(),
+                          'monto': monto,
+                          'fecha': _fechaSeleccionada,
+                          'pagadoPor': _pagadoPor,
+                          'debenPagar': _debenPagar,
+                          'montoPorPersona': montoPorPersona,
+                          'fechaCreacion': FieldValue.serverTimestamp(),
+                        });
+
+                        Navigator.pop(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: Text(
+                        "Guardar Gasto",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
                   ],
-                  onChanged: (value) {
-                    setState(() {
-                      usuarioSeleccionado = value;
-                    });
-                  },
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () async {
-                    if (descripcionController.text.isNotEmpty &&
-                        montoController.text.isNotEmpty &&
-                        usuarioSeleccionado != null) {
-                      await _firestore.collection('gastos').add({
-                        'descripcion': descripcionController.text.trim(),
-                        'monto': double.parse(montoController.text),
-                        'fecha': fechaSeleccionada,
-                        'pagadoPor': usuarioSeleccionado,
-                      });
-                      Navigator.pop(context);
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    "Añadir Gasto",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 20),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );
@@ -149,8 +348,13 @@ class _GastosScreenState extends State<GastosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: Text('Mis Gastos', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
+        title: Text('Gestión de Gastos',
+            style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -163,67 +367,345 @@ class _GastosScreenState extends State<GastosScreen> {
         ),
         elevation: 4,
       ),
-      body: StreamBuilder(
-        stream: _firestore.collection('gastos').orderBy('fecha', descending: true).snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return Center(child: CircularProgressIndicator(color: Colors.teal));
-          final gastos = snapshot.data!.docs;
-          Map<String, List<DocumentSnapshot>> gastosAgrupados = {};
-
-          for (var gasto in gastos) {
-            DateTime fecha = (gasto['fecha'] as Timestamp).toDate();
-            String fechaKey = DateFormat('d MMM y').format(fecha);
-            if (!gastosAgrupados.containsKey(fechaKey)) {
-              gastosAgrupados[fechaKey] = [];
-            }
-            gastosAgrupados[fechaKey]!.add(gasto);
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _firestore
+            .collection('gastos')
+            .orderBy('fecha', descending: true)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator(color: Colors.teal));
           }
 
-          return ListView(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            children: gastosAgrupados.entries.map((entry) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          final gastos = snapshot.data!.docs;
+          if (gastos.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      entry.key,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.teal),
-                    ),
+                  Icon(Icons.money_off, size: 64, color: Colors.grey),
+                  SizedBox(height: 16),
+                  Text(
+                    "No hay gastos registrados",
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
-                  ...entry.value.map((gasto) {
-                    return Card(
-                      margin: EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      elevation: 2,
-                      child: ListTile(
-                        title: Text(
-                          gasto['descripcion'],
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text("Pagado por: ${gasto['pagadoPor']}", style: TextStyle(color: Colors.grey)),
-                        trailing: Text(
-                          "${gasto['monto']}€",
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.teal),
-                        ),
-                      ),
-                    );
-                  }).toList()
+                  SizedBox(height: 8),
+                  Text(
+                    "Presiona el botón + para agregar uno",
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ],
-              );
-            }).toList(),
+              ),
+            );
+          }
+
+          return ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            itemCount: gastos.length,
+            itemBuilder: (context, index) {
+              final gasto = gastos[index];
+              final fecha = (gasto['fecha'] as Timestamp).toDate();
+              final pagadoPor =
+                  _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+              final monto = gasto['monto'] as double;
+              final fechaKey = DateFormat('d MMMM y', 'es_ES').format(fecha);
+
+              // Agrupar por fecha
+              if (index == 0 ||
+                  DateFormat('d MMMM y', 'es_ES').format(
+                          (gastos[index - 1]['fecha'] as Timestamp).toDate()) !=
+                      fechaKey) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 8),
+                      child: Text(
+                        fechaKey,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.teal,
+                        ),
+                      ),
+                    ),
+                    _buildGastoCard(gasto, pagadoPor, monto),
+                  ],
+                );
+              } else {
+                return _buildGastoCard(gasto, pagadoPor, monto);
+              }
+            },
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _mostrarModalAgregarGasto(context),
-        child: Icon(Icons.add, size: 30),
         backgroundColor: Colors.orange,
+        child: const Icon(Icons.add, color: Colors.white),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: _buildBottomNavBar(),
+    );
+  }
+
+  Widget _buildGastoCard(
+      DocumentSnapshot gasto, String pagadoPor, double monto) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 12),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () {
+          _mostrarDetalleGasto(context, gasto); // Este es el método correcto
+        },
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      gasto['titulo'],
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '${monto.toStringAsFixed(2)}€',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  Icon(Icons.person, size: 16, color: Colors.grey),
+                  SizedBox(width: 4),
+                  Text(
+                    'Pagado por: $pagadoPor',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomNavBar() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        color: Colors.teal,
+        boxShadow: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 2)
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          elevation: 0,
+          selectedLabelStyle: TextStyle(fontSize: 10, height: 1.5),
+          unselectedLabelStyle: TextStyle(fontSize: 10, height: 1.5),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.5),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.teal,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: [
+            _buildNavItem(Icons.home, 'Inicio'),
+            _buildNavItem(Icons.list_alt, 'Tareas'),
+            _buildNavItem(Icons.wallet, 'Gastos'),
+            _buildNavItem(Icons.shopping_basket, 'Compra'),
+          ],
+          onTap: (index) => _onBottomNavTapped(context, index),
+        ),
+      ),
+    );
+  }
+
+  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
+    return BottomNavigationBarItem(
+      icon: Container(
+        padding: EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.transparent,
+        ),
+        child: Icon(icon, size: 28),
+      ),
+      label: label,
+      activeIcon: Container(
+        padding: EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white.withOpacity(0.2),
+        ),
+        child: Icon(icon, size: 28),
+      ),
+    );
+  }
+
+  void _onBottomNavTapped(BuildContext context, int index) {
+    setState(() => _currentIndex = index);
+
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const HomePage(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => TareasScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 3:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => ListaScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+    }
+  }
+
+  void _mostrarDetalleGasto(BuildContext context, DocumentSnapshot gasto) {
+    final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+    final monto = gasto['monto'] as double;
+    final montoPorPersona = gasto['montoPorPersona'] as double;
+    final debenPagar = (gasto['debenPagar'] as List).cast<String>();
+    final fecha = (gasto['fecha'] as Timestamp).toDate();
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(gasto['titulo'], style: TextStyle(color: Colors.teal)),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildDetalleItem(
+                icon: Icons.euro,
+                label: 'Total:',
+                value: '${monto.toStringAsFixed(2)}€',
+              ),
+              _buildDetalleItem(
+                icon: Icons.person,
+                label: 'Pagado por:',
+                value: pagadoPor,
+              ),
+              _buildDetalleItem(
+                icon: Icons.calendar_today,
+                label: 'Fecha:',
+                value: DateFormat('d MMM y').format(fecha),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Dividido entre:',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+              SizedBox(height: 8),
+              Column(
+                children: debenPagar.map((miembro) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      children: [
+                        Icon(Icons.person_outline,
+                            size: 16, color: Colors.grey),
+                        SizedBox(width: 8),
+                        Text(_nombresMiembros[miembro] ?? 'Usuario'),
+                        Spacer(),
+                        Text(
+                          '${montoPorPersona.toStringAsFixed(2)}€',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Cerrar', style: TextStyle(color: Colors.teal)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDetalleItem({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 20, color: Colors.teal),
+          SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
+              ),
+              SizedBox(height: 2),
+              Text(
+                value,
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
