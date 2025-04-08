@@ -17,43 +17,62 @@ class _GastosScreenState extends State<GastosScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   List<String> _miembrosHogar = [];
   Map<String, String> _nombresMiembros = {};
-  int _currentIndex = 2; // Índice para el menú inferior
+  String? _hogarId;
+  bool _loading = true;
+  int _currentIndex = 2;
 
   @override
   void initState() {
     super.initState();
-    _cargarMiembrosHogar();
+    _cargarDatosHogar();
   }
 
-  Future<void> _cargarMiembrosHogar() async {
-    final userId = _auth.currentUser?.uid ?? '';
-    final hogarSnapshot = await _firestore
-        .collection('hogar')
-        .where('miembros', arrayContains: userId)
-        .limit(1)
-        .get();
+  Future<void> _cargarDatosHogar() async {
+    try {
+      final userId = _auth.currentUser?.uid ?? '';
+      final hogarSnapshot = await _firestore
+          .collection('hogar')
+          .where('miembros', arrayContains: userId)
+          .limit(1)
+          .get();
 
-    if (hogarSnapshot.docs.isNotEmpty) {
-      setState(() {
-        _miembrosHogar =
-            List<String>.from(hogarSnapshot.docs.first['miembros']);
-      });
-      _cargarNombresMiembros();
+      if (hogarSnapshot.docs.isNotEmpty) {
+        setState(() {
+          _miembrosHogar =
+              List<String>.from(hogarSnapshot.docs.first['miembros']);
+          _hogarId = hogarSnapshot.docs.first.id;
+        });
+        await _cargarNombresMiembros();
+      }
+    } catch (e) {
+      print('Error cargando datos del hogar: $e');
+    } finally {
+      if (mounted) {
+        setState(() {
+          _loading = false;
+        });
+      }
     }
   }
 
   Future<void> _cargarNombresMiembros() async {
-    final usuariosSnapshot = await _firestore
-        .collection('usuarios')
-        .where(FieldPath.documentId, whereIn: _miembrosHogar)
-        .get();
+    try {
+      if (_miembrosHogar.isEmpty) return;
 
-    setState(() {
-      _nombresMiembros = {
-        for (var doc in usuariosSnapshot.docs)
-          doc.id: doc['nombre'] ?? 'Usuario'
-      };
-    });
+      final usuariosSnapshot = await _firestore
+          .collection('usuarios')
+          .where(FieldPath.documentId, whereIn: _miembrosHogar)
+          .get();
+
+      setState(() {
+        _nombresMiembros = {
+          for (var doc in usuariosSnapshot.docs)
+            doc.id: doc['nombre'] ?? 'Usuario'
+        };
+      });
+    } catch (e) {
+      print('Error cargando nombres de miembros: $e');
+    }
   }
 
   void _mostrarModalAgregarGasto(BuildContext context) {
@@ -143,7 +162,7 @@ class _GastosScreenState extends State<GastosScreen> {
                         fillColor: Colors.white,
                         prefixIcon: Icon(Icons.euro, color: Colors.teal),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal, width: 2),
+                          borderSide: BorderSide(color: Colors.teal),
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
@@ -314,6 +333,7 @@ class _GastosScreenState extends State<GastosScreen> {
                           'debenPagar': _debenPagar,
                           'montoPorPersona': montoPorPersona,
                           'fechaCreacion': FieldValue.serverTimestamp(),
+                          'hogarId': _hogarId,
                         });
 
                         Navigator.pop(context);
@@ -347,121 +367,275 @@ class _GastosScreenState extends State<GastosScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+      return Center(child: CircularProgressIndicator(color: Colors.teal));
+    }
+
+    if (_hogarId == null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.home, size: 64, color: Colors.grey),
+            SizedBox(height: 16),
+            Text(
+              "No perteneces a ningún hogar",
+              style: TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        title: Text('Gestión de Gastos',
-            style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.white)),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.teal, Colors.teal.shade400],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        elevation: 4,
-      ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: _firestore
-            .collection('gastos')
-            .orderBy('fecha', descending: true)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator(color: Colors.teal));
-          }
-
-          final gastos = snapshot.data!.docs;
-          if (gastos.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Encabezado similar al de ListaScreen pero para Gastos
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.money_off, size: 64, color: Colors.grey),
-                  SizedBox(height: 16),
                   Text(
-                    "No hay gastos registrados",
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                    'Gastos',
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    "Presiona el botón + para agregar uno",
-                    style: TextStyle(color: Colors.grey),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.search, size: 28),
+                        onPressed: () {
+                          // Implementar búsqueda de gastos si es necesario
+                        },
+                      ),
+                      const SizedBox(width: 8),
+                      IconButton(
+                        icon: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Colors.teal.withOpacity(0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.person,
+                              size: 24, color: Colors.teal),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfileScreen()),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
-            );
-          }
-
-          return ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            itemCount: gastos.length,
-            itemBuilder: (context, index) {
-              final gasto = gastos[index];
-              final fecha = (gasto['fecha'] as Timestamp).toDate();
-              final pagadoPor =
-                  _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
-              final monto = gasto['monto'] as double;
-              final fechaKey = DateFormat('d MMMM y', 'es_ES').format(fecha);
-
-              // Agrupar por fecha
-              if (index == 0 ||
-                  DateFormat('d MMMM y', 'es_ES').format(
-                          (gastos[index - 1]['fecha'] as Timestamp).toDate()) !=
-                      fechaKey) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16, bottom: 8),
-                      child: Text(
-                        fechaKey,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.teal,
-                        ),
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+              child: Row(
+                children: [
+                  Text(
+                    "Tus gastos recientes",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.w600,
                     ),
-                    _buildGastoCard(gasto, pagadoPor, monto),
-                  ],
-                );
-              } else {
-                return _buildGastoCard(gasto, pagadoPor, monto);
-              }
-            },
-          );
-        },
+                  ),
+                  const Spacer(),
+                  Icon(Icons.filter_list_rounded,
+                      color: Colors.teal[700], size: 24),
+                ],
+              ),
+            ),
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _firestore
+                    .collection('gastos')
+                    .where('hogarId', isEqualTo: _hogarId)
+                    .orderBy('fecha', descending: true)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                        child: CircularProgressIndicator(color: Colors.teal));
+                  }
+
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text('Error al cargar los gastos',
+                          style: TextStyle(color: Colors.red)),
+                    );
+                  }
+
+                  final gastos = snapshot.data?.docs ?? [];
+                  if (gastos.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.money_off, size: 64, color: Colors.grey),
+                          SizedBox(height: 16),
+                          Text(
+                            "No hay gastos registrados",
+                            style: TextStyle(fontSize: 18, color: Colors.grey),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            "Presiona el botón + para agregar uno",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  return ListView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    itemCount: gastos.length,
+                    itemBuilder: (context, index) {
+                      final gasto = gastos[index];
+                      final fecha = (gasto['fecha'] as Timestamp).toDate();
+                      final pagadoPor =
+                          _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+                      final monto = gasto['monto'] as double;
+                      final fechaKey =
+                          DateFormat('d MMMM y', 'es_ES').format(fecha);
+
+                      if (index == 0 ||
+                          DateFormat('d MMMM y', 'es_ES').format(
+                                  (gastos[index - 1]['fecha'] as Timestamp)
+                                      .toDate()) !=
+                              fechaKey) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16, bottom: 8),
+                              child: Text(
+                                fechaKey,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.teal,
+                                ),
+                              ),
+                            ),
+                            _buildGastoCard(gasto, pagadoPor, monto, fecha),
+                          ],
+                        );
+                      } else {
+                        return _buildGastoCard(gasto, pagadoPor, monto, fecha);
+                      }
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _mostrarModalAgregarGasto(context),
         backgroundColor: Colors.orange,
-        child: const Icon(Icons.add, color: Colors.white),
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 
+  Widget _buildListaGastos() {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore
+          .collection('gastos')
+          .where('hogarId', isEqualTo: _hogarId)
+          .orderBy('fecha', descending: true)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator(color: Colors.teal));
+        }
+
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('Error al cargar los gastos',
+                style: TextStyle(color: Colors.red)),
+          );
+        }
+
+        final gastos = snapshot.data?.docs ?? [];
+        if (gastos.isEmpty) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.money_off, size: 64, color: Colors.grey),
+                SizedBox(height: 16),
+                Text(
+                  "No hay gastos registrados",
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "Presiona el botón + para agregar uno",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ],
+            ),
+          );
+        }
+
+        return ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          physics: const BouncingScrollPhysics(),
+          itemCount: gastos.length,
+          separatorBuilder: (_, __) => const SizedBox(height: 16),
+          itemBuilder: (context, index) {
+            final gasto = gastos[index];
+            final fecha = (gasto['fecha'] as Timestamp).toDate();
+            final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+            final monto = gasto['monto'] as double;
+
+            return _buildGastoCard(gasto, pagadoPor, monto, fecha);
+          },
+        );
+      },
+    );
+  }
+
   Widget _buildGastoCard(
-      DocumentSnapshot gasto, String pagadoPor, double monto) {
-    return Card(
+      DocumentSnapshot gasto, String pagadoPor, double monto, DateTime fecha) {
+    return Container(
       margin: EdgeInsets.only(bottom: 12),
-      elevation: 2,
-      shape: RoundedRectangleBorder(
+      decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
+        ],
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: () {
-          _mostrarDetalleGasto(context, gasto); // Este es el método correcto
-        },
+        onTap: () => _mostrarDetalleGasto(context, gasto),
         child: Padding(
           padding: EdgeInsets.all(16),
           child: Column(
@@ -474,7 +648,7 @@ class _GastosScreenState extends State<GastosScreen> {
                     child: Text(
                       gasto['titulo'],
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.teal,
                       ),
@@ -483,7 +657,7 @@ class _GastosScreenState extends State<GastosScreen> {
                   Text(
                     '${monto.toStringAsFixed(2)}€',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.teal,
                     ),
@@ -493,11 +667,10 @@ class _GastosScreenState extends State<GastosScreen> {
               SizedBox(height: 8),
               Row(
                 children: [
-                  Icon(Icons.person, size: 16, color: Colors.grey),
                   SizedBox(width: 4),
                   Text(
                     'Pagado por: $pagadoPor',
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                 ],
               ),

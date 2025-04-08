@@ -144,7 +144,6 @@ class _ListaScreenState extends State<ListaScreen> {
         elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withOpacity(0.3), width: 2),
         ),
         child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
       ),
