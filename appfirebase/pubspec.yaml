@@ -46,6 +46,7 @@ dependencies:
   table_calendar:
   firebase_messaging:
   cached_network_image: 
+  collection: 
   
 
 

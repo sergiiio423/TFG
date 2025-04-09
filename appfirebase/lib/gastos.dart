@@ -2,17 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:math';
 import 'lista_compra.dart';
 import 'principal.dart';
 import 'perfil.dart';
 import 'tareas_screen.dart';
+import 'package:collection/collection.dart';
 
 class GastosScreen extends StatefulWidget {
   @override
   _GastosScreenState createState() => _GastosScreenState();
 }
 
-class _GastosScreenState extends State<GastosScreen> {
+class _GastosScreenState extends State<GastosScreen>
+    with SingleTickerProviderStateMixin {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   List<String> _miembrosHogar = [];
@@ -20,11 +23,21 @@ class _GastosScreenState extends State<GastosScreen> {
   String? _hogarId;
   bool _loading = true;
   int _currentIndex = 2;
+  late TabController _tabController;
+  String _currentUserId = '';
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+    _currentUserId = _auth.currentUser?.uid ?? '';
     _cargarDatosHogar();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   Future<void> _cargarDatosHogar() async {
@@ -64,11 +77,13 @@ class _GastosScreenState extends State<GastosScreen> {
           .where(FieldPath.documentId, whereIn: _miembrosHogar)
           .get();
 
+      final nombresTemp = <String, String>{};
+      for (var doc in usuariosSnapshot.docs) {
+        nombresTemp[doc.id] = doc['nombre'] ?? 'Usuario';
+      }
+
       setState(() {
-        _nombresMiembros = {
-          for (var doc in usuariosSnapshot.docs)
-            doc.id: doc['nombre'] ?? 'Usuario'
-        };
+        _nombresMiembros = nombresTemp;
       });
     } catch (e) {
       print('Error cargando nombres de miembros: $e');
@@ -325,7 +340,7 @@ class _GastosScreenState extends State<GastosScreen> {
                             double.tryParse(_montoController.text) ?? 0;
                         final montoPorPersona = monto / _debenPagar.length;
 
-                        await _firestore.collection('gastos').add({
+                        final nuevoGasto = {
                           'titulo': _tituloController.text.trim(),
                           'monto': monto,
                           'fecha': _fechaSeleccionada,
@@ -334,7 +349,14 @@ class _GastosScreenState extends State<GastosScreen> {
                           'montoPorPersona': montoPorPersona,
                           'fechaCreacion': FieldValue.serverTimestamp(),
                           'hogarId': _hogarId,
-                        });
+                          'pagado': false,
+                        };
+
+                        // Primero guardar el gasto
+                        await _firestore.collection('gastos').add(nuevoGasto);
+
+                        // Luego actualizar las deudas
+                        await _actualizarDeudasDesdeGasto(nuevoGasto);
 
                         Navigator.pop(context);
                       },
@@ -393,7 +415,6 @@ class _GastosScreenState extends State<GastosScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Encabezado similar al de ListaScreen pero para Gastos
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -407,139 +428,47 @@ class _GastosScreenState extends State<GastosScreen> {
                       color: Colors.teal,
                     ),
                   ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.search, size: 28),
-                        onPressed: () {
-                          // Implementar búsqueda de gastos si es necesario
-                        },
+                  IconButton(
+                    icon: Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: Colors.teal.withOpacity(0.1),
+                        shape: BoxShape.circle,
                       ),
-                      const SizedBox(width: 8),
-                      IconButton(
-                        icon: Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.teal.withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(Icons.person,
-                              size: 24, color: Colors.teal),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProfileScreen()),
-                          );
-                        },
-                      ),
-                    ],
+                      child: const Icon(Icons.person,
+                          size: 24, color: Colors.teal),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()),
+                      );
+                    },
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
-              child: Row(
-                children: [
-                  Text(
-                    "Tus gastos recientes",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const Spacer(),
-                  Icon(Icons.filter_list_rounded,
-                      color: Colors.teal[700], size: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TabBar(
+                controller: _tabController,
+                labelColor: Colors.teal,
+                unselectedLabelColor: Colors.grey,
+                indicatorColor: Colors.teal,
+                tabs: [
+                  Tab(text: 'Gastos'),
+                  Tab(text: 'Deudas'),
                 ],
               ),
             ),
             Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: _firestore
-                    .collection('gastos')
-                    .where('hogarId', isEqualTo: _hogarId)
-                    .orderBy('fecha', descending: true)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                        child: CircularProgressIndicator(color: Colors.teal));
-                  }
-
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error al cargar los gastos',
-                          style: TextStyle(color: Colors.red)),
-                    );
-                  }
-
-                  final gastos = snapshot.data?.docs ?? [];
-                  if (gastos.isEmpty) {
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.money_off, size: 64, color: Colors.grey),
-                          SizedBox(height: 16),
-                          Text(
-                            "No hay gastos registrados",
-                            style: TextStyle(fontSize: 18, color: Colors.grey),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            "Presiona el botón + para agregar uno",
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-
-                  return ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    itemCount: gastos.length,
-                    itemBuilder: (context, index) {
-                      final gasto = gastos[index];
-                      final fecha = (gasto['fecha'] as Timestamp).toDate();
-                      final pagadoPor =
-                          _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
-                      final monto = gasto['monto'] as double;
-                      final fechaKey =
-                          DateFormat('d MMMM y', 'es_ES').format(fecha);
-
-                      if (index == 0 ||
-                          DateFormat('d MMMM y', 'es_ES').format(
-                                  (gastos[index - 1]['fecha'] as Timestamp)
-                                      .toDate()) !=
-                              fechaKey) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 16, bottom: 8),
-                              child: Text(
-                                fechaKey,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: Colors.teal,
-                                ),
-                              ),
-                            ),
-                            _buildGastoCard(gasto, pagadoPor, monto, fecha),
-                          ],
-                        );
-                      } else {
-                        return _buildGastoCard(gasto, pagadoPor, monto, fecha);
-                      }
-                    },
-                  );
-                },
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  _buildGastosTab(),
+                  _buildDeudasTab(),
+                ],
               ),
             ),
           ],
@@ -558,64 +487,647 @@ class _GastosScreenState extends State<GastosScreen> {
       bottomNavigationBar: _buildBottomNavBar(),
     );
   }
+Widget _buildGastosTab() {
+  return StreamBuilder<QuerySnapshot>(
+    stream: _firestore
+        .collection('gastos')
+        .where('hogarId', isEqualTo: _hogarId)
+        .orderBy('fecha', descending: true)
+        .snapshots(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(child: CircularProgressIndicator(color: Colors.teal));
+      }
 
-  Widget _buildListaGastos() {
-    return StreamBuilder<QuerySnapshot>(
-      stream: _firestore
-          .collection('gastos')
-          .where('hogarId', isEqualTo: _hogarId)
-          .orderBy('fecha', descending: true)
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator(color: Colors.teal));
+      if (snapshot.hasError) {
+        return Center(
+          child: Text('Error al cargar los gastos',
+              style: TextStyle(color: Colors.red)),
+        );
+      }
+
+      final gastos = snapshot.data?.docs ?? [];
+      
+      // Calcular totales
+      double totalGastos = 0;
+      double misGastos = 0;
+      
+      for (final gasto in gastos) {
+        final monto = gasto['monto'] as double;
+        final debenPagar = (gasto['debenPagar'] as List).cast<String>();
+        
+        totalGastos += monto;
+       
+        // Si el usuario está entre los que deben pagar
+        if (debenPagar.contains(_currentUserId)) {
+          misGastos += monto / debenPagar.length; // Suma su parte proporcional
         }
+      }
 
-        if (snapshot.hasError) {
-          return Center(
-            child: Text('Error al cargar los gastos',
-                style: TextStyle(color: Colors.red)),
-          );
-        }
+      if (gastos.isEmpty) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.money_off, size: 64, color: Colors.grey),
+              SizedBox(height: 16),
+              Text(
+                "No hay gastos registrados",
+                style: TextStyle(fontSize: 18, color: Colors.grey),
+              ),
+              SizedBox(height: 8),
+              Text(
+                "Presiona el botón + para agregar uno",
+                style: TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+        );
+      }
 
-        final gastos = snapshot.data?.docs ?? [];
-        if (gastos.isEmpty) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+      return Column(
+        children: [
+          // Resumen de gastos
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.money_off, size: 64, color: Colors.grey),
-                SizedBox(height: 16),
-                Text(
-                  "No hay gastos registrados",
-                  style: TextStyle(fontSize: 18, color: Colors.grey),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.teal[50],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Mis gastos',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.teal,
+                        ),
+                      ),
+                      Text(
+                        '${misGastos.toStringAsFixed(2)}€',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(height: 8),
-                Text(
-                  "Presiona el botón + para agregar uno",
-                  style: TextStyle(color: Colors.grey),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.orange[50],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Gastos totales',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.orange,
+                        ),
+                      ),
+                      Text(
+                        '${totalGastos.toStringAsFixed(2)}€',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          );
-        }
+          ),
+          
+          // Lista de gastos
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              itemCount: gastos.length,
+              itemBuilder: (context, index) {
+                final gasto = gastos[index];
+                final fecha = (gasto['fecha'] as Timestamp).toDate();
+                final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+                final monto = gasto['monto'] as double;
+                final fechaKey = DateFormat('d MMMM y', 'es_ES').format(fecha);
 
-        return ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          physics: const BouncingScrollPhysics(),
-          itemCount: gastos.length,
-          separatorBuilder: (_, __) => const SizedBox(height: 16),
-          itemBuilder: (context, index) {
-            final gasto = gastos[index];
-            final fecha = (gasto['fecha'] as Timestamp).toDate();
-            final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
-            final monto = gasto['monto'] as double;
+                if (index == 0 ||
+                    DateFormat('d MMMM y', 'es_ES').format(
+                            (gastos[index - 1]['fecha'] as Timestamp).toDate()) !=
+                        fechaKey) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16, bottom: 8),
+                        child: Text(
+                          fechaKey,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.teal,
+                          ),
+                        ),
+                      ),
+                      _buildGastoCard(gasto, pagadoPor, monto, fecha),
+                    ],
+                  );
+                } else {
+                  return _buildGastoCard(gasto, pagadoPor, monto, fecha);
+                }
+              },
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
 
-            return _buildGastoCard(gasto, pagadoPor, monto, fecha);
-          },
+  Widget _buildDeudasTab() {
+  if (_hogarId == null) {
+    return Center(
+      child: Text('No se ha cargado el ID del hogar'),
+    );
+  }
+
+  return StreamBuilder<QuerySnapshot>(
+    stream: _firestore
+        .collection('deudas')
+        .where('hogarId', isEqualTo: _hogarId)
+        .where('pagado', isEqualTo: false)
+        .orderBy('ultimaActualizacion', descending: true)
+        .snapshots(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(child: CircularProgressIndicator(color: Colors.teal));
+      }
+
+      if (snapshot.hasError) {
+        print('Error en snapshot: ${snapshot.error}');
+        return Center(
+          child: Text('Error al cargar las deudas: ${snapshot.error}'),
+        );
+      }
+
+      // Calcular balances para todos los miembros
+      final balances = _calcularBalances(snapshot.data?.docs ?? []);
+
+      // Obtener balance del usuario actual
+      final miBalance = balances[_currentUserId] ?? 0.0;
+
+      return Column(
+        children: [
+          // Summary Card del usuario actual (estilo original)
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => _buildListaDeudasCompleta(snapshot.data?.docs ?? []),
+                ),
+              );
+            },
+            child: Container(
+              margin: EdgeInsets.all(16),
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 6,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Tu balance',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    '${miBalance >= 0 ? 'Te deben' : 'Debes'} ${miBalance.abs().toStringAsFixed(2)}€',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: miBalance >= 0 ? Colors.green[800] : Colors.orange[800],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          
+          // Lista de balances de todos los miembros (tarjetas coloreadas)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              'Balances del hogar',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.teal,
+              ),
+            ),
+          ),
+          SizedBox(height: 8),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              itemCount: _miembrosHogar.length,
+              itemBuilder: (context, index) {
+                final miembroId = _miembrosHogar[index];
+                final balance = balances[miembroId] ?? 0.0;
+                final esYo = miembroId == _currentUserId;
+                
+                return Container(
+                  margin: EdgeInsets.only(bottom: 8),
+                  decoration: BoxDecoration(
+                    color: balance >= 0 ? Colors.green[50] : Colors.orange[50],
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: balance >= 0 ? (Colors.green[100] ?? Colors.green) : (Colors.orange[100] ?? Colors.orange),
+                      width: 2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 4,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: esYo 
+                        ? Colors.teal[100] 
+                        : (balance >= 0 ? Colors.green[100] : Colors.orange[100]),
+                      child: Text(
+                        _nombresMiembros[miembroId]?.substring(0, 1) ?? '?',
+                        style: TextStyle(
+                          color: esYo 
+                            ? Colors.teal 
+                            : (balance >= 0 ? Colors.green[800] : Colors.orange[800]),
+                        ),
+                      ),
+                    ),
+                    title: Text(
+                      '${_nombresMiembros[miembroId] ?? 'Usuario'}${esYo ? ' (Tú)' : ''}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    trailing: Text(
+                      '${balance >= 0 ? '+' : ''}${balance.toStringAsFixed(2)}€',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: balance >= 0 ? Colors.green[800] : Colors.orange[800],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+// Función para calcular balances de todos los miembros
+Map<String, double> _calcularBalances(List<QueryDocumentSnapshot> deudas) {
+  final balances = <String, double>{};
+  
+  for (final deuda in deudas) {
+    final deudor = deuda['deudor'] as String;
+    final acreedor = deuda['acreedor'] as String;
+    final monto = (deuda['monto'] as num).toDouble();
+    
+    balances[deudor] = (balances[deudor] ?? 0) - monto;
+    balances[acreedor] = (balances[acreedor] ?? 0) + monto;
+  }
+  
+  return balances;
+}
+
+// Función para construir la lista completa de deudas (para mostrar al hacer tap en el card)
+Widget _buildListaDeudasCompleta(List<QueryDocumentSnapshot> deudas) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('Todas las deudas'),
+      backgroundColor: Colors.teal,
+    ),
+    body: ListView.builder(
+      padding: EdgeInsets.all(16),
+      itemCount: deudas.length,
+      itemBuilder: (context, index) {
+        final deuda = deudas[index];
+        final deudorId = deuda['deudor'] as String? ?? '';
+        final acreedorId = deuda['acreedor'] as String? ?? '';
+        final monto = (deuda['monto'] as num?)?.toDouble() ?? 0.0;
+        final esCompensada = deuda['esCompensada'] as bool? ?? false;
+
+        return Card(
+          margin: EdgeInsets.only(bottom: 16),
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${_nombresMiembros[deudorId]} → ${_nombresMiembros[acreedorId]}',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.teal,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Deuda: ${monto.toStringAsFixed(2)}€',
+                  style: TextStyle(fontSize: 16),
+                ),
+                if (esCompensada)
+                  Padding(
+                    padding: EdgeInsets.only(top: 4),
+                    child: Text(
+                      '(Deuda compensada)',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ),
+                SizedBox(height: 12),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: () => _marcarDeudaComoPagada(
+                    deuda.reference,
+                    deudorId,
+                    acreedorId,
+                    monto,
+                  ),
+                  child: Text(
+                    'Marcar como pagado',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       },
-    );
+    ),
+  );
+}
+
+ Future<void> _actualizarDeudasDesdeGasto(Map<String, dynamic> gasto) async {
+  try {
+    final pagadoPor = gasto['pagadoPor'] as String;
+    final montoPorPersona = gasto['montoPorPersona'] as double;
+    final debenPagar = (gasto['debenPagar'] as List).cast<String>();
+    final hogarId = gasto['hogarId'] as String;
+
+    // Obtener TODAS las deudas existentes no pagadas del hogar
+    final todasDeudas = await _firestore
+        .collection('deudas')
+        .where('hogarId', isEqualTo: hogarId)
+        .where('pagado', isEqualTo: false)
+        .get();
+
+    final batch = _firestore.batch();
+
+    for (final deudor in debenPagar) {
+      if (deudor == pagadoPor) continue; // No crear deuda consigo mismo
+
+      // Buscar si ya existe una deuda entre estos usuarios en cualquier dirección
+      final QueryDocumentSnapshot<Map<String, dynamic>>? deudaExistente = todasDeudas.docs.firstWhereOrNull(
+        (doc) => 
+          (doc['deudor'] == deudor && doc['acreedor'] == pagadoPor) ||
+          (doc['deudor'] == pagadoPor && doc['acreedor'] == deudor),
+      );
+
+      if (deudaExistente != null) {
+        // Caso 1: Deuda en la misma dirección (deudor → acreedor)
+        if (deudaExistente['deudor'] == deudor && 
+            deudaExistente['acreedor'] == pagadoPor) {
+          // Sumar al monto existente
+          batch.update(deudaExistente.reference, {
+            'monto': FieldValue.increment(montoPorPersona),
+            'ultimaActualizacion': FieldValue.serverTimestamp(),
+          });
+        } 
+        // Caso 2: Deuda en dirección opuesta (acreedor → deudor)
+        else if (deudaExistente['deudor'] == pagadoPor && 
+                 deudaExistente['acreedor'] == deudor) {
+          final deudaActual = deudaExistente['monto'] as double;
+          
+          // Compensar deudas
+          if (deudaActual > montoPorPersona) {
+            // Reducir la deuda existente
+            batch.update(deudaExistente.reference, {
+              'monto': deudaActual - montoPorPersona,
+              'ultimaActualizacion': FieldValue.serverTimestamp(),
+            });
+          } else if (deudaActual < montoPorPersona) {
+            // Eliminar la deuda existente y crear una nueva en dirección opuesta
+            batch.delete(deudaExistente.reference);
+            
+            final nuevaDeudaRef = _firestore.collection('deudas').doc();
+            batch.set(nuevaDeudaRef, {
+              'deudor': deudor,
+              'acreedor': pagadoPor,
+              'monto': montoPorPersona - deudaActual,
+              'hogarId': hogarId,
+              'creadoEn': FieldValue.serverTimestamp(),
+              'ultimaActualizacion': FieldValue.serverTimestamp(),
+              'pagado': false,
+              'esCompensada': true,
+            });
+          } else {
+            // Deudas iguales, se cancelan
+            batch.delete(deudaExistente.reference);
+          }
+        }
+      } else {
+        // No existe deuda previa, crear nueva
+        final nuevaDeudaRef = _firestore.collection('deudas').doc();
+        batch.set(nuevaDeudaRef, {
+          'deudor': deudor,
+          'acreedor': pagadoPor,
+          'monto': montoPorPersona,
+          'hogarId': hogarId,
+          'creadoEn': FieldValue.serverTimestamp(),
+          'ultimaActualizacion': FieldValue.serverTimestamp(),
+          'pagado': false,
+          'esCompensada': false,
+        });
+      }
+    }
+
+    await batch.commit();
+    await _compensarDeudas(hogarId); // Recalcular compensaciones globales
+  } catch (e) {
+    print('Error al actualizar deudas: $e');
+    rethrow;
+  }
+}
+
+Future<void> _compensarDeudas(String hogarId) async {
+  try {
+    // Obtener todas las deudas del hogar
+    final deudasSnapshot = await _firestore
+        .collection('deudas')
+        .where('hogarId', isEqualTo: hogarId)
+        .where('pagado', isEqualTo: false)
+        .get();
+
+    // Calcular balances netos para cada usuario
+    final balances = <String, double>{};
+    for (final doc in deudasSnapshot.docs) {
+      final deudor = doc['deudor'] as String;
+      final acreedor = doc['acreedor'] as String;
+      final monto = doc['monto'] as double;
+
+      balances[deudor] = (balances[deudor] ?? 0) - monto;
+      balances[acreedor] = (balances[acreedor] ?? 0) + monto;
+    }
+
+    // Separar en deudores y acreedores
+    final deudores = balances.entries
+        .where((e) => e.value < 0)
+        .toList()
+          ..sort((a, b) => a.value.compareTo(b.value)); // Ordenar de menor a mayor
+    
+    final acreedores = balances.entries
+        .where((e) => e.value > 0)
+        .toList()
+          ..sort((a, b) => b.value.compareTo(a.value)); // Ordenar de mayor a menor
+
+    final batch = _firestore.batch();
+    
+    // Primero: Eliminar todas las deudas existentes
+    for (final deuda in deudasSnapshot.docs) {
+      batch.delete(deuda.reference);
+    }
+
+    // Segundo: Crear nuevas deudas compensadas
+    int i = 0, j = 0;
+    while (i < deudores.length && j < acreedores.length) {
+      final deudor = deudores[i];
+      final acreedor = acreedores[j];
+      final cantidad = min(-deudor.value, acreedor.value);
+
+      if (cantidad <= 0.01) { // Ignorar diferencias mínimas
+        i++;
+        j++;
+        continue;
+      }
+
+      // Crear nueva deuda compensada
+      final nuevaDeudaRef = _firestore.collection('deudas').doc();
+      batch.set(nuevaDeudaRef, {
+        'deudor': deudor.key,
+        'acreedor': acreedor.key,
+        'monto': cantidad,
+        'hogarId': hogarId,
+        'creadoEn': FieldValue.serverTimestamp(),
+        'ultimaActualizacion': FieldValue.serverTimestamp(),
+        'pagado': false,
+        'esCompensada': true,
+      });
+
+      // Actualizar balances
+      deudores[i] = MapEntry(deudor.key, deudor.value + cantidad);
+      acreedores[j] = MapEntry(acreedor.key, acreedor.value - cantidad);
+
+      if (deudores[i].value.abs() < 0.01) i++;
+      if (acreedores[j].value.abs() < 0.01) j++;
+    }
+
+    await batch.commit();
+  } catch (e) {
+    print('Error en compensación de deudas: $e');
+    rethrow;
+  }
+}
+
+
+
+   Future<void> _marcarDeudaComoPagada(
+    DocumentReference deudaRef,
+    String deudorId,
+    String acreedorId,
+    double monto,
+  ) async {
+    try {
+      final batch = _firestore.batch();
+      
+      // 1. Marcar la deuda como pagada
+      batch.update(deudaRef, {
+        'pagado': true,
+        'fechaPago': FieldValue.serverTimestamp(),
+      });
+
+      // 2. Registrar el pago
+      final pagoRef = _firestore.collection('pagos').doc();
+      batch.set(pagoRef, {
+        'deudor': deudorId,
+        'acreedor': acreedorId,
+        'monto': monto,
+        'fecha': FieldValue.serverTimestamp(),
+        'hogarId': _hogarId,
+        'esCompensada': false,
+      });
+
+      await batch.commit();
+
+      // 3. Recalcular deudas después del pago
+      if (_hogarId != null) {
+        await _compensarDeudas(_hogarId!);
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Deuda marcada como pagada correctamente'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      print('Error en _marcarDeudaComoPagada: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error al marcar como pagado: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   Widget _buildGastoCard(
