@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'producto.dart';
 import 'perfil.dart';
+import 'gastos.dart';
 
 class ListaScreen extends StatefulWidget {
   const ListaScreen({super.key});
@@ -42,6 +43,15 @@ class _ListaScreenState extends State<ListaScreen> {
           context,
           PageRouteBuilder(
             pageBuilder: (_, __, ___) => const TareasScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => GastosScreen(),
             transitionDuration: Duration.zero,
           ),
         );

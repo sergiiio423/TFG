@@ -90,17 +90,31 @@ class _GastosScreenState extends State<GastosScreen>
     }
   }
 
-  void _mostrarModalAgregarGasto(BuildContext context) {
-    final TextEditingController _tituloController = TextEditingController();
-    final TextEditingController _montoController = TextEditingController();
-    DateTime _fechaSeleccionada = DateTime.now();
-    String? _pagadoPor;
-    List<String> _debenPagar = [];
-    double _montoPorPersona = 0.0;
+  void _mostrarModalAgregarGasto(BuildContext context,
+      {DocumentSnapshot? gastoExistente}) {
+    final TextEditingController _tituloController =
+        TextEditingController(text: gastoExistente?['titulo'] ?? '');
+    final TextEditingController _montoController =
+        TextEditingController(text: gastoExistente?['monto']?.toString() ?? '');
+    DateTime _fechaSeleccionada = gastoExistente != null
+        ? (gastoExistente['fecha'] as Timestamp).toDate()
+        : DateTime.now();
+    String? _pagadoPor = gastoExistente?['pagadoPor'];
+    List<String> _debenPagar = gastoExistente != null
+        ? List<String>.from(gastoExistente['debenPagar'])
+        : [];
+    double _montoPorPersona = gastoExistente?['montoPorPersona'] ?? 0.0;
+
+    // Variables para control de errores
+    bool _tituloError = false;
+    bool _montoError = false;
+    bool _pagadoPorError = false;
+    bool _debenPagarError = false;
 
     void _actualizarMontoPorPersona() {
       if (_montoController.text.isNotEmpty && _debenPagar.isNotEmpty) {
-        final monto = double.tryParse(_montoController.text) ?? 0;
+        final monto =
+            double.tryParse(_montoController.text.replaceAll(',', '.')) ?? 0;
         setState(() {
           _montoPorPersona = monto / _debenPagar.length;
         });
@@ -109,6 +123,15 @@ class _GastosScreenState extends State<GastosScreen>
           _montoPorPersona = 0.0;
         });
       }
+    }
+
+    void _validarCampos() {
+      setState(() {
+        _tituloError = _tituloController.text.isEmpty;
+        _montoError = _montoController.text.isEmpty;
+        _pagadoPorError = _pagadoPor == null;
+        _debenPagarError = _debenPagar.isEmpty;
+      });
     }
 
     showModalBottomSheet(
@@ -135,7 +158,7 @@ class _GastosScreenState extends State<GastosScreen>
                   children: [
                     Center(
                       child: Text(
-                        "Nuevo Gasto",
+                        gastoExistente != null ? "Editar Gasto" : "Nuevo Gasto",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -148,17 +171,28 @@ class _GastosScreenState extends State<GastosScreen>
                       controller: _tituloController,
                       decoration: InputDecoration(
                         labelText: 'Título',
-                        labelStyle: TextStyle(color: Colors.grey),
+                        labelStyle: TextStyle(
+                            color: _tituloError ? Colors.red : Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: _tituloError ? Colors.red : Colors.grey,
+                          ),
                         ),
                         filled: true,
                         fillColor: Colors.white,
-                        prefixIcon: Icon(Icons.title, color: Colors.teal),
+                        prefixIcon: Icon(Icons.title,
+                            color: _tituloError ? Colors.red : Colors.teal),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal, width: 2),
+                          borderSide: BorderSide(
+                            color: _tituloError ? Colors.red : Colors.teal,
+                            width: 2,
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
+                        errorText:
+                            _tituloError ? 'Este campo es obligatorio' : null,
+                        errorStyle: TextStyle(color: Colors.red),
                       ),
                     ),
                     SizedBox(height: 16),
@@ -166,20 +200,36 @@ class _GastosScreenState extends State<GastosScreen>
                       controller: _montoController,
                       keyboardType:
                           TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (value) => _actualizarMontoPorPersona(),
+                      onChanged: (value) {
+                        setModalState(() {
+                          _montoError = value.isEmpty;
+                        });
+                        _actualizarMontoPorPersona();
+                      },
                       decoration: InputDecoration(
                         labelText: 'Cantidad (€)',
-                        labelStyle: TextStyle(color: Colors.grey),
+                        labelStyle: TextStyle(
+                            color: _montoError ? Colors.red : Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: _montoError ? Colors.red : Colors.grey,
+                          ),
                         ),
                         filled: true,
                         fillColor: Colors.white,
-                        prefixIcon: Icon(Icons.euro, color: Colors.teal),
+                        prefixIcon: Icon(Icons.euro,
+                            color: _montoError ? Colors.red : Colors.teal),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal),
+                          borderSide: BorderSide(
+                            color: _montoError ? Colors.red : Colors.teal,
+                            width: 2,
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
+                        errorText:
+                            _montoError ? 'Este campo es obligatorio' : null,
+                        errorStyle: TextStyle(color: Colors.red),
                       ),
                     ),
                     SizedBox(height: 16),
@@ -229,63 +279,114 @@ class _GastosScreenState extends State<GastosScreen>
                       value: _pagadoPor,
                       decoration: InputDecoration(
                         labelText: 'Pagado por',
-                        labelStyle: TextStyle(color: Colors.teal),
+                        labelStyle: TextStyle(
+                            color: _pagadoPorError ? Colors.red : Colors.teal),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: _pagadoPorError ? Colors.red : Colors.grey,
+                          ),
                         ),
                         filled: true,
                         fillColor: Colors.white,
-                        prefixIcon: Icon(Icons.person, color: Colors.teal),
+                        prefixIcon: Icon(Icons.person,
+                            color: _pagadoPorError ? Colors.red : Colors.teal),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal, width: 2),
+                          borderSide: BorderSide(
+                            color: _pagadoPorError ? Colors.red : Colors.teal,
+                            width: 2,
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
+                        errorText:
+                            _pagadoPorError ? 'Selecciona quién pagó' : null,
+                        errorStyle: TextStyle(color: Colors.red),
                       ),
+                      dropdownColor: Colors.white,
                       items: _miembrosHogar.map((miembro) {
                         return DropdownMenuItem<String>(
                           value: miembro,
-                          child: Text(_nombresMiembros[miembro] ?? 'Usuario'),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(_nombresMiembros[miembro] ?? 'Usuario'),
+                          ),
                         );
                       }).toList(),
                       onChanged: (value) {
-                        setModalState(() => _pagadoPor = value);
+                        setModalState(() {
+                          _pagadoPor = value;
+                          _pagadoPorError = value == null;
+                        });
                       },
-                      validator: (value) =>
-                          value == null ? 'Selecciona quién pagó' : null,
+                      icon: Icon(Icons.arrow_drop_down, color: Colors.teal),
+                      style: TextStyle(color: Colors.black),
+                      isExpanded: true,
                     ),
                     SizedBox(height: 16),
                     Text(
                       'Participantes en el gasto:',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.teal,
+                        color: _debenPagarError ? Colors.red : Colors.teal,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    if (_debenPagarError)
+                      Padding(
+                        padding: EdgeInsets.only(top: 4),
+                        child: Text(
+                          'Selecciona al menos un participante',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
                     SizedBox(height: 8),
                     Column(
                       children: _miembrosHogar.map((miembro) {
-                        return CheckboxListTile(
-                          title: Text(_nombresMiembros[miembro] ?? 'Usuario'),
-                          value: _debenPagar.contains(miembro),
-                          onChanged: (selected) {
-                            setModalState(() {
-                              if (selected == true) {
-                                _debenPagar.add(miembro);
-                              } else {
-                                _debenPagar.remove(miembro);
-                              }
-                              _actualizarMontoPorPersona();
-                            });
-                          },
-                          secondary: CircleAvatar(
-                            child: Text(
-                              _nombresMiembros[miembro]?.substring(0, 1) ?? 'U',
-                              style: TextStyle(color: Colors.white),
+                        return Card(
+                          elevation: 0,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(
+                              color: Colors.grey.shade200,
+                              width: 1,
                             ),
-                            backgroundColor: Colors.teal,
                           ),
-                          controlAffinity: ListTileControlAffinity.trailing,
+                          margin: EdgeInsets.only(bottom: 8),
+                          child: CheckboxListTile(
+                            title: Text(
+                              _nombresMiembros[miembro] ?? 'Usuario',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            value: _debenPagar.contains(miembro),
+                            onChanged: (selected) {
+                              setModalState(() {
+                                if (selected == true) {
+                                  _debenPagar.add(miembro);
+                                } else {
+                                  _debenPagar.remove(miembro);
+                                }
+                                _debenPagarError = _debenPagar.isEmpty;
+                                _actualizarMontoPorPersona();
+                              });
+                            },
+                            secondary: CircleAvatar(
+                              child: Text(
+                                _nombresMiembros[miembro]?.substring(0, 1) ??
+                                    'U',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.teal,
+                            ),
+                            controlAffinity: ListTileControlAffinity.trailing,
+                          ),
                         );
                       }).toList(),
                     ),
@@ -320,61 +421,134 @@ class _GastosScreenState extends State<GastosScreen>
                         ),
                       ),
                     SizedBox(height: 24),
-                    ElevatedButton(
-                      onPressed: () async {
-                        if (_tituloController.text.isEmpty ||
-                            _montoController.text.isEmpty ||
-                            _pagadoPor == null ||
-                            _debenPagar.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content:
-                                  Text('Completa todos los campos requeridos'),
-                              backgroundColor: Colors.red,
+                    Row(
+                      children: [
+                        if (gastoExistente != null)
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                setModalState(() {
+                                  _validarCampos();
+                                });
+
+                                if (_tituloError ||
+                                    _montoError ||
+                                    _pagadoPorError ||
+                                    _debenPagarError) {
+                                  return;
+                                }
+
+                                final monto = double.tryParse(_montoController
+                                        .text
+                                        .replaceAll(',', '.')) ??
+                                    0;
+                                final montoPorPersona =
+                                    monto / _debenPagar.length;
+
+                                await gastoExistente.reference.update({
+                                  'titulo': _tituloController.text.trim(),
+                                  'monto': monto,
+                                  'fecha': _fechaSeleccionada,
+                                  'pagadoPor': _pagadoPor,
+                                  'debenPagar': _debenPagar,
+                                  'montoPorPersona': montoPorPersona,
+                                });
+
+                                // Actualizar deudas
+                                await _actualizarDeudasDesdeGasto({
+                                  'titulo': _tituloController.text.trim(),
+                                  'monto': monto,
+                                  'fecha': _fechaSeleccionada,
+                                  'pagadoPor': _pagadoPor,
+                                  'debenPagar': _debenPagar,
+                                  'montoPorPersona': montoPorPersona,
+                                  'hogarId': _hogarId,
+                                });
+
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.teal,
+                                padding: EdgeInsets.symmetric(vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              child: Text(
+                                "Actualizar",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          );
-                          return;
-                        }
+                          ),
+                        if (gastoExistente != null) SizedBox(width: 8),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              setModalState(() {
+                                _validarCampos();
+                              });
 
-                        final monto =
-                            double.tryParse(_montoController.text) ?? 0;
-                        final montoPorPersona = monto / _debenPagar.length;
+                              if (_tituloError ||
+                                  _montoError ||
+                                  _pagadoPorError ||
+                                  _debenPagarError) {
+                                return;
+                              }
 
-                        final nuevoGasto = {
-                          'titulo': _tituloController.text.trim(),
-                          'monto': monto,
-                          'fecha': _fechaSeleccionada,
-                          'pagadoPor': _pagadoPor,
-                          'debenPagar': _debenPagar,
-                          'montoPorPersona': montoPorPersona,
-                          'fechaCreacion': FieldValue.serverTimestamp(),
-                          'hogarId': _hogarId,
-                          'pagado': false,
-                        };
+                              final monto = double.tryParse(_montoController
+                                      .text
+                                      .replaceAll(',', '.')) ??
+                                  0;
+                              final montoPorPersona =
+                                  monto / _debenPagar.length;
 
-                        // Primero guardar el gasto
-                        await _firestore.collection('gastos').add(nuevoGasto);
+                              if (gastoExistente != null) {
+                                await _eliminarGasto(gastoExistente);
+                              } else {
+                                final nuevoGasto = {
+                                  'titulo': _tituloController.text.trim(),
+                                  'monto': monto,
+                                  'fecha': _fechaSeleccionada,
+                                  'pagadoPor': _pagadoPor,
+                                  'debenPagar': _debenPagar,
+                                  'montoPorPersona': montoPorPersona,
+                                  'fechaCreacion': FieldValue.serverTimestamp(),
+                                  'hogarId': _hogarId,
+                                  'pagado': false,
+                                };
 
-                        // Luego actualizar las deudas
-                        await _actualizarDeudasDesdeGasto(nuevoGasto);
+                                await _firestore
+                                    .collection('gastos')
+                                    .add(nuevoGasto);
+                                await _actualizarDeudasDesdeGasto(nuevoGasto);
+                              }
 
-                        Navigator.pop(context);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: gastoExistente != null
+                                  ? Colors.red
+                                  : Colors.orange,
+                              padding: EdgeInsets.symmetric(vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            child: Text(
+                              gastoExistente != null ? "Eliminar" : "Guardar",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        "Guardar Gasto",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      ],
                     ),
                     SizedBox(height: 16),
                   ],
@@ -450,16 +624,56 @@ class _GastosScreenState extends State<GastosScreen>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TabBar(
-                controller: _tabController,
-                labelColor: Colors.teal,
-                unselectedLabelColor: Colors.grey,
-                indicatorColor: Colors.teal,
-                tabs: [
-                  Tab(text: 'Gastos'),
-                  Tab(text: 'Deudas'),
-                ],
+              padding: const EdgeInsets.symmetric(
+                  vertical: 8), // Reducimos el padding vertical
+              child: Center(
+                // Centramos el TabBar
+                child: Container(
+                  width: MediaQuery.of(context).size.width *
+                      0.65, // 80% del ancho de pantalla
+                  decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.45),
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 6,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: TabBar(
+                    controller: _tabController,
+                    labelColor: Colors.teal,
+                    unselectedLabelColor: Colors.grey[600],
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    labelStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    unselectedLabelStyle: TextStyle(
+                      fontSize: 14,
+                    ),
+                    tabs: [
+                      Tab(
+                        child: Text(
+                          'Gastos',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                      Tab(
+                        child: Text(
+                          'Deudas',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
             Expanded(
@@ -487,653 +701,406 @@ class _GastosScreenState extends State<GastosScreen>
       bottomNavigationBar: _buildBottomNavBar(),
     );
   }
-Widget _buildGastosTab() {
-  return StreamBuilder<QuerySnapshot>(
-    stream: _firestore
-        .collection('gastos')
-        .where('hogarId', isEqualTo: _hogarId)
-        .orderBy('fecha', descending: true)
-        .snapshots(),
-    builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return Center(child: CircularProgressIndicator(color: Colors.teal));
-      }
 
-      if (snapshot.hasError) {
-        return Center(
-          child: Text('Error al cargar los gastos',
-              style: TextStyle(color: Colors.red)),
-        );
-      }
-
-      final gastos = snapshot.data?.docs ?? [];
-      
-      // Calcular totales
-      double totalGastos = 0;
-      double misGastos = 0;
-      
-      for (final gasto in gastos) {
-        final monto = gasto['monto'] as double;
-        final debenPagar = (gasto['debenPagar'] as List).cast<String>();
-        
-        totalGastos += monto;
-       
-        // Si el usuario está entre los que deben pagar
-        if (debenPagar.contains(_currentUserId)) {
-          misGastos += monto / debenPagar.length; // Suma su parte proporcional
+  Widget _buildGastosTab() {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore
+          .collection('gastos')
+          .where('hogarId', isEqualTo: _hogarId)
+          .orderBy('fecha', descending: true)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator(color: Colors.teal));
         }
-      }
 
-      if (gastos.isEmpty) {
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.money_off, size: 64, color: Colors.grey),
-              SizedBox(height: 16),
-              Text(
-                "No hay gastos registrados",
-                style: TextStyle(fontSize: 18, color: Colors.grey),
-              ),
-              SizedBox(height: 8),
-              Text(
-                "Presiona el botón + para agregar uno",
-                style: TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
-        );
-      }
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('Error al cargar los gastos',
+                style: TextStyle(color: Colors.red)),
+          );
+        }
 
-      return Column(
-        children: [
-          // Resumen de gastos
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.teal[50],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Mis gastos',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.teal,
-                        ),
-                      ),
-                      Text(
-                        '${misGastos.toStringAsFixed(2)}€',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.teal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.orange[50],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Gastos totales',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.orange,
-                        ),
-                      ),
-                      Text(
-                        '${totalGastos.toStringAsFixed(2)}€',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          
-          // Lista de gastos
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: gastos.length,
-              itemBuilder: (context, index) {
-                final gasto = gastos[index];
-                final fecha = (gasto['fecha'] as Timestamp).toDate();
-                final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
-                final monto = gasto['monto'] as double;
-                final fechaKey = DateFormat('d MMMM y', 'es_ES').format(fecha);
+        final gastos = snapshot.data?.docs ?? [];
 
-                if (index == 0 ||
-                    DateFormat('d MMMM y', 'es_ES').format(
-                            (gastos[index - 1]['fecha'] as Timestamp).toDate()) !=
-                        fechaKey) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16, bottom: 8),
-                        child: Text(
-                          fechaKey,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.teal,
-                          ),
-                        ),
-                      ),
-                      _buildGastoCard(gasto, pagadoPor, monto, fecha),
-                    ],
-                  );
-                } else {
-                  return _buildGastoCard(gasto, pagadoPor, monto, fecha);
-                }
-              },
-            ),
-          ),
-        ],
-      );
-    },
-  );
-}
+        // Calcular totales
+        double totalGastos = 0;
+        double misGastos = 0;
 
-  Widget _buildDeudasTab() {
-  if (_hogarId == null) {
-    return Center(
-      child: Text('No se ha cargado el ID del hogar'),
-    );
-  }
+        for (final gasto in gastos) {
+          final monto = gasto['monto'] as double;
+          final pagadoPor = gasto['pagadoPor'] as String;
+          final debenPagar = (gasto['debenPagar'] as List).cast<String>();
 
-  return StreamBuilder<QuerySnapshot>(
-    stream: _firestore
-        .collection('deudas')
-        .where('hogarId', isEqualTo: _hogarId)
-        .where('pagado', isEqualTo: false)
-        .orderBy('ultimaActualizacion', descending: true)
-        .snapshots(),
-    builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return Center(child: CircularProgressIndicator(color: Colors.teal));
-      }
+          totalGastos += monto;
 
-      if (snapshot.hasError) {
-        print('Error en snapshot: ${snapshot.error}');
-        return Center(
-          child: Text('Error al cargar las deudas: ${snapshot.error}'),
-        );
-      }
+          // Si el usuario pagó el gasto
+          if (pagadoPor == _currentUserId) {
+            misGastos += monto; // Suma el monto completo
+          }
+          // Si el usuario está entre los que deben pagar
+          else if (debenPagar.contains(_currentUserId)) {
+            misGastos +=
+                monto / debenPagar.length; // Suma su parte proporcional
+          }
+        }
 
-      // Calcular balances para todos los miembros
-      final balances = _calcularBalances(snapshot.data?.docs ?? []);
-
-      // Obtener balance del usuario actual
-      final miBalance = balances[_currentUserId] ?? 0.0;
-
-      return Column(
-        children: [
-          // Summary Card del usuario actual (estilo original)
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => _buildListaDeudasCompleta(snapshot.data?.docs ?? []),
-                ),
-              );
-            },
-            child: Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 6,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Tu balance',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    '${miBalance >= 0 ? 'Te deben' : 'Debes'} ${miBalance.abs().toStringAsFixed(2)}€',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: miBalance >= 0 ? Colors.green[800] : Colors.orange[800],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          
-          // Lista de balances de todos los miembros (tarjetas coloreadas)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              'Balances del hogar',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-              ),
-            ),
-          ),
-          SizedBox(height: 8),
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              itemCount: _miembrosHogar.length,
-              itemBuilder: (context, index) {
-                final miembroId = _miembrosHogar[index];
-                final balance = balances[miembroId] ?? 0.0;
-                final esYo = miembroId == _currentUserId;
-                
-                return Container(
-                  margin: EdgeInsets.only(bottom: 8),
-                  decoration: BoxDecoration(
-                    color: balance >= 0 ? Colors.green[50] : Colors.orange[50],
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: balance >= 0 ? (Colors.green[100] ?? Colors.green) : (Colors.orange[100] ?? Colors.orange),
-                      width: 2,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 4,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: esYo 
-                        ? Colors.teal[100] 
-                        : (balance >= 0 ? Colors.green[100] : Colors.orange[100]),
-                      child: Text(
-                        _nombresMiembros[miembroId]?.substring(0, 1) ?? '?',
-                        style: TextStyle(
-                          color: esYo 
-                            ? Colors.teal 
-                            : (balance >= 0 ? Colors.green[800] : Colors.orange[800]),
-                        ),
-                      ),
-                    ),
-                    title: Text(
-                      '${_nombresMiembros[miembroId] ?? 'Usuario'}${esYo ? ' (Tú)' : ''}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    trailing: Text(
-                      '${balance >= 0 ? '+' : ''}${balance.toStringAsFixed(2)}€',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: balance >= 0 ? Colors.green[800] : Colors.orange[800],
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      );
-    },
-  );
-}
-
-// Función para calcular balances de todos los miembros
-Map<String, double> _calcularBalances(List<QueryDocumentSnapshot> deudas) {
-  final balances = <String, double>{};
-  
-  for (final deuda in deudas) {
-    final deudor = deuda['deudor'] as String;
-    final acreedor = deuda['acreedor'] as String;
-    final monto = (deuda['monto'] as num).toDouble();
-    
-    balances[deudor] = (balances[deudor] ?? 0) - monto;
-    balances[acreedor] = (balances[acreedor] ?? 0) + monto;
-  }
-  
-  return balances;
-}
-
-// Función para construir la lista completa de deudas (para mostrar al hacer tap en el card)
-Widget _buildListaDeudasCompleta(List<QueryDocumentSnapshot> deudas) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Todas las deudas'),
-      backgroundColor: Colors.teal,
-    ),
-    body: ListView.builder(
-      padding: EdgeInsets.all(16),
-      itemCount: deudas.length,
-      itemBuilder: (context, index) {
-        final deuda = deudas[index];
-        final deudorId = deuda['deudor'] as String? ?? '';
-        final acreedorId = deuda['acreedor'] as String? ?? '';
-        final monto = (deuda['monto'] as num?)?.toDouble() ?? 0.0;
-        final esCompensada = deuda['esCompensada'] as bool? ?? false;
-
-        return Card(
-          margin: EdgeInsets.only(bottom: 16),
-          child: Padding(
-            padding: EdgeInsets.all(16),
+        if (gastos.isEmpty) {
+          return Center(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Icon(Icons.money_off, size: 64, color: Colors.grey),
+                SizedBox(height: 16),
                 Text(
-                  '${_nombresMiembros[deudorId]} → ${_nombresMiembros[acreedorId]}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
-                  ),
+                  "No hay gastos registrados",
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
                 ),
                 SizedBox(height: 8),
                 Text(
-                  'Deuda: ${monto.toStringAsFixed(2)}€',
-                  style: TextStyle(fontSize: 16),
-                ),
-                if (esCompensada)
-                  Padding(
-                    padding: EdgeInsets.only(top: 4),
-                    child: Text(
-                      '(Deuda compensada)',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ),
-                SizedBox(height: 12),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  onPressed: () => _marcarDeudaComoPagada(
-                    deuda.reference,
-                    deudorId,
-                    acreedorId,
-                    monto,
-                  ),
-                  child: Text(
-                    'Marcar como pagado',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  "Presiona el botón + para agregar uno",
+                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             ),
-          ),
+          );
+        }
+
+        return Column(
+          children: [
+            // Resumen de gastos (sin card)
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 60.0, vertical: 16),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mis gastos',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            '${misGastos.toStringAsFixed(2)}€',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.teal,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Gastos totales',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            '${totalGastos.toStringAsFixed(2)}€',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16),
+                  Divider(
+                    // Línea separadora
+                    height: 1,
+                    thickness: 1,
+                    color: Colors.grey[400],
+                  ),
+                ],
+              ),
+            ),
+
+            // Lista de gastos
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.only(bottom: 80),
+                itemCount: gastos.length,
+                itemBuilder: (context, index) {
+                  final gasto = gastos[index];
+                  final fecha = (gasto['fecha'] as Timestamp).toDate();
+                  final pagadoPor =
+                      _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+                  final monto = gasto['monto'] as double;
+                  final fechaKey =
+                      DateFormat('d MMMM y', 'es_ES').format(fecha);
+
+                  if (index == 0 ||
+                      DateFormat('d MMMM y', 'es_ES').format(
+                              (gastos[index - 1]['fecha'] as Timestamp)
+                                  .toDate()) !=
+                          fechaKey) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 24, top: 16, bottom: 8),
+                          child: Text(
+                            fechaKey,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.teal,
+                            ),
+                          ),
+                        ),
+                        _buildGastoCard(gasto, pagadoPor, monto, fecha),
+                      ],
+                    );
+                  } else {
+                    return _buildGastoCard(gasto, pagadoPor, monto, fecha);
+                  }
+                },
+              ),
+            ),
+          ],
         );
       },
-    ),
-  );
-}
+    );
+  }
 
- Future<void> _actualizarDeudasDesdeGasto(Map<String, dynamic> gasto) async {
-  try {
-    final pagadoPor = gasto['pagadoPor'] as String;
-    final montoPorPersona = gasto['montoPorPersona'] as double;
-    final debenPagar = (gasto['debenPagar'] as List).cast<String>();
-    final hogarId = gasto['hogarId'] as String;
-
-    // Obtener TODAS las deudas existentes no pagadas del hogar
-    final todasDeudas = await _firestore
-        .collection('deudas')
-        .where('hogarId', isEqualTo: hogarId)
-        .where('pagado', isEqualTo: false)
-        .get();
-
-    final batch = _firestore.batch();
-
-    for (final deudor in debenPagar) {
-      if (deudor == pagadoPor) continue; // No crear deuda consigo mismo
-
-      // Buscar si ya existe una deuda entre estos usuarios en cualquier dirección
-      final QueryDocumentSnapshot<Map<String, dynamic>>? deudaExistente = todasDeudas.docs.firstWhereOrNull(
-        (doc) => 
-          (doc['deudor'] == deudor && doc['acreedor'] == pagadoPor) ||
-          (doc['deudor'] == pagadoPor && doc['acreedor'] == deudor),
+  Widget _buildDeudasTab() {
+    if (_hogarId == null) {
+      return Center(
+        child: Text('No se ha cargado el ID del hogar'),
       );
+    }
 
-      if (deudaExistente != null) {
-        // Caso 1: Deuda en la misma dirección (deudor → acreedor)
-        if (deudaExistente['deudor'] == deudor && 
-            deudaExistente['acreedor'] == pagadoPor) {
-          // Sumar al monto existente
-          batch.update(deudaExistente.reference, {
-            'monto': FieldValue.increment(montoPorPersona),
-            'ultimaActualizacion': FieldValue.serverTimestamp(),
-          });
-        } 
-        // Caso 2: Deuda en dirección opuesta (acreedor → deudor)
-        else if (deudaExistente['deudor'] == pagadoPor && 
-                 deudaExistente['acreedor'] == deudor) {
-          final deudaActual = deudaExistente['monto'] as double;
-          
-          // Compensar deudas
-          if (deudaActual > montoPorPersona) {
-            // Reducir la deuda existente
-            batch.update(deudaExistente.reference, {
-              'monto': deudaActual - montoPorPersona,
-              'ultimaActualizacion': FieldValue.serverTimestamp(),
-            });
-          } else if (deudaActual < montoPorPersona) {
-            // Eliminar la deuda existente y crear una nueva en dirección opuesta
-            batch.delete(deudaExistente.reference);
-            
-            final nuevaDeudaRef = _firestore.collection('deudas').doc();
-            batch.set(nuevaDeudaRef, {
-              'deudor': deudor,
-              'acreedor': pagadoPor,
-              'monto': montoPorPersona - deudaActual,
-              'hogarId': hogarId,
-              'creadoEn': FieldValue.serverTimestamp(),
-              'ultimaActualizacion': FieldValue.serverTimestamp(),
-              'pagado': false,
-              'esCompensada': true,
-            });
-          } else {
-            // Deudas iguales, se cancelan
-            batch.delete(deudaExistente.reference);
-          }
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore
+          .collection('deudas')
+          .where('hogarId', isEqualTo: _hogarId)
+          .where('pagado', isEqualTo: false)
+          .orderBy('ultimaActualizacion', descending: true)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator(color: Colors.teal));
         }
-      } else {
-        // No existe deuda previa, crear nueva
-        final nuevaDeudaRef = _firestore.collection('deudas').doc();
-        batch.set(nuevaDeudaRef, {
-          'deudor': deudor,
-          'acreedor': pagadoPor,
-          'monto': montoPorPersona,
-          'hogarId': hogarId,
-          'creadoEn': FieldValue.serverTimestamp(),
-          'ultimaActualizacion': FieldValue.serverTimestamp(),
-          'pagado': false,
-          'esCompensada': false,
-        });
-      }
-    }
 
-    await batch.commit();
-    await _compensarDeudas(hogarId); // Recalcular compensaciones globales
-  } catch (e) {
-    print('Error al actualizar deudas: $e');
-    rethrow;
-  }
-}
+        if (snapshot.hasError) {
+          print('Error en snapshot: ${snapshot.error}');
+          return Center(
+            child: Text('Error al cargar las deudas: ${snapshot.error}'),
+          );
+        }
 
-Future<void> _compensarDeudas(String hogarId) async {
-  try {
-    // Obtener todas las deudas del hogar
-    final deudasSnapshot = await _firestore
-        .collection('deudas')
-        .where('hogarId', isEqualTo: hogarId)
-        .where('pagado', isEqualTo: false)
-        .get();
+        // Calcular balances para todos los miembros
+        final balances = _calcularBalances(snapshot.data?.docs ?? []);
 
-    // Calcular balances netos para cada usuario
-    final balances = <String, double>{};
-    for (final doc in deudasSnapshot.docs) {
-      final deudor = doc['deudor'] as String;
-      final acreedor = doc['acreedor'] as String;
-      final monto = doc['monto'] as double;
+        // Obtener balance del usuario actual
+        final miBalance = balances[_currentUserId] ?? 0.0;
 
-      balances[deudor] = (balances[deudor] ?? 0) - monto;
-      balances[acreedor] = (balances[acreedor] ?? 0) + monto;
-    }
+        return Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        _buildListaDeudasCompleta(snapshot.data?.docs ?? []),
+                  ),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                padding: EdgeInsets.all(16),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Balance principal
+                        Text(
+                          'Balance Total',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '${miBalance.toStringAsFixed(2)}€',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: miBalance >= 0
+                                ? Colors.green[700]
+                                : Colors.red[700],
+                          ),
+                        ),
+                        SizedBox(height: 8),
 
-    // Separar en deudores y acreedores
-    final deudores = balances.entries
-        .where((e) => e.value < 0)
-        .toList()
-          ..sort((a, b) => a.value.compareTo(b.value)); // Ordenar de menor a mayor
-    
-    final acreedores = balances.entries
-        .where((e) => e.value > 0)
-        .toList()
-          ..sort((a, b) => b.value.compareTo(a.value)); // Ordenar de mayor a menor
+                        // Subtítulo según el balance
+                        Text(
+                          miBalance >= 0
+                              ? 'Mira cómo te deben devolver dinero'
+                              : 'Mira cómo puedes devolver el dinero',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
 
-    final batch = _firestore.batch();
-    
-    // Primero: Eliminar todas las deudas existentes
-    for (final deuda in deudasSnapshot.docs) {
-      batch.delete(deuda.reference);
-    }
+                    // Flecha indicadora a la derecha
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: Center(
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                          color: Colors.grey[900],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
 
-    // Segundo: Crear nuevas deudas compensadas
-    int i = 0, j = 0;
-    while (i < deudores.length && j < acreedores.length) {
-      final deudor = deudores[i];
-      final acreedor = acreedores[j];
-      final cantidad = min(-deudor.value, acreedor.value);
+            // Lista de balances de todos los miembros
+            SizedBox(height: 26),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(
+                'Balances del hogar',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+            ),
+            SizedBox(height: 8),
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                itemCount: _miembrosHogar.length,
+                itemBuilder: (context, index) {
+                  final miembroId = _miembrosHogar[index];
+                  final balance = balances[miembroId] ?? 0.0;
+                  final esYo = miembroId == _currentUserId;
 
-      if (cantidad <= 0.01) { // Ignorar diferencias mínimas
-        i++;
-        j++;
-        continue;
-      }
-
-      // Crear nueva deuda compensada
-      final nuevaDeudaRef = _firestore.collection('deudas').doc();
-      batch.set(nuevaDeudaRef, {
-        'deudor': deudor.key,
-        'acreedor': acreedor.key,
-        'monto': cantidad,
-        'hogarId': hogarId,
-        'creadoEn': FieldValue.serverTimestamp(),
-        'ultimaActualizacion': FieldValue.serverTimestamp(),
-        'pagado': false,
-        'esCompensada': true,
-      });
-
-      // Actualizar balances
-      deudores[i] = MapEntry(deudor.key, deudor.value + cantidad);
-      acreedores[j] = MapEntry(acreedor.key, acreedor.value - cantidad);
-
-      if (deudores[i].value.abs() < 0.01) i++;
-      if (acreedores[j].value.abs() < 0.01) j++;
-    }
-
-    await batch.commit();
-  } catch (e) {
-    print('Error en compensación de deudas: $e');
-    rethrow;
-  }
-}
-
-
-
-   Future<void> _marcarDeudaComoPagada(
-    DocumentReference deudaRef,
-    String deudorId,
-    String acreedorId,
-    double monto,
-  ) async {
-    try {
-      final batch = _firestore.batch();
-      
-      // 1. Marcar la deuda como pagada
-      batch.update(deudaRef, {
-        'pagado': true,
-        'fechaPago': FieldValue.serverTimestamp(),
-      });
-
-      // 2. Registrar el pago
-      final pagoRef = _firestore.collection('pagos').doc();
-      batch.set(pagoRef, {
-        'deudor': deudorId,
-        'acreedor': acreedorId,
-        'monto': monto,
-        'fecha': FieldValue.serverTimestamp(),
-        'hogarId': _hogarId,
-        'esCompensada': false,
-      });
-
-      await batch.commit();
-
-      // 3. Recalcular deudas después del pago
-      if (_hogarId != null) {
-        await _compensarDeudas(_hogarId!);
-      }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Deuda marcada como pagada correctamente'),
-          backgroundColor: Colors.green,
-        ),
-      );
-    } catch (e) {
-      print('Error en _marcarDeudaComoPagada: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error al marcar como pagado: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 8),
+                    decoration: BoxDecoration(
+                      color:
+                          balance >= 0 ? Colors.green[50] : Colors.orange[50],
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                      border: Border.all(
+                        color: balance >= 0
+                            ? Colors.green[100]!
+                            : Colors.orange[100]!,
+                        width: 1,
+                      ),
+                    ),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: (balance >= 0
+                            ? Colors.green[100]
+                            : Colors.orange[100]),
+                        child: Text(
+                          _nombresMiembros[miembroId]?.substring(0, 1) ?? '?',
+                          style: TextStyle(
+                            color: (balance >= 0
+                                ? Colors.green[800]
+                                : Colors.orange[800]),
+                          ),
+                        ),
+                      ),
+                      title: Text(
+                        '${_nombresMiembros[miembroId] ?? 'Usuario'}${esYo ? ' (Tú)' : ''}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black87,
+                          fontSize: 17,
+                        ),
+                      ),
+                      trailing: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: balance >= 0
+                              ? Colors.green[50]
+                              : Colors.orange[50],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          '${balance > 0 ? '+' : ''}${balance.toStringAsFixed(2)}€',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            color: balance >= 0
+                                ? Colors.green[800]
+                                : Colors.orange[800],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget _buildGastoCard(
       DocumentSnapshot gasto, String pagadoPor, double monto, DateTime fecha) {
+    final esPagador = gasto['pagadoPor'] == _currentUserId;
+    final participaEnGasto =
+        (gasto['debenPagar'] as List).contains(_currentUserId);
+
     return Container(
-      margin: EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -1160,30 +1127,93 @@ Future<void> _compensarDeudas(String hogarId) async {
                     child: Text(
                       gasto['titulo'],
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.teal,
+                        fontSize: 18,
+                        color: Colors.black.withOpacity(0.80),
                       ),
                     ),
                   ),
-                  Text(
-                    '${monto.toStringAsFixed(2)}€',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        '${monto.toStringAsFixed(2)}€',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal,
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      PopupMenuButton<String>(
+                        color: Colors.white,
+                        icon: Icon(Icons.more_vert, color: Colors.grey),
+                        onSelected: (value) {
+                          if (value == 'edit') {
+                            _mostrarModalAgregarGasto(context,
+                                gastoExistente: gasto);
+                          } else if (value == 'delete') {
+                            _mostrarConfirmacionEliminar(context, gasto);
+                          }
+                        },
+                        itemBuilder: (BuildContext context) {
+                          return [
+                            PopupMenuItem<String>(
+                              value: 'edit',
+                              child: Row(
+                                children: [
+                                  Icon(Icons.edit, color: Colors.teal),
+                                  SizedBox(width: 8),
+                                  Text('Editar'),
+                                ],
+                              ),
+                            ),
+                            PopupMenuItem<String>(
+                              value: 'delete',
+                              child: Row(
+                                children: [
+                                  Icon(Icons.delete, color: Colors.red),
+                                  SizedBox(width: 8),
+                                  Text('Eliminar'),
+                                ],
+                              ),
+                            ),
+                          ];
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 8),
               Row(
                 children: [
-                  SizedBox(width: 4),
                   Text(
-                    'Pagado por: $pagadoPor',
-                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                    'Pagado por ',
+                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                   ),
+                  Text(
+                    pagadoPor.isNotEmpty ? pagadoPor : "Usuario",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[500],
+                    ),
+                  ),
+                  Spacer(),
+                  if (esPagador || participaEnGasto)
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: esPagador ? Colors.teal[50] : Colors.orange[50],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        esPagador ? 'Pagaste' : 'Participas',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: esPagador ? Colors.teal : Colors.orange,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ],
@@ -1191,6 +1221,573 @@ Future<void> _compensarDeudas(String hogarId) async {
         ),
       ),
     );
+  }
+
+  void _mostrarConfirmacionEliminar(
+      BuildContext context, DocumentSnapshot gasto) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Confirmar eliminación'),
+        content: Text('¿Estás seguro de que quieres eliminar este gasto?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Cancelar', style: TextStyle(color: Colors.grey)),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              await _eliminarGasto(gasto);
+            },
+            child: Text('Eliminar', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _eliminarGasto(DocumentSnapshot gasto) async {
+    try {
+      // Primero actualizar las deudas (revertir el efecto de este gasto)
+      await _revertirDeudasDesdeGasto(gasto);
+
+      // Luego eliminar el gasto
+      await gasto.reference.delete();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Gasto eliminado correctamente'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      print('Error al eliminar gasto: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error al eliminar el gasto: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  Future<void> _revertirDeudasDesdeGasto(DocumentSnapshot gasto) async {
+    try {
+      final pagadoPor = gasto['pagadoPor'] as String;
+      final montoPorPersona = gasto['montoPorPersona'] as double;
+      final debenPagar = (gasto['debenPagar'] as List).cast<String>();
+      final hogarId = gasto['hogarId'] as String;
+
+      // Obtener TODAS las deudas existentes no pagadas del hogar
+      final todasDeudas = await _firestore
+          .collection('deudas')
+          .where('hogarId', isEqualTo: hogarId)
+          .where('pagado', isEqualTo: false)
+          .get();
+
+      final batch = _firestore.batch();
+
+      for (final deudor in debenPagar) {
+        if (deudor == pagadoPor) continue;
+
+        // Buscar si ya existe una deuda entre estos usuarios en cualquier dirección
+        final QueryDocumentSnapshot<Map<String, dynamic>>? deudaExistente =
+            todasDeudas.docs.firstWhereOrNull(
+          (doc) =>
+              (doc['deudor'] == deudor && doc['acreedor'] == pagadoPor) ||
+              (doc['deudor'] == pagadoPor && doc['acreedor'] == deudor),
+        );
+
+        if (deudaExistente != null) {
+          // Caso 1: Deuda en la misma dirección (deudor → acreedor)
+          if (deudaExistente['deudor'] == deudor &&
+              deudaExistente['acreedor'] == pagadoPor) {
+            // Restar el monto existente
+            batch.update(deudaExistente.reference, {
+              'monto': FieldValue.increment(-montoPorPersona),
+              'ultimaActualizacion': FieldValue.serverTimestamp(),
+            });
+          }
+          // Caso 2: Deuda en dirección opuesta (acreedor → deudor)
+          else if (deudaExistente['deudor'] == pagadoPor &&
+              deudaExistente['acreedor'] == deudor) {
+            final deudaActual = deudaExistente['monto'] as double;
+
+            if (deudaActual > montoPorPersona) {
+              // Reducir la deuda existente
+              batch.update(deudaExistente.reference, {
+                'monto': deudaActual - montoPorPersona,
+                'ultimaActualizacion': FieldValue.serverTimestamp(),
+              });
+            } else if (deudaActual < montoPorPersona) {
+              // Eliminar la deuda existente y crear una nueva en dirección opuesta
+              batch.delete(deudaExistente.reference);
+
+              final nuevaDeudaRef = _firestore.collection('deudas').doc();
+              batch.set(nuevaDeudaRef, {
+                'deudor': deudor,
+                'acreedor': pagadoPor,
+                'monto': montoPorPersona - deudaActual,
+                'hogarId': hogarId,
+                'creadoEn': FieldValue.serverTimestamp(),
+                'ultimaActualizacion': FieldValue.serverTimestamp(),
+                'pagado': false,
+                'esCompensada': true,
+              });
+            } else {
+              // Deudas iguales, se cancelan
+              batch.delete(deudaExistente.reference);
+            }
+          }
+        } else {
+          // No existe deuda previa, crear una nueva en dirección opuesta
+          final nuevaDeudaRef = _firestore.collection('deudas').doc();
+          batch.set(nuevaDeudaRef, {
+            'deudor': pagadoPor,
+            'acreedor': deudor,
+            'monto': montoPorPersona,
+            'hogarId': hogarId,
+            'creadoEn': FieldValue.serverTimestamp(),
+            'ultimaActualizacion': FieldValue.serverTimestamp(),
+            'pagado': false,
+            'esCompensada': false,
+          });
+        }
+      }
+
+      await batch.commit();
+      await _compensarDeudas(hogarId); // Recalcular compensaciones globales
+    } catch (e) {
+      print('Error al revertir deudas: $e');
+      rethrow;
+    }
+  }
+
+  // Función para calcular balances de todos los miembros
+  Map<String, double> _calcularBalances(List<QueryDocumentSnapshot> deudas) {
+    final balances = <String, double>{};
+
+    for (final deuda in deudas) {
+      final deudor = deuda['deudor'] as String;
+      final acreedor = deuda['acreedor'] as String;
+      final monto = (deuda['monto'] as num).toDouble();
+
+      balances[deudor] = (balances[deudor] ?? 0) - monto;
+      balances[acreedor] = (balances[acreedor] ?? 0) + monto;
+    }
+
+    return balances;
+  }
+
+  Widget _buildListaDeudasCompleta(List<QueryDocumentSnapshot> deudas) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Todas las deudas',
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.teal,
+        elevation: 0,
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      body: Container(
+        color: Colors.grey[50],
+        child: ListView.separated(
+          padding: EdgeInsets.fromLTRB(16, 20, 16, 32),
+          itemCount: deudas.length,
+          separatorBuilder: (context, index) => SizedBox(height: 12),
+          itemBuilder: (context, index) {
+            final deuda = deudas[index];
+            final deudorId = deuda['deudor'] as String? ?? '';
+            final acreedorId = deuda['acreedor'] as String? ?? '';
+            final monto = (deuda['monto'] as num?)?.toDouble() ?? 0.0;
+            final esCompensada = deuda['esCompensada'] as bool? ?? false;
+
+            // Verificar si la deuda involucra al usuario actual
+            final involucraAlUsuario =
+                deudorId == _currentUserId || acreedorId == _currentUserId;
+            final esPositiva = acreedorId == _currentUserId;
+
+            return Material(
+              borderRadius: BorderRadius.circular(12),
+              elevation: 1,
+              color: Colors.white,
+              child: Opacity(
+                opacity: involucraAlUsuario ? 1.0 : 0.6,
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Header con icono y dirección de la deuda
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: involucraAlUsuario
+                                  ? (esPositiva
+                                      ? Colors.green[50]
+                                      : Colors.orange[50])
+                                  : Colors.grey[200],
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              esPositiva
+                                  ? Icons.arrow_downward
+                                  : Icons.arrow_upward,
+                              color: involucraAlUsuario
+                                  ? (esPositiva
+                                      ? Colors.green[700]
+                                      : Colors.orange[700])
+                                  : Colors.grey[600],
+                              size: 20,
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  involucraAlUsuario
+                                      ? (esPositiva ? 'TE DEBEN' : 'DEBES')
+                                      : 'DEUDA EXTERNA',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: involucraAlUsuario
+                                        ? Colors.grey[600]
+                                        : Colors.grey[500],
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  '${_nombresMiembros[deudorId] ?? 'Usuario'} → ${_nombresMiembros[acreedorId] ?? 'Usuario'}',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: involucraAlUsuario
+                                        ? Colors.grey[800]
+                                        : Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      SizedBox(height: 16),
+
+                      // Detalle del monto
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[50],
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Monto:',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                            Text(
+                              '${monto.toStringAsFixed(2)}€',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: involucraAlUsuario
+                                    ? (esPositiva
+                                        ? Colors.green[700]
+                                        : Colors.orange[700])
+                                    : Colors.grey[600],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      if (esCompensada) ...[
+                        SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Icon(Icons.merge, size: 16, color: Colors.teal),
+                            SizedBox(width: 4),
+                            Text(
+                              'Deuda compensada',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.teal,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+
+                      if (involucraAlUsuario) ...[
+                        SizedBox(height: 16),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: esPositiva
+                                  ? Colors.green[700]
+                                  : Colors.orange[700],
+                              padding: EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              elevation: 0,
+                            ),
+                            onPressed: () => _marcarDeudaComoPagada(
+                              deuda.reference,
+                              deudorId,
+                              acreedorId,
+                              monto,
+                            ),
+                            child: Text(
+                              esPositiva
+                                  ? 'Marcar como cobrado'
+                                  : 'Marcar como pagado',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<void> _actualizarDeudasDesdeGasto(Map<String, dynamic> gasto) async {
+    try {
+      final pagadoPor = gasto['pagadoPor'] as String;
+      final montoPorPersona = gasto['montoPorPersona'] as double;
+      final debenPagar = (gasto['debenPagar'] as List).cast<String>();
+      final hogarId = gasto['hogarId'] as String;
+
+      // Obtener TODAS las deudas existentes no pagadas del hogar
+      final todasDeudas = await _firestore
+          .collection('deudas')
+          .where('hogarId', isEqualTo: hogarId)
+          .where('pagado', isEqualTo: false)
+          .get();
+
+      final batch = _firestore.batch();
+
+      for (final deudor in debenPagar) {
+        if (deudor == pagadoPor) continue;
+
+        // Buscar si ya existe una deuda entre estos usuarios
+        final QueryDocumentSnapshot<Map<String, dynamic>>? deudaExistente =
+            todasDeudas.docs.firstWhereOrNull(
+          (doc) =>
+              (doc['deudor'] == deudor && doc['acreedor'] == pagadoPor) ||
+              (doc['deudor'] == pagadoPor && doc['acreedor'] == deudor),
+        );
+
+        if (deudaExistente != null) {
+          // Caso 1: Deuda en la misma dirección
+          if (deudaExistente['deudor'] == deudor &&
+              deudaExistente['acreedor'] == pagadoPor) {
+            batch.update(deudaExistente.reference, {
+              'monto': FieldValue.increment(montoPorPersona),
+              'ultimaActualizacion': FieldValue.serverTimestamp(),
+            });
+          }
+          // Caso 2: Deuda en dirección opuesta
+          else if (deudaExistente['deudor'] == pagadoPor &&
+              deudaExistente['acreedor'] == deudor) {
+            final deudaActual = deudaExistente['monto'] as double;
+
+            if (deudaActual > montoPorPersona) {
+              batch.update(deudaExistente.reference, {
+                'monto': deudaActual - montoPorPersona,
+                'ultimaActualizacion': FieldValue.serverTimestamp(),
+              });
+            } else if (deudaActual < montoPorPersona) {
+              batch.delete(deudaExistente.reference);
+
+              final nuevaDeudaRef = _firestore.collection('deudas').doc();
+              batch.set(nuevaDeudaRef, {
+                'deudor': deudor,
+                'acreedor': pagadoPor,
+                'monto': montoPorPersona - deudaActual,
+                'hogarId': hogarId,
+                'creadoEn': FieldValue.serverTimestamp(),
+                'ultimaActualizacion': FieldValue.serverTimestamp(),
+                'pagado': false,
+                'esCompensada': true,
+              });
+            } else {
+              batch.delete(deudaExistente.reference);
+            }
+          }
+        } else {
+          // No existe deuda previa, crear nueva
+          final nuevaDeudaRef = _firestore.collection('deudas').doc();
+          batch.set(nuevaDeudaRef, {
+            'deudor': deudor,
+            'acreedor': pagadoPor,
+            'monto': montoPorPersona,
+            'hogarId': hogarId,
+            'creadoEn': FieldValue.serverTimestamp(),
+            'ultimaActualizacion': FieldValue.serverTimestamp(),
+            'pagado': false,
+            'esCompensada': false,
+          });
+        }
+      }
+
+      await batch.commit();
+      await _compensarDeudas(hogarId);
+    } catch (e) {
+      print('Error al actualizar deudas: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> _compensarDeudas(String hogarId) async {
+    try {
+      final deudasSnapshot = await _firestore
+          .collection('deudas')
+          .where('hogarId', isEqualTo: hogarId)
+          .where('pagado', isEqualTo: false)
+          .get();
+
+      final balances = <String, double>{};
+      for (final doc in deudasSnapshot.docs) {
+        final deudor = doc['deudor'] as String;
+        final acreedor = doc['acreedor'] as String;
+        final monto = doc['monto'] as double;
+
+        balances[deudor] = (balances[deudor] ?? 0) - monto;
+        balances[acreedor] = (balances[acreedor] ?? 0) + monto;
+      }
+
+      final deudores = balances.entries.where((e) => e.value < 0).toList()
+        ..sort((a, b) => a.value.compareTo(b.value));
+
+      final acreedores = balances.entries.where((e) => e.value > 0).toList()
+        ..sort((a, b) => b.value.compareTo(a.value));
+
+      final batch = _firestore.batch();
+
+      for (final deuda in deudasSnapshot.docs) {
+        batch.delete(deuda.reference);
+      }
+
+      int i = 0, j = 0;
+      while (i < deudores.length && j < acreedores.length) {
+        final deudor = deudores[i];
+        final acreedor = acreedores[j];
+        final cantidad = min(-deudor.value, acreedor.value);
+
+        if (cantidad <= 0.01) {
+          i++;
+          j++;
+          continue;
+        }
+
+        final nuevaDeudaRef = _firestore.collection('deudas').doc();
+        batch.set(nuevaDeudaRef, {
+          'deudor': deudor.key,
+          'acreedor': acreedor.key,
+          'monto': cantidad,
+          'hogarId': hogarId,
+          'creadoEn': FieldValue.serverTimestamp(),
+          'ultimaActualizacion': FieldValue.serverTimestamp(),
+          'pagado': false,
+          'esCompensada': true,
+        });
+
+        deudores[i] = MapEntry(deudor.key, deudor.value + cantidad);
+        acreedores[j] = MapEntry(acreedor.key, acreedor.value - cantidad);
+
+        if (deudores[i].value.abs() < 0.01) i++;
+        if (acreedores[j].value.abs() < 0.01) j++;
+      }
+
+      await batch.commit();
+    } catch (e) {
+      print('Error en compensación de deudas: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> _marcarDeudaComoPagada(
+    DocumentReference deudaRef,
+    String deudorId,
+    String acreedorId,
+    double monto,
+  ) async {
+    try {
+      final batch = _firestore.batch();
+
+      batch.update(deudaRef, {
+        'pagado': true,
+        'fechaPago': FieldValue.serverTimestamp(),
+      });
+
+      final pagoRef = _firestore.collection('pagos').doc();
+      batch.set(pagoRef, {
+        'deudor': deudorId,
+        'acreedor': acreedorId,
+        'monto': monto,
+        'fecha': FieldValue.serverTimestamp(),
+        'hogarId': _hogarId,
+        'esCompensada': false,
+      });
+
+      await batch.commit();
+
+      if (_hogarId != null) {
+        await _compensarDeudas(_hogarId!);
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Deuda marcada como pagada correctamente'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      print('Error en _marcarDeudaComoPagada: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error al marcar como pagado: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   Widget _buildBottomNavBar() {
@@ -1287,105 +1884,329 @@ Future<void> _compensarDeudas(String hogarId) async {
   }
 
   void _mostrarDetalleGasto(BuildContext context, DocumentSnapshot gasto) {
-    final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
-    final monto = gasto['monto'] as double;
-    final montoPorPersona = gasto['montoPorPersona'] as double;
-    final debenPagar = (gasto['debenPagar'] as List).cast<String>();
-    final fecha = (gasto['fecha'] as Timestamp).toDate();
+  final pagadoPor = _nombresMiembros[gasto['pagadoPor']] ?? 'Usuario';
+  final monto = gasto['monto'] as double;
+  final montoPorPersona = gasto['montoPorPersona'] as double;
+  final debenPagar = (gasto['debenPagar'] as List).cast<String>();
+  final fecha = (gasto['fecha'] as Timestamp).toDate();
+  final esPagador = gasto['pagadoPor'] == _currentUserId;
 
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(gasto['titulo'], style: TextStyle(color: Colors.teal)),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildDetalleItem(
-                icon: Icons.euro,
-                label: 'Total:',
-                value: '${monto.toStringAsFixed(2)}€',
+  showDialog(
+    context: context,
+    builder: (context) => Dialog(
+      insetPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.85,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 20,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header fijo
+            Container(
+              padding: EdgeInsets.fromLTRB(24, 16, 16, 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
+                  ),
+                ],
               ),
-              _buildDetalleItem(
-                icon: Icons.person,
-                label: 'Pagado por:',
-                value: pagadoPor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Detalle del gasto',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal[700],
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close, size: 24),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
               ),
-              _buildDetalleItem(
-                icon: Icons.calendar_today,
-                label: 'Fecha:',
-                value: DateFormat('d MMM y').format(fecha),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Dividido entre:',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
+            ),
+            
+            // Contenido desplazable
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Tarjeta de resumen
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.teal.withOpacity(0.05),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.teal.withOpacity(0.1)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            gasto['titulo'],
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.teal[800],
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: esPagador 
+                                      ? Colors.teal.withOpacity(0.1) 
+                                      : Colors.orange.withOpacity(0.1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  esPagador ? Icons.payment : Icons.people,
+                                  size: 18,
+                                  color: esPagador ? Colors.teal : Colors.orange,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                esPagador ? 'Pagaste este gasto' : 'Participas en este gasto',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    
+                    SizedBox(height: 24),
+                    
+                    // Sección de detalles
+                    Text(
+                      'Detalles',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal[800],
+                      ),
+                    ),
+                    
+                    SizedBox(height: 12),
+                    
+                    // Detalles en tarjetas
+                    _buildDetailCard(
+                      icon: Icons.euro,
+                      title: 'Monto total',
+                      value: '${monto.toStringAsFixed(2)}€',
+                      color: Colors.teal,
+                    ),
+                    
+                    SizedBox(height: 8),
+                    
+                    _buildDetailCard(
+                      icon: Icons.person,
+                      title: 'Pagado por',
+                      value: pagadoPor,
+                      color: Colors.orange,
+                    ),
+                    
+                    SizedBox(height: 8),
+                    
+                    _buildDetailCard(
+                      icon: Icons.calendar_today,
+                      title: 'Fecha',
+                      value: DateFormat('d MMM y').format(fecha),
+                      color: Colors.purple,
+                    ),
+                    
+                    SizedBox(height: 24),
+                    
+                    // Participantes
+                    Text(
+                      'Participantes (${debenPagar.length})',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal[800],
+                      ),
+                    ),
+                    
+                    SizedBox(height: 12),
+                    
+                    ...debenPagar.map((miembro) {
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.teal.withOpacity(0.1),
+                            child: Text(
+                              _nombresMiembros[miembro]?.substring(0, 1) ?? '?',
+                              style: TextStyle(color: Colors.teal),
+                            ),
+                          ),
+                          title: Text(
+                            _nombresMiembros[miembro] ?? 'Usuario',
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          trailing: Text(
+                            '${montoPorPersona.toStringAsFixed(2)}€',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.teal[700],
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ],
                 ),
               ),
-              SizedBox(height: 8),
-              Column(
-                children: debenPagar.map((miembro) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Row(
-                      children: [
-                        Icon(Icons.person_outline,
-                            size: 16, color: Colors.grey),
-                        SizedBox(width: 8),
-                        Text(_nombresMiembros[miembro] ?? 'Usuario'),
-                        Spacer(),
-                        Text(
-                          '${montoPorPersona.toStringAsFixed(2)}€',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  );
-                }).toList(),
+            ),
+            
+            // Footer fijo con botones
+            Container(
+              padding: EdgeInsets.fromLTRB(24, 16, 24, 24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 2,
+                    offset: Offset(0, -2),
+                  ),
+                ],
               ),
-            ],
-          ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        side: BorderSide(color: Colors.teal),
+                      ),
+                      child: Text(
+                        'Cerrar',
+                        style: TextStyle(color: Colors.teal),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _mostrarModalAgregarGasto(context, gastoExistente: gasto);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        padding: EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: Text(
+                        'Editar',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Cerrar', style: TextStyle(color: Colors.teal)),
-          ),
-        ],
       ),
-    );
-  }
+    ),
+  );
+}
 
-  Widget _buildDetalleItem({
+  Widget _buildDetailCard({
     required IconData icon,
-    required String label,
+    required String title,
     required String value,
+    required Color color,
   }) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12),
+    return Container(
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: color.withOpacity(0.1)),
+      ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 20, color: Colors.teal),
+          Container(
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, size: 18, color: color),
+          ),
           SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                label,
+                title,
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.black54,
+                  fontSize: 12,
+                  color: Colors.grey[600],
                 ),
               ),
               SizedBox(height: 2),
               Text(
                 value,
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                ),
               ),
             ],
           ),

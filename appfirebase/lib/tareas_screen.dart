@@ -7,6 +7,7 @@ import 'lista_compra.dart';
 import 'principal.dart';
 import 'perfil.dart';
 import 'calendar.dart';
+import 'gastos.dart';
 
 class TareasScreen extends StatefulWidget {
   const TareasScreen({super.key});
@@ -851,6 +852,15 @@ class _TareasScreenState extends State<TareasScreen> {
           context,
           PageRouteBuilder(
             pageBuilder: (_, __, ___) => const TareasScreen(),
+            transitionDuration: Duration.zero,
+          ),
+        );
+        break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => GastosScreen(),
             transitionDuration: Duration.zero,
           ),
         );
