@@ -4,7 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'lista_compra.dart';
 import 'principal.dart';
-import 'tareas_screen.dart';
+import 'tareas.dart';
 
 class ProductosListaScreen extends StatefulWidget {
   final String listaId;

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'firebase_options.dart';
 import 'registro.dart';
 import 'inicio_sesion.dart';
-import 'inicio_sesion_correo.dart';
 import 'principal.dart';
 import 'crear_hogar.dart';
 import  'welcome.dart';
@@ -28,7 +25,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String user = "";
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Poppins',

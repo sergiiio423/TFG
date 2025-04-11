@@ -1,5 +1,5 @@
 import 'package:appfirebase/principal.dart';
-import 'package:appfirebase/tareas_screen.dart';
+import 'package:appfirebase/tareas.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

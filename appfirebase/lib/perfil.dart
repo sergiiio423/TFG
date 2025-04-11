@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'principal.dart';
 import 'lista_compra.dart';
 import 'gastos.dart';
+import 'tareas.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -832,8 +833,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           showUnselectedLabels: true,
           items: [
             _buildNavItem(Icons.home, 'Inicio'),
-            _buildNavItem(Icons.list_alt, 'Listas'),
-            _buildNavItem(Icons.wallet, 'Wallet'),
+            _buildNavItem(Icons.list_alt, 'Tareas'),
+            _buildNavItem(Icons.wallet, 'Gastos'),
             _buildNavItem(Icons.shopping_basket, 'Compra'),
           ],
           onTap: (index) => _onBottomNavTapped(context, index),
@@ -879,7 +880,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const ListaScreen(),
+            pageBuilder: (_, __, ___) => const TareasScreen(),
             transitionDuration: Duration.zero,
           ),
         );

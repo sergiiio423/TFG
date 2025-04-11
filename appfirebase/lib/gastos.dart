@@ -6,7 +6,7 @@ import 'dart:math';
 import 'lista_compra.dart';
 import 'principal.dart';
 import 'perfil.dart';
-import 'tareas_screen.dart';
+import 'tareas.dart';
 import 'package:collection/collection.dart';
 
 class GastosScreen extends StatefulWidget {

@@ -47,7 +47,7 @@ En esta primera iteracción se van a desarrollar los siguientes requisitos:
 \end{itemize}
 
 Antes de la implementación de los requisitos mencionados anteriomente es necesario realizar una configuración inicial del proyecto.
-Para ello, lo primero ees configurar el entorno de desarrollo, asegurando que todas las herramieentas necesarias estén correctamente 
+Para ello, lo primero es configurar el entorno de desarrollo, asegurando que todas las herramieentas necesarias estén correctamente 
 instaladas. Se utiliza Visual Studio Code como editor principal y se instala Flutter junto con las dependecias necesarias. 
 También es necesario configurar un emulador para poder realizar las pruebas de la aplicación posteriormente. 
 
@@ -81,6 +81,23 @@ Para los datos relacionados con los usuarios y los hogares, se crearán coleccio
 La implementación se ha realizado a partir de los bocetos iniciales presentados anteriormente, aunque ha hecho falta crear alguno más para
 detallar mejor la interfaz de usuario a la hora editar los datos por tanto se han creado los siguientes bocetos:
 
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/welcome_screen.png}
+        \caption{Diseño de la pantalla de bienvenida.}
+        \label{welcome}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/registro_screen.png}
+        \caption{Diseño de la pantalla de registro.}
+        \label{registro_app}
+    \end{minipage}
+\end{figure}
+
 
 \begin{figure}[ht]
     \centering
@@ -99,19 +116,29 @@ detallar mejor la interfaz de usuario a la hora editar los datos por tanto se ha
     \end{minipage}
 \end{figure}
 
-
-
+\clearpage
 
 
 Una vez creados los bocetos, se ha procedido a la implementación de los requisitos. Para ello, se han creado las siguientes pantallas:
 
-\newpage
 
 \paragraph{Pantalla de bienvenida}
 
 \parbox{\textwidth}{ 
    
 }
+
+Esta pantalla se ha implementado con la clase \textit{WelcomeScreen}, es la primera que ven los usuarios al abrir la aplicación. Su función 
+principal es dar la bienvenida al usuario y ofrecerle dos opciones: registrarse o iniciar sesión.
+
+No hay funciones muy interesantes en esta pantalla, ya que es bastante simple. Algunas funciones destacables son: 
+
+\begin{itemize}
+    \item \textbf{\_buildTextContent :} Se encarga de mostrar los textos de bienvenida. Presentan el mensaje principal y la descripción.
+    \item \textbf{\_buildButtons :} Crea y anima los dos botones principales de la pantalla para que el usuario pueda registrarse o iniciar sesión.
+\end{itemize}
+
+A continuación se muestra el resultado de la implementación de la pantalla de bienvenida:
 
 \begin{figure}[ht]
     \centering
@@ -124,6 +151,21 @@ Una vez creados los bocetos, se ha procedido a la implementación de los requisi
 \parbox{\textwidth}{ 
    
 }
+
+Esta pantalla se ha implementado con la clase \textit{RegistrationPage} que permite a los usuarios crear una nueva cuenta en la aplicación. Esta clase
+maneja todo el proceso de registro, tanto con email y contraseña como mediante Google.
+
+Las funciones principales de esta clase son: 
+\begin{itemize}
+    \item \textbf{initState :} Este método se encarga de preparar las animaciones iniciales que hacen aparecer gradualmente el contenido cuando se abre la pantalla, creando una transición para el usuario.
+    \item \textbf{\_register :} Es la función encargada del registro con email y contraseña. Verfica primero que todos los campos estén correctamente completados, luego intenta crear la cuenta en Firebase. Si tiene éxito, guarda los datos adicionales del usuario y envía un correo de verificación.
+    \item \textbf{\_signInWithGoogle :} Gestiona el registro alternativo mediante una cuenta de Google. Inicia el proceso de autenticación con Google y si es un nuevo usuario crea automáticamente su perfil en la base de datos.
+    \item \textbf{\_createUserProfile :} Guarda la información del usuario (nombre y apellidos) en Firestore después de crear una cuenta exitosamente, asociándola al ID único.
+    \item \textbf{\_showRegistrationSuccessDialog :} Muestra un cuadro de diálogo cuando el registro se completa correctamente. Ofrece opciones para volver al inicio de sesión o reenviar el correo de verificación si es necesario.
+    \item \textbf{\_parseAuthError :} Traduce los códigos de error técnicos de Firebase en mensajes comprensibles para el usuario.
+\end{itemize}
+
+Aquí se muestra el resultado de la implementación de la pantalla de registro:
 
 \begin{figure}[ht]
     \centering

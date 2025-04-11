@@ -10,7 +10,7 @@ class RegistrationPage extends StatefulWidget {
   _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _RegistrationPageState extends State<RegistrationPage> with SingleTickerProviderStateMixin {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _surnameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -18,6 +18,35 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final _formKey = GlobalKey<FormState>();
   String _errorMessage = '';
   bool _isLoading = false;
+  bool _obscurePassword = true;
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    _nameController.dispose();
+    _surnameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   Future<void> _register() async {
     if (!_formKey.currentState!.validate()) return;
@@ -34,14 +63,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         password: _passwordController.text.trim(),
       );
 
-      await FirebaseFirestore.instance
-          .collection('usuarios')
-          .doc(userCredential.user!.uid)
-          .set({
-        'nombre': _nameController.text,
-        'apellidos': _surnameController.text,
-      });
-
+      await _createUserProfile(userCredential.user!);
       await userCredential.user!.sendEmailVerification();
 
       if (!mounted) return;
@@ -57,56 +79,90 @@ class _RegistrationPageState extends State<RegistrationPage> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset('assets/confirmado.png', height: 100),
-            const SizedBox(height: 20),
-            const Text(
-              '¡Registro exitoso!',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Hemos enviado un correo de verificación a tu dirección de email. Por favor verifícalo para completar el registro y vuelve a iniciar sesión.',
-              textAlign: TextAlign.center,
-            ),
-          ],
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
         ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, '/inicio_sesion');
-            },
-            child: const Text(
-              'Aceptar',
-              style: TextStyle(color: Colors.teal),
-            ),
-          ),
-          TextButton(
-            onPressed: () async {
-              await user.sendEmailVerification();
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Correo de verificación reenviado.'),
-                  backgroundColor: Colors.teal,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+               Image.asset('assets/confirmado.png', height: 100),
+              const SizedBox(height: 20),
+              const Text(
+                '¡Registro exitoso!',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
                 ),
-              );
-            },
-            child: const Text(
-              'Reenviar correo',
-              style: TextStyle(color: Colors.orange),
-            ),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Hemos enviado un correo de verificación a tu dirección de email. '
+                'Por favor verifícalo para completar el registro.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pushReplacementNamed(context, '/inicio_sesion');
+                    },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Aceptar',
+                      style: TextStyle(color: Colors.teal),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await user.sendEmailVerification();
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Correo de verificación reenviado.'),
+                          backgroundColor: Colors.teal,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          margin: const EdgeInsets.all(16),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Reenviar correo',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -150,8 +206,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
         .set({
       'nombre': _nameController.text,
       'apellidos': _surnameController.text,
-      'email': user.email,
-      'createdAt': FieldValue.serverTimestamp(),
     });
   }
 
@@ -160,11 +214,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
       case 'email-already-in-use':
         return 'El correo ya está registrado';
       case 'weak-password':
-        return 'Contraseña demasiado débil';
+        return 'Contraseña demasiado débil (mínimo 6 caracteres)';
       case 'invalid-email':
         return 'Formato de email inválido';
       default:
-        return 'Error en el registro';
+        return 'Error en el registro. Inténtalo de nuevo.';
     }
   }
 
@@ -179,177 +233,426 @@ class _RegistrationPageState extends State<RegistrationPage> {
               fit: BoxFit.cover,
             ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Center(
+          
+          // Contenido principal
+          SafeArea(
+            child: FadeTransition(
+              opacity: _fadeAnimation,
               child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
-                      'Crea tu cuenta',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.teal,
-                      ),
+                    const SizedBox(height: 40),
+                    
+                    // Logo y título
+                    Column(
+                      children: [
+                        const SizedBox(height: 24),
+                        const Text(
+                          'Crea tu cuenta',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Completa tus datos para empezar',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey.shade600,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Completa tus datos para empezar',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
+                    
                     const SizedBox(height: 30),
-
-                    // Tarjeta de formulario
+                    
+                    // Formulario
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
-                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 10,
-                            spreadRadius: 2,
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 20,
+                            spreadRadius: 5,
                           ),
                         ],
                       ),
                       child: Form(
                         key: _formKey,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            _buildTextField(_nameController, 'Nombre', Icons.person),
-                            const SizedBox(height: 16),
-                            _buildTextField(_surnameController, 'Apellidos', Icons.people),
-                            const SizedBox(height: 16),
-                            _buildTextField(_emailController, 'Email', Icons.email),
-                            const SizedBox(height: 16),
-                            _buildTextField(_passwordController, 'Contraseña', Icons.lock,
-                                obscureText: true),
+                            // Campo Nombre
+                            Text(
+                              'Nombre',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                              controller: _nameController,
+                              decoration: InputDecoration(
+                                hintText: 'Tu nombre',
+                                hintStyle: TextStyle(color: Colors.grey,),
+                                filled: true,
+                                fillColor: Colors.grey.shade100,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide.none,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 14,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.person_outlined,
+                                  color: Colors.teal.withOpacity(0.8),
+                                ),
+                              ),
+                              style: const TextStyle(fontSize: 15),
+                              validator: (value) => value!.isEmpty
+                                  ? 'Por favor ingresa tu nombre'
+                                  : null,
+                            ),
                             
+                            const SizedBox(height: 20),
+                            
+                            // Campo Apellidos
+                            Text(
+                              'Apellidos',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                              controller: _surnameController,
+                              decoration: InputDecoration(
+                                hintText: 'Tus apellidos',
+                                hintStyle: TextStyle(color: Colors.grey,),
+                                filled: true,
+                                fillColor: Colors.grey.shade100,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide.none,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 14,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.people_outline,
+                                  color: Colors.teal.withOpacity(0.8),
+                                ),
+                              ),
+                              style: const TextStyle(fontSize: 15),
+                              validator: (value) => value!.isEmpty
+                                  ? 'Por favor ingresa tus apellidos'
+                                  : null,
+                            ),
+                            
+                            const SizedBox(height: 20),
+                            
+                            // Campo Email
+                            Text(
+                              'Correo electrónico',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                hintText: 'tu@email.com',
+                                hintStyle: TextStyle(color: Colors.grey,),
+                                filled: true,
+                                fillColor: Colors.grey.shade100,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide.none,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 14,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.email_outlined,
+                                  color: Colors.teal.withOpacity(0.8),
+                                ),
+                              ),
+                              style: const TextStyle(fontSize: 15),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Por favor ingresa tu email';
+                                } else if (!value.contains('@')) {
+                                  return 'Ingresa un email válido';
+                                }
+                                return null;
+                              },
+                            ),
+                            
+                            const SizedBox(height: 20),
+                            
+                            // Campo Contraseña
+                            Text(
+                              'Contraseña',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                              controller: _passwordController,
+                              obscureText: _obscurePassword,
+                              decoration: InputDecoration(
+                                hintText: 'Introduce una contraseña',
+                                hintStyle: TextStyle(color: Colors.grey,),
+                                filled: true,
+                                fillColor: Colors.grey.shade100,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide.none,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 14,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.lock_outlined,
+                                  color: Colors.teal.withOpacity(0.8),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscurePassword
+                                        ? Icons.visibility_outlined
+                                        : Icons.visibility_off_outlined,
+                                    color: Colors.grey.shade500,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscurePassword = !_obscurePassword;
+                                    });
+                                  },
+                                ),
+                              ),
+                              style: const TextStyle(fontSize: 15),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Por favor ingresa una contraseña';
+                                } else if (value.length < 6) {
+                                  return 'Mínimo 6 caracteres';
+                                }
+                                return null;
+                              },
+                            ),
+                            
+                            // Mensaje de error
                             if (_errorMessage.isNotEmpty) ...[
-                              const SizedBox(height: 10),
-                              Text(
-                                _errorMessage,
-                                style: const TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 14,
+                              const SizedBox(height: 16),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 12,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.red.shade50,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Colors.red.shade100,
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.error_outline,
+                                      color: Colors.red.shade600,
+                                      size: 20,
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Text(
+                                        _errorMessage,
+                                        style: TextStyle(
+                                          color: Colors.red.shade700,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                             
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 24),
+                            
+                            // Botón de registro
                             ElevatedButton(
                               onPressed: _isLoading ? null : _register,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.teal,
+                                foregroundColor: Colors.white,
+                                padding: const EdgeInsets.symmetric(vertical: 16),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
-                                padding: const EdgeInsets.symmetric(vertical: 15),
-                                minimumSize: const Size(double.infinity, 50),
+                                elevation: 0,
                               ),
-                              child: const Text(
-                                'Registrarse',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
+                              child: _isLoading
+                                  ? const SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : const Text(
+                                      'Registrarse',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                            ),
+                            
+                            const SizedBox(height: 24),
+                            
+                            // Divisor
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Divider(
+                                    color: Colors.grey.shade300,
+                                    thickness: 1,
+                                  ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                                  child: Text(
+                                    'O continúa con',
+                                    style: TextStyle(
+                                      color: Colors.grey.shade600,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Divider(
+                                    color: Colors.grey.shade300,
+                                    thickness: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            
+                            const SizedBox(height: 24),
+                            
+                            // Botón de Google
+                            OutlinedButton(
+                              onPressed: _isLoading ? null : _signInWithGoogle,
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black87,
+                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                side: BorderSide(
+                                  color: Colors.grey.shade300,
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/google.png',
+                                    height: 24,
+                                  ),
+                                  const SizedBox(width: 12),
+                                  const Text(
+                                    'Registrarse con Google',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-
-                    const SizedBox(height: 20),
-                    const Text(
-                      'o',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Botón de Google
-                    OutlinedButton.icon(
-                      icon: Image.asset('assets/google.png', height: 24),
-                      label: const Text(
-                        'Registrarse con Google',
-                        style: TextStyle(
-                          color: Colors.black87,
+                    
+                    const SizedBox(height: 32),
+                    
+                    // Enlace a inicio de sesión
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '¿Ya tienes una cuenta? ',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 14,
+                          ),
                         ),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: Colors.grey.shade300),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: const Size(50, 30),
+                          ),
+                          child: const Text(
+                            'Inicia sesión',
+                            style: TextStyle(
+                              color: Colors.teal,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                            ),
+                          ),
                         ),
-                        padding: const EdgeInsets.symmetric(vertical: 15),
-                        minimumSize: const Size(double.infinity, 50),
-                      ),
-                      onPressed: _isLoading ? null : _signInWithGoogle,
+                      ],
                     ),
 
-                    const SizedBox(height: 20),
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text(
-                        '¿Ya tienes cuenta? Inicia sesión',
-                        style: TextStyle(
-                        color: Colors.teal,
-                        ),
-                      ),
-                    ),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),
             ),
           ),
-
+          
+          // Loading overlay
           if (_isLoading)
             Container(
-              color: Colors.black54,
+              color: Colors.black.withOpacity(0.3),
               child: const Center(
-                child: CircularProgressIndicator(color: Colors.teal),
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+                  strokeWidth: 3,
+                ),
               ),
             ),
         ],
       ),
-    );
-  }
-
-  Widget _buildTextField(
-    TextEditingController controller,
-    String hintText,
-    IconData icon, {
-    bool obscureText = false,
-  }) {
-    return TextFormField(
-      controller: controller,
-      obscureText: obscureText,
-      decoration: InputDecoration(
-        hintText: hintText,
-        filled: true,
-        fillColor: Colors.white,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide.none,
-        ),
-        prefixIcon: Icon(icon, color: Colors.teal),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) return 'Este campo es obligatorio';
-        if (hintText == 'Email' && !value.contains('@')) return 'Email inválido';
-        if (hintText == 'Contraseña' && value.length < 6) return 'Mínimo 6 caracteres';
-        return null;
-      },
     );
   }
 }

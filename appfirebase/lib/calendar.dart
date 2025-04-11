@@ -8,7 +8,7 @@ import 'lista_compra.dart';
 import 'dart:async';
 import 'principal.dart';
 import 'perfil.dart';
-import 'tareas_screen.dart';
+import 'tareas.dart';
 
 class CalendarioScreen extends StatefulWidget {
   @override
