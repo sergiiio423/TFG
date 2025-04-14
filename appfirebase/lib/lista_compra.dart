@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'producto.dart';
+import 'navigation_bar.dart';
 import 'perfil.dart';
-import 'gastos.dart';
 
 class ListaScreen extends StatefulWidget {
   const ListaScreen({super.key});
@@ -25,138 +25,97 @@ class _ListaScreenState extends State<ListaScreen> {
     super.dispose();
   }
 
-  void _onBottomNavTapped(BuildContext context, int index) {
-    setState(() => _currentIndex = index);
-
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const HomePage(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const TareasScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => GastosScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-      case 3:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const ListaScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'Mis Listas',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.teal,
+        backgroundColor: Colors.grey[50],
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          title: const Text(
+            'Mis Listas',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.teal,
+            ),
           ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search, size: 28, color: Colors.teal),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: ListaSearchDelegate(),
-              );
-            },
-          ),
-          const SizedBox(width: 8),
-          IconButton(
-            icon: Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: Colors.teal.withOpacity(0.1),
-                shape: BoxShape.circle,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search, size: 28, color: Colors.teal),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: ListaSearchDelegate(),
+                );
+              },
+            ),
+            const SizedBox(width: 8),
+            IconButton(
+              icon: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.teal.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.person, size: 24, color: Colors.teal),
               ),
-              child: const Icon(Icons.person, size: 24, color: Colors.teal),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
+              },
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()),
-              );
-            },
-          ),
-          const SizedBox(width: 16),
-        ],
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
-            child: Row(
-              children: [
-                Text(
-                  "Tus listas activas",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                  icon: Icon(Icons.filter_list_rounded,
-                      color: Colors.teal[700], size: 24),
-                  onPressed: () {
-                    // Acción de filtrado
-                  },
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: _buildListaCompra(),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _mostrarModalCrearLista(context),
-        backgroundColor: Colors.orange,
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+            const SizedBox(width: 16),
+          ],
         ),
-        child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _buildBottomNavBar(context),
-    );
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+              child: Row(
+                children: [
+                  Text(
+                    "Tus listas activas",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    icon: Icon(Icons.filter_list_rounded,
+                        color: Colors.teal[700], size: 24),
+                    onPressed: () {
+                      // Acción de filtrado
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: _buildListaCompra(),
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => _mostrarModalCrearLista(context),
+          backgroundColor: Colors.orange,
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: _currentIndex,
+          context: context,
+        ));
   }
 
   Widget _buildListaCompra() {
@@ -380,66 +339,6 @@ class _ListaScreenState extends State<ListaScreen> {
         );
       }
     }
-  }
-
-  Widget _buildBottomNavBar(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        color: Colors.teal,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          elevation: 0,
-          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(0.5),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.teal,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          items: [
-            _buildNavItem(Icons.home, 'Inicio'),
-            _buildNavItem(Icons.list_alt, 'Tareas'),
-            _buildNavItem(Icons.wallet, 'Gastos'),
-            _buildNavItem(Icons.shopping_basket, 'Compra'),
-          ],
-          onTap: (index) => _onBottomNavTapped(context, index),
-        ),
-      ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
-    return BottomNavigationBarItem(
-      icon: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.transparent,
-        ),
-        child: Icon(icon, size: 28),
-      ),
-      label: label,
-      activeIcon: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.white.withOpacity(0.2),
-        ),
-        child: Icon(icon, size: 28),
-      ),
-    );
   }
 
   void _mostrarModalCrearLista(BuildContext context) {

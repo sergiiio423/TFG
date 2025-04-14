@@ -3,12 +3,10 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'lista_compra.dart';
+import 'package:intl/date_symbol_data_local.dart'; 
 import 'dart:async';
-import 'principal.dart';
 import 'perfil.dart';
-import 'tareas.dart';
+import 'navigation_bar.dart';
 
 class CalendarioScreen extends StatefulWidget {
   @override
@@ -257,7 +255,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
       ),
       floatingActionButton: _buildFloatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _buildBottomNavBar(),
+      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: _currentIndex, context: context),
     );
   }
 
@@ -764,99 +762,6 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
         onTaskUpdated: () => setState(() {}),
       ),
     );
-  }
-
-  Widget _buildBottomNavBar() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        color: Colors.teal,
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              spreadRadius: 2)
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          elevation: 0,
-          selectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-          unselectedLabelStyle: const TextStyle(fontSize: 10, height: 1.5),
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white.withOpacity(0.5),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.teal,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          items: [
-            _buildNavItem(Icons.home, 'Inicio'),
-            _buildNavItem(Icons.list_alt, 'Tareas'),
-            _buildNavItem(Icons.wallet, 'Gastos'),
-            _buildNavItem(Icons.shopping_basket, 'Compra'),
-          ],
-          onTap: (index) => _onBottomNavTapped(context, index),
-        ),
-      ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(IconData icon, String label) {
-    return BottomNavigationBarItem(
-      icon: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.transparent,
-        ),
-        child: Icon(icon, size: 28),
-      ),
-      label: label,
-      activeIcon: Container(
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.white.withOpacity(0.2),
-        ),
-        child: Icon(icon, size: 28),
-      ),
-    );
-  }
-
-  void _onBottomNavTapped(BuildContext context, int index) {
-    setState(() => _currentIndex = index);
-
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const HomePage(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const TareasScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-      case 3:
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const ListaScreen(),
-            transitionDuration: Duration.zero,
-          ),
-        );
-        break;
-    }
   }
 }
 
