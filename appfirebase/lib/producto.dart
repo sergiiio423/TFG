@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:intl/intl.dart';
 import 'lista_compra.dart';
 import 'principal.dart';
 import 'tareas.dart';
@@ -263,7 +262,7 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
                     ),
                     style: const TextStyle(
                       fontSize: 16,
-      color: Colors.black87,
+                      color: Colors.black87,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -275,19 +274,27 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Wrap(
-                    spacing: 10,
-                    children: emoticons.map((emoji) {
-                      return ChoiceChip(
-                        label: Text(emoji, style: const TextStyle(fontSize: 24)),
-                        selected: selectedIcon == emoji,
-                        selectedColor: Colors.orange.withOpacity(0.2),
-                        backgroundColor: Colors.grey[200],
-                        onSelected: (selected) {
-                          setState(() => selectedIcon = emoji);
-                        },
-                      );
-                    }).toList(),
+                  SizedBox(
+                    height: 60,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: emoticons.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: ChoiceChip(
+                            label: Text(emoticons[index], 
+                                style: const TextStyle(fontSize: 24)),
+                            selected: selectedIcon == emoticons[index],
+                            selectedColor: Colors.orange.withOpacity(0.2),
+                            backgroundColor: Colors.grey[200],
+                            onSelected: (selected) {
+                              setState(() => selectedIcon = emoticons[index]);
+                            },
+                          ),
+                        );
+                      },
+                    ),
                   ),
                   const SizedBox(height: 16),
                   TextField(
@@ -482,25 +489,21 @@ class _ProductoItemState extends State<_ProductoItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
+      elevation: 0,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.white,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 6,
-            offset: const Offset(0, 2),
-          ),
-        ],
       ),
       child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         leading: Container(
-          padding: const EdgeInsets.all(8),
+          width: 48,
+          height: 48,
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Colors.teal.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
             widget.producto['icono'],
@@ -527,7 +530,14 @@ class _ProductoItemState extends State<_ProductoItem> {
           children: [
             if (!_isComprado) ...[
               IconButton(
-                icon: const Icon(Icons.remove, size: 20),
+                icon: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.red.withOpacity(0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  child: const Icon(Icons.remove, size: 16),
+                ),
                 color: Colors.red[400],
                 onPressed: () => widget.onUpdate(-1),
                 padding: EdgeInsets.zero,
@@ -535,7 +545,14 @@ class _ProductoItemState extends State<_ProductoItem> {
               ),
               const SizedBox(width: 4),
               IconButton(
-                icon: const Icon(Icons.add, size: 20),
+                icon: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.teal.withOpacity(0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  child: const Icon(Icons.add, size: 16),
+                ),
                 color: Colors.teal[400],
                 onPressed: () => widget.onUpdate(1),
                 padding: EdgeInsets.zero,
@@ -547,22 +564,19 @@ class _ProductoItemState extends State<_ProductoItem> {
               icon: Icon(
                 _isComprado ? Icons.check_circle : Icons.radio_button_unchecked,
                 color: _isComprado ? Colors.teal : Colors.grey,
+                size: 28,
               ),
-              onPressed: () {
-                widget.onToggleComprado();
-              },
+              onPressed: widget.onToggleComprado,
             ),
             if (!_isComprado)
               PopupMenuButton<String>(
                 icon: Icon(Icons.more_vert, color: Colors.grey[500]),
-                onSelected: (value) {
-                  widget.onDelete();
-                },
+                onSelected: (value) => widget.onDelete(),
                 itemBuilder: (BuildContext context) => [
-                  PopupMenuItem<String>(
+                  const PopupMenuItem<String>(
                     value: 'delete',
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.delete, color: Colors.red),
                         SizedBox(width: 8),
                         Text('Eliminar producto'),
@@ -576,7 +590,4 @@ class _ProductoItemState extends State<_ProductoItem> {
       ),
     );
   }
-
 }
-
-  

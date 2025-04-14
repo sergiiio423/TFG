@@ -142,7 +142,7 @@ A continuación se muestra el resultado de la implementación de la pantalla de 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/bienvenida_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/bienvenida_implementado.png}
     \caption{Interfaz gráfica pantalla bienvenida.}
     \label{welcome_screen}
 \end{figure}
@@ -169,7 +169,7 @@ Aquí se muestra el resultado de la implementación de la pantalla de registro:
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/registro_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/registro_implementado.png}
     \caption{Interfaz gráfica pantalla de registro.}
     \label{register_screen}
 \end{figure}
@@ -181,9 +181,24 @@ Aquí se muestra el resultado de la implementación de la pantalla de registro:
    
 }
 
+Esta pantalla se ha implementado con la clase \textit{SignInEmail} que permite a los usuarios iniciar sesión en la aplicación. En esta pantalla, 
+se puede iniciar sesión con email y contraseña o mediante Google.
+
+Las funciones principales de esta clase son:
+
+\begin{itemize}
+    \item \textbf{initState :} Este método se ejecuta al iniciar la pantalla. En ella se establece una animación que hace que el contenido aparezca de forma gradual cuando se abre la pantalla.
+    \item \textbf{dispose :} Se encarga de liberar los recursos utilizados.
+    \item \textbf{\_signIn :} Este método se ejecuta cuando el usuario intenta iniciar sesión con su correo y contraseña. Verifica las credenciales con Firebase y luego decide a qué pantalla debe dirigirse según si el usuario pertenece o no a un hogar.
+    \item \textbf{\_signInWithGoogle :} Permite iniciar sesión mediante una cuenta de Google. Si el inicio de sesión tiene éxito, también verifica si el usuario está asociado a un hogar y lo redirige en consecuencia.
+    \item \textbf{\_handleAuthError :} Es el método que decide a qué pantalla se envía al usuario después de una autenticación exitosa. Si su correo no está verificado, muestra un díalago informativo. Si ya está verificado, revisa si pertenece a un hogar para ver a qué pantalla se envía.
+    \item \textbf{\_handleAuthError :} Se encarga de interpretar y mostrar mensajes claros de error cuando el inicio de sesión falla.
+    \item \textbf{\_showEmailNotVerifiedDialog :} Muestra un cuadro de diálogo cuando el usuario intenta iniciar sesión sin hacer verificado su correo.
+\end{itemize}
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/inicio_sesion_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/inicio_sesion_implementado.png}
     \caption{Interfaz gráfica pantalla de inicio de sesión.}
     \label{login_screen}
 \end{figure}
@@ -193,9 +208,39 @@ Aquí se muestra el resultado de la implementación de la pantalla de registro:
    
 }
 
+Esta pantalla se ha immplentado con la clase \textit{ProfileScreen} que representa el perfil de usuario dentro de la aplicación. Muestra la información personal y 
+del hogar al que pertenece el usuario. Su finalidad es mostrar la información personal y del hogar al que pertenece el usuario, así como 
+permitirle editar sus datos, gestionar el nombre del hogar, ver a los miembros con los que convive, y realizar acciones como abandonar el hogar o cerrar sesión. 
+
+
+
+Entre sus funciones destacadas se encuentran:
+
+\begin{itemize}
+    \item \textbf{initState :} Este método se ejecuta cuando se abre la pantalla. Inicializa el usuario actual y llama a otro método para cargar sus datos desde la base de datos.
+    \item \textbf{\_loadProfileData :} Carga la información del usuario desde Firebase, incluyendo su nombre, apellidos y correo. Luego busca el hogar al que pertenece y obtiene su nombre, código y los nombres de los demás miembros del hogar.
+    \item \textbf{\_updateProfile :} Permite guardar cambios en los datos del usuario, actualizandolos en la base de datos.  
+    \item \textbf{\_showEditProfileModal :} Muestra un formulario en la parte inferior de la pantalla donde el usuario puede modificar sus datos.
+    \item \textbf{\_buildProfileHeader :} Construye la parte superior de la pantalla, donde se muestra el nombre y apellidos del usuario y su correo.
+    \item \textbf{\_buildProfileContent :} Genera el contenido del perfil debajo del encabezado. Incluye las secciones de configuración del hogar, preferencias y botones de accion.
+    \item \textbf{\_buidEditableHomeNameItem :} Muestra el nombre del hogar junto a un botón para editarlo.
+    \item \textbf{\_updateHomeName :} Guarda en la base de datos el nuevo nombre del hogar, si el usuario lo modifica.
+    \item \textbf{\_showEditHomeModal :} Abre un formulario donde se puede cambiar el nombre del hogar.
+    \item \textbf{\_buildSectionCard :} Crear una tarjeta que agrupa secciones dentro del perfil.
+    \item \textbf{\_buildInfoItem :} Muestra un ítem de información dentro de una sección.
+    \item \textbf{\_buildMembersList :} Muestra una lista con los nombres de los demás miembros del hogar.
+    \item \textbf{\_buildSwitchItem :} Crea un interruptor que permite activar o desactivar la opción de recibir notificaciones.
+    \item \textbf{\_buildActionItem :} Genera un ítem de acción dentro de una sección, como cerrar sesión o abandonar el hogar.
+    \item \textbf{\_confirmarAbandonoHogar :} Muestra un cuadro emergente que pregunta al usuario si realmente desea abandonar el hogar.
+    \item \textbf{\_confirmarCerrarSesión :} Muestra un cuadro emergente que pregunta al usuario si realmente desea cerrar sesión.
+    \item \textbf{\_abandonarHogar :} Elimina al usuario de la lista de miembros del hogar.
+\end{itemize}
+
+Aqui se muestra el resultado de la implementación de la pantalla: 
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.25\textwidth]{../capitulos/img/datos_implementado.png}
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/datos_implementado.png}
     \caption{Interfaz gráfica pantalla de ver datos de hogar y usuario.}
     \label{view_home_user_data_screen}
 \end{figure}
@@ -208,9 +253,11 @@ Aquí se muestra el resultado de la implementación de la pantalla de registro:
    
 }
 
+Esta es la pantalla que se muestra cuando el usuario selecciona la opción de editar su perfil, con el método \textit{\_showEditProfileModal}, explicado anteriormente.
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/editar_perfil_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/editar_perfil_implementado.png}
     \caption{Interfaz gráfica pantalla de editar datos de usuario.}
     \label{edit_user_data_screen}
 \end{figure}
@@ -221,9 +268,11 @@ Aquí se muestra el resultado de la implementación de la pantalla de registro:
    
 }
 
+Esta es la pantalla que se muestra cuando el usuario selecciona la opción de editar el hogar, con el método \textit{\_showEditHomeModal}, explicado también anteriormente.
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/editar_hogar_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/editar_hogar_implementado.png}
     \caption{Interfaz gráfica pantalla de editar hogar.}
     \label{edit_home_screen}
 \end{figure}
@@ -236,12 +285,26 @@ Aquí se muestra el resultado de la implementación de la pantalla de registro:
    
 }
 
-Esta pantalla se muestra cuando un usuario se registra o inicia sesión y no pertenece a ningún hogar. En ella se da la opción de 
-crear un hogar o unirse a uno nuevo a través de un código, que nos deberá proporcionar alguno de los miembros del hogar.  
+La clase de esta pantalla se llama \textit{ConenctHomeScreen} y esta diseñada para que un usuario se conecte a un hogar dentro 
+de la aplicación, ya se creando uno nuevo o uniéndose a uno existente mediante un código. Esta pantalla se muestra principalmente a usuarios
+que han iniciado sesión pero aún no pertenecen a un hogar. Si el usuario escoge unirse, se abre un formulario que permite introducir un código de seis dígitos
+para validar la entrada al hogar. Si el código es correcto, se actualiza la base de datos para incluir al usuario dentro dele hogar.
+En caso de que el usuario decida crear un hogar, se redirige a la pantalla de creación de hogar.
+
+Las funciones principales son: 
+\begin{itemize}
+    \item \textbf{\_buildActionButton :} Crea el botón de acción que permite al usuario unirse a un hogar o crear uno nuevo. Si decide unirse, ejecuta una función y si decide crear un hogar, navega a la ruta definida.
+    \item \textbf{\_joinHomeWithCode :} Muestra un formulario en la parte inferior de la pantalla donde el usuario puede escribir el código para unirse a un hogar existente.
+    \item \textbf{\_buildCustomSnackBar :} Muestra un mensaje para informar al usuario si el código es incorrecto o si se ha unido correctamente.
+    \item \textbf{\_joinHomeWithCode :} Es la función que se encarga de validar el código introducido por el usuario.
+\end{itemize}
+
+El resultado de la implementación de esta pantalla es el siguiente:
+
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/opciones_impletementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/opciones_impletementado.png}
     \caption{Interfaz gráfica pantalla para participar en un hogar.}
 \end{figure}
 
@@ -253,7 +316,7 @@ crear un hogar o unirse a uno nuevo a través de un código, que nos deberá pro
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_hogar_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_hogar_implementado.png}
     \caption{Interfaz gráfica pantalla para crear un hogar.}
     \label{create_home_screen}
 \end{figure}

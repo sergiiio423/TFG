@@ -72,81 +72,78 @@ class _ListaScreenState extends State<ListaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[50],
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Mis Listas',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.search, size: 28),
-                        onPressed: () {
-                          showSearch(
-                            context: context,
-                            delegate: ListaSearchDelegate(),
-                          );
-                        },
-                      ),
-                      const SizedBox(width: 8),
-                      IconButton(
-                        icon: Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.teal.withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(Icons.person,
-                              size: 24, color: Colors.teal),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProfileScreen()),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
-              child: Row(
-                children: [
-                  Text(
-                    "Tus listas activas",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const Spacer(),
-                  Icon(Icons.filter_list_rounded,
-                      color: Colors.teal[700], size: 24),
-                ],
-              ),
-            ),
-            Expanded(
-              child: _buildListaCompra(),
-            ),
-          ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        title: const Text(
+          'Mis Listas',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal,
+          ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, size: 28, color: Colors.teal),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: ListaSearchDelegate(),
+              );
+            },
+          ),
+          const SizedBox(width: 8),
+          IconButton(
+            icon: Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: Colors.teal.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.person, size: 24, color: Colors.teal),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+          ),
+          const SizedBox(width: 16),
+        ],
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+            child: Row(
+              children: [
+                Text(
+                  "Tus listas activas",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const Spacer(),
+                IconButton(
+                  icon: Icon(Icons.filter_list_rounded,
+                      color: Colors.teal[700], size: 24),
+                  onPressed: () {
+                    // Acción de filtrado
+                  },
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: _buildListaCompra(),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _mostrarModalCrearLista(context),
@@ -210,7 +207,7 @@ class _ListaScreenState extends State<ListaScreen> {
         final listas = snapshot.data!.docs;
 
         return ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           physics: const BouncingScrollPhysics(),
           itemCount: listas.length,
           separatorBuilder: (_, __) => const SizedBox(height: 16),
@@ -228,17 +225,10 @@ class _ListaScreenState extends State<ListaScreen> {
     final nombre = lista['nombre'] as String;
     final miembros = lista['usuario'] as List<dynamic>;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -296,25 +286,25 @@ class _ListaScreenState extends State<ListaScreen> {
                 ),
               ),
               PopupMenuButton<String>(
-                  icon: Icon(Icons.more_vert, color: Colors.grey[500]),
-                  color: Colors.white, 
-                  itemBuilder: (context) => [
-                        PopupMenuItem(
-                          value: 'delete',
-                          child: Row(
-                            children: [
-                              Icon(Icons.delete, color: Colors.red[400]),
-                              const SizedBox(width: 8),
-                              const Text('Eliminar lista'),
-                            ],
-                          ),
-                        ),
+                icon: Icon(Icons.more_vert, color: Colors.grey[500]),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: 'delete',
+                    child: Row(
+                      children: [
+                        Icon(Icons.delete, color: Colors.red[400]),
+                        const SizedBox(width: 8),
+                        const Text('Eliminar lista'),
                       ],
-                  onSelected: (value) {
-                    if (value == 'delete') {
-                      _confirmarBorradoLista(lista.id, context);
-                    }
-                  }),
+                    ),
+                  ),
+                ],
+                onSelected: (value) {
+                  if (value == 'delete') {
+                    _confirmarBorradoLista(lista.id, context);
+                  }
+                },
+              ),
             ],
           ),
         ),
@@ -330,9 +320,11 @@ class _ListaScreenState extends State<ListaScreen> {
         title: const Text("Confirmar eliminación"),
         content:
             const Text("¿Estás seguro de que quieres eliminar esta lista?"),
-            backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
         actions: [
-            TextButton(
+          TextButton(
             onPressed: () => Navigator.pop(context, false),
             child: const Text(
               "Cancelar",
@@ -343,7 +335,8 @@ class _ListaScreenState extends State<ListaScreen> {
             onPressed: () => Navigator.pop(context, true),
             child: Text(
               "Eliminar",
-              style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
             ),
           ),
         ],
@@ -352,7 +345,6 @@ class _ListaScreenState extends State<ListaScreen> {
 
     if (confirmacion == true) {
       try {
-        // Primero eliminamos los productos asociados a la lista
         final productosSnapshot = await FirebaseFirestore.instance
             .collection('producto')
             .where('listaId', isEqualTo: listaId)
@@ -363,13 +355,11 @@ class _ListaScreenState extends State<ListaScreen> {
           batch.delete(doc.reference);
         }
 
-        // Luego eliminamos la lista
         await FirebaseFirestore.instance
             .collection('lista')
             .doc(listaId)
             .delete();
 
-        // Mostrar mensaje de éxito
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: const Text("Lista eliminada correctamente"),
@@ -385,6 +375,7 @@ class _ListaScreenState extends State<ListaScreen> {
           SnackBar(
             content: Text("Error al eliminar lista: ${e.toString()}"),
             backgroundColor: Colors.red[600],
+            behavior: SnackBarBehavior.floating,
           ),
         );
       }
@@ -461,7 +452,7 @@ class _ListaScreenState extends State<ListaScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white, // Este parámetro va fuera de shape
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setState) {
@@ -479,7 +470,7 @@ class _ListaScreenState extends State<ListaScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         "Nueva lista",
                         style: TextStyle(
                           fontSize: 20,
@@ -511,14 +502,14 @@ class _ListaScreenState extends State<ListaScreen> {
                         vertical: 14,
                       ),
                     ),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       color: Colors.black87,
                     ),
                   ),
                   const SizedBox(height: 20),
                   SwitchListTile(
-                    title: const Text(
+                    title: Text(
                       "Lista compartida",
                       style: TextStyle(
                         fontSize: 16,
@@ -552,7 +543,7 @@ class _ListaScreenState extends State<ListaScreen> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         "CREAR LISTA",
                         style: TextStyle(
                           fontSize: 16,
@@ -578,6 +569,7 @@ class _ListaScreenState extends State<ListaScreen> {
         const SnackBar(
           content: Text("Por favor ingresa un nombre para la lista"),
           backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
         ),
       );
       return;
@@ -621,6 +613,7 @@ class _ListaScreenState extends State<ListaScreen> {
         SnackBar(
           content: Text("Error al crear lista: ${e.toString()}"),
           backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
         ),
       );
     }

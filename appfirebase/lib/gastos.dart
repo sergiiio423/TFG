@@ -652,11 +652,11 @@ class _GastosScreenState extends State<GastosScreen>
                     ),
                     indicatorSize: TabBarIndicatorSize.tab,
                     labelStyle: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                     unselectedLabelStyle: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                     ),
                     tabs: [
                       Tab(
