@@ -7,7 +7,7 @@ import 'perfil.dart';
 import 'calendar.dart';
 import 'lista_compra.dart';
 import 'navigation_bar.dart';
-
+import 'gastos.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,10 +23,16 @@ class _HomePageState extends State<HomePage> {
   String nombreHogar = 'Inicio';
   List<Map<String, dynamic>> productos = [];
   List<Map<String, dynamic>> deudas = [];
-  int _currentIndex = 0;
+  Map<String, String> _nombresUsuarios = {};
+  final int _currentIndex = 0;
   bool _isLoading = true;
   int tareasPendientes = 0;
+  int tareasHoy = 0;
+  int tareasSemana = 0;
+  double totalDeudas = 0.0;
+  String? _hogarId;
   StreamSubscription? _tareasSubscription;
+  StreamSubscription? _deudasSubscription;
 
   @override
   void initState() {
@@ -34,11 +40,14 @@ class _HomePageState extends State<HomePage> {
     _user = _auth.currentUser;
     _loadInitialData();
     _setupTareasListener();
+    _setupDeudasListener();
+    _cargarNombresUsuarios();
   }
 
   @override
   void dispose() {
     _tareasSubscription?.cancel();
+    _deudasSubscription?.cancel();
     super.dispose();
   }
 
@@ -52,37 +61,88 @@ class _HomePageState extends State<HomePage> {
     setState(() => _isLoading = false);
   }
 
-  void _setupTareasListener() {
-    _tareasSubscription?.cancel();
-    
-    final hoy = DateTime.now();
-    final semanaActual = ((hoy.day) ~/ 7) + 1;
+  Future<void> _cargarNombresUsuarios() async {
+    final usuarios = await _firestore.collection('usuarios').get();
+    setState(() {
+      _nombresUsuarios = {
+        for (var doc in usuarios.docs) doc.id: doc['nombre'] ?? 'Usuario'
+      };
+    });
+  }
 
-    _tareasSubscription = _firestore
-        .collection('tareas')
-        .where('asignados', arrayContains: _user?.uid ?? '')
-        .where('completada', isEqualTo: false)
+void _setupTareasListener() {
+  _tareasSubscription?.cancel();
+
+  final hoy = DateTime.now();
+  final semanaActual = ((hoy.day) ~/ 7) + 1;
+
+  _tareasSubscription = _firestore
+      .collection('tareas')
+      .where('asignados', arrayContains: _user?.uid ?? '')
+      .where('completada', isEqualTo: false)
+      .snapshots()
+      .listen((snapshot) {
+    int hoyCount = 0;
+    int semanaCount = 0;
+
+    for (var doc in snapshot.docs) {
+      final data = doc.data() as Map<String, dynamic>;
+      final fecha = data['fecha'] as Timestamp?;
+
+      if (data['tipo'] == 'puntual') {
+        if (fecha != null && DateUtils.isSameDay(fecha.toDate(), DateTime.now())) {
+          hoyCount++;
+        }
+      } else {
+        final semanas = data['semanas'] as List<dynamic>?;
+        if (semanas?.contains(semanaActual) == true &&
+            data['mes'] == hoy.month &&
+            data['año'] == hoy.year) {
+          semanaCount++;
+        }
+      }
+    }
+
+    if (mounted) {
+      setState(() {
+        tareasHoy = hoyCount;
+        tareasSemana = semanaCount;
+        tareasPendientes = hoyCount + semanaCount;
+      });
+    }
+  });
+}
+
+  void _setupDeudasListener() {
+    _deudasSubscription?.cancel();
+
+    _deudasSubscription = _firestore
+        .collection('deudas')
+        .where('pagado', isEqualTo: false)
+        .where('hogarId', isEqualTo: _hogarId)
         .snapshots()
         .listen((snapshot) {
-          final count = snapshot.docs.where((doc) {
-            final data = doc.data() as Map<String, dynamic>;
-            final fecha = data['fecha'] as Timestamp?;
-            
-            if (data['tipo'] == 'puntual') {
-              return fecha != null && 
-                  DateUtils.isSameDay(fecha.toDate(), DateTime.now());
-            } else {
-              final semanas = data['semanas'] as List<dynamic>?;
-              return semanas?.contains(semanaActual) == true &&
-                  data['mes'] == hoy.month &&
-                  data['año'] == hoy.year;
-            }
-          }).length;
+      List<Map<String, dynamic>> deudasTemp = [];
 
-          if (mounted) {
-            setState(() => tareasPendientes = count);
-          }
+      for (var doc in snapshot.docs) {
+        final data = doc.data() as Map<String, dynamic>;
+        deudasTemp.add({
+          'id': doc.id,
+          'monto': data['monto'],
+          'deudor': data['deudor'],
+          'acreedor': data['acreedor'],
+          'creadoEn': (data['creadoEn'] as Timestamp).toDate(),
+          'ultimaActualizacion':
+              (data['ultimaActualizacion'] as Timestamp).toDate(),
         });
+      }
+
+      if (mounted) {
+        setState(() {
+          deudas = deudasTemp;
+        });
+      }
+    });
   }
 
   Future<void> _obtenerNombreHogar() async {
@@ -96,6 +156,7 @@ class _HomePageState extends State<HomePage> {
       if (querySnapshot.docs.isNotEmpty) {
         setState(() {
           nombreHogar = querySnapshot.docs.first['nombre'] ?? 'Mi Hogar';
+          _hogarId = querySnapshot.docs.first.id;
         });
       }
     }
@@ -132,32 +193,44 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _obtenerDeudasPendientes() async {
-    if (_user != null) {
+    if (_user != null && _hogarId != null) {
       QuerySnapshot deudasSnapshot = await _firestore
           .collection('deudas')
-          .where('deudor', isEqualTo: _user!.uid)
-          .where('pagada', isEqualTo: false)
+          .where('pagado', isEqualTo: false)
+          .where('hogarId', isEqualTo: _hogarId)
           .limit(3)
           .get();
 
-      List<Future<DocumentSnapshot>> usuariosFutures = deudasSnapshot.docs
-          .map((doc) =>
-              _firestore.collection('usuarios').doc(doc['acreedor']).get())
+      // Obtener nombres de acreedores y deudores
+      List<String> usuariosIds = [];
+      for (var doc in deudasSnapshot.docs) {
+        usuariosIds.add(doc['deudor']);
+        usuariosIds.add(doc['acreedor']);
+      }
+      usuariosIds = usuariosIds.toSet().toList();
+
+      List<Future<DocumentSnapshot>> usuariosFutures = usuariosIds
+          .map((id) => _firestore.collection('usuarios').doc(id).get())
           .toList();
 
       List<DocumentSnapshot> usuarios = await Future.wait(usuariosFutures);
+      Map<String, String> nombresUsuarios = {};
+      for (var usuario in usuarios) {
+        nombresUsuarios[usuario.id] = usuario['nombre'] ?? 'Usuario';
+      }
 
       setState(() {
-        deudas = deudasSnapshot.docs.asMap().entries.map((entry) {
-          int index = entry.key;
-          var doc = entry.value;
-          var usuario = usuarios[index];
+        deudas = deudasSnapshot.docs.map((doc) {
           return {
             'id': doc.id,
             'monto': doc['monto'],
-            'descripcion': doc['descripcion'],
-            'nombreAcreedor': usuario['nombre'] ?? 'Usuario',
-            'fecha': (doc['fecha'] as Timestamp).toDate(),
+            'deudor': doc['deudor'],
+            'acreedor': doc['acreedor'],
+            'nombreDeudor': nombresUsuarios[doc['deudor']],
+            'nombreAcreedor': nombresUsuarios[doc['acreedor']],
+            'creadoEn': (doc['creadoEn'] as Timestamp).toDate(),
+            'ultimaActualizacion':
+                (doc['ultimaActualizacion'] as Timestamp).toDate(),
           };
         }).toList();
       });
@@ -256,6 +329,23 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildQuickSummary() {
+    // Calcular el balance del usuario
+    double balance = 0.0;
+
+    // Sumar todas las deudas donde el usuario es el acreedor (le deben dinero)
+    final deudasAFavor =
+        deudas.where((d) => d['acreedor'] == _user?.uid).toList();
+    final totalAFavor = deudasAFavor.fold(
+        0.0, (sum, deuda) => sum + (deuda['monto'] as num).toDouble());
+
+    // Sumar todas las deudas donde el usuario es el deudor (debe dinero)
+    final deudasEnContra =
+        deudas.where((d) => d['deudor'] == _user?.uid).toList();
+    final totalEnContra = deudasEnContra.fold(
+        0.0, (sum, deuda) => sum + (deuda['monto'] as num).toDouble());
+
+    balance = totalAFavor - totalEnContra;
+
     return Row(
       children: [
         Expanded(
@@ -270,13 +360,13 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(width: 12),
         Expanded(
           child: _buildSummaryCard(
-            icon: Icons.shopping_cart,
-            title: 'Productos por comprar',
-            value: productos.length.toString(),
-            color: Colors.teal.shade100,
-            iconColor: Colors.teal,
+            icon: balance >= 0 ? Icons.arrow_downward : Icons.arrow_upward,
+            title: balance >= 0 ? 'Te deben' : 'Debes',
+            value: '${balance.abs().toStringAsFixed(2)} €',
+            color: balance >= 0 ? Colors.green.shade100 : Colors.red.shade100,
+            iconColor: balance >= 0 ? Colors.green : Colors.red,
           ),
-        ),
+        )
       ],
     );
   }
@@ -448,31 +538,28 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildWeekStats() {
-    return Row(
-      children: [
-        _buildStatItem(
-          value: tareasPendientes.toString(),
-          label: 'Tareas',
-          color: Colors.orange.shade100,
-          textColor: Colors.orange,
-        ),
-        const SizedBox(width: 12),
-        _buildStatItem(
-          value: '2',
-          label: 'Eventos',
-          color: Colors.teal.shade100,
-          textColor: Colors.teal,
-        ),
-        const SizedBox(width: 12),
-        _buildStatItem(
-          value: '1',
-          label: 'Cumpleaños',
-          color: Colors.pink.shade100,
-          textColor: Colors.pink,
-        ),
-      ],
-    );
-  }
+  return Column(
+    children: [
+      Row(
+        children: [
+          _buildStatItem(
+            value: tareasHoy.toString(),
+            label: 'Tareas hoy',
+            color: Colors.orange.shade100,
+            textColor: Colors.orange,
+          ),
+          const SizedBox(width: 12),
+          _buildStatItem(
+            value: tareasSemana.toString(),
+            label: 'Tareas semanales',
+            color: Colors.teal.shade100,
+            textColor: Colors.teal,
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
   Widget _buildStatItem({
     required String value,
@@ -519,7 +606,10 @@ class _HomePageState extends State<HomePage> {
           title: 'Deudas Pendientes',
           actionText: deudas.isNotEmpty ? 'Ver todas' : null,
           onAction: () {
-            // Navegar a pantalla de deudas
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => GastosScreen()),
+            );
           },
         ),
         const SizedBox(height: 12),
@@ -538,6 +628,40 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildDebtTile(Map<String, dynamic> deuda) {
+    final currentUserId = _user?.uid;
+    final esDeudor = deuda['deudor'] == currentUserId;
+    final esAcreedor = deuda['acreedor'] == currentUserId;
+
+    // Verificar si el usuario está involucrado en esta deuda
+    if (!esDeudor && !esAcreedor) {
+      return const SizedBox.shrink(); // No mostrar deudas no relacionadas
+    }
+
+    // Obtener nombres de usuarios desde el mapa precargado
+    final nombreDeudor = _nombresUsuarios[deuda['deudor']] ?? 'Usuario';
+    final nombreAcreedor = _nombresUsuarios[deuda['acreedor']] ?? 'Usuario';
+
+    // Determinar el texto según el rol del usuario
+    String textoDeuda;
+    Color colorFondo;
+    Color colorIcono;
+    IconData icono;
+    Color colorTexto;
+
+    if (esDeudor) {
+      textoDeuda = 'Debes a $nombreAcreedor';
+      colorFondo = Colors.red.shade100;
+      colorIcono = Colors.red.shade400;
+      icono = Icons.money_off;
+      colorTexto = Colors.red;
+    } else {
+      textoDeuda = '$nombreDeudor te debe';
+      colorFondo = Colors.green.shade100;
+      colorIcono = Colors.green.shade400;
+      icono = Icons.attach_money;
+      colorTexto = Colors.green;
+    }
+
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.all(16),
@@ -558,10 +682,10 @@ class _HomePageState extends State<HomePage> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: Colors.red.shade100,
+              color: colorFondo,
               shape: BoxShape.circle,
             ),
-            child: Icon(Icons.money, color: Colors.red.shade400),
+            child: Icon(icono, color: colorIcono),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -569,7 +693,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Debes a ${deuda['nombreAcreedor']}',
+                  textoDeuda,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -577,7 +701,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  deuda['descripcion'] ?? 'Sin descripción',
+                  'Creada: ${DateFormat('dd MMM yyyy').format(deuda['creadoEn'])}',
                   style: const TextStyle(
                     fontSize: 12,
                     color: Colors.black54,
@@ -585,7 +709,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  DateFormat('dd MMM').format(deuda['fecha']),
+                  'Últ. actualización: ${DateFormat('dd MMM').format(deuda['ultimaActualizacion'])}',
                   style: const TextStyle(
                     fontSize: 12,
                     color: Colors.black54,
@@ -595,11 +719,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Text(
-            '${deuda['monto']} €',
-            style: const TextStyle(
+            '${(deuda['monto'] as num).toStringAsFixed(2)} €',
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.red,
+              color: colorTexto,
             ),
           ),
         ],
