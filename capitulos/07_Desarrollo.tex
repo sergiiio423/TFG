@@ -314,6 +314,21 @@ El resultado de la implementación de esta pantalla es el siguiente:
    
 }
 
+En este caso la pantala se ha creado con la clase \textit{CrearHogarScreen} y permite que el usuario cree un nuevo hogar dentro de la aplicación.
+Una vez que el usuario crea el hogar, se le asigna un código único de seis dígitos y se une a él automáticamente.
+
+Las funciones que componen esta pantalla son:
+
+\begin{itemize}
+    \item \textbf{generarCodigoHogar :} Genera un código aleatorio de 6 dígitos que se usará como identificador único para que otros usuarios puedan unirse al hogar creado.
+    \item \textbf{crearHogar :} Esta función se encarga de crear el hogar en la base de datos de Firebase. Primero verifica que el nombre del hogar no esté vacío y luego guarda la información del hogar junto con el código generado.
+    \item \textbf{\_buildCustomSnackBar :} Muestra un mensaje para informar al usuario de errores o confirmaciones.
+    \item \textbf{\_buildFormSection :} Construye la sección del formulario donde el usuario puede ingresar el nombre del hogar.
+\end{itemize}
+
+El resultado de la implementación de la pantalla es el siguiente:
+
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_hogar_implementado.png}
@@ -321,7 +336,6 @@ El resultado de la implementación de esta pantalla es el siguiente:
     \label{create_home_screen}
 \end{figure}
 
-\newpage
 
 \paragraph{Pantalla de unirse a un hogar}
 
@@ -329,14 +343,39 @@ El resultado de la implementación de esta pantalla es el siguiente:
    
 }
 
-En esta pantalla se debe añadir el código del hogar al que se quiere unir, previamente proporcionado por alguno de los miembros del hogar.
+Esta pantalla es la que se muestra cuando el usuario selecciona la opción de unirse a un hogar, con el método \textit{\_joinHomeWithCode}, explicado anteriormente.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/unirse_hoga_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/unirse_hoga_implementado.png}
     \caption{Interfaz gráfica pantalla de unirse a un hogar.}
     \label{join_home_screen}
 \end{figure}
+
+
+\subsubsection{Base de datos}
+
+En esta primera iteracción ha sido necesario crear dos colecciones en la base de datos de Firebase, 
+una para los usuarios y otra para los hogares. 
+
+Para la colección de \textbf{usuarios} se ha creado la siguiente estructura:
+\begin{itemize}
+    \item \textbf{nombre}: Es el nombre que indica el usuario al registrarse.
+    \item \textbf{apellidos}: Son los apellidos que indica el usuario al registrarse.
+\end{itemize}
+
+El resto de datos como el email y la contraseña se almacenan en Firebase Auth, por lo que no es necesario almacenarlos en la base de datos.
+El usuario se identifica por su ID único que genera Firebase Auth al registrarse, por tanto si queremos sacar datos adicionales del usuario como el correo electrónico,
+que no tenemos almacenado en la base de datos, se puede hacer una consulta a Firebase Auth a través del ID y obtenerlo.
+
+Para la colección de \textbf{hogar} se ha creado la siguiente estructura: 
+\begin{itemize}
+    \item \textbf{nombre:} Es el nombre que indica el usuario al crear el hogar.
+    \item \textbf{codigo:} Es el código único que se genera al crear el hogar.
+    \item \textbf{miembros:} Es un array que contiene los ID de los usuarios que pertenecen a ese hogar.
+    \item \textbf{fechaCreacion:} Es la fecha en la que se creó el hogar.
+\end{itemize}
+
 
 \subsubsection{Pruebas de funcionalidad}
 

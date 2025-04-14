@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'dart:async';
 import 'perfil.dart';
 import 'calendar.dart';
 import 'lista_compra.dart';
 import 'navigation_bar.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,18 +18,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   User? _user;
   String nombreHogar = 'Inicio';
   List<Map<String, dynamic>> productos = [];
   List<Map<String, dynamic>> deudas = [];
   int _currentIndex = 0;
   bool _isLoading = true;
+  int tareasPendientes = 0;
+  StreamSubscription? _tareasSubscription;
 
   @override
   void initState() {
     super.initState();
-    _user = FirebaseAuth.instance.currentUser;
+    _user = _auth.currentUser;
     _loadInitialData();
+    _setupTareasListener();
+  }
+
+  @override
+  void dispose() {
+    _tareasSubscription?.cancel();
+    super.dispose();
   }
 
   Future<void> _loadInitialData() async {
@@ -38,6 +50,39 @@ class _HomePageState extends State<HomePage> {
       _obtenerDeudasPendientes(),
     ]);
     setState(() => _isLoading = false);
+  }
+
+  void _setupTareasListener() {
+    _tareasSubscription?.cancel();
+    
+    final hoy = DateTime.now();
+    final semanaActual = ((hoy.day) ~/ 7) + 1;
+
+    _tareasSubscription = _firestore
+        .collection('tareas')
+        .where('asignados', arrayContains: _user?.uid ?? '')
+        .where('completada', isEqualTo: false)
+        .snapshots()
+        .listen((snapshot) {
+          final count = snapshot.docs.where((doc) {
+            final data = doc.data() as Map<String, dynamic>;
+            final fecha = data['fecha'] as Timestamp?;
+            
+            if (data['tipo'] == 'puntual') {
+              return fecha != null && 
+                  DateUtils.isSameDay(fecha.toDate(), DateTime.now());
+            } else {
+              final semanas = data['semanas'] as List<dynamic>?;
+              return semanas?.contains(semanaActual) == true &&
+                  data['mes'] == hoy.month &&
+                  data['año'] == hoy.year;
+            }
+          }).length;
+
+          if (mounted) {
+            setState(() => tareasPendientes = count);
+          }
+        });
   }
 
   Future<void> _obtenerNombreHogar() async {
@@ -119,8 +164,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,10 +171,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Column(
           children: [
-            // Encabezado
             _buildAppBar(),
-
-            // Contenido principal
             Expanded(
               child: _isLoading
                   ? _buildLoadingIndicator()
@@ -141,19 +181,12 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Resumen rápido
                           _buildQuickSummary(),
                           const SizedBox(height: 24),
-
-                          // Planificación semanal
                           _buildWeekSection(),
                           const SizedBox(height: 24),
-
-                          // Deudas pendientes
                           _buildDebtsSection(),
                           const SizedBox(height: 24),
-
-                          // Lista de compra
                           _buildShoppingListSection(),
                         ],
                       ),
@@ -162,7 +195,10 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: _currentIndex, context: context,),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: _currentIndex,
+        context: context,
+      ),
     );
   }
 
@@ -226,7 +262,7 @@ class _HomePageState extends State<HomePage> {
           child: _buildSummaryCard(
             icon: Icons.task,
             title: 'Tareas pendientes',
-            value: '5',
+            value: tareasPendientes.toString(),
             color: Colors.orange.shade100,
             iconColor: Colors.orange,
           ),
@@ -415,7 +451,7 @@ class _HomePageState extends State<HomePage> {
     return Row(
       children: [
         _buildStatItem(
-          value: '3',
+          value: tareasPendientes.toString(),
           label: 'Tareas',
           color: Colors.orange.shade100,
           textColor: Colors.orange,
@@ -686,8 +722,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
 
   String _obtenerDiaCorto(int weekday) {
     const dias = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
