@@ -107,10 +107,10 @@
 \contentsline {paragraph}{Pantalla para crear un hogar}{118}{figure.7.11}%
 \contentsline {paragraph}{Pantalla de unirse a un hogar}{119}{figure.7.12}%
 \contentsline {subsubsection}{\numberline {7.2.1.2}Base de datos}{120}{subsubsection.7.2.1.2}%
-\contentsline {subsubsection}{\numberline {7.2.1.3}Pruebas de funcionalidad}{120}{subsubsection.7.2.1.3}%
+\contentsline {subsubsection}{\numberline {7.2.1.3}Pruebas de funcionalidad}{121}{subsubsection.7.2.1.3}%
 \contentsline {subsubsection}{\numberline {7.2.1.4}Revisión de la iteracción}{121}{subsubsection.7.2.1.4}%
 \contentsline {paragraph}{Registro}{121}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Inicio de sesión}{121}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Inicio de sesión}{122}{subsubsection.7.2.1.4}%
 \contentsline {paragraph}{Crear hogar}{122}{subsubsection.7.2.1.4}%
 \contentsline {paragraph}{Visualización y edición de datos de usuario y hogar}{122}{subsubsection.7.2.1.4}%
 \contentsline {paragraph}{Abandonar hogar y unirse a otro hogar}{122}{subsubsection.7.2.1.4}%
@@ -118,32 +118,32 @@
 \contentsline {subsubsection}{\numberline {7.2.1.5}Plan para la siguiente iteracción}{122}{subsubsection.7.2.1.5}%
 \contentsline {subsection}{\numberline {7.2.2}Iteración 2}{122}{subsection.7.2.2}%
 \contentsline {subsubsection}{\numberline {7.2.2.1}Implementacion}{123}{subsubsection.7.2.2.1}%
-\contentsline {paragraph}{Pantalla de tareas}{124}{table.7.1}%
-\contentsline {paragraph}{Pantalla de crear tarea}{124}{figure.7.14}%
-\contentsline {paragraph}{Pantalla de ver datos de una tarea}{125}{figure.7.15}%
-\contentsline {paragraph}{Pantalla para editar o eliminar una tarea}{126}{figure.7.16}%
-\contentsline {paragraph}{Pantalla editar tarea}{126}{figure.7.17}%
-\contentsline {paragraph}{Pantalla de calendario}{127}{figure.7.18}%
-\contentsline {paragraph}{Pantalla de lista de la compra}{128}{figure.7.19}%
-\contentsline {paragraph}{Pantalla de crear lista de la compra}{129}{figure.7.20}%
-\contentsline {paragraph}{Pantalla para eliminar lista de la compra}{130}{figure.7.21}%
-\contentsline {paragraph}{Pantalla de productos de la lista de la compra}{130}{figure.7.22}%
-\contentsline {paragraph}{Pantalla de añadir producto a la lista de la compra}{131}{figure.7.23}%
-\contentsline {subsubsection}{\numberline {7.2.2.2}Pruebas de funcionalidad}{132}{subsubsection.7.2.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.2.3}Revisión de la iteracción}{133}{subsubsection.7.2.2.3}%
-\contentsline {paragraph}{Crear una tarea}{133}{subsubsection.7.2.2.3}%
-\contentsline {paragraph}{Consultar planificación semanal}{133}{subsubsection.7.2.2.3}%
-\contentsline {paragraph}{Visualización, edición y eliminación de tareas}{133}{subsubsection.7.2.2.3}%
-\contentsline {paragraph}{Visualización del calendario de tareas}{133}{subsubsection.7.2.2.3}%
-\contentsline {paragraph}{Crear lista de la compra, añadir productos y eliminar productos}{133}{subsubsection.7.2.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.2.4}Plan para la siguiente iteracción}{134}{subsubsection.7.2.2.4}%
-\contentsline {subsection}{\numberline {7.2.3}Iteración 3}{134}{subsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.3.1}Implementacion}{134}{subsubsection.7.2.3.1}%
-\contentsline {chapter}{\numberline {8}Validación de la aplicación por usuarios reales}{135}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{136}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{136}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{142}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{147}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{154}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{160}{section.Alph1.5}%
-\contentsline {section}{Referencias}{166}{table.Alph1.29}%
+\contentsline {paragraph}{Pantalla de tareas}{125}{figure.7.15}%
+\contentsline {paragraph}{Pantalla de crear tarea}{127}{figure.7.16}%
+\contentsline {paragraph}{Pantalla de ver datos de una tarea}{129}{figure.7.18}%
+\contentsline {paragraph}{Pantalla para editar o eliminar una tarea}{131}{figure.7.19}%
+\contentsline {paragraph}{Pantalla editar tarea}{131}{figure.7.20}%
+\contentsline {paragraph}{Pantalla de calendario}{132}{figure.7.21}%
+\contentsline {paragraph}{Pantalla de lista de la compra}{133}{figure.7.22}%
+\contentsline {paragraph}{Pantalla de crear lista de la compra}{134}{figure.7.23}%
+\contentsline {paragraph}{Pantalla para eliminar lista de la compra}{135}{figure.7.24}%
+\contentsline {paragraph}{Pantalla de productos de la lista de la compra}{135}{figure.7.25}%
+\contentsline {paragraph}{Pantalla de añadir producto a la lista de la compra}{136}{figure.7.26}%
+\contentsline {subsubsection}{\numberline {7.2.2.2}Pruebas de funcionalidad}{137}{subsubsection.7.2.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.3}Revisión de la iteracción}{138}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Crear una tarea}{138}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Consultar planificación semanal}{138}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Visualización, edición y eliminación de tareas}{138}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Visualización del calendario de tareas}{138}{subsubsection.7.2.2.3}%
+\contentsline {paragraph}{Crear lista de la compra, añadir productos y eliminar productos}{138}{subsubsection.7.2.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.2.4}Plan para la siguiente iteracción}{139}{subsubsection.7.2.2.4}%
+\contentsline {subsection}{\numberline {7.2.3}Iteración 3}{139}{subsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.1}Implementacion}{139}{subsubsection.7.2.3.1}%
+\contentsline {chapter}{\numberline {8}Validación de la aplicación por usuarios reales}{140}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{141}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{141}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{147}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{152}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{159}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{165}{section.Alph1.5}%
+\contentsline {section}{Referencias}{171}{table.Alph1.29}%

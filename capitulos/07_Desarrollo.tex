@@ -373,7 +373,7 @@ Para la colección de \textbf{hogar} se ha creado la siguiente estructura:
     \item \textbf{nombre:} Es el nombre que indica el usuario al crear el hogar.
     \item \textbf{codigo:} Es el código único que se genera al crear el hogar.
     \item \textbf{miembros:} Es un array que contiene los ID de los usuarios que pertenecen a ese hogar.
-    \item \textbf{fechaCreacion:} Es la fecha en la que se creó el hogar.
+    \item \textbf{fechaCreacion:} Es la fecha en la que se creó el hogar
 \end{itemize}
 
 
@@ -515,7 +515,29 @@ mostramos en el cápitulo anterior. Al realizar la implementación, ha sido nece
 
 
 Este requisito era necesario para poder tener una lista de la compra totalmente funcional, ya que 
-permite al usuario marcar los productos que ha comprado y que ya no necesita. Tras completar la implementación, se han obtenido las siguientes pantallas: 
+permite al usuario marcar los productos que ha comprado y que ya no necesita. 
+
+También se han creado algunos bocetos adicionales para detallar mejor la interfaz de usuario: 
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/add_tasks_screen.png}
+        \caption{Diseño de la pantalla de crear tareas.}
+        \label{add_tasks_screen}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/edit_task.png}
+        \caption{Diseño de la pantalla de editar tarea.}
+        \label{crear_tarea_screen}
+    \end{minipage}
+\end{figure}
+
+
+Tras completar la implementación, se han obtenido las siguientes pantallas: 
 
 \newpage 
 \paragraph{Pantalla de tareas}
@@ -524,19 +546,49 @@ permite al usuario marcar los productos que ha comprado y que ya no necesita. Tr
    
 }
 
-En esta pantalla se pueden consultar tanto las tareas semanales asignadas al usuario para la semana en curso, 
-como las tareas puntuales creadas por el mismo para el día seleccionado. 
-En la parte superior, se muestra la semana actual, y al seleccionar un día específico, 
-se actualiza la vista para mostrar las tareas correspondientes a ese día. 
-Esta funcionalidad permite al usuario planificar y organizar sus actividades de manera eficiente, 
-ya que proporciona una visión clara y estructurada de las tareas pendientes. 
-Además, esta pantalla está diseñada para actuar como una herramienta de planificación semanal, 
-enfocándose exclusivamente en las tareas de la semana actual, lo que facilita la gestión del tiempo y la priorización de actividades. 
-La interfaz también permite navegar fácilmente entre los días de la semana, ofreciendo una experiencia intuitiva y práctica para el usuario. 
+La clase principal de esta pantalla se llama \textit{TareasScreen} y se encarga de gestionar las tareas de los usuarios. Permite que se puedan 
+visualizar las tareas de la semana y las del día actual, permite marcarlas como completadas, ver los detalles de estas, editarlas o eliminarlas.
+También permite crear nuevas tareas, tanto semanales como puntuales.
+
+Al iniciar la pantalla se muestra widget iteractivo con la semana actual y dos secciones diferenciadas: una para las tareas que corresponde con 
+la semana actual por defecto (si se cambia la semana en el widget mencionado anteriormente se mostraran las de esa semana) y otra
+para las tareas puntuales que corresponden por defecto al día actual.
+
+Las funciones principales que hacen esto posible son: 
+\begin{itemize}
+    \item \textbf{initState :} Se ejecuta al abrir la pantalla. Inicializa las variables necesarias.
+    \item \textbf{\_loadInitialData :} Simula una pequeña carga para mostrar un indicdor visual.
+    \item \textbf{dispose :} Libera los recursos cuando la pantalla se cierra.
+    \item \textbf{\_generarSemana :} A partir de una fecha dada, genera una lista de fechas que representa la semana correspondiente.
+    \item \textbf{\_obtenerSemanaMes :} Calcula a qué semana del mes pertenece una fecha concreta, con ajustes si la semana se cruza con el mes siguiente.
+    \item \textbf{\_buildLoadingIndicator :} Crea un indicador de carga que se muestra mientras se cargan los datos.
+    \item \textbf{\_buildMainContent :} Construye el contenido principal de la pantalla.
+    \item \textbf{\_buildWeekSelector :} Crea un selector de semanas que permite al usuario navegar entre las semanas.
+    \item \textbf{\_buildDayItem :} Muestra cada día de la semana con su número y abreviatura, destacando el seleccionado o el actual.
+    \item \textbf{\_buildTaksSection :} Agrupa las dos secciones de tareas: semanales y puntuales.
+    \item \textbf{\_buildSectionHeader :} Crea el encabezado de cada sección.
+    \item \textbf{\_buildWeeklyTaskList :} Busca en la base de datos las tareas semanales y muestra las tareas semanales asignadas al usuario para la semana y mes seleccionados.
+    \item \textbf{\_buildDailyTaskList :} Muestra las tareas puntuales del usuario que coinciden con el día seleccionado.
+    \item \textbf{\_buildTasksList :} Genera la lista de tareas, o un mensaje si no hay ninguna.
+    \item \textbf{\_buildTasksCard :} Crea una tarjeta para cada tarea, con su información básica.
+    \item \textbf{\_getShortWeekday :} Devuelve el nombre abreviado de los días de la semana.
+    \item \textbf{\_esSemanaCambioDeMes :} Determina si la semana actual se extiende al mess siguiente.
+    \item \textbf{\_handleRefresh :} Permite actualizar la pantalla al arrastrar hacia abajo.
+    \item \textbf{\_navigateWeek :} Cambia la semana mostrada hacia adelante o hacia atrás.
+    \item \textbf{\_mostrarDetallesTarea :} Muestra un modal con todos los detalles de una tarea.
+    \item \textbf{\_obtenerNombreMes :} Devuelve el nombre en español de un mes dado.
+    \item \textbf{\_mostrarDialogoConfirmacióonEliminar  :} Muestra un cuadro de diálogo para confirmar la eliminación de una tarea.
+    \item \textbf{\_eliminarTarea :} Elimina una tarea de la base de datos y actualiza la pantalla.
+    \item \textbf{\_mostrarModalEditarTarea :} Muestra un formulario para editar una tarea existente.
+    \item \textbf{\_actualizarEstadoTarea :} Cambia el estado de una tarea a completada o no completada.
+    \item \textbf{\_mostrarModalCrearTarea :} Muestra un formulario para crear una nueva tarea.
+\end{itemize}
+
+El resultado de la implementación de esta pantalla es el siguiente:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/tareas_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/tareas_implementado.png}
     \caption{Interfaz gráfica pantalla de tareas.}
     \label{tasks_screen}
 \end{figure}
@@ -554,9 +606,16 @@ Si la tarea es puntual, únicamente se indica el día concreto en el que debe ll
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_tarea_implementado.png}
-    \caption{Interfaz gráfica pantalla de crear tarea.}
-    \label{create_task_screen}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_tarea_semanal_implementado.png}
+    \caption{Interfaz gráfica pantalla de crear tarea semanal.}
+    \label{create_weekly_task_screen}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_tarea_puntual_implementado.png}
+    \caption{Interfaz gráfica pantalla de crear tarea puntual.}
+    \label{create_one_time_task_screen}
 \end{figure}
 
 
@@ -570,7 +629,7 @@ la fecha en que fue creada y el usuario que la creó.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/ver_tarea_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/ver_tarea_implementado.png}
     \caption{Interfaz gráfica pantalla de ver datos de una tarea.}
     \label{view_task_screen}
 \end{figure}
@@ -587,7 +646,7 @@ Esta pantalla aparece cuando el usuario selecciona el menú de opciones (tres pu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/menu_tarea_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/menu_tarea_implementado.png}
     \caption{Interfaz gráfica pantalla para editar o eliminar una tarea.}
     \label{edit_delete_task_screen}
 \end{figure}
@@ -607,7 +666,7 @@ como evitar campos vacíos o fechas inválidas.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/editar_tarea_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/editar_tarea_implementado.png}
     \caption{Interfaz gráfica pantalla de editar tarea.}
     \label{edit_task_screen}
 \end{figure}
@@ -630,7 +689,7 @@ También es posible acceder a los detalles de una tarea específica, editar su i
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/calendario_implementado.png}
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/calendario_implementado.png}
     \caption{Interfaz gráfica pantalla de calendario.}
     \label{calendar_screen}
 \end{figure}
