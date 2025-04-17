@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.17)  15 APR 2025 12:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.17)  17 APR 2025 11:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1603,41 +1603,40 @@ Package pdftex.def Info: ../capitulos/img/tareas_implementado.png  used on input
 
 
 [126]
-<../capitulos/img/crear_tarea_semanal_implementado.png, id=1726, 1174.3875pt x 2541.495pt>
+
+[127 <../capitulos/img/tareas_implementado.png>]
+<../capitulos/img/crear_tarea_puntual_implementado.png, id=1732, 474.27188pt x 665.48625pt>
+File: ../capitulos/img/crear_tarea_puntual_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_tarea_puntual_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_tarea_puntual_implementado.png  used on input line 622.
+(pdftex.def)             Requested size: 180.0pt x 252.5726pt.
+<../capitulos/img/crear_tarea_semanal_implementado.png, id=1733, 1174.3875pt x 2541.495pt>
 File: ../capitulos/img/crear_tarea_semanal_implementado.png Graphic file (type png)
 <use ../capitulos/img/crear_tarea_semanal_implementado.png>
-Package pdftex.def Info: ../capitulos/img/crear_tarea_semanal_implementado.png  used on input line 609.
+Package pdftex.def Info: ../capitulos/img/crear_tarea_semanal_implementado.png  used on input line 630.
 (pdftex.def)             Requested size: 180.0pt x 389.50673pt.
 
 
-[127 <../capitulos/img/tareas_implementado.png>]
-<../capitulos/img/crear_tarea_puntual_implementado.png, id=1733, 474.27188pt x 665.48625pt>
-File: ../capitulos/img/crear_tarea_puntual_implementado.png Graphic file (type png)
-<use ../capitulos/img/crear_tarea_puntual_implementado.png>
-Package pdftex.def Info: ../capitulos/img/crear_tarea_puntual_implementado.png  used on input line 616.
-(pdftex.def)             Requested size: 180.0pt x 252.5726pt.
-
-
-[128 <../capitulos/img/crear_tarea_semanal_implementado.png>]
+[128 <../capitulos/img/crear_tarea_puntual_implementado.png>]
 <../capitulos/img/ver_tarea_implementado.png, id=1739, 479.54156pt x 667.74469pt>
 File: ../capitulos/img/ver_tarea_implementado.png Graphic file (type png)
 <use ../capitulos/img/ver_tarea_implementado.png>
-Package pdftex.def Info: ../capitulos/img/ver_tarea_implementado.png  used on input line 632.
+Package pdftex.def Info: ../capitulos/img/ver_tarea_implementado.png  used on input line 648.
 (pdftex.def)             Requested size: 180.0pt x 250.64818pt.
 
 
-[129 <../capitulos/img/crear_tarea_puntual_implementado.png>]
+[129 <../capitulos/img/crear_tarea_semanal_implementado.png>]
 
 [130 <../capitulos/img/ver_tarea_implementado.png>]
 <../capitulos/img/menu_tarea_implementado.png, id=1750, 470.50781pt x 665.48625pt>
 File: ../capitulos/img/menu_tarea_implementado.png Graphic file (type png)
 <use ../capitulos/img/menu_tarea_implementado.png>
-Package pdftex.def Info: ../capitulos/img/menu_tarea_implementado.png  used on input line 649.
+Package pdftex.def Info: ../capitulos/img/menu_tarea_implementado.png  used on input line 669.
 (pdftex.def)             Requested size: 180.0pt x 254.59335pt.
 <../capitulos/img/editar_tarea_implementado.png, id=1751, 475.02469pt x 667.74469pt>
 File: ../capitulos/img/editar_tarea_implementado.png Graphic file (type png)
 <use ../capitulos/img/editar_tarea_implementado.png>
-Package pdftex.def Info: ../capitulos/img/editar_tarea_implementado.png  used on input line 669.
+Package pdftex.def Info: ../capitulos/img/editar_tarea_implementado.png  used on input line 686.
 (pdftex.def)             Requested size: 180.0pt x 253.0222pt.
 
 
@@ -1645,7 +1644,7 @@ Package pdftex.def Info: ../capitulos/img/editar_tarea_implementado.png  used on
 <../capitulos/img/calendario_implementado.png, id=1757, 1174.3875pt x 2541.495pt>
 File: ../capitulos/img/calendario_implementado.png Graphic file (type png)
 <use ../capitulos/img/calendario_implementado.png>
-Package pdftex.def Info: ../capitulos/img/calendario_implementado.png  used on input line 692.
+Package pdftex.def Info: ../capitulos/img/calendario_implementado.png  used on input line 717.
 (pdftex.def)             Requested size: 180.0pt x 389.50673pt.
 
 
@@ -1653,7 +1652,7 @@ Package pdftex.def Info: ../capitulos/img/calendario_implementado.png  used on i
 <../capitulos/img/lista_compra_implementado.png, id=1763, 472.01344pt x 670.75594pt>
 File: ../capitulos/img/lista_compra_implementado.png Graphic file (type png)
 <use ../capitulos/img/lista_compra_implementado.png>
-Package pdftex.def Info: ../capitulos/img/lista_compra_implementado.png  used on input line 709.
+Package pdftex.def Info: ../capitulos/img/lista_compra_implementado.png  used on input line 734.
 (pdftex.def)             Requested size: 143.9978pt x 204.62631pt.
 
 
@@ -1661,7 +1660,7 @@ Package pdftex.def Info: ../capitulos/img/lista_compra_implementado.png  used on
 <../capitulos/img/crear_lista_implementado.png, id=1770, 472.01344pt x 664.73344pt>
 File: ../capitulos/img/crear_lista_implementado.png Graphic file (type png)
 <use ../capitulos/img/crear_lista_implementado.png>
-Package pdftex.def Info: ../capitulos/img/crear_lista_implementado.png  used on input line 724.
+Package pdftex.def Info: ../capitulos/img/crear_lista_implementado.png  used on input line 749.
 (pdftex.def)             Requested size: 143.9978pt x 202.78905pt.
 
 
@@ -1669,12 +1668,12 @@ Package pdftex.def Info: ../capitulos/img/crear_lista_implementado.png  used on 
 <../capitulos/img/eliminar_lista_implementado.png, id=1777, 470.50781pt x 663.22781pt>
 File: ../capitulos/img/eliminar_lista_implementado.png Graphic file (type png)
 <use ../capitulos/img/eliminar_lista_implementado.png>
-Package pdftex.def Info: ../capitulos/img/eliminar_lista_implementado.png  used on input line 743.
+Package pdftex.def Info: ../capitulos/img/eliminar_lista_implementado.png  used on input line 768.
 (pdftex.def)             Requested size: 143.9978pt x 202.9774pt.
 <../capitulos/img/productos_implementado.png, id=1778, 472.01344pt x 657.95813pt>
 File: ../capitulos/img/productos_implementado.png Graphic file (type png)
 <use ../capitulos/img/productos_implementado.png>
-Package pdftex.def Info: ../capitulos/img/productos_implementado.png  used on input line 760.
+Package pdftex.def Info: ../capitulos/img/productos_implementado.png  used on input line 785.
 (pdftex.def)             Requested size: 143.9978pt x 200.7221pt.
 
 
@@ -1682,7 +1681,7 @@ Package pdftex.def Info: ../capitulos/img/productos_implementado.png  used on in
 <../capitulos/img/crear_producto_implementado.png, id=1784, 473.51906pt x 660.21657pt>
 File: ../capitulos/img/crear_producto_implementado.png Graphic file (type png)
 <use ../capitulos/img/crear_producto_implementado.png>
-Package pdftex.def Info: ../capitulos/img/crear_producto_implementado.png  used on input line 776.
+Package pdftex.def Info: ../capitulos/img/crear_producto_implementado.png  used on input line 801.
 (pdftex.def)             Requested size: 143.9978pt x 200.76634pt.
 
 
@@ -1982,7 +1981,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  75i,14n,79p,728b,783s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1095.pk> <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/eurosym/feybr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/eurosym/feymr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on proyecto.pdf (174 pages, 5875520 bytes).
+Output written on proyecto.pdf (174 pages, 5878119 bytes).
 PDF statistics:
  2241 PDF objects out of 2487 (max. 8388607)
  669 named destinations out of 1000 (max. 500000)

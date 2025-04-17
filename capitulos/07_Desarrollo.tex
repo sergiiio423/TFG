@@ -600,16 +600,22 @@ El resultado de la implementación de esta pantalla es el siguiente:
    
 }
 
-Esta pantalla permite crear una nueva tarea proporcionando su nombre, descripción y tipo. Si la tarea es semanal, 
-se debe especificar la semana y el mes en que se realizará, además de asignarla a los miembros del hogar correspondientes. 
-Si la tarea es puntual, únicamente se indica el día concreto en el que debe llevarse a cabo.
+Esta pantalla se muestra con el método \textit{\_mostrarModalCrearTarea}, aunque este método delega toda su funcionalidad en la clase \textit{CrearTareaForm} que es la encargada de gestionar la creación de tareas y mostrar el formulario.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_tarea_semanal_implementado.png}
-    \caption{Interfaz gráfica pantalla de crear tarea semanal.}
-    \label{create_weekly_task_screen}
-\end{figure}
+Dicha clase esta compuesta por los siguientes métodos:
+\begin{itemize}
+    \item \textbf{initState :} Se ejecuta al abrir la pantalla y llama a los métodos \_cargarMiembrosHogar y \_verificarSemanaCambioMes que explicaremos más adelante.
+    \item \textbf{\_cargarMiembrosHogar :} Consulta en la base de datos para encontrar el hogar al que pertenece el usuario y obtiene la lista de miembros que comparten hogar.
+    \item \textbf{\_verificarSemanaCambioMes :} Si estamos en los últimos días del mes, cambia a la primera semana del siguiente mes para que se muestren las tareas semanales de dicha semana. 
+    \item \textbf{\_seleccionarFecha :} Abre el calendario para que el usuario pueda seleccionar una fecha en caso de que la tarea sea puntual.
+    \item \textbf{\_toggleSemana :} Permite al usuario elegir las semanas en las que se realizará la tarea semanal.
+    \item \textbf{\_crearTarea :} Se encarga de validar que se haya rellenado correctamente todos los campos del formulario, crea un objeto con todos los datos de la tarea y los guarda en Firestore.
+    \item \textbf{\_mostrarError :} Muestra un mensaje en caso de que ocurra algún error. 
+    \item \textbf{\_buildTaskTypeOption :} Crea los botones que permiten cambiar entre tarea puntual o semanal. 
+\end{itemize}
+
+Por tanto la pantalla de crear tarea se divide en dos partes: una para crear tareas semanales y otra para crear tareas puntuales y se ven así: 
+
 
 \begin{figure}[H]
     \centering
@@ -619,13 +625,23 @@ Si la tarea es puntual, únicamente se indica el día concreto en el que debe ll
 \end{figure}
 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_tarea_semanal_implementado.png}
+    \caption{Interfaz gráfica pantalla de crear tarea semanal.}
+    \label{create_weekly_task_screen}
+\end{figure}
+
+
+
+
 \paragraph{Pantalla de ver datos de una tarea}
 \parbox{\textwidth}{ 
    
 }
 
-Esta pantalla muestra todos los detalles de la tarea, incluyendo la información proporcionada durante su creación, 
-la fecha en que fue creada y el usuario que la creó.
+Esta pantalla se muestra al usuario cuando selecciona una tarea específica en la pantalla de tareas. Su implementación se realiza a través del método 
+\textit{\_mostrarDetallesTarea}, el cual despliega un modal que contiene toda la información detallada de la tarea seleccionada. El resultado es el siguiente:
 
 \begin{figure}[H]
     \centering
@@ -642,7 +658,11 @@ la fecha en que fue creada y el usuario que la creó.
    
 }
 
-Esta pantalla aparece cuando el usuario selecciona el menú de opciones (tres puntos) ubicado a la derecha de una tarea específica.
+Esta pantalla se muestra cuando el usuario selecciona el menú de opciones (representado por tres puntos) ubicado a la derecha de una tarea específica. 
+Desde esta pantalla, el usuario puede optar por editar la tarea, lo que lo redirige a la pantalla de edición, o eliminarla, lo que muestra un cuadro de diálogo de confirmación antes de proceder. Esta implementado
+dentro de la clase \textit{TareasScreen}, explicada anteriormente. El resultado es el siguiente: 
+
+
 
 \begin{figure}[H]
     \centering
@@ -657,12 +677,9 @@ Esta pantalla aparece cuando el usuario selecciona el menú de opciones (tres pu
    
 }
 
-Esta pantalla es similar a la de creación de tareas, pero con la diferencia de que los campos ya están pre-rellenados 
-con la información de la tarea seleccionada para su edición. Esto permite al usuario modificar únicamente los datos que desee actualizar, 
-sin necesidad de volver a introducir toda la información desde cero. 
-Además, la interfaz incluye validaciones para garantizar que los cambios realizados cumplan con los requisitos establecidos, 
-como evitar campos vacíos o fechas inválidas.
-
+Esta pantalla se muestra con el método \textit{\_mostrarModalEditarTarea}, aunque este método delega toda su funcionalidad en la clase \textit{EditarTareaForm} que es la encargada de gestionar la edición de tareas y mostrar el formulario.
+Esta clase tiene los mismos métodos que la clase \textit{CrearTareaForm} explicada anteriormente, pero con la diferencia de que el método\textit{\_crearTarea} se llama {\_editarTarea} y se encarga de editar la tarea en lugar de crearla y el formulario 
+se inicia con los datos de la tarea seleccionada. El resultado es el siguiente:
 
 \begin{figure}[H]
     \centering
@@ -678,14 +695,22 @@ como evitar campos vacíos o fechas inválidas.
    
 }
 
-En esta pantalla se pueden ver todas las tareas semanales asignadas al hogar, organizadas según la semana correspondiente al día seleccionado 
-en el calendario. Además, se incluyen las tareas puntuales personales del usuario para el día seleccionado.
-Al seleccionar un día específico, se actualiza automáticamente la lista de tareas, mostrando tanto las tareas del hogar 
-como las personales asociadas a esa fecha. 
+Esta pantalla esta implementada dentro de la clase \textit{CalendarioScreen} y su objetivo mostrar las tareas del usuario en un 
+formato de calendario. Se mustra tanto las tareas puntuales como las semanales (aunque no estén asignadas al usuario) y permite ver 
+claramente que días tiene tareas asignadas y los detalles de cada tarea.
 
-Además de la visualización de tareas, esta pantalla incluye funcionalidades clave para la gestión de las mismas. 
-Los usuarios pueden crear nuevas tareas, ya sean semanales o puntuales, directamente desde esta vista. 
-También es posible acceder a los detalles de una tarea específica, editar su información o eliminarla si ya no es necesaria.
+Al iniciar la pantalla se carga el calendario junto con las tareas del hogar al que pertenece el usuario. Se muestran los días con tareas mediante 
+formas circulares de colores que en función del color indican si la tarea es semanal o puntual. Al seleccionar un día concreto en el calendario, aparecen 
+las tareas correspondientes a ese día, primero las semanales y luego las puntuales. Mientras que se visualizan las tareas, se pueden 
+marcar como completada, editar o eliminar cualquier tarea. Además en todo momento se puede ver el botón que permite añadir una nueva tareaa, cuya lógica es la misma
+que la de la pantalla de tareas.
+
+Los métodos que componen esta pantalla son: 
+\begin{itemize}
+    \item \textbf{initState :} Se ejecuta al abrirse la pantalla. Configura el calendario en español y selecciona el día actual por defecto.
+\end{itemize}
+
+
 
 \begin{figure}[H]
     \centering
