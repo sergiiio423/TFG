@@ -22,6 +22,14 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
   int _currentIndex = 3;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _eliminarProductosCompradosExpirados();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +65,8 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
         child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: _currentIndex, context: context),
+      bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: _currentIndex, context: context),
     );
   }
 
@@ -75,13 +84,13 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
             ),
           );
         }
-        
+
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.shopping_basket_outlined, 
+                Icon(Icons.shopping_basket_outlined,
                     size: 64, color: Colors.teal.withOpacity(0.5)),
                 const SizedBox(height: 16),
                 Text(
@@ -145,7 +154,8 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
     }
   }
 
-  Future<void> _agregarProducto(String nombre, String icono, String cantidad) async {
+  Future<void> _agregarProducto(
+      String nombre, String icono, String cantidad) async {
     await FirebaseFirestore.instance.collection('producto').add({
       'nombre': nombre,
       'icono': icono,
@@ -159,18 +169,20 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
   Future<void> _marcarComoComprado(DocumentSnapshot producto) async {
     final bool comprado = producto['comprado'] ?? false;
     final nuevoEstado = !comprado;
-    
+
     await FirebaseFirestore.instance
         .collection('producto')
         .doc(producto.id)
         .update({
-          'comprado': nuevoEstado,
-          'fechaComprado': nuevoEstado ? FieldValue.serverTimestamp() : null,
-        });
+      'comprado': nuevoEstado,
+      'fechaComprado': nuevoEstado ? FieldValue.serverTimestamp() : null,
+    });
 
     if (_productKeys.containsKey(producto.id)) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
-        _productKeys[producto.id]?.currentState?.updateCompradoState(nuevoEstado);
+        _productKeys[producto.id]
+            ?.currentState
+            ?.updateCompradoState(nuevoEstado);
       });
     }
   }
@@ -192,7 +204,28 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
       await FirebaseFirestore.instance
           .collection('producto')
           .doc(producto.id)
-          .update({'comprado': true, 'fechaComprado': FieldValue.serverTimestamp()});
+          .update({
+        'comprado': true,
+        'fechaComprado': FieldValue.serverTimestamp()
+      });
+    }
+  }
+
+  Future<void> _eliminarProductosCompradosExpirados() async {
+    final ahora = DateTime.now();
+    final hace24Horas = ahora.subtract(const Duration(hours: 24));
+
+    final productosComprados = await FirebaseFirestore.instance
+        .collection('producto')
+        .where('listaId', isEqualTo: widget.listaId)
+        .where('comprado', isEqualTo: true)
+        .get();
+
+    for (var producto in productosComprados.docs) {
+      final fechaComprado = producto['fechaComprado']?.toDate();
+      if (fechaComprado != null && fechaComprado.isBefore(hace24Horas)) {
+        await _eliminarProducto(producto.id);
+      }
     }
   }
 
@@ -201,7 +234,19 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
     final nombreController = TextEditingController();
     final cantidadController = TextEditingController(text: "1");
     String selectedIcon = " 🍽️ ";
-    final List<String> emoticons = [" 🍽️ ", "🥩", "🐟", "🍞", "🍎", "🥚", "🥬","🥔","🫘","🍚","🍪"];
+    final List<String> emoticons = [
+      " 🍽️ ",
+      "🥩",
+      "🐟",
+      "🍞",
+      "🍎",
+      "🥚",
+      "🥬",
+      "🥔",
+      "🫘",
+      "🍚",
+      "🍪"
+    ];
 
     showModalBottomSheet(
       context: context,
@@ -281,7 +326,7 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8),
                           child: ChoiceChip(
-                            label: Text(emoticons[index], 
+                            label: Text(emoticons[index],
                                 style: const TextStyle(fontSize: 24)),
                             selected: selectedIcon == emoticons[index],
                             selectedColor: Colors.orange.withOpacity(0.2),
@@ -356,8 +401,6 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
       },
     );
   }
-
- 
 }
 
 class _ProductoItem extends StatefulWidget {

@@ -457,7 +457,6 @@ Para la siguiente iteracción se propone:
 
 \begin{itemize}
     \item Mejorar la intefaz de usuario, con las sugerencias y comentarios de la usuaria.
-    \item Implementar una pantalla principal provisional, para hacer la aplicación más intuitiva.
     \item Desarrollar los requisitos de la siguiente iteracción.
 \end{itemize}
 
@@ -708,8 +707,24 @@ que la de la pantalla de tareas.
 Los métodos que componen esta pantalla son: 
 \begin{itemize}
     \item \textbf{initState :} Se ejecuta al abrirse la pantalla. Configura el calendario en español y selecciona el día actual por defecto.
+    \item \textbf{dispose :} Libera los recursos cuando se cierra la pantalla.
+    \item \textbf{\_setupHouseholdListener :} Detecta cuando hay algun cambio en el hogar del usuario y recarga las tareas cuando esto ocurre.
+    \item \textbf{\_loadTasksFromFirestore :} Además de escuchar todos los cambios en la colección de tareas, carga las tareas y las filtra en tareas puntuales del usuario y semanales de cualquier miembro del hogar. 
+    \item \textbf{\_loadUserNames :} Carga los nombres de los usuarios desde la colección de usuarios. Sirve para mostrar los nombres de los usuario en cada tarea.
+    \item \textbf{\_getDailyTasks :} Devuelve una lista con las tareas puntuales del usuario que ocurren en un día específico.
+    \item \textbf{\_getWeeklyTasksForDay :} Busca en la lista de las tareas semanales cuáles ocurren en un día específico.
+    \item \textbf{\_buildCalendar :} Se encarga de construir el calendario iteractivo y de mostrar las tareas en los días correspondientes.
+    \item \textbf{\_buildTaskCard :} Muestra un tarjeta con la información de una tarea, permitiendo ver los detalles de la tarea, marcarlas como completadas o acceder a las opciones de editarla o eliminarla.
+    \item \textbf{\_buildDetalleItem :} Muestra en detalle la información de una tarea seleccionada.
+    \item \textbf{\_obtenerNombreMes :} Devuelve el nombre del mes en español a partir de su número.
+    \item \textbf{\_toggleTaskCompletion :} Cambia el estado de una tarea entre completada y no completada en Firestore. 
+    \item \textbf{\_handleTaskAction :} Comprueba si el usuario ha elegido editar o eliminar una tarea desde el menú y llama al método correspondiente.
+    \item \textbf{\_confirmDeleteTask :} Muestra un cuadro de confirmación antes de eliminar una tarea. Si se confirma, se borra la tarea de Firestore.
+    \item \textbf{\_mostrarModalCrearTarea :} Muestra un modal para crear una nueva tarea.
+    \item \textbf{\_mostrarModalEditarTarea :} Muestra un modal para editar una tarea existente.
 \end{itemize}
 
+El resultado de la implementación de esta pantalla es el siguiente:
 
 
 \begin{figure}[H]
@@ -725,9 +740,23 @@ Los métodos que componen esta pantalla son:
    
 }
 
-En esta pantalla se muestran todas las listas de la compra creadas por el usuario o en las que participa. 
-Además, se permite al usuario realizar diversas acciones, como seleccionar una lista para ver sus productos, 
-crear una nueva lista, o eliminar una lista existente mediante el menú de opciones.
+
+La clase principal de esta pantalla se llama \textit{ListaScreen} y permite al usuario, ver, crear, buscar y eliminar listas de la compra, ya sean 
+individuales o compartidas con los miembros del hogar. Esta pantalla muestra todas las listas activas del usuario y permite acceder a los 
+productos que tiene cada una. 
+
+Los métodos que componen esta pantalla son:
+
+\begin{itemize}
+    \item \textbf{dispose :} Libera los recursos cuando la pantalla se cierra.
+    \item \textbf{\_buildListaCompra :} Se conecta a la base de ddatos y obtiene todas las listas donde el usuario está incluido y muestra un mensaje si no hay listas creadas o una lista con las tarjetas de cada lista.
+    \item \textbf{\_buildListaCard :} Crea una tarjeta para cada lista de la compra, muestra su nombre y si es individual o compartida.
+    \item \textbf{\_confirmarBorradaLista :} Muestra un cuadro de confirmación antes de eliminar una lista. Si se confirma, borra todos los productos asociados a esa lista en Firestore y luego borra la lista.
+    \item \textbf{\_mostrarModalCrearLista :} Muestra un modal para crear una nueva lista de la compra.
+    \item \textbf{\_crearLista :} Se encarga de validar que se haya rellenado correctamente todos los campos del formulario, crea un objeto con todos los datos de la lista y los guarda en Firestore.
+\end{itemize}
+
+Esta pantalla es bastante sencilla, y su resultado es el siguiente:
 
 \begin{figure}[H]
     \centering
@@ -741,8 +770,11 @@ crear una nueva lista, o eliminar una lista existente mediante el menú de opcio
    
 }
 
-Esta pantalla permite al usuario crear una nueva lista de la compra, especificando el nombre de la lista y 
-seleccionando si será de uso personal o compartida con otros miembros del hogar.
+Esta pantalla se muestra con el método \textit{\_mostrarModalCrearLista}, explicado anteriomente, que es el encargado de gestionar 
+la creación de listas de la compra y mostrar el formulario.
+
+
+El resultado de la implementación de esta pantalla es el siguiente:
 
 \begin{figure}[H]
     \centering
@@ -760,8 +792,9 @@ seleccionando si será de uso personal o compartida con otros miembros del hogar
    
 }
 
-Esta pantalla se activa cuando el usuario selecciona el menú de opciones (representado por tres puntos)
-ubicado a la derecha de una lista de la compra específica.
+Esta pantalla se muestra cuando el usuario selecciona el menú de opciones (representado por tres puntos) ubicado a la derecha de una lista específica. 
+Desde esta pantalla, el usuario puede eliminar la lista, lo que muestra un cuadro de diálogo de confirmación antes de proceder. Esta implementado
+dentro de la clase \textit{ListaScreen}, explicada anteriormente. El resultado es el siguiente: 
 
 \begin{figure}[H]
     \centering
@@ -776,9 +809,26 @@ ubicado a la derecha de una lista de la compra específica.
    
 }
 
-En esta pantalla se muestran los productos de la lista seleccionada, con su nombre, cantidad e icono representativo. 
-El usuario puede ajustar cantidades, añadir nuevos productos o eliminarlos fácilmente. 
-Los cambios se sincronizan automáticamente con los miembros del hogar, manteniendo la lista actualizada y compartida.
+La clase principal de esta pantalla es \textit{ProductoListaScreen} y permite gestionar los productos que pertenecen a una lista de la compra específica. 
+Esta pantalla permite ver, añadir, modificar la cantidad, marcar como comprado o eliminar productos dentro de una lista. Además incluye una opción de marcar 
+todoss los productos como comprados de una sola vez. 
+
+Al abrir esta pantalla, se cargan automáticamente todos los productos relacionados con la lista seleccionada. Se organizan en una lista y se muestran
+diferenciado entre los productos comprados y los que no lo están. Incluye también un botón para añadir nuevos productos a la lista.
+
+\begin{itemize}
+    \item \textbf{\_buildProductossLista :} Obtiene todos los productos asociados a la lista desde Firestore y los ordena para mostrar primero los que aún no se han comprado. 
+    \item \textbf{\_cambiarCantidad :} Permite aumentar o disminuir la cantidad de un producto en la lista. 
+    \item \textbf{\_agregarProducto :} Añade un nuevo producto en la base de datos. 
+    \item \textbf{\_marcarComoComprado :} Cambia el estado de un producto entre comprado y no comprado en Firestore.
+    \item \textbf{\_eliminarProducto :} Elimina un producto de la lista y de la base de datos.
+    \item \textbf{\_marcarTodosComoComprados :} Cambia el estado de todos los productos de la lista a comprados.
+    \item \textbf{\_mostrarModalAgregarProducto :} Muestra un modal para añadir un nuevo producto a la lista.
+    \item \textbf{\_eliminarProductosCompradosExpirados :} Se encarga de eliminar los productos que ya  han sido comprados y que llevan más de 24 horas en ese estado.
+\end{itemize}
+
+La pantalla se muestra de la siguiente manera:
+
 
 \begin{figure}[H]
     \centering
@@ -793,8 +843,11 @@ Los cambios se sincronizan automáticamente con los miembros del hogar, mantenie
    
 }
 
-En esta pantalla se puede añadir un producto a la lista de la compra, 
-seleccionando además un icono representativo que facilite la identificación visual del producto en la lista.
+Esta pantalla se muestra con el método \textit{\_mostrarModalAgregarProducto}, explicado anteriomente. 
+
+El resultado es el siguiente: 
+
+
 
 \begin{figure}[H]
     \centering
@@ -802,6 +855,50 @@ seleccionando además un icono representativo que facilite la identificación vi
     \caption{Interfaz gráfica pantalla de añadir producto a la lista de la compra.}
     \label{add_product_screen}
 \end{figure}
+
+
+\subsection{Base de datos}
+
+Como resultado de la implementación de esta iteacción, se han creado las colecciones tareas, lista y producto en la base de datos de Firestore.
+
+Para la colección de \textbf{tareas} se ha crado la siguiente estructura:
+
+\begin{itemize}
+    \item \textbf{asignados}: Contiene los usuarios asignados a la tarea (en caso de que sea semanal).
+    \item \textbf{año}: Almacena el año en el que se va a realizar la tarea.
+    \item \textbf{completada}: Almacena el estado de la tarea (si ha sido completada o no).
+    \item \textbf{descripcion}: Es la descripción de la tarea.
+    \item \textbf{fecha}: Es la fecha en la que se va a realizar la tarea (en caso de que sea puntual).
+    \item \textbf{fechaActualizacion}: En caso de que la tarea se modifique, almacena la fecha de la última modificación.
+    \item \textbf{fechaCreacion}: Almacena la fecha en la que se creó la tarea.
+    \item \textbf{mes}: Es el mes en el que se va a realizar la tarea. (en caso de que sea semanal).
+    \item \textbf{semanas:} Es una lista con las semanas del mes en las que se va a realizar la tarea (en caso de que sea semanal).
+    \item \textbf{tipo}: El tipo de tarea (semanal o puntual).
+    \item \textbf{titulo}: Es el título de la tarea.
+    \item \textbf{usuarioId}: Es el id del usuario que ha creado la tarea.
+\end{itemize}
+
+La colección de \textbf{lista} almacena la siguiente información:
+
+\begin{itemize}
+    \item \textbf{esGrupal}: Es un booleano que almacena true en caso de que la lista sea compartida con el hogar y false en caso de que sea individual.
+    \item \textbf{nombre}: Es el nombre de la lista.
+    \item \textbf{usuario}: Es el id de los usuarios que participan en la lista. 
+\end{itemize}
+
+
+Por último, la colección de \textbf{producto} almacena la siguiente información:
+
+\begin{itemize}
+    \item \textbf{cantidad}: Es la cantidad del producto que se va a comprar.
+    \item \textbf{comprado}: Es un booleano que almacena true en caso de que el producto haya sido comprado y false en caso de que no lo haya sido.
+    \item \textbf{fechaComprado}: Si se ha comprado el producto, almacena la fecha en la que se compró.
+    \item \textbf{fechaCreacion}: Es a l fecha en la que se creó el producto.
+    \item \textbf{icono}: Es el icono del producto.
+    \item \textbf{listaId}: Es el id de la lista a la que pertenece el producto.
+    \item \textbf{nombre}: Es el nombre del producto.
+\end{itemize}
+
 
 \subsubsection{Pruebas de funcionalidad}
 
@@ -881,7 +978,8 @@ Para la siguiente iteracción se propone:
 \begin{itemize}
     \item Mejorar la intefaz de usuario, con las sugerencias y comentarios de la usuaria.
     \item Desarrollar los requisitos de la siguiente iteracción.
-    \item Corregir los posibles errores que se hayan detectado en la iteracción anterior.
+    \item Implementar una pantalla principal provisional, para hacer la aplicación más intuitiva.
+    \item Corregir los posibles errores que se hayan detectado en la iteracción anterior
 \end{itemize}
 
 \subsection{Iteración 3}

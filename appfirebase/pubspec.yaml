@@ -47,7 +47,10 @@ dependencies:
   firebase_messaging:
   cached_network_image: 
   collection: 
-  
+  introduction_screen:
+  showcaseview:
+  shared_preferences:
+  lottie:
 
 
 dev_dependencies:
