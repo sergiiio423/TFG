@@ -598,139 +598,126 @@ void _setupTareasListener() {
     );
   }
 
-  Widget _buildDebtsSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildSectionHeader(
-          title: 'Deudas Pendientes',
-          actionText: deudas.isNotEmpty ? 'Ver todas' : null,
-          onAction: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => GastosScreen()),
-            );
-          },
-        ),
-        const SizedBox(height: 12),
-        deudas.isEmpty
-            ? _buildEmptyState(
-                icon: Icons.money_off,
-                message: 'No tienes deudas pendientes',
-                color: Colors.green.shade100,
-                iconColor: Colors.green,
-              )
-            : Column(
-                children: deudas.map((deuda) => _buildDebtTile(deuda)).toList(),
-              ),
-      ],
-    );
-  }
+Widget _buildDebtsSection() {
+  final deudasUsuario = deudas.where((deuda) {
+    return deuda['deudor'] == _user?.uid || deuda['acreedor'] == _user?.uid;
+  }).toList();
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      _buildSectionHeader(
+        title: 'Deudas Pendientes',
+        actionText: deudasUsuario.isNotEmpty ? 'Ver todas' : null,
+        onAction: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => GastosScreen()),
+          );
+        },
+      ),
+      const SizedBox(height: 12),
+      deudasUsuario.isEmpty
+          ? _buildEmptyState(
+              icon: Icons.money_off,
+              message: 'No tienes deudas pendientes',
+              color: Colors.green.shade100,
+              iconColor: Colors.green,
+            )
+          : Column(
+              children: deudasUsuario
+                  .map((deuda) => _buildDebtTile(deuda))
+                  .toList(),
+            ),
+    ],
+  );
+}
 
   Widget _buildDebtTile(Map<String, dynamic> deuda) {
-    final currentUserId = _user?.uid;
-    final esDeudor = deuda['deudor'] == currentUserId;
-    final esAcreedor = deuda['acreedor'] == currentUserId;
+  final esDeudor = deuda['deudor'] == _user?.uid;
+  final nombreDeudor = _nombresUsuarios[deuda['deudor']] ?? 'Usuario';
+  final nombreAcreedor = _nombresUsuarios[deuda['acreedor']] ?? 'Usuario';
 
-    // Verificar si el usuario está involucrado en esta deuda
-    if (!esDeudor && !esAcreedor) {
-      return const SizedBox.shrink(); // No mostrar deudas no relacionadas
-    }
+  String textoDeuda;
+  Color colorFondo;
+  Color colorIcono;
+  IconData icono;
+  Color colorTexto;
 
-    // Obtener nombres de usuarios desde el mapa precargado
-    final nombreDeudor = _nombresUsuarios[deuda['deudor']] ?? 'Usuario';
-    final nombreAcreedor = _nombresUsuarios[deuda['acreedor']] ?? 'Usuario';
-
-    // Determinar el texto según el rol del usuario
-    String textoDeuda;
-    Color colorFondo;
-    Color colorIcono;
-    IconData icono;
-    Color colorTexto;
-
-    if (esDeudor) {
-      textoDeuda = 'Debes a $nombreAcreedor';
-      colorFondo = Colors.red.shade100;
-      colorIcono = Colors.red.shade400;
-      icono = Icons.money_off;
-      colorTexto = Colors.red;
-    } else {
-      textoDeuda = '$nombreDeudor te debe';
-      colorFondo = Colors.green.shade100;
-      colorIcono = Colors.green.shade400;
-      icono = Icons.attach_money;
-      colorTexto = Colors.green;
-    }
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            blurRadius: 5,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: colorFondo,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(icono, color: colorIcono),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  textoDeuda,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Creada: ${DateFormat('dd MMM yyyy').format(deuda['creadoEn'])}',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.black54,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Últ. actualización: ${DateFormat('dd MMM').format(deuda['ultimaActualizacion'])}',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.black54,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Text(
-            '${(deuda['monto'] as num).toStringAsFixed(2)} €',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: colorTexto,
-            ),
-          ),
-        ],
-      ),
-    );
+  if (esDeudor) {
+    textoDeuda = 'Debes a $nombreAcreedor';
+    colorFondo = Colors.red.shade100;
+    colorIcono = Colors.red.shade400;
+    icono = Icons.money_off;
+    colorTexto = Colors.red;
+  } else {
+    textoDeuda = '$nombreDeudor te debe';
+    colorFondo = Colors.green.shade100;
+    colorIcono = Colors.green.shade400;
+    icono = Icons.attach_money;
+    colorTexto = Colors.green;
   }
 
+  return Container(
+    margin: const EdgeInsets.only(bottom: 8),
+    padding: const EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.1),
+          blurRadius: 5,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    ),
+    child: Row(
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: colorFondo,
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icono, color: colorIcono),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                textoDeuda,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Creada: ${DateFormat('dd MMM yyyy').format(deuda['creadoEn'])}',
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.black54,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Text(
+          '${(deuda['monto'] as num).toStringAsFixed(2)} €',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: colorTexto,
+          ),
+        ),
+      ],
+    ),
+  );
+}
   Widget _buildShoppingListSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

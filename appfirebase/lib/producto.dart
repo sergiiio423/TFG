@@ -45,6 +45,12 @@ class _ProductosListaScreenState extends State<ProductosListaScreen> {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () async {
+            Navigator.pushReplacementNamed(context, '/lista');
+          },
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.checklist_rounded),
