@@ -11,6 +11,7 @@ import 'conectar.dart';
 import 'calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'lista_compra.dart';
+import 'gastos.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +51,8 @@ class MyApp extends StatelessWidget {
         '/calendario': (context) =>  CalendarioScreen(),
         // ----------------------------------------------------------
         '/lista': (context) => const ListaScreen(),
+        // ----------------------------------------------------------
+        '/gastos': (context) =>  GastosScreen(),
 
       },
     );

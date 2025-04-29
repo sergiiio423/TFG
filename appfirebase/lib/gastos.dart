@@ -1392,6 +1392,12 @@ class _GastosScreenState extends State<GastosScreen>
             color: Colors.white,
           ),
         ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () async {
+            Navigator.pushReplacementNamed(context, '/gastos');
+          },
+        ),
         backgroundColor: Colors.teal,
         elevation: 0,
         centerTitle: true,

@@ -52,36 +52,44 @@
 \contentsline {figure}{\numberline {6.14}{\ignorespaces Diseño de la pantalla del calendario.}}{101}{figure.6.14}%
 \contentsline {figure}{\numberline {6.15}{\ignorespaces Diseño de la pantalla principal de gastos.}}{102}{figure.6.15}%
 \contentsline {figure}{\numberline {6.16}{\ignorespaces Diseño de la pantalla de deudas.}}{102}{figure.6.16}%
-\contentsline {figure}{\numberline {6.17}{\ignorespaces Diseño de la pantalla para saldar deudas.}}{103}{figure.6.17}%
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Diseño de la pantalla de la lista de la compra.}}{104}{figure.6.18}%
-\contentsline {figure}{\numberline {6.19}{\ignorespaces Diseño de la pantalla de productos.}}{104}{figure.6.19}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Diseño de la pantalla de la lista de la compra.}}{103}{figure.6.17}%
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Diseño de la pantalla de productos.}}{103}{figure.6.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Diseño de la pantalla de bienvenida.}}{108}{figure.7.1}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Diseño de la pantalla de registro.}}{108}{figure.7.2}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Diseño de la pantalla de editar usuario.}}{109}{figure.7.3}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Diseño de la pantalla de editar hogar.}}{109}{figure.7.4}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Interfaz gráfica pantalla bienvenida.}}{110}{figure.7.5}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Interfaz gráfica pantalla de registro.}}{112}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Interfaz gráfica pantalla de inicio de sesión.}}{113}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Interfaz gráfica pantalla de ver datos de hogar y usuario.}}{115}{figure.7.8}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Interfaz gráfica pantalla de editar datos de usuario.}}{116}{figure.7.9}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Interfaz gráfica pantalla de editar hogar.}}{117}{figure.7.10}%
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Interfaz gráfica pantalla para participar en un hogar.}}{118}{figure.7.11}%
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Interfaz gráfica pantalla para crear un hogar.}}{119}{figure.7.12}%
-\contentsline {figure}{\numberline {7.13}{\ignorespaces Interfaz gráfica pantalla de unirse a un hogar.}}{120}{figure.7.13}%
-\contentsline {figure}{\numberline {7.14}{\ignorespaces Diseño de la pantalla de crear tareas.}}{124}{figure.7.14}%
-\contentsline {figure}{\numberline {7.15}{\ignorespaces Diseño de la pantalla de editar tarea.}}{124}{figure.7.15}%
-\contentsline {figure}{\numberline {7.16}{\ignorespaces Interfaz gráfica pantalla de tareas.}}{127}{figure.7.16}%
-\contentsline {figure}{\numberline {7.17}{\ignorespaces Interfaz gráfica pantalla de crear tarea puntual.}}{128}{figure.7.17}%
-\contentsline {figure}{\numberline {7.18}{\ignorespaces Interfaz gráfica pantalla de crear tarea semanal.}}{129}{figure.7.18}%
-\contentsline {figure}{\numberline {7.19}{\ignorespaces Interfaz gráfica pantalla de ver datos de una tarea.}}{130}{figure.7.19}%
-\contentsline {figure}{\numberline {7.20}{\ignorespaces Interfaz gráfica pantalla para editar o eliminar una tarea.}}{131}{figure.7.20}%
-\contentsline {figure}{\numberline {7.21}{\ignorespaces Interfaz gráfica pantalla de editar tarea.}}{132}{figure.7.21}%
-\contentsline {figure}{\numberline {7.22}{\ignorespaces Interfaz gráfica pantalla de calendario.}}{134}{figure.7.22}%
-\contentsline {figure}{\numberline {7.23}{\ignorespaces Interfaz gráfica pantalla de lista de la compra.}}{135}{figure.7.23}%
-\contentsline {figure}{\numberline {7.24}{\ignorespaces Interfaz gráfica pantalla de crear lista de la compra.}}{136}{figure.7.24}%
-\contentsline {figure}{\numberline {7.25}{\ignorespaces Interfaz gráfica pantalla para eliminar lista de la compra.}}{137}{figure.7.25}%
-\contentsline {figure}{\numberline {7.26}{\ignorespaces Interfaz gráfica pantalla de productos de la lista de la compra.}}{138}{figure.7.26}%
-\contentsline {figure}{\numberline {7.27}{\ignorespaces Interfaz gráfica pantalla de añadir producto a la lista de la compra.}}{139}{figure.7.27}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Diseño de la pantalla de bienvenida.}}{107}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Diseño de la pantalla de registro.}}{107}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Diseño de la pantalla de editar usuario.}}{108}{figure.7.3}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Diseño de la pantalla de editar hogar.}}{108}{figure.7.4}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Interfaz gráfica pantalla bienvenida.}}{109}{figure.7.5}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Interfaz gráfica pantalla de registro.}}{111}{figure.7.6}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Interfaz gráfica pantalla de inicio de sesión.}}{112}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Interfaz gráfica pantalla de ver datos de hogar y usuario.}}{114}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Interfaz gráfica pantalla de editar datos de usuario.}}{115}{figure.7.9}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Interfaz gráfica pantalla de editar hogar.}}{116}{figure.7.10}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Interfaz gráfica pantalla para participar en un hogar.}}{117}{figure.7.11}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Interfaz gráfica pantalla para crear un hogar.}}{118}{figure.7.12}%
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Interfaz gráfica pantalla de unirse a un hogar.}}{119}{figure.7.13}%
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Diseño de la pantalla de crear tareas.}}{123}{figure.7.14}%
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Diseño de la pantalla de editar tarea.}}{123}{figure.7.15}%
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Interfaz gráfica pantalla de tareas.}}{126}{figure.7.16}%
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Interfaz gráfica pantalla de crear tarea puntual.}}{127}{figure.7.17}%
+\contentsline {figure}{\numberline {7.18}{\ignorespaces Interfaz gráfica pantalla de crear tarea semanal.}}{128}{figure.7.18}%
+\contentsline {figure}{\numberline {7.19}{\ignorespaces Interfaz gráfica pantalla de ver datos de una tarea.}}{129}{figure.7.19}%
+\contentsline {figure}{\numberline {7.20}{\ignorespaces Interfaz gráfica pantalla para editar o eliminar una tarea.}}{130}{figure.7.20}%
+\contentsline {figure}{\numberline {7.21}{\ignorespaces Interfaz gráfica pantalla de editar tarea.}}{131}{figure.7.21}%
+\contentsline {figure}{\numberline {7.22}{\ignorespaces Interfaz gráfica pantalla de calendario.}}{133}{figure.7.22}%
+\contentsline {figure}{\numberline {7.23}{\ignorespaces Interfaz gráfica pantalla de lista de la compra.}}{134}{figure.7.23}%
+\contentsline {figure}{\numberline {7.24}{\ignorespaces Interfaz gráfica pantalla de crear lista de la compra.}}{135}{figure.7.24}%
+\contentsline {figure}{\numberline {7.25}{\ignorespaces Interfaz gráfica pantalla para eliminar lista de la compra.}}{136}{figure.7.25}%
+\contentsline {figure}{\numberline {7.26}{\ignorespaces Interfaz gráfica pantalla de productos de la lista de la compra.}}{137}{figure.7.26}%
+\contentsline {figure}{\numberline {7.27}{\ignorespaces Interfaz gráfica pantalla de añadir producto a la lista de la compra.}}{138}{figure.7.27}%
+\contentsline {figure}{\numberline {7.28}{\ignorespaces Diseño de la pantalla para saldar deudas.}}{143}{figure.7.28}%
+\contentsline {figure}{\numberline {7.29}{\ignorespaces Interfaz gráfica pantalla de gastos.}}{145}{figure.7.29}%
+\contentsline {figure}{\numberline {7.30}{\ignorespaces Interfaz gráfica pantalla de crear gasto.}}{146}{figure.7.30}%
+\contentsline {figure}{\numberline {7.31}{\ignorespaces Interfaz gráfica pantalla de deudas.}}{147}{figure.7.31}%
+\contentsline {figure}{\numberline {7.32}{\ignorespaces Interfaz gráfica pantalla de ver detalles de un gasto.}}{148}{figure.7.32}%
+\contentsline {figure}{\numberline {7.33}{\ignorespaces Interfaz gráfica pantalla para saldar deuda.}}{149}{figure.7.33}%
+\contentsline {figure}{\numberline {7.34}{\ignorespaces Interfaz gráfica pantalla principal de la aplicación.}}{151}{figure.7.34}%
+\contentsline {figure}{\numberline {7.35}{\ignorespaces Interfaz gráfica barra de navegación.}}{152}{figure.7.35}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Puntuaciones individuales SUS}}{154}{figure.8.1}%
 \addvspace {10\p@ }

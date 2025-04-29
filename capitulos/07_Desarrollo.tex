@@ -191,7 +191,7 @@ Las funciones principales de esta clase son:
     \item \textbf{dispose :} Se encarga de liberar los recursos utilizados.
     \item \textbf{\_signIn :} Este método se ejecuta cuando el usuario intenta iniciar sesión con su correo y contraseña. Verifica las credenciales con Firebase y luego decide a qué pantalla debe dirigirse según si el usuario pertenece o no a un hogar.
     \item \textbf{\_signInWithGoogle :} Permite iniciar sesión mediante una cuenta de Google. Si el inicio de sesión tiene éxito, también verifica si el usuario está asociado a un hogar y lo redirige en consecuencia.
-    \item \textbf{\_handleAuthError :} Es el método que decide a qué pantalla se envía al usuario después de una autenticación exitosa. Si su correo no está verificado, muestra un díalago informativo. Si ya está verificado, revisa si pertenece a un hogar para ver a qué pantalla se envía.
+    \item \textbf{\_handleAuth :} Es el método que decide a qué pantalla se envía al usuario después de una autenticación exitosa. Si su correo no está verificado, muestra un díalago informativo. Si ya está verificado, revisa si pertenece a un hogar para ver a qué pantalla se envía.
     \item \textbf{\_handleAuthError :} Se encarga de interpretar y mostrar mensajes claros de error cuando el inicio de sesión falla.
     \item \textbf{\_showEmailNotVerifiedDialog :} Muestra un cuadro de diálogo cuando el usuario intenta iniciar sesión sin hacer verificado su correo.
 \end{itemize}
@@ -857,9 +857,9 @@ El resultado es el siguiente:
 \end{figure}
 
 
-\subsection{Base de datos}
+\subsubsection{Base de datos}
 
-Como resultado de la implementación de esta iteacción, se han creado las colecciones tareas, lista y producto en la base de datos de Firestore.
+Como resultado de la implementación de esta iteracción, se han creado las colecciones tareas, lista y producto en la base de datos de Firestore.
 
 Para la colección de \textbf{tareas} se ha crado la siguiente estructura:
 
@@ -996,6 +996,281 @@ En esta iteracción se van a desarrollar los siguientes requisitos:
 \end{itemize}
 
 \subsubsection{Implementacion}
+
+Durante la implementación de los requisitos se ha seguido el diseño propuesto en los bocetos iniciales, aunque ha 
+sido necesario realizar un boceto más adicional para detallar mejor la interfaz de usuario:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{../capitulos/img/pay_screen.png}
+    \caption{Diseño de la pantalla para saldar deudas.}
+    \label{settle_debts}
+\end{figure}
+
+
+Una vez se ha realizado el boceto, se ha implementado las siguientes pantallas: 
+
+
+
+\paragraph{Pantalla de gastos}
+
+\parbox{\textwidth}{ 
+   
+}
+
+La clase principal de esta pantalla se llama GastosScreen y se encarga de gestionar los gastos compartidos en un hogar, permite a los usuarios añadir, editar y eliminar gastos y además consultar el balance de deudas personales de cada miembro del hogar. 
+La pantalla está dividida en dos pestañas principales, una para ver todos los gastos registrados y otra para ver las deudas pendientes. 
+Los datos se organizan por fecha, y cada gasto incluye el nombre, el pagador, los participantes y el importe correspondiente a cada uno. 
+Además, las deudas se actualizan automáticamente cada vez que se registra o elimina un gasto.
+
+Los métodos que componen esta pantalla son: 
+
+\begin{itemize}
+    \item \textbf{initState :} Inicializa la pantalla y carga algunos datos iniciales.
+    \item \textbf{dispose :} Se encarga de liberar recursos cuando la pantalla se destruye.
+    \item \textbf{\_cargarDatosHogar :} Busca y carga los fatos del hogar al que pertenece el usuario.
+    \item \textbf{\_cargarNombresMiebres :} A través de los IDs de los miembros del hogar, busca en la base de datos y carga los nombres de los miembros del hogar.
+    \item \textbf{\_mostrarModalAgregarGasto :} Abre un formulario para crear o editar un gasto. Permite introducir el título, monto, fecha, quién lo pagó y quiénes deben pagar. Calcula automáticamente el monto dividido entre los participantes.
+    \item \textbf{\_eliminarGasto :} Elimina un gasto de la base de datps y llama a la función correspondiente para ajustar las deudas.
+    \item \textbf{\_mostrarConfirmacionEliminar :} Muestra un cuadro de diálogo para confirmar la eliminación de un gasto.
+    \item \textbf{\_mostrarDetalleGasto :} Abre un modal con todos los detalles del gasto seleccionado.
+    \item \textbf{\_buildGastosTab :} Construye la pestaña de gastos, mostrando una lista de todos los gastos registrados, agrupados por fecha y también un resumen con el total de gastos y los del usuario.
+    \item \textbf{\_buildGastosCard :} Crea una tarjeta para cada gasto. Mostrando el título, el monto, quién lo pagó y si el usuario es uno de los participantes.
+    \item \textbf{\_buildDetailCard :} Muestra pequeños bloques de información con algunos detalles de los gastos.  
+\end{itemize}
+
+La clase tiene más métodos pero se explicarán más adelante junto con las pantallas adecuadas. El resultado de la implementación de esta pantalla es el siguiente:
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/gastos_implementado.png}
+    \caption{Interfaz gráfica pantalla de gastos.}
+    \label{expenses_screen}
+\end{figure}
+
+
+\paragraph{Pantalla de crear gasto}
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla se muestra con el método \textit{\_mostrarModalAgregarGasto}, explicado anteriomente, que es el encargado de gestionar la creación de gastos y mostrar el formulario.
+
+El resultado de la implementación de esta pantalla es el siguiente:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/crear_gasto_implementado.png}
+    \caption{Interfaz gráfica pantalla de crear gasto.}
+    \label{create_expense_screen}
+\end{figure}
+
+
+\paragraph{Pantalla de deudas}
+
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla también está implementada dentro de la clase GastosScreen y permite al usuario ver las deudas pendientes de cada miembro del hogar.
+La pantalla muestra una lista de los miembros del hogar y el saldo que cada uno con respecto a las deudas. Así como un resumen de las 
+deudas totales del usuario. Los métodos relacionados con esta pantalla son:
+
+\begin{itemize}
+    \item \textbf{\_actualizarDeudasDesdeGastos :} Cuando se crear o edita un gasto, este método se encarga de actualizar las deudas entre el pagador y los participantes, teniendo en cuneta si existen deudas previas o si deben compensarse.
+    \item \textbf{\_revertirDeudaDesdeGastos :} Cuando se elimina un gasto, ajusta o elimina las deudas. 
+    \item \textbf{\_buildDeudasTab :} Construye la pestaña de deudas, donde se muestra el balance de deudas de todos los miembros del hogar. Tambien muestra un resumen de las deudas del usuario.
+    \item \textbf{\_buildListaDeudasCompleta :} Muestra todas las deudas del hogar, indicando si son deudas a favor o en contra del usuario y además muestra deudas que son entre otros miembros del hogar. También permite marcala como pagada o cobrada. 
+    \item \textbf{\_marcarDeudaComoPagada :} Permite actualizar una deuda para marcarla como pagada y la registra en la colección de pagos.
+    \item \textbf{\_compensarDeudas :} Se encarga de reorganizar todas las deudas del hogar para simplificarlas. Elimina las deudas cruzadas y las convierte en una sola deuda entre dos miembros.
+    \item \textbf{\_calcularBalances :} Calcula cuánto debe o le deben a cada miembro del hogar.
+\end{itemize}
+
+
+
+El resultado de la implementación de esta pantalla es el siguiente:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/deudas_implementado.png}
+    \caption{Interfaz gráfica pantalla de deudas.}
+    \label{debts_screen}
+\end{figure}
+
+\paragraph{Pantalla de ver detalles de un gasto}
+
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla se muestra con el método \textit{\_mostrarDetalleGasto}, que es el encargado de mostrar un modal con todos los detalles del gasto seleccionado.
+El resultado es el siguiente: 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/detalles_deudas_implementado.png}
+    \caption{Interfaz gráfica pantalla de ver detalles de un gasto.}
+    \label{view_expense_details_screen}
+\end{figure}
+
+\paragraph{Pantalla saldar deuda}
+
+\parbox{\textwidth}{ 
+   
+}
+
+Esta pantalla se muestra con el método \textit{\_buildListaDeudasCompleta}, que es el encargado de mostrar un modal con todos los detalles de la deuda seleccionada.
+El resultado es el siguiente:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/saldar_deudas_implementado.png}
+    \caption{Interfaz gráfica pantalla para saldar deuda.}
+    \label{settle_debt_screen}
+\end{figure}
+
+\paragraph{Pantalla principal de la aplicación}
+\parbox{\textwidth}{ 
+   
+}
+
+La clase principal de este archivo es \textit{HomePage} y representa la pantalla de inicio de la aplicación. Esta pantalla 
+ofrece un visión general de todo lo que el usuario puede hacer en la aplicación, tareas pendientes, deudas compartidas y productos en la lista de la compra.
+Funciona como un panel central donde el usuario puede consultar resumenes y acceder a las diferentes funcionalidades de la aplicación.
+
+
+Las funciones que componen esta pantalla son: 
+
+\begin{itemize}
+    \item \textbf{initState :} Se ejecuta al abrir la pantalla y carga los datos iniciales del hogar, productos, deudas y tareas.
+    \item \textbf{dispose :} Libera los recursos cuando se cierra la pantalla.
+    \item \textbf{\_loadInitialData :} Ejecuta en paralelo la carga de los datos del hogar, productos, deudas y tareas.
+    \item \textbf{\_cargarNombresUsuarios :} Obtiene a través de los IDs de los miembros del hogar, los nombres de los miembros del hogar.
+    \item \textbf{\_setupTareasListener :} Escucha los cambios en las tareas del usuario y calcula cuántas tareas debe realizar hoy, cuántas tareas tiene en la semana actual y cuántas tareas tiene pendientes. 
+    \item \textbf{\_setupDeudasListener :} Escucha los cambios en las deudas del usuario. Actualiza la lista de deudas no pagadas.
+    \item \textbf{\_obtenerNombreHogar :} Busca el hogar al que pertenece el usuario actual y obtiene el nombre.
+    \item \textbf{\_obtenerProductosUsuario :} Busca y carga hasta 5 productos que pertenece a la lista de compra donde participa el usuario. 
+    \item \textbf{\_obtenerDeudasPendientes :} Carga las 3 deudas que afectan al usuario, ya sea como deudor o acreedor. También obtiene los nombres de las personas implicadas.
+    \item \textbf{\_buildAppBar :} Construye la barra superior de la pantalla, donde se muestra el nombre del hogar y el botón del perfil. 
+    \item \textbf{\_buildLoadingIndicator : } Muestra un indicador de carga mientras se cargan los datos iniciales.
+    \item \textbf{\_buildQuickSummary :} Muestra las dos tarjetas superiores con un resumen de las tareas y el balance de deudas del usuario.
+    \item \textbf{\_buildSummaryCard :} Construye una tarjeta que muestra un resumen de las tareas o deudas del usuario.
+    \item \textbf{\_buildWeekSection :} Sección de planificación semanal que enlaza con el calendario. Muestra los días de la semana resaltando el día actual.
+    \item \textbf{\_buildSectionHeader :} Cabecera de cada sección con opción de ver más.
+    \item \textbf{\_buildWeekPlanner :} Visualiza la semana actual como una fila de días, resaltando el día de hoy.
+    \item \textbf{\_buildDiaItem :} Dibuja cada día de la semana con su nombre abreviado y número.
+    \item \textbf{\_buildWeekStats :} Muestra estadísticas rápidas de las tareas de hoy y de la semana. 
+    \item \textbf{\_buildStatItem :} Tarjeta pequeña para cada estadística. 
+    \item \textbf{\_buildDebtsSection :} Sección que muestra las deudas pendientes del usuario. Permite ver detalles y acceder a la pantalla completa de gastos. 
+    \item \textbf{\_buildDebtTile :} Tarjeta que muestra un resumen de cada deuda pendiente.
+    \item \textbf{\_buidShoppingListSection :} Sección que muestra los productos de la lista de la compra.
+    \item \textbf{\_buildProductTile :} Tarjeta de un solo producto, mostrando su icono, nombre y cantidad.
+    \item \textbf{\_buildEmptyState :} Muestra un mensaje cuando no hay datos para mostrar.
+\end{itemize}
+
+EL resultado de la implementación de esta pantalla es el siguiente: 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.40\textwidth]{../capitulos/img/principal_implementado.png}
+    \caption{Interfaz gráfica pantalla principal de la aplicación.}
+    \label{main_screen}
+\end{figure}
+
+
+\paragraph{Barra de navegación}
+\parbox{\textwidth}{ 
+   
+}
+
+Ha sido necesario implementar una clase más correspondiente a la barra inferior de navvegación de la aplicación que se puede observar en la mayoría de las pantallas. 
+Esta barra se ha implementado dentro de la clase \textit{CustomBottomNavigationBar} y permite al usuario navegar entre las diferentes pantallas de la aplicación.
+
+Los métodos que hacen esto posible son: 
+
+\begin{itemize}
+    \item \textbf{build :} Construye la barra de navegación y la muestra en la pantalla.
+    \item \textbf{\_buildNavItem :} Crea cada uno de los elementos de la barra de navegación.
+    \item \textbf{\_onBottomNavTapped :} Se ejecuta cuando el usuario pulsa un botón de la barra. Según el botón pulsado, navega a la pantalla correspondiente.
+\end{itemize}
+
+La barra de navegación se muestra de la siguiente manera:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{../capitulos/img/barra_implementada.png}
+    \caption{Interfaz gráfica barra de navegación.}
+    \label{navigation_bar}
+\end{figure}
+
+\paragraph{Clase Main}
+\parbox{\textwidth}{ 
+   
+}
+
+Aunque no lo hemos comentado hasta esta última iteración debido a que no era relevante, la clase \textit{Main} es la encargada de inicializar la aplicación y redirigir al 
+usuario a la pantalla de bienvenida o de inicio, dependiendo de si el usuario ya ha iniciado sesión o no.
+Esta clase se encarga también de inicializar la conexión con Firebase y de gestionar todas las rutas internas de la aplicación.
+
+
+
+\subsubsection{Base de datos}
+
+Como resultado de esta última iteracción, se han creado las colecciones gastos, deudas y pagos en la base de datos de Firestore. 
+
+Para la colección de \textbf{gastos} se ha creado la siguiente estructura:
+
+\begin{itemize}
+    \item \textbf{debenPagar}: Almacena los IDs de los usuarios que deben pagar el gasto.
+    \item \textbf{fecha}: Almacena la fecha en la que se ha realizado el gasto.
+    \item \textbf{fechaCreacion}: Almacena la fecha en la que se ha creado el gasto.
+    \item \textbf{hogarId}: Almacena el ID del hogar al que pertenece el gasto.
+    \item \textbf{monto}: Almacena el monto total del gasto.
+    \item \textbf{montoPorPersona}: Almacena el monto que debe pagar cada persona.
+    \item \textbf{pagado}: Almacena un booleano que indica si el gasto ha sido pagado o no.
+    \item \textbf{pagadorId}: Almacena el ID del usuario que ha pagado el gasto.
+    \item \textbf{titulo}: Almacena el título del gasto.
+\end{itemize}
+
+La colección de \textbf{deudas} almacena la siguiente información:
+
+\begin{itemize}
+    \item \textbf{acreedor}: Almacena el ID del usuario que es el acreedor de la deuda.
+    \item \textbf{creadoEn}: Almacena la fecha en la que se ha creado la deuda.
+    \item \textbf{deudor}: Almacena el ID del usuario que es el deudor de la deuda.
+    \item \textbf{esCompensada}: Almacena un booleano que indica si la deuda ha sido compensada o no.
+    \item \textbf{fechaPago}: Almacena la fecha en la que se ha pagado la deuda en caso de que se haya pagado.
+    \item \textbf{hogarId:} Almacena el ID del hogar al que pertenece la deuda.
+    \item \textbf{monto}: Almacena el monto de la deuda.
+    \item \textbf{pagado}: Almacena un booleano que indica si la deuda ha sido pagada o no.
+    \item \textbf{ultimaActualizacion}: Almacena la fecha de la última actualización de la deuda.
+\end{itemize}
+
+Por ultimo la colección de \textbf{pagos} almacena la siguiente información:
+
+\begin{itemize}
+    \item \textbf{acreedor}: Almacena el ID del usuario que es el acreedor del pago.
+    \item \textbf{deudor}: Almacena el ID del usuario que es el deudor del pago.
+    \item \textbf{fecha}: Almacena la fecha en la que se ha realizado el pago.
+    \item \textbf{hogarId}: Almacena el ID del hogar al que pertenece el pago.
+    \item \textbf{monto}: Almacena el monto del pago.
+    \item \textbf{tipo}: Almacena el tipo de pago (si es un pago o una compensación).
+\end{itemize}
+
+
+Como esta es la ultima iteracción, ya tenemos la base de datos completa y podemos realizar el diagrama final de la base de datos: 
+
+
+
+
+
+
+
+
+
+
+
 
 
 

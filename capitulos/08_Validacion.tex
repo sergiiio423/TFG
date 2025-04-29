@@ -1,2 +1,33 @@
 \chapter{Validación de la aplicación por usuarios reales}
 \label{cap:validacion}
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        bar width=15pt,
+        ymin=0, ymax=100,
+        ylabel={Puntuación SUS},
+        symbolic x coords={Usuario 1, Usuario 2, Usuario 3, Usuario 4, Usuario 5},
+        xtick=data,
+        nodes near coords,
+        nodes near coords align={vertical},
+        width=12cm,
+        height=6cm,
+        title={Resultados del cuestionario SUS}
+    ]
+    \addplot coordinates {
+        (Usuario 1, 100)
+        (Usuario 2, 87.5)
+        (Usuario 3, 90)
+        (Usuario 4, 97.5)
+        (Usuario 5, 97.5)
+
+    };
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Puntuaciones individuales SUS}
+    \end{figure}
+
