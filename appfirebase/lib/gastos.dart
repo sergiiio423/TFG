@@ -1094,7 +1094,7 @@ class _GastosScreenState extends State<GastosScreen>
     );
   }
 
-  Widget _buildGastoCard(
+  Widget_buildGastoCard(
       DocumentSnapshot gasto, String pagadoPor, double monto, DateTime fecha) {
     final esPagador = gasto['pagadoPor'] == _currentUserId;
     final participaEnGasto =

@@ -58,7 +58,7 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
     super.dispose();
   }
 
-  List<DateTime> _generarSemana(DateTime fecha) {
+  List<DateTime>_generarSemana(DateTime fecha) {
     final startOfWeek = fecha.subtract(Duration(days: fecha.weekday - 1));
     return List.generate(6, (index) => startOfWeek.add(Duration(days: index)));
   }

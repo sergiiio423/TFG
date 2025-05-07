@@ -53,32 +53,32 @@
 \contentsline {table}{\numberline {7.1}{\ignorespaces RF\_31}}{122}{table.7.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Caso de uso - Registro}}{156}{table.Alph1.1}%
-\contentsline {table}{\numberline {A.2}{\ignorespaces Caso de uso - Iniciar Sesión}}{157}{table.Alph1.2}%
-\contentsline {table}{\numberline {A.3}{\ignorespaces Caso de uso - Cerrar Sesión}}{158}{table.Alph1.3}%
-\contentsline {table}{\numberline {A.4}{\ignorespaces Caso de uso - Ver Usuario}}{159}{table.Alph1.4}%
-\contentsline {table}{\numberline {A.5}{\ignorespaces Caso de uso - Editar Usuario}}{160}{table.Alph1.5}%
-\contentsline {table}{\numberline {A.6}{\ignorespaces Caso de uso - Crear Hogar}}{161}{table.Alph1.6}%
-\contentsline {table}{\numberline {A.7}{\ignorespaces Caso de uso - Unir Miembro a Hogar}}{162}{table.Alph1.7}%
-\contentsline {table}{\numberline {A.8}{\ignorespaces Caso de uso - Abandonar Hogar}}{163}{table.Alph1.8}%
-\contentsline {table}{\numberline {A.9}{\ignorespaces Caso de uso - Modificar Hogar}}{164}{table.Alph1.9}%
-\contentsline {table}{\numberline {A.10}{\ignorespaces Caso de uso - Ver Hogar}}{165}{table.Alph1.10}%
-\contentsline {table}{\numberline {A.11}{\ignorespaces Caso de uso - Crear Tarea}}{166}{table.Alph1.11}%
-\contentsline {table}{\numberline {A.12}{\ignorespaces Caso de uso - Consultar Planificación Semanal}}{167}{table.Alph1.12}%
-\contentsline {table}{\numberline {A.13}{\ignorespaces Caso de uso - Modificar Tarea}}{168}{table.Alph1.13}%
-\contentsline {table}{\numberline {A.14}{\ignorespaces Caso de uso - Marcar Tarea Realizada}}{169}{table.Alph1.14}%
-\contentsline {table}{\numberline {A.15}{\ignorespaces Caso de uso - Eliminar Tarea}}{170}{table.Alph1.15}%
-\contentsline {table}{\numberline {A.16}{\ignorespaces Caso de uso - Ver Tarea}}{171}{table.Alph1.16}%
-\contentsline {table}{\numberline {A.17}{\ignorespaces Caso de uso - Ver Calendario}}{172}{table.Alph1.17}%
-\contentsline {table}{\numberline {A.18}{\ignorespaces Caso de uso - Crear Gasto}}{173}{table.Alph1.18}%
-\contentsline {table}{\numberline {A.19}{\ignorespaces Caso de uso - Modificar Gasto}}{174}{table.Alph1.19}%
-\contentsline {table}{\numberline {A.20}{\ignorespaces Caso de uso - Eliminar Gasto}}{175}{table.Alph1.20}%
-\contentsline {table}{\numberline {A.21}{\ignorespaces Caso de uso - Saldar Deuda}}{176}{table.Alph1.21}%
-\contentsline {table}{\numberline {A.22}{\ignorespaces Caso de uso - Ver Deudas}}{177}{table.Alph1.22}%
-\contentsline {table}{\numberline {A.23}{\ignorespaces Caso de uso - Ver Gasto}}{178}{table.Alph1.23}%
-\contentsline {table}{\numberline {A.24}{\ignorespaces Caso de uso - Crear Lista}}{179}{table.Alph1.24}%
-\contentsline {table}{\numberline {A.25}{\ignorespaces Caso de uso - Añadir Producto}}{180}{table.Alph1.25}%
-\contentsline {table}{\numberline {A.26}{\ignorespaces Caso de uso - Eliminar Producto}}{181}{table.Alph1.26}%
-\contentsline {table}{\numberline {A.27}{\ignorespaces Caso de uso - Eliminar Lista}}{182}{table.Alph1.27}%
-\contentsline {table}{\numberline {A.28}{\ignorespaces Caso de uso - Ver Producto}}{183}{table.Alph1.28}%
-\contentsline {table}{\numberline {A.29}{\ignorespaces Caso de uso - Editar Producto}}{184}{table.Alph1.29}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Caso de uso - Registro}}{157}{table.Alph1.1}%
+\contentsline {table}{\numberline {A.2}{\ignorespaces Caso de uso - Iniciar Sesión}}{158}{table.Alph1.2}%
+\contentsline {table}{\numberline {A.3}{\ignorespaces Caso de uso - Cerrar Sesión}}{159}{table.Alph1.3}%
+\contentsline {table}{\numberline {A.4}{\ignorespaces Caso de uso - Ver Usuario}}{160}{table.Alph1.4}%
+\contentsline {table}{\numberline {A.5}{\ignorespaces Caso de uso - Editar Usuario}}{161}{table.Alph1.5}%
+\contentsline {table}{\numberline {A.6}{\ignorespaces Caso de uso - Crear Hogar}}{162}{table.Alph1.6}%
+\contentsline {table}{\numberline {A.7}{\ignorespaces Caso de uso - Unir Miembro a Hogar}}{163}{table.Alph1.7}%
+\contentsline {table}{\numberline {A.8}{\ignorespaces Caso de uso - Abandonar Hogar}}{164}{table.Alph1.8}%
+\contentsline {table}{\numberline {A.9}{\ignorespaces Caso de uso - Modificar Hogar}}{165}{table.Alph1.9}%
+\contentsline {table}{\numberline {A.10}{\ignorespaces Caso de uso - Ver Hogar}}{166}{table.Alph1.10}%
+\contentsline {table}{\numberline {A.11}{\ignorespaces Caso de uso - Crear Tarea}}{167}{table.Alph1.11}%
+\contentsline {table}{\numberline {A.12}{\ignorespaces Caso de uso - Consultar Planificación Semanal}}{168}{table.Alph1.12}%
+\contentsline {table}{\numberline {A.13}{\ignorespaces Caso de uso - Modificar Tarea}}{169}{table.Alph1.13}%
+\contentsline {table}{\numberline {A.14}{\ignorespaces Caso de uso - Marcar Tarea Realizada}}{170}{table.Alph1.14}%
+\contentsline {table}{\numberline {A.15}{\ignorespaces Caso de uso - Eliminar Tarea}}{171}{table.Alph1.15}%
+\contentsline {table}{\numberline {A.16}{\ignorespaces Caso de uso - Ver Tarea}}{172}{table.Alph1.16}%
+\contentsline {table}{\numberline {A.17}{\ignorespaces Caso de uso - Ver Calendario}}{173}{table.Alph1.17}%
+\contentsline {table}{\numberline {A.18}{\ignorespaces Caso de uso - Crear Gasto}}{174}{table.Alph1.18}%
+\contentsline {table}{\numberline {A.19}{\ignorespaces Caso de uso - Modificar Gasto}}{175}{table.Alph1.19}%
+\contentsline {table}{\numberline {A.20}{\ignorespaces Caso de uso - Eliminar Gasto}}{176}{table.Alph1.20}%
+\contentsline {table}{\numberline {A.21}{\ignorespaces Caso de uso - Saldar Deuda}}{177}{table.Alph1.21}%
+\contentsline {table}{\numberline {A.22}{\ignorespaces Caso de uso - Ver Deudas}}{178}{table.Alph1.22}%
+\contentsline {table}{\numberline {A.23}{\ignorespaces Caso de uso - Ver Gasto}}{179}{table.Alph1.23}%
+\contentsline {table}{\numberline {A.24}{\ignorespaces Caso de uso - Crear Lista}}{180}{table.Alph1.24}%
+\contentsline {table}{\numberline {A.25}{\ignorespaces Caso de uso - Añadir Producto}}{181}{table.Alph1.25}%
+\contentsline {table}{\numberline {A.26}{\ignorespaces Caso de uso - Eliminar Producto}}{182}{table.Alph1.26}%
+\contentsline {table}{\numberline {A.27}{\ignorespaces Caso de uso - Eliminar Lista}}{183}{table.Alph1.27}%
+\contentsline {table}{\numberline {A.28}{\ignorespaces Caso de uso - Ver Producto}}{184}{table.Alph1.28}%
+\contentsline {table}{\numberline {A.29}{\ignorespaces Caso de uso - Editar Producto}}{185}{table.Alph1.29}%
