@@ -1214,6 +1214,8 @@ usuario a la pantalla de bienvenida o de inicio, dependiendo de si el usuario ya
 Esta clase se encarga también de inicializar la conexión con Firebase y de gestionar todas las rutas internas de la aplicación.
 
 
+Mencionando esta última clase, damos por finalizada la implementación de la aplicación. A continuación se muestra el diagrama de clases final de la aplicación: 
+
 
 \begin{figure}[H]
     \centering
@@ -1268,6 +1270,30 @@ Por ultimo la colección de \textbf{pagos} almacena la siguiente información:
 
 Como esta es la ultima iteracción, ya tenemos la base de datos completa y podemos realizar el diagrama final de la base de datos: 
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../capitulos/img/diagrama_base_datos.jpg}
+    \caption{Diagrama final de la base de datos.}
+    \label{database_diagram}
+\end{figure}
+
+\subsubsection{Pruebas de funcionalidad}
+
+Para probar esta última iteracción se han realizado las siguientes pruebas de funcionalidad:
+\begin{itemize}
+    \item Comprobación de la creación de un gasto. Esto incluye que el gasto se almacene correctamente en la base de datos con los datos correctos y que se muestre en la intefaz de gastos.
+    \item Comprobación de la edición de un gasto.
+    \item Comprobación de la eliminación de un gasto. Esto incluye que el gasto se elimine y las deudas se actualicen correctamente.
+    \item Comprobación de la visualización de los detalles de un gasto.
+    \item Comprobación de la visualización del saldo del hogar. Esto incluye un resumen con todos los miembros del hogar y el balance de deudas de cada uno.
+    \item Comprobación de la visualización de las deudas pendientes. Esto incluye un apartado donde ver tus deudas y poder ver las deudas externas a ti.
+    \item Comprobación de la compensación de una deuda. Esto incluye marca la deuda como pagada en la base de datos, añadir el pago en la tabla correspondiente y equilibrar el balance. 
+    \item Comprobación de la visualizacion de la pantalla principal de la aplicación. Esto incluye que se muestre un resumen de las tareas, gastos y productos de manera dinámica y que se actualice en tiempo real. 
+    \item Comprobación de la barra de navegación. Esto incluye que al pulsar en cada uno de los botones, se navegue a la pantalla correspondiente.
+\end{itemize}
+
+\subsection{Revisión de la iteracción}
 
 
 

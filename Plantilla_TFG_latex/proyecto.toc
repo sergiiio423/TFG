@@ -149,11 +149,13 @@
 \contentsline {paragraph}{Barra de navegación}{151}{figure.7.34}%
 \contentsline {paragraph}{Clase Main}{152}{figure.7.35}%
 \contentsline {subsubsection}{\numberline {7.2.3.2}Base de datos}{153}{subsubsection.7.2.3.2}%
-\contentsline {chapter}{\numberline {8}Validación de la aplicación por usuarios reales}{155}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{156}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{156}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{162}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{167}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{174}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{180}{section.Alph1.5}%
-\contentsline {section}{Referencias}{186}{table.Alph1.29}%
+\contentsline {subsubsection}{\numberline {7.2.3.3}Pruebas de funcionalidad}{155}{subsubsection.7.2.3.3}%
+\contentsline {subsection}{\numberline {7.2.4}Revisión de la iteracción}{156}{subsection.7.2.4}%
+\contentsline {chapter}{\numberline {8}Validación de la aplicación por usuarios reales}{157}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{158}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{158}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{164}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{169}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{176}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{182}{section.Alph1.5}%
+\contentsline {section}{Referencias}{188}{table.Alph1.29}%
