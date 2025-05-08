@@ -150,7 +150,7 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.teal,
+                  color: Color.fromRGBO(0, 150, 136, 1),
                 ),
               ),
               const SizedBox(height: 16),

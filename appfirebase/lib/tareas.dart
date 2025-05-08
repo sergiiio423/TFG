@@ -887,7 +887,7 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
             ),
             TextButton(
               child: const Text('Eliminar',
-                  style: TextStyle(color: Colors.orange)),
+                  style: TextStyle(color: Color.fromARGB(255, 255, 152, 0))),
               onPressed: () {
                 _eliminarTarea(taskId); // Llama al método de eliminación
                 Navigator.of(context).pop(); // Cierra el diálogo
