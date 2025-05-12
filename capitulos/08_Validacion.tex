@@ -1,38 +1,57 @@
 \chapter{Validación de la aplicación por usuarios reales}
 \label{cap:validacion}
 
-En esta sección se aborda la validación de la aplicación mediante pruebas realizadas con usuarios reales. Este proceso constituye una etapa fundamental en el desarrollo de software, ya que permite evaluar la usabilidad, funcionalidad y experiencia general del sistema en un entorno práctico y representativo.
+\section{Introducción}
 
-El propósito principal de estas pruebas es garantizar que la aplicación cumpla con los estándares de calidad esperados y satisfaga las necesidades de los usuarios finales. A través de la interacción directa con el sistema, los usuarios pueden proporcionar información valiosa que ayuda a identificar posibles problemas, como errores en el diseño, dificultades en la navegación, o características que no cumplen con las expectativas. Asimismo, estas pruebas permiten confirmar los aspectos positivos del diseño que contribuyen a una experiencia de usuario satisfactoria.
-
-La validación con usuarios reales no solo se centra en detectar áreas de mejora, sino también en recopilar datos cuantitativos y cualitativos. Además, este tipo de pruebas permite evaluar la satisfacción del usuario mediante herramientas como cuestionarios para medir el sistema. Los resultados obtenidos a partir de estas evaluaciones son esenciales para tomar decisiones informadas sobre posibles ajustes y mejoras en el diseño.
-
-En resumen, el objetivo de este proceso de validación es doble: por un lado, identificar y corregir problemas de usabilidad o funcionalidad que puedan afectar negativamente la experiencia del usuario; y por otro, confirmar que el sistema desarrollado es intuitivo, eficiente y agradable de utilizar en escenarios reales. Este enfoque centrado en el usuario asegura que la aplicación no solo cumpla con los requisitos técnicos, sino que también ofrezca una experiencia de alta calidad que satisfaga las expectativas de quienes la utilizan.
-
+La validación de la aplicación mediante pruebas con usuarios reales es un paso fundamental en el desarrollo de software, 
+ya que permite evaluar la usabilidad, funcionalidad y experiencia del usuario en un entorno realista. Este proceso además de
+garantizar que la aplicación cumple con los requisitos y los estandares de calidad, también proporciona información 
+sobre su eficacia en su uso cotidiano, asegurando que las necesidades y expectativas de los usuarios finales sean solventadas. 
 
 
-\section{Preparacion de la prueba}
+\subsection{Objetivos de la validación}
 
-Para llevar a cabo la validación de la aplicación, se comenzó con la preparación del entorno de prueba, asegurando que los usuarios pudieran interactuar con la aplicación de manera eficiente y sin complicaciones técnicas. Este proceso inicial es crucial para garantizar que las pruebas se desarrollen en condiciones óptimas y que los resultados obtenidos sean representativos y fiables.
-
-En primer lugar, se realizó una investigación sobre las diferentes opciones disponibles para proporcionar acceso a la aplicación a los usuarios. Se evaluaron diversas alternativas, como la distribución mediante archivos APK, o la implementación de servicios de despliegue en la nube. Cada opción fue analizada en términos de facilidad de uso, accesibilidad, y compatibilidad con los dispositivos de los usuarios.
-
-Tras considerar las ventajas y desventajas de cada alternativa, se decidió utilizar un servicio proporcionado por Firestore. Este servicio ofrece una solución eficiente y práctica para desplegar aplicaciones desarrolladas en Flutter. Mediante el uso de Firestore, se pudo compilar la aplicación directamente desde el código fuente y desplegarla en un servidor accesible a través de Internet. Este proceso genera un enlace único que permite a los usuarios acceder a la aplicación de manera sencilla, sin necesidad de descargar ni instalar archivos adicionales.
-
-El uso de Firebase no solo facilitó el acceso a la aplicación, sino que también proporcionó un entorno seguro y confiable para las pruebas. Además, esta solución permitió realizar actualizaciones rápidas en caso de que se detectaran problemas durante las pruebas, asegurando que los usuarios siempre tuvieran acceso a la versión más reciente de la aplicación.
-
-Una vez que se garantizó el acceso a la aplicación, lo siguiente fue elegir que tipo de cuestionarios se iban a utilizar para evaluar la experiencia de los usuarios. Los dos cuestionarios más utilizados para evualar 
-la usabilidad de una aplicación y que nos prorcionan una puntuación cuantiativa son: 
+Los objetivos principales de estas pruebas es: 
 
 \begin{enumerate}
-    \item \textbf{System Usability Scale (SUS)}: Su objetivo es proporcionar un test fácil de comprender, fácil de puntuar. Permite establacer comparaciones de unas soluciones con otras. Consta de 10 preguntas con una escala del 1 al 5.
-    \item \textbf{Software Usability Measurement Inventory (SUMI)}: Este cuestionario es más extenso y permtie evaluar nuevos productos, efectuar comparaciones con versiones previas y establecer objetivos para desarrollos futuros. El cuestionario consta de 50 preguntas que hay que responder con \textit{de acuerdo, no lo sé o en desacuerdo}.
+    \item \textbf{Identificar áreas de mejora}: A través de la observación y el feedback de los usuarios, se pueden identificar áreas específicas donde la aplicación puede ser mejorada. Esto incluye aspectos como la navegación, la claridad de las instrucciones y la facilidad de uso.
+    \item \textbf{Evaluar la usabilidad}: Se busca medir la facilidad con la que los usuarios pueden interactuar con la aplicación. Esto incluye evaluar la rapidez con la que pueden completar tareas, la cantidad de errores cometidos y su satisfacción general con la experiencia.
+    \item \textbf{Recopilar evidencias cuantitativas y cualitativas}: Utilizando cuestionarios, se busca obtener datos cuantitativos y cualitativos sobre la experiencia del usuario. Esto incluye puntuaciones numéricas sobre la usabilidad y comentarios abiertos que proporcionen información adicional sobre la percepción de los usuarios.
+    \item \textbf{Validar la funcionalidad}: Se busca asegurar que todas las funciones de la aplicación funcionan como se espera y cumplen con los requisitos establecidos. Esto incluye verificar que las tareas se pueden completar sin errores y que la información se presenta de manera clara y comprensible.
+    \item \textbf{Obtener feedback sobre la experiencia del usuario}: Se busca entender cómo los usuarios perciben la aplicación en términos de diseño, funcionalidad y utilidad. Esto incluye recopilar comentarios sobre lo que les gusta y lo que no les gusta de la aplicación.
 \end{enumerate}
 
 
-Se decidió utilizar el cuestionario SUS, ya que es más sencillo y rápido de completar, lo que facilita la participación de los usuarios. Además, su formato permite obtener una puntuación cuantitativa que puede ser utilizada para comparar la usabilidad de la app. 
+\subsection{Metodología de la validación}
 
-Las preguntas que forman dicho cuestionario son las siguientes:
+El proceso se llevó a cabo mediante las siguientes etapas: 
+\begin{enumerate}
+    \item \textbf{Preparación del entorno de prueba}: Se configuró el entorno de prueba para garantizar que los usuarios pudieran interactuar con la aplicación sin problemas técnicos. Esto incluyó la elección de la plataforma de despliegue y la configuración del acceso a la aplicación.
+    \item \textbf{Selección de los cuestionarios}: Se eligieron los cuestionarios adecuados para evaluar la usabilidad y la experiencia del usuario. 
+    \item \textbf{Reclutamiento de usuarios}: Se reclutaron usuarios representativos del público objetivo de la aplicación. Se buscó asegurar que los participantes tuvieran un perfil similar al de los usuarios finales para obtener resultados relevantes.
+    \item \textbf{Recolección de datos}: Se llevó a cabo la prueba con los usuarios, quienes interactuaron con la aplicación y completaron los cuestionarios. Se registraron sus comentarios y observaciones durante el proceso.
+\end{enumerate}
+
+
+\section{Selección de los cuestionarios}
+
+Es importante elegir herramientas para medir la usabilidad y la experiencia del usuario. Para ello, existen multitud de cuestionarios predefinidos 
+que permiten evaluar dichos aspectos de una manera estandarizada: 
+
+\begin{itemize}
+    \item \textbf{System Usability Scale (SUS)}: Es un cuestionario rapido y fácil de usar compuesto por 10 preguntas con un escala Likert del 1 al 5 (1=totalmente en desacuerdo, 5=totalmente de acuerdo). Este cuestionario proporciona una puntación global de usabilidad (del 0 al 100) que permite comparar la aplicación con estándares de usabilidad aceptables.
+    \item \textbf{Software Usability Measurement Inventory (SUMI)}: Es un cuestionaro más extenso compuesto por 50 preguntas que evaluan la eficiencia, afectividad y satisfacción global. Las respuestan pueden ser tres opciones: de acuerdo, no lo sé o en desacuerdo. Este cuestionario ofrece un análisis más detallado de la experiencia del usuario.
+    \item \textbf{Measuring the usability of multi-media systems (MUMMS)}: Este cuestionario tiene el mismo objetivo que el SUMI pero esta diseñado para la consideración de cinco subescalas.
+\end{itemize}
+
+Después de evaluar las opciones disponibles, se decieron usar las siguientes herramientas para la validación de la aplicación:
+
+\subsection{Cuestionario SUS}
+
+Se decidió utilizar el cuestionario SUS, ya que es más sencillo y rápido de completar, lo que facilita la participación de los usuarios.
+Además, su formato permite obtener una puntuación cuantitativva que puder ser utilizada para comparar la usabilidad de la app.
+El cuestionario consta de 10 preguntas que son las siguientes: 
+
 \begin{enumerate}
     \item Creo que me gustaría utilizar este aplicación con frecuencia.
     \item Encontré la aplicación innecesariamente compleja.
@@ -46,11 +65,24 @@ Las preguntas que forman dicho cuestionario son las siguientes:
     \item Necesité aprender muchas cosas antes de poder utilizar esta aplicación.
 \end{enumerate}
 
-Con estas preguntas se creó un formulario en Google Forms, para poder enviárselo a los usuarios posteriormente. 
+Con estas preguntas se creó un formulario en Google Forms, para poder enviárselo a los usuarios posteriormente.
 
-A pesar de que el cuestionario SUS es muy útil para obtener una puntuación cuantitativa, no proporciona una información 
-específica sobre los aspectos que los usuarios consideran positivos o negativos de la aplicación. Por lo tanto, se decidió complementar con otro cuestionario con preguntas más abiertas y específicas realizadas por mi.
-Las preguntas que se realizaron fueron las siguientes: 
+El cuestionario SUS se califica de la siguiente manera: 
+\begin{itemize}
+    \item Para las preguntas 1,3,5,7 y 9, la contribución será el numero de la respuesta menos 1.
+    \item Para las preguntas 2,4,6,8 y 10, la contribución será 5 menos el número de la respuesta.
+    \item La puntuación total se obtiene multiplicando la suma de las contribuciones por 2.5.
+\end{itemize}
+
+El resultado final es una puntuación que estará entre 0 y 100. Para que sea aceptable hay que hacer la media de todas las puntuaciones obtenidas y si 
+esta media es mayor de 68, la usabilidad de la aplicación es aceptable.
+
+\subsection{Cuestionario ad-hoc}
+
+Este cuestionario fue diseñado para complementar el cuestionario SUS y proporcionar información más específica sobre 
+los aspectos que los usuarios consideran positivos o negativos de la aplicación. Las preguntas 
+de este cuestionario fueran diseñadas específicamente para abordar funcionalidades y características de la aplicación,
+lo que permite obtener una visión más detallada de la experiencia del usuario. Las preguntas fueron las siguientes:
 
 \begin{enumerate}
     \item Me ha resultado fácil crear una lista de la compra.
@@ -77,15 +109,66 @@ Las preguntas que se realizaron fueron las siguientes:
 De la pregunta 1 a la 12 se les pidió a los usuarios que puntuaran de 1 a 5 siendo 1 muy en desacuerdo y 5 muy de acuerdo. Mientras que 
 las preguntas de la 13 a la 17 eran abiertas, para que los usuarios pudieran expresar su opinión de forma más detallada.
 
+Con estas preguntas también se creó un formulario en Google Forms, para poder enviárselo a los usuarios posteriormente.
+
+
+\section{Implementacion de la prueba}
+
+\subsection{Preparacion del entorno de prueba}
+
+\subsection{Reclutamiento de usuarios}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen,}]{
+      6/22 años, 3/23 años, 1/21 años
+    }
+    \end{tikzpicture}
+    \caption{Distribución de edades de los participantes}
+    \label{fig:edades-participantes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen}]{
+      4/Estudiantes del grado de Ingeniería Informática, 4/Estudiante de otros grados, 
+      2/Trabajadores que comparten piso
+    }
+    \end{tikzpicture}
+    \caption{Distribución de perfiles de los participantes}
+    \label{fig:perfiles-participantes}
+\end{figure}
+
+
+
+\subsection{Distribución del material para la prueba}
+
+
+
+Para llevar a cabo la validación de la aplicación, se comenzó con la preparación del entorno de prueba, asegurando que los usuarios pudieran interactuar con la aplicación de manera eficiente y sin complicaciones técnicas. Este proceso inicial es crucial para garantizar que las pruebas se desarrollen en condiciones óptimas y que los resultados obtenidos sean representativos y fiables.
+
+En primer lugar, se realizó una investigación sobre las diferentes opciones disponibles para proporcionar acceso a la aplicación a los usuarios. Se evaluaron diversas alternativas, como la distribución mediante archivos APK, o la implementación de servicios de despliegue en la nube. Cada opción fue analizada en términos de facilidad de uso, accesibilidad, y compatibilidad con los dispositivos de los usuarios.
+
+Tras considerar las ventajas y desventajas de cada alternativa, se decidió utilizar un servicio proporcionado por Firestore. Este servicio ofrece una solución eficiente y práctica para desplegar aplicaciones desarrolladas en Flutter. Mediante el uso de Firestore, se pudo compilar la aplicación directamente desde el código fuente y desplegarla en un servidor accesible a través de Internet. Este proceso genera un enlace único que permite a los usuarios acceder a la aplicación de manera sencilla, sin necesidad de descargar ni instalar archivos adicionales.
+
+El uso de Firebase no solo facilitó el acceso a la aplicación, sino que también proporcionó un entorno seguro y confiable para las pruebas. Además, esta solución permitió realizar actualizaciones rápidas en caso de que se detectaran problemas durante las pruebas, asegurando que los usuarios siempre tuvieran acceso a la versión más reciente de la aplicación.
+
+Una vez que se garantizó el acceso a la aplicación, lo siguiente fue elegir que tipo de cuestionarios se iban a utilizar para evaluar la experiencia de los usuarios. Los dos cuestionarios más utilizados para evualar 
+la usabilidad de una aplicación y que nos prorcionan una puntuación cuantiativa son: 
+
+
+
+
 Una vez que se creó este último cuestionario, lo único que quedaba era reclutar a los usuarios que iban a participar en la prueba. 
 Encontrar a usuarios representativos era fácil ya que la aplicación está diseñada para ser utilizada por estudiantes que comparten piso y 
-por edad y estilo de vida, la mayoría de mis amigos y compañeros de clase encajaban en este perfil.
+por edad y estilo de vida, la mayoría de mis amigos y compañeros de clase encajaban en este perfil. 
 
 
-\section{Realización de la prueba}
+\section{Resultados de la prueba}
 
-
-
+\subsection{Resultados del cuestionario SUS}
 
 \begin{figure}[h]
     \centering
@@ -112,12 +195,105 @@ por edad y estilo de vida, la mayoría de mis amigos y compañeros de clase enca
         (Usuario 5, 97.5)
         (Usuario 6, 85)
         (Usuario 7, 90)
-        (Usuario 8, 92.5)
-        (Usuario 9, 88)
+        (Usuario 8, 90)
+        (Usuario 9, 77.5)
         (Usuario 10, 95)
     };
     \end{axis}
     \end{tikzpicture}
     \caption{Puntuaciones individuales SUS}
 \end{figure}
+
+
+
+\subsection{Resultados del cuestionario ad-hoc}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{9cm}|c|}
+        \hline
+        \textbf{Pregunta} & \textbf{Media} \\
+        \hline
+        Me ha resultado fácil crear una lista de la compra. &  \\ \hline
+        Añadir productos a una lista es intuitivo. &  \\ \hline
+        El proceso para añadir un gasto es sencillo. &  \\ \hline
+        Entiendo bien cómo se reparten los gastos entre los miembros del hogar. &  \\ \hline
+        Encuentro fácilmente las tareas semanales o puntuales asignadas. &  \\ \hline
+        Crear una nueva tarea es rápido y claro. & 4.6 \\ \hline
+        La visualización de la planificación semanal me parece útil. &  \\ \hline
+        Navegar entre secciones como listas, tareas y gastos es fácil. &  \\ \hline
+        El diseño y colores de la aplicación me parecen agradables. &  \\ \hline
+        La aplicación funciona de forma fluida y rápida. &  \\ \hline
+        La manera de ver los datos del perfil es intuitiva. &  \\ \hline
+        La pantalla principal, sirve para hacerte una idea general de todo lo que ofrece la app. &  \\ \hline
+    \end{tabular}
+    \caption{Resultados medios de las preguntas 1 a 12 del cuestionario ad-hoc}
+    \label{tab:adhoc-medias}
+\end{table}
+
+
+Las respuestas de las preguntas abiertas (de la 13 a la 17) fueron analizadas y categorizadas para que sea más fácil ver los resultados. Se ha agrupado las respuestas en categorías 
+que corresponden con las principales funcionalidades de la aplicación y se proporciona debajo de cada categoría la respuesta concreta de los usuarios, después se proporciona un diagrama de pastel con la distribución de las respuestas.
+
+
+\textbf{Pregunta 13:} ¿Qué funcionalidad de la app te ha parecido más útil? ¿Por qué?
+
+Respuestas:
+
+\begin{itemize}
+    \item \textbf{Lista de la compra}
+    \begin{itemize}
+        \item \textit{la lista de la compra porque asi no tengo que ponerla por whatsapp y está todo ahí }
+    \end{itemize}
+    \item \textbf{Gastos}
+    \begin{itemize}
+        \item \textit{los gastos, es muy sencillo e intuitivo de usar}
+        \item \textit{ver los gastos tanto personales como los que se comorarten con una persona con la que convives ya que me ayuda a controlar mejor mi economía} 
+    \end{itemize}
+    \item \textbf{Tareas}
+    \begin{itemize}
+        \item \textit{La de las tareas. Porque creo que no hay muchas aplicaciones con esta funcionalidad}
+        \item \textit{La de las tareas, ya que es algo básico que se hace un piso y siempre hay lío sobre a quien le toca cada parte de la casa}
+        \item \textit{El organizador semanal y puntual de tareas ya que se puede ver de forma rápida las tareas que se tienen que hacer cada día y me parece útil poder crear tareas que implequen a más de uno de los habitantes del hogar}
+        \item \textit{La funcionalidad que más útil me parece es la de las tareas del hogar, porque permite una buena organización de las tareas de limpieza y una forma de mantener a todos los integrantes informados}
+        \item \textit{Poder hacer una lista de tareas conjunta porque así le aparece a cada uno las tareas directamente}   
+    \end{itemize}
+    \item \textbf{Otras}
+    \begin{itemize}
+        \item \textit{La funcionalidad rápida y sencilla, porque hace que sea accesible para todos}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen, myyellow}]{
+      1/Lista de la compra,
+      2/Gastos,
+      5/Tareas,
+      1/Otras
+    }
+    \end{tikzpicture}
+    \caption{Distribución de respuestas a la pregunta 13: funcionalidad más útil}
+    \label{fig:funcionalidad-util}
+\end{figure}
+
+
+\subsection{Feeedback destacado}
+
+\subsection{Limitaciones del estudio}
+
+
+
+
+
+
+
+\section{Conclusiones de la prueba}
+
+
+
+
+
+
 
