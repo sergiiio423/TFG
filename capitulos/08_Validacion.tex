@@ -65,7 +65,6 @@ El cuestionario consta de 10 preguntas que son las siguientes:
     \item Necesité aprender muchas cosas antes de poder utilizar esta aplicación.
 \end{enumerate}
 
-Con estas preguntas se creó un formulario en Google Forms, para poder enviárselo a los usuarios posteriormente.
 
 El cuestionario SUS se califica de la siguiente manera: 
 \begin{itemize}
@@ -109,12 +108,36 @@ lo que permite obtener una visión más detallada de la experiencia del usuario.
 De la pregunta 1 a la 12 se les pidió a los usuarios que puntuaran de 1 a 5 siendo 1 muy en desacuerdo y 5 muy de acuerdo. Mientras que 
 las preguntas de la 13 a la 17 eran abiertas, para que los usuarios pudieran expresar su opinión de forma más detallada.
 
-Con estas preguntas también se creó un formulario en Google Forms, para poder enviárselo a los usuarios posteriormente.
-
 
 \section{Implementacion de la prueba}
 
 \subsection{Preparacion del entorno de prueba}
+
+La realización de pruebas se realizó de manera remota, por tanto, lo primero que había que se realizó  fue una investigación sobre las diferentes opciones disponibles para proporcionar acceso a la aplicación a los usuarios. Se valoraron estas opciones: 
+
+\begin{itemize}
+    \item \textbf{Distribución mediante archivos APK}: Esta opción permite a los usuarios descargar e instalar la aplicación directamente en sus dispositivos. Como la aplicación fue desarrollada en Flutter, era posible compilarla para Android y generar un archivo APK.
+    \item \textbf{Plataformas de testeo}: Existen plataformas que permiten a los desarrolladores subir su aplicación y compartirla con un grupo de usuarios para realizar pruebas. Estas plataformas suelen ofrecer herramientas para recopilar feedback y analizar el uso de la aplicación.
+    \item \textbf{Despliegue en la nube}: Esta opción permite alojar la aplicación en un servidor y acceder a ella a través de un enlace web. 
+\end{itemize}
+
+
+Después de evaluar las opciones, se decició usar un despligue en la nube. La distribución mediante archivos APK, no era la mejor opción, porque solo era posible para Android y alguno de los usuarios iban a usar iOS, por tanto esta opción no era posible.
+Las plataforma de testeo, aunque eran una buena opción, implicaban procesos de aprobación y limitaciones en el número de testers. 
+El despligue en la nube, sin embargo, permitía acceder a la aplicación desde cualquier dispositivo con conexión a Internet, lo que facilitaba la participación de los usuarios. Además, esta opción permitía realizar actualizaciones rápidas y solucionar problemas técnicos de manera eficiente. 
+
+Por tanto se optó por esta opción y al estar usando Firestore en el desarrollo de la aplicación,
+se decidió usar Firebase App Hosting para el despliegue. Esta plataforma permite alojar aplicaciones web de manera sencilla y rápida, además de ofrecer un entorno seguro y escalable.
+
+El proceso de despligue en Firebase fue sencillo y rápido, ya que, ofrece una buena integración con Flutter y permite compilar directamente desde el código fuente y subirlo a la nube.
+Una vez que se configuró el entorno de Firebase, se subió la aplicación y se generó un enlace de acceso (\href{https://hogar-3f60f.web.app/}{hogar-3f60f.web.app}).
+ 
+
+Una vez que se garantizó el acceso a la aplicación, lo siguiente fue crear los cuestionario que elegimos anteriomente. 
+Para ello se usó Google Forms, que es una herramienta sencilla y fácil de usar para crear cuestionarios y encuestas.
+Se crearon dos formularios, uno para el cuestionario SUS y otro para el cuestionario ad-hoc y se generaron enlaces para que los usuarios pudieran acceder a ellos.
+
+Con todo todo esto, el material necesario para la prueba estaba listo y se podía proceder a la selección de los usuarios que participarían en la prueba.
 
 \subsection{Reclutamiento de usuarios}
 
@@ -146,31 +169,11 @@ Con estas preguntas también se creó un formulario en Google Forms, para poder 
 \subsection{Distribución del material para la prueba}
 
 
-
-Para llevar a cabo la validación de la aplicación, se comenzó con la preparación del entorno de prueba, asegurando que los usuarios pudieran interactuar con la aplicación de manera eficiente y sin complicaciones técnicas. Este proceso inicial es crucial para garantizar que las pruebas se desarrollen en condiciones óptimas y que los resultados obtenidos sean representativos y fiables.
-
-En primer lugar, se realizó una investigación sobre las diferentes opciones disponibles para proporcionar acceso a la aplicación a los usuarios. Se evaluaron diversas alternativas, como la distribución mediante archivos APK, o la implementación de servicios de despliegue en la nube. Cada opción fue analizada en términos de facilidad de uso, accesibilidad, y compatibilidad con los dispositivos de los usuarios.
-
-Tras considerar las ventajas y desventajas de cada alternativa, se decidió utilizar un servicio proporcionado por Firestore. Este servicio ofrece una solución eficiente y práctica para desplegar aplicaciones desarrolladas en Flutter. Mediante el uso de Firestore, se pudo compilar la aplicación directamente desde el código fuente y desplegarla en un servidor accesible a través de Internet. Este proceso genera un enlace único que permite a los usuarios acceder a la aplicación de manera sencilla, sin necesidad de descargar ni instalar archivos adicionales.
-
-El uso de Firebase no solo facilitó el acceso a la aplicación, sino que también proporcionó un entorno seguro y confiable para las pruebas. Además, esta solución permitió realizar actualizaciones rápidas en caso de que se detectaran problemas durante las pruebas, asegurando que los usuarios siempre tuvieran acceso a la versión más reciente de la aplicación.
-
-Una vez que se garantizó el acceso a la aplicación, lo siguiente fue elegir que tipo de cuestionarios se iban a utilizar para evaluar la experiencia de los usuarios. Los dos cuestionarios más utilizados para evualar 
-la usabilidad de una aplicación y que nos prorcionan una puntuación cuantiativa son: 
-
-
-
-
-Una vez que se creó este último cuestionario, lo único que quedaba era reclutar a los usuarios que iban a participar en la prueba. 
-Encontrar a usuarios representativos era fácil ya que la aplicación está diseñada para ser utilizada por estudiantes que comparten piso y 
-por edad y estilo de vida, la mayoría de mis amigos y compañeros de clase encajaban en este perfil. 
-
-
 \section{Resultados de la prueba}
 
 \subsection{Resultados del cuestionario SUS}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
     \begin{axis}[
@@ -210,7 +213,8 @@ por edad y estilo de vida, la mayoría de mis amigos y compañeros de clase enca
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|p{9cm}|c|}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|p{10cm}|c|}
         \hline
         \textbf{Pregunta} & \textbf{Media} \\
         \hline
@@ -219,7 +223,7 @@ por edad y estilo de vida, la mayoría de mis amigos y compañeros de clase enca
         El proceso para añadir un gasto es sencillo. &  \\ \hline
         Entiendo bien cómo se reparten los gastos entre los miembros del hogar. &  \\ \hline
         Encuentro fácilmente las tareas semanales o puntuales asignadas. &  \\ \hline
-        Crear una nueva tarea es rápido y claro. & 4.6 \\ \hline
+        Crear una nueva tarea es rápido y claro. &  \\ \hline
         La visualización de la planificación semanal me parece útil. &  \\ \hline
         Navegar entre secciones como listas, tareas y gastos es fácil. &  \\ \hline
         El diseño y colores de la aplicación me parecen agradables. &  \\ \hline
@@ -278,6 +282,151 @@ Respuestas:
     \label{fig:funcionalidad-util}
 \end{figure}
 
+\textbf{Pregunta 14:} ¿Hubo alguna funcionalidad que te costó entender o usar?
+
+Respuestas:
+
+\begin{itemize}
+    \item \textbf{Sin dificultades}
+    \begin{itemize}
+        \item \textit{ninguna}
+        \item \textit{no x3}
+        \item \textit{todo perfecto, se entiende a la perfección todo}
+    \end{itemize}
+    \item \textbf{Tareas}
+    \begin{itemize}
+        \item \textit{la planificación semanal}
+        \item \textit{También fue la parte que más me costó entender, la de las tareas. La pestaña de gastos y la de la lista de la compra me parece muy intuitiva. Sin embargo, no diría que la pantalla de tareas es difícil de entender, solamente tienes que mirar en funcionamiento algo más para comprenderlo} 
+    \end{itemize}
+    \item \textbf{Gastos}
+    \begin{itemize}
+        \item \textit{La de los gastos no me deja usarla}
+    \end{itemize}
+    \item \textbf{Lista de la compra}
+    \begin{itemize}
+        \item \textit{Añadir productos a la compra}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen, myyellow}]{
+      5/Sin dificultades,
+      2/Tareas,
+      1/Gastos,
+      1/Lista de la compra
+    }
+    \end{tikzpicture}
+    \caption{Distribución de respuestas a la pregunta 14: funcionalidades difíciles de entender o usar}
+    \label{fig:funcionalidad-dificil}
+\end{figure}
+
+\textbf{Pregunta 15:} ¿Qué mejorarías o cambiarías en la aplicación?
+
+Respuestas:
+\begin{itemize}
+    \item \textbf{Sin cambios}
+    \begin{itemize}
+        \item \textit{nada, está todo muy bien}
+        \item \textit{nada x3}
+        \item \textit{Nada. Me gusta mucho}
+    \end{itemize}
+    \item \textbf{Tareas}
+    \begin{itemize}
+        \item \textit{en la planificacion semanal, cambairía que la tarea se repitiera: los martes por ejemplo, cada semana}
+        \item 
+    \end{itemize}
+    \item \textbf{Diseño}
+    \begin{itemize}
+        \item \textit{Lo único que añadiría sería poner una opción para que la aplicación se pueda ver en modo oscuro o poder elegir colores}
+        \item \textit{Los colores y señalar q es obligatorio de marcar para crear tarea/añadir producto}
+    \end{itemize}
+    \item \textbf{Otras}
+    \begin{itemize}
+        \item \textit{Mejoraría el tener un icono de ayuda donde explicara brevemente las instrucciones de uso de cada pantalla por si hay usuarios que les cuesta entender el funcionamiento, para evitar el mal uso de la aplicación}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen, myyellow}]{
+      5/Sin cambios,
+      1/Tareas,
+      2/Diseño,
+      1/Otras
+    }
+    \end{tikzpicture}
+    \caption{Distribución de respuestas a la pregunta 15: mejoras o cambios sugeridos}
+    \label{fig:mejoras-cambios}
+\end{figure}
+
+\textbf{Pregunta 16:} ¿Añadirías alguna funcionalidad nueva? ¿Cuál?
+
+Respuestas:
+
+\begin{itemize}
+    \item \textbf{Gastos}
+    \begin{itemize}
+        \item \textit{Podría añadirse el precio de una compra conjunta en la lista y dividirse directamente ese gasto automáticamente}
+        \item \textit{Alomejor un control de gastos por categorías (comida, entrenamiento...)}
+        \item \textit{Balance de gastos de luz, agua, internet…}
+    \end{itemize}
+    \item \textbf{Otras}
+    \begin{itemize}
+        \item \textit{La funcionalidad mencionada en el apartado anterior. No hay muchas más funcionalidades que añadir ya que es una aplicación bastante completa.}
+        \item \textit{añadir un apartado para ver que personas están en el piso en un determinado momento}
+    \end{itemize}
+    \item \textbf{Sin cambios}
+    \begin{itemize}
+        \item \textit{creo que no la veo bien}
+        \item \textit{ninguna}
+        \item \textit{no x2}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen}]{
+      3/Gastos,
+      2/Otras,
+      4/Sin cambios
+    }
+    \end{tikzpicture}
+    \caption{Distribución de respuestas a la pregunta 16: funcionalidades nuevas sugeridas}
+    \label{fig:funcionalidades-nuevas}
+\end{figure}
+
+\textbf{Pregunta 17:} ¿Tuviste algún problema o error técnico? Si es así, descríbelo.
+
+Respuestas: 
+
+\begin{itemize}
+    \item \textbf{Sin problemas}
+    \begin{itemize}
+        \item \textit{No x6}
+        \item \textit{No tuve ningún error técnico. La aplicación es completamente coherente y funcional}
+    \end{itemize}
+\item \textbf{Problemas}
+    \begin{itemize}
+        \item \textit{Sí, en la página de gastos me sale que no pertenezco a ningún hogar y al dar hacía atrás se me cierra la app no vuelve a la página principal}
+        \item \textit{en la lista de la compra, los nombres estaban descuadrados}
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen}]{
+      7/Sin problemas,
+      2/Problemas
+    }
+    \end{tikzpicture}
+    \caption{Distribución de respuestas a la pregunta 17: problemas o errores técnicos}
+    \label{fig:problemas-tecnicos}
+\end{figure}
 
 \subsection{Feeedback destacado}
 
