@@ -173,10 +173,11 @@
 \contentsline {subsection}{\numberline {8.4.3}Feeedback destacado}{173}{subsection.8.4.3}%
 \contentsline {subsection}{\numberline {8.4.4}Limitaciones del estudio}{173}{subsection.8.4.4}%
 \contentsline {section}{\numberline {8.5}Conclusiones de la prueba}{173}{section.8.5}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{174}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{174}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{180}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{185}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{192}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{198}{section.Alph1.5}%
-\contentsline {section}{Referencias}{204}{table.Alph1.29}%
+\contentsline {chapter}{\numberline {9}Conclusiones y trabajo futuro}{174}{chapter.9}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{175}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{175}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{181}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{186}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{193}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{199}{section.Alph1.5}%
+\contentsline {section}{Referencias}{205}{table.Alph1.29}%
