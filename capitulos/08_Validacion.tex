@@ -141,11 +141,23 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
 
 \subsection{Reclutamiento de usuarios}
 
+Para la selección de los usuarios que participarían en la prueba, se buscó un grupo de personas que fueran representativas del público objetivo de la aplicación.
+Para garantizar esta representatividad, se estableceron los siguientes criterios de selección:
+
+\begin{enumerate}
+    \item \textbf{Edad}: Personas con edades comprendidas entre 18 y 25 años, ya que este es el rango de edad más común entre los estudiantes universitarios y jóvenes profesionales que podrían beneficiarse de la aplicación.
+    \item \textbf{Situación residencial}: Personas que esten compartiendo piso actualmente o que haya compartido recientemente. Esto es importante porque la aplicación está diseñada para ayudar a gestionar gastos y tareas en un hogar compartido.
+    \item \textbf{Familiaridad con la tecnología}: Personas que tengan un uso diario de aplicaciones móviles y estén familiarizadas con la tecnología.
+\end{enumerate}
+
+Por tanto, finalmente se seleccionaron a 9 usuarios que cumplían con estos criterios. 
+En los siguientes gráficos se puede ver la distribución de los participantes en función de su edad y su perfil: 
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
     \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen,}]{
-      6/22 años, 3/23 años, 1/21 años
+      5/22 años, 3/23 años, 1/21 años
     }
     \end{tikzpicture}
     \caption{Distribución de edades de los participantes}
@@ -156,7 +168,7 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
     \centering
     \begin{tikzpicture}
     \pie[sum=auto, text=legend, radius=3, color={myblue, myred, mygreen}]{
-      4/Estudiantes del grado de Ingeniería Informática, 4/Estudiante de otros grados, 
+      3/Estudiantes del grado de Ingeniería Informática, 4/Estudiante de otros grados, 
       2/Trabajadores que comparten piso
     }
     \end{tikzpicture}
@@ -164,14 +176,52 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
     \label{fig:perfiles-participantes}
 \end{figure}
 
+Para asegurar que los participantes tuvieran una participación activa en la prueba, 
+se les escribió un mensaje previo a la prueba, donde se les explicaba el objetivo de la prueba y se les pedía que participaran.
+El mensaje fue el siguiente:
+
+\begin{quote}
+¡¡ATENCIÓN!!  
+Si has recibido este mensaje es porque quiero que formes parte del grupo de pruebas de la aplicación de mi TFG. ¿Que tendrías que hacer? Muy sencillo. Tendrías que probar mi app a través de un enlace (más adelante os proporcionaré instrucciones) y después de probarlas tendrías que responder a algunas preguntas que os proporcionaré a través de unos cuestionarios. 
+Es algo muy sencillo pero que os ocupará alrededor de unos 15-25 minutos. Antes de contar con vosotros para el estudio quiero saber si disponéis del tiempo para hacerlo y no os pillo muy ocupados. 
+Tendreís que hacerlo en un plazo de dos semanas. Si os parece bien hacerlo cuento con vosotros. Espero vuestra participación y que os animéis. 
+
+\end{quote}
+
+Una vez que se tuvo la confirmación de los participantes, se procedió a la distribución del material necesario para la prueba.
 
 
 \subsection{Distribución del material para la prueba}
 
+El canal prinipal de comunicación con los participantes fue WhatsApp, ya que es una 
+herramienta que todos los participantes usaban y que permite una comunicación rápida y directa.
+Se creó un grupo donde se compartió el siguiente mensaje: 
+
+\begin{quote}
+    Aquí teneís todo lo que necesitaís para participar. Os explico un poco, la prueba cuenta con dos partes. 
+    En la primera tendreís que registraros todas en la app y la primera que lo haga creará un hogar y le compartirá el código al resto por aquí. 
+    El resto después de registrarse, en vez de crear un hogar se unirá al que ha creado la primera a través del código que os mande. 
+    MUY IMPORTANTE: tenéis que esperar a que esteís todos metidos dentro del hogar, si no, no podréis probar al completo la app. 
+    Cuando estéis dentro todos empezará la segunda parte del experimento, en la que ya si tenéis que probar la app al completo. 
+    La app tiene 3 funcionalidades básicas que son gestión de tareas/calendario, gestión de gastos/deudas y gestión de compra. 
+    Necesito que probéis todo. Una vez que terminéis de probar todo. Me rellenaís los formularios.
+
+\end{quote}
+
+Después de esto, se compartió el enlace a la aplicación y los enlaces a los cuestionarios.
+
+El plazo para la realización de la prueba fue de dos semanas y la manera de probarla 
+era la más parecida a la que se haría en un entorno real. A los 7 días de la prueba, se mandó un mensaje recordando a los participantes que tenían que completar la prueba y los cuestionarios.
+
+Tras la finalización de la prueba, se recogieron los datos de los cuestionarios y se analizaron los resultados obtenidos.
+
 
 \section{Resultados de la prueba}
 
+
 \subsection{Resultados del cuestionario SUS}
+
+La siguiente figura muestra las puntuaciones individuales obtenidas por cada uno de los usuarios que participaron en la prueba. 
 
 \begin{figure}[H]
     \centering
@@ -181,7 +231,7 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
         bar width=10pt,
         ymin=0, ymax=100,
         ylabel={Puntuación SUS},
-        symbolic x coords={Usuario 1, Usuario 2, Usuario 3, Usuario 4, Usuario 5, Usuario 6, Usuario 7, Usuario 8, Usuario 9, Usuario 10},
+        symbolic x coords={Usuario 1, Usuario 2, Usuario 3, Usuario 4, Usuario 5, Usuario 6, Usuario 7, Usuario 8, Usuario 9},
         xtick=data,
         nodes near coords,
         nodes near coords align={vertical},
@@ -200,13 +250,32 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
         (Usuario 7, 90)
         (Usuario 8, 90)
         (Usuario 9, 77.5)
-        (Usuario 10, 95)
     };
     \end{axis}
     \end{tikzpicture}
     \caption{Puntuaciones individuales SUS}
 \end{figure}
 
+Como podemos ver el rango de las puntuaciones va desde 77.5 hasta 100 puntos, lo que indica que la mayoría de los usuarios puntuaron la usabilidad de la aplicación de forma muy positiva.
+5 usuarios puntuaron la usabilidad de la aplicación con 90 puntos o más, lo cual son puntuaciones muy altas. Incluso la puntuación más 
+baja (77.5) sigue siendo una puntuación aceptable.
+
+Para interpretar los resultados del cuestionarios SUS, hay que hacer una media de todas las puntuaciones obtenidas y si :
+
+\begin{itemize}
+    \item la media está entre \textbf{68 y 80}, la usabidad de la aplicación es aceptable.
+    \item la media es mayor de \textbf{80}, la usabilidad de la aplicación es muy buena.
+    \item la media es menos de \textbf{68}, indica que hay problemas de usabildiad en la aplicación.
+\end{itemize}
+
+\[
+\mathrm{Media\ SUS} = \frac{100 + 87.5 + 90 + 97.5 + 97.5 + 85 + 90 + 90 + 77.5 }{9} = 90.55 
+\]
+
+
+
+La media global de las puntuaciones SUS fue de \textbf{90,55} lo cual indica que la usabilidad de la aplicación excelente.
+Por tanto podemos concluir que la usabilidad es muy buena y que los usuarios no tuvieron problemas para usarla.
 
 
 \subsection{Resultados del cuestionario ad-hoc}
@@ -218,18 +287,18 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
         \hline
         \textbf{Pregunta} & \textbf{Media} \\
         \hline
-        Me ha resultado fácil crear una lista de la compra. &  \\ \hline
-        Añadir productos a una lista es intuitivo. &  \\ \hline
-        El proceso para añadir un gasto es sencillo. &  \\ \hline
-        Entiendo bien cómo se reparten los gastos entre los miembros del hogar. &  \\ \hline
-        Encuentro fácilmente las tareas semanales o puntuales asignadas. &  \\ \hline
-        Crear una nueva tarea es rápido y claro. &  \\ \hline
-        La visualización de la planificación semanal me parece útil. &  \\ \hline
-        Navegar entre secciones como listas, tareas y gastos es fácil. &  \\ \hline
-        El diseño y colores de la aplicación me parecen agradables. &  \\ \hline
-        La aplicación funciona de forma fluida y rápida. &  \\ \hline
-        La manera de ver los datos del perfil es intuitiva. &  \\ \hline
-        La pantalla principal, sirve para hacerte una idea general de todo lo que ofrece la app. &  \\ \hline
+        Me ha resultado fácil crear una lista de la compra. & 4,89 \\ \hline
+        Añadir productos a una lista es intuitivo. & 4,44 \\ \hline
+        El proceso para añadir un gasto es sencillo. &  4,66 \\ \hline
+        Entiendo bien cómo se reparten los gastos entre los miembros del hogar. & 4,77 \\ \hline
+        Encuentro fácilmente las tareas semanales o puntuales asignadas. &  4,77\\ \hline
+        Crear una nueva tarea es rápido y claro. &  4,77 \\ \hline
+        La visualización de la planificación semanal me parece útil. & 4,77 \\ \hline
+        Navegar entre secciones como listas, tareas y gastos es fácil. &  4,89 \\ \hline
+        El diseño y colores de la aplicación me parecen agradables. &  4,66 \\ \hline
+        La aplicación funciona de forma fluida y rápida. &  4,77 \\ \hline
+        La manera de ver los datos del perfil es intuitiva. &  4,66 \\ \hline
+        La pantalla principal, sirve para hacerte una idea general de todo lo que ofrece la app. & 4,77 \\ \hline
     \end{tabular}
     \caption{Resultados medios de las preguntas 1 a 12 del cuestionario ad-hoc}
     \label{tab:adhoc-medias}
@@ -431,9 +500,6 @@ Respuestas:
 \subsection{Feeedback destacado}
 
 \subsection{Limitaciones del estudio}
-
-
-
 
 
 
