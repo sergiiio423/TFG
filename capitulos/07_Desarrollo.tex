@@ -2,7 +2,7 @@
 \label{chap:desarrollo}
 
 En este capítulo se va detallar el proceso de desarrollo de la aplicación, explicando las tecnologías y usadas y como 
-se han estructurado las iteracciones para construir la aplicación de manera progresiva.
+se han estructurado las iteraciones para construir la aplicación de manera progresiva.
 
 \section{Elección de tecnologías}
 \label{sec:justificacion}
@@ -20,18 +20,18 @@ En cuanto a la tecnología back-end, he decidido utilizar \textbf{Firebase} porq
 otras alternativas. Para empezar, Firebase proporciona un backend completo, lo que significa que no es necesario gestionar servidores ni 
 preocuparse por la configuración y el mantenimiento. La integración de la autenticación de usuarios es también uno de sus puntos fuertes, ya que 
 Firebase Auth facilita la implementación de los mismos. Otra razón para elegir Firebase es su base de datos en tiempo real, que permite 
-sicronización instantánea de datos. Además, tiene una gran integración con servicios de Google, optimizando la monitorización del rendimiento.
+sincronización instantánea de datos. Además, tiene una gran integración con servicios de Google, optimizando la monitorización del rendimiento.
 
 
-\section{Iteracciones de desarrollo}
+\section{Iteraciones de desarrollo}
 \label{sec:iteracciones}
-El desarrollo de la aplicación se ha estructurado en varias iteracciones, siguiendo una metología iterativa. 
+El desarrollo de la aplicación se ha estructurado en varias iteraciones, siguiendo una metodología iterativa. 
 En cada iteración se va a desarrollar una serie de funcionalidades, asociados a los requisitos especificados anteriormente. 
-A continuación se detallan las iteracciones que se han llevado a cabo para el desarrollo de la aplicación:
+A continuación se detallan las iteraciones que se han llevado a cabo para el desarrollo de la aplicación:
 
 \subsection{Iteración 1}
 
-En esta primera iteracción se van a desarrollar los siguientes requisitos:
+En esta primera iteración se van a desarrollar los siguientes requisitos:
 \begin{itemize}
     \item {\hyperref[req:RF01]{RF\_01}}: Registro.
     \item {\hyperref[req:RF02]{RF\_02}}: Inicio de sesión.
@@ -46,9 +46,9 @@ En esta primera iteracción se van a desarrollar los siguientes requisitos:
     \item {\hyperref[req:RF11]{RF\_11}}: Editar hogar.
 \end{itemize}
 
-Antes de la implementación de los requisitos mencionados anteriomente es necesario realizar una configuración inicial del proyecto.
-Para ello, lo primero es configurar el entorno de desarrollo, asegurando que todas las herramieentas necesarias estén correctamente 
-instaladas. Se utiliza Visual Studio Code como editor principal y se instala Flutter junto con las dependecias necesarias. 
+Antes de la implementación de los requisitos mencionados anteriormente es necesario realizar una configuración inicial del proyecto.
+Para ello, lo primero es configurar el entorno de desarrollo, asegurando que todas las herramientas necesarias estén correctamente 
+instaladas. Se utiliza Visual Studio Code como editor principal y se instala Flutter junto con las dependencias necesarias. 
 También es necesario configurar un emulador para poder realizar las pruebas de la aplicación posteriormente. 
 
 Una vez configurado el entorno de desarrollo, se procede a la creación de un nuevo proyecto de Flutter.
@@ -57,7 +57,7 @@ Se configura un sistema de control de versiones con Git y se sube el código a u
 Otra de las tareas a realizar antes de empezar con la implementación de los requisitos es la configuración de Firebase.
 Para ello se crea un nuevo proyecto en Firebase y se configuran los servicios necesarios (como Firebase Auth para la autenticación de usuarios y Firebase Firestore para almacenar datos).
 
-Por último antes de empezar con la implementación de los requisitos, se realizan pruebas de conexion entre la app y Firebase para confirmar
+Por último antes de empezar con la implementación de los requisitos, se realizan pruebas de conexión entre la app y Firebase para confirmar
 que la base de datos está correctamente configurada y que la aplicación puede comunicarse con ella sin problemas. 
 
 Al usar Flutter como tecnología de desarrollo, se está cumpliendo el {\hyperref[req:RNF_04]{RNF\_04}} - Compatibilidad, 
@@ -72,7 +72,7 @@ En primer lugar, Firebase Auth proporciona un sistema de autenticación de usuar
 como autenticación mediante correo electrónico y contraseña, o autenticación con proveedores externos como Google. 
 
 Además, Firebase Firestore incluye reglas de seguridad que permiten definir políticas de acceso a los datos almacenados en la base de datos.
-Tambien utiliza conexiones seguras para la comunicación entre la aplicación y los servicios de backend, asegurando que los datos transmitidos 
+También utiliza conexiones seguras para la comunicación entre la aplicación y los servicios de backend, asegurando que los datos transmitidos 
 estén cifrados y protegidos.
 
 Para los datos relacionados con los usuarios y los hogares, se crearán colecciones en Firebase Firestore para almacenar la información de forma estructurada.
@@ -158,7 +158,7 @@ maneja todo el proceso de registro, tanto con email y contraseña como mediante 
 Las funciones principales de esta clase son: 
 \begin{itemize}
     \item \textbf{initState :} Este método se encarga de preparar las animaciones iniciales que hacen aparecer gradualmente el contenido cuando se abre la pantalla, creando una transición para el usuario.
-    \item \textbf{\_register :} Es la función encargada del registro con email y contraseña. Verfica primero que todos los campos estén correctamente completados, luego intenta crear la cuenta en Firebase. Si tiene éxito, guarda los datos adicionales del usuario y envía un correo de verificación.
+    \item \textbf{\_register :} Es la función encargada del registro con email y contraseña. Verifica primero que todos los campos estén correctamente completados, luego intenta crear la cuenta en Firebase. Si tiene éxito, guarda los datos adicionales del usuario y envía un correo de verificación.
     \item \textbf{\_signInWithGoogle :} Gestiona el registro alternativo mediante una cuenta de Google. Inicia el proceso de autenticación con Google y si es un nuevo usuario crea automáticamente su perfil en la base de datos.
     \item \textbf{\_createUserProfile :} Guarda la información del usuario (nombre y apellidos) en Firestore después de crear una cuenta exitosamente, asociándola al ID único.
     \item \textbf{\_showRegistrationSuccessDialog :} Muestra un cuadro de diálogo cuando el registro se completa correctamente. Ofrece opciones para volver al inicio de sesión o reenviar el correo de verificación si es necesario.
@@ -191,9 +191,9 @@ Las funciones principales de esta clase son:
     \item \textbf{dispose :} Se encarga de liberar los recursos utilizados.
     \item \textbf{\_signIn :} Este método se ejecuta cuando el usuario intenta iniciar sesión con su correo y contraseña. Verifica las credenciales con Firebase y luego decide a qué pantalla debe dirigirse según si el usuario pertenece o no a un hogar.
     \item \textbf{\_signInWithGoogle :} Permite iniciar sesión mediante una cuenta de Google. Si el inicio de sesión tiene éxito, también verifica si el usuario está asociado a un hogar y lo redirige en consecuencia.
-    \item \textbf{\_handleAuth :} Es el método que decide a qué pantalla se envía al usuario después de una autenticación exitosa. Si su correo no está verificado, muestra un díalago informativo. Si ya está verificado, revisa si pertenece a un hogar para ver a qué pantalla se envía.
+    \item \textbf{\_handleAuth :} Es el método que decide a qué pantalla se envía al usuario después de una autenticación exitosa. Si su correo no está verificado, muestra un dialogo informativo. Si ya está verificado, revisa si pertenece a un hogar para ver a qué pantalla se envía.
     \item \textbf{\_handleAuthError :} Se encarga de interpretar y mostrar mensajes claros de error cuando el inicio de sesión falla.
-    \item \textbf{\_showEmailNotVerifiedDialog :} Muestra un cuadro de diálogo cuando el usuario intenta iniciar sesión sin hacer verificado su correo.
+    \item \textbf{\_showEmailNotVerifiedDialog :} Muestra un cuadro de dialogo cuando el usuario intenta iniciar sesión sin hacer verificado su correo.
 \end{itemize}
 
 \begin{figure}[ht]
@@ -208,7 +208,7 @@ Las funciones principales de esta clase son:
    
 }
 
-Esta pantalla se ha immplentado con la clase \textit{ProfileScreen} que representa el perfil de usuario dentro de la aplicación. Muestra la información personal y 
+Esta pantalla se ha implementado con la clase \textit{ProfileScreen} que representa el perfil de usuario dentro de la aplicación. Muestra la información personal y 
 del hogar al que pertenece el usuario. Su finalidad es mostrar la información personal y del hogar al que pertenece el usuario, así como 
 permitirle editar sus datos, gestionar el nombre del hogar, ver a los miembros con los que convive, y realizar acciones como abandonar el hogar o cerrar sesión. 
 
@@ -219,10 +219,10 @@ Entre sus funciones destacadas se encuentran:
 \begin{itemize}
     \item \textbf{initState :} Este método se ejecuta cuando se abre la pantalla. Inicializa el usuario actual y llama a otro método para cargar sus datos desde la base de datos.
     \item \textbf{\_loadProfileData :} Carga la información del usuario desde Firebase, incluyendo su nombre, apellidos y correo. Luego busca el hogar al que pertenece y obtiene su nombre, código y los nombres de los demás miembros del hogar.
-    \item \textbf{\_updateProfile :} Permite guardar cambios en los datos del usuario, actualizandolos en la base de datos.  
+    \item \textbf{\_updateProfile :} Permite guardar cambios en los datos del usuario, actualizándolos en la base de datos.  
     \item \textbf{\_showEditProfileModal :} Muestra un formulario en la parte inferior de la pantalla donde el usuario puede modificar sus datos.
     \item \textbf{\_buildProfileHeader :} Construye la parte superior de la pantalla, donde se muestra el nombre y apellidos del usuario y su correo.
-    \item \textbf{\_buildProfileContent :} Genera el contenido del perfil debajo del encabezado. Incluye las secciones de configuración del hogar, preferencias y botones de accion.
+    \item \textbf{\_buildProfileContent :} Genera el contenido del perfil debajo del encabezado. Incluye las secciones de configuración del hogar, preferencias y botones de acción.
     \item \textbf{\_buidEditableHomeNameItem :} Muestra el nombre del hogar junto a un botón para editarlo.
     \item \textbf{\_updateHomeName :} Guarda en la base de datos el nuevo nombre del hogar, si el usuario lo modifica.
     \item \textbf{\_showEditHomeModal :} Abre un formulario donde se puede cambiar el nombre del hogar.
@@ -236,7 +236,7 @@ Entre sus funciones destacadas se encuentran:
     \item \textbf{\_abandonarHogar :} Elimina al usuario de la lista de miembros del hogar.
 \end{itemize}
 
-Aqui se muestra el resultado de la implementación de la pantalla: 
+Aquí se muestra el resultado de la implementación de la pantalla: 
 
 \begin{figure}[ht]
     \centering
@@ -314,7 +314,7 @@ El resultado de la implementación de esta pantalla es el siguiente:
    
 }
 
-En este caso la pantala se ha creado con la clase \textit{CrearHogarScreen} y permite que el usuario cree un nuevo hogar dentro de la aplicación.
+En este caso la pantalla se ha creado con la clase \textit{CrearHogarScreen} y permite que el usuario cree un nuevo hogar dentro de la aplicación.
 Una vez que el usuario crea el hogar, se le asigna un código único de seis dígitos y se une a él automáticamente.
 
 Las funciones que componen esta pantalla son:
@@ -355,7 +355,7 @@ Esta pantalla es la que se muestra cuando el usuario selecciona la opción de un
 
 \subsubsection{Base de datos}
 
-En esta primera iteracción ha sido necesario crear dos colecciones en la base de datos de Firebase, 
+En esta primera iteración ha sido necesario crear dos colecciones en la base de datos de Firebase, 
 una para los usuarios y otra para los hogares. 
 
 Para la colección de \textbf{usuarios} se ha creado la siguiente estructura:
@@ -371,7 +371,7 @@ que no tenemos almacenado en la base de datos, se puede hacer una consulta a Fir
 Para la colección de \textbf{hogar} se ha creado la siguiente estructura: 
 \begin{itemize}
     \item \textbf{nombre:} Es el nombre que indica el usuario al crear el hogar.
-    \item \textbf{codigo:} Es el código único que se genera al crear el hogar.
+    \item \textbf{código:} Es el código único que se genera al crear el hogar.
     \item \textbf{miembros:} Es un array que contiene los ID de los usuarios que pertenecen a ese hogar.
     \item \textbf{fechaCreacion:} Es la fecha en la que se creó el hogar
 \end{itemize}
@@ -396,7 +396,7 @@ Para probar la implementación que se ha realizado se ha llevado a cabo una seri
     \item Comprobación de que el usuario puede abandonar un hogar.
 \end{itemize}
 
-\subsubsection{Revisión de la iteracción}
+\subsubsection{Revisión de la iteración}
 La aplicación ha sido probada por un usuario real, una mujer de 23 años, que comparte piso con otras tres personas.
 Durante todas las iteraciones se va a contar con su colaboración para realizar pruebas de funcionalidad y obtener
 nuevas mejoras.
@@ -408,9 +408,9 @@ nuevas mejoras.
 }
 
 El proceso de registro fue realizado con éxito por la usuaria, quien pudo crear su cuenta sin problemas. Sin 
-embargo, depués de registrarse, la aplicación muestra un mensaje en la parte inferior indicando 
+embargo, después de registrarse, la aplicación muestra un mensaje en la parte inferior indicando 
 que debe verificar su correo y volver a iniciar sesión, pero la usuaria indicó que el mensaje no era claro y 
-además aparecia durante un tiempo muy corto, lo que dificultaba su lectura.
+además aparecía durante un tiempo muy corto, lo que dificultaba su lectura.
 
 \paragraph{Inicio de sesión}
 \parbox{\textwidth}{ 
@@ -448,22 +448,22 @@ La usuaria puedo abandonar sin problemas su hogar y unirse a otro hogar, mediant
 }
 
 La usuaria pudo cerrar sesión sin problemas, pero le gustaría que la aplicación le preguntara si realmente quiere cerrar sesión, para 
-evitar cerrar sesion por error.
+evitar cerrar sesión por error.
 
 
-\subsubsection{Plan para la siguiente iteracción}
+\subsubsection{Plan para la siguiente iteración}
 
-Para la siguiente iteracción se propone:
+Para la siguiente iteración se propone:
 
 \begin{itemize}
-    \item Mejorar la intefaz de usuario, con las sugerencias y comentarios de la usuaria.
-    \item Desarrollar los requisitos de la siguiente iteracción.
+    \item Mejorar la interfaz de usuario, con las sugerencias y comentarios de la usuaria.
+    \item Desarrollar los requisitos de la siguiente iteración.
 \end{itemize}
 
 
 \subsection{Iteración 2}
 
-En esta segunda iteracción se van a desarrollar los siguientes requisitos:
+En esta segunda iteración se van a desarrollar los siguientes requisitos:
 
 \begin{itemize}
     \item {\hyperref[req:RF12]{RF\_12}}: Crear tarea.
@@ -485,7 +485,7 @@ En esta segunda iteracción se van a desarrollar los siguientes requisitos:
 \subsubsection{Implementacion}
 
 Durante la implementación de los requisitos se ha seguido el diseño propuesto en los bocetos iniciales, que 
-mostramos en el cápitulo anterior. Al realizar la implementación, ha sido necesario añadir un requisito adicional: 
+mostramos en el capitulo anterior. Al realizar la implementación, ha sido necesario añadir un requisito adicional: 
 
 \begin{table}[htb!]
     \begin{tabular}{|p{0.35\linewidth}|p{0.6\linewidth}|}
@@ -549,14 +549,14 @@ La clase principal de esta pantalla se llama \textit{TareasScreen} y se encarga 
 visualizar las tareas de la semana y las del día actual, permite marcarlas como completadas, ver los detalles de estas, editarlas o eliminarlas.
 También permite crear nuevas tareas, tanto semanales como puntuales.
 
-Al iniciar la pantalla se muestra widget iteractivo con la semana actual y dos secciones diferenciadas: una para las tareas que corresponde con 
+Al iniciar la pantalla se muestra widget interactivo con la semana actual y dos secciones diferenciadas: una para las tareas que corresponde con 
 la semana actual por defecto (si se cambia la semana en el widget mencionado anteriormente se mostraran las de esa semana) y otra
 para las tareas puntuales que corresponden por defecto al día actual.
 
 Las funciones principales que hacen esto posible son: 
 \begin{itemize}
     \item \textbf{initState :} Se ejecuta al abrir la pantalla. Inicializa las variables necesarias.
-    \item \textbf{\_loadInitialData :} Simula una pequeña carga para mostrar un indicdor visual.
+    \item \textbf{\_loadInitialData :} Simula una pequeña carga para mostrar un indicador visual.
     \item \textbf{dispose :} Libera los recursos cuando la pantalla se cierra.
     \item \textbf{\_generarSemana :} A partir de una fecha dada, genera una lista de fechas que representa la semana correspondiente.
     \item \textbf{\_obtenerSemanaMes :} Calcula a qué semana del mes pertenece una fecha concreta, con ajustes si la semana se cruza con el mes siguiente.
@@ -695,25 +695,25 @@ se inicia con los datos de la tarea seleccionada. El resultado es el siguiente:
 }
 
 Esta pantalla esta implementada dentro de la clase \textit{CalendarioScreen} y su objetivo mostrar las tareas del usuario en un 
-formato de calendario. Se mustra tanto las tareas puntuales como las semanales (aunque no estén asignadas al usuario) y permite ver 
+formato de calendario. Se muestra tanto las tareas puntuales como las semanales (aunque no estén asignadas al usuario) y permite ver 
 claramente que días tiene tareas asignadas y los detalles de cada tarea.
 
 Al iniciar la pantalla se carga el calendario junto con las tareas del hogar al que pertenece el usuario. Se muestran los días con tareas mediante 
 formas circulares de colores que en función del color indican si la tarea es semanal o puntual. Al seleccionar un día concreto en el calendario, aparecen 
 las tareas correspondientes a ese día, primero las semanales y luego las puntuales. Mientras que se visualizan las tareas, se pueden 
-marcar como completada, editar o eliminar cualquier tarea. Además en todo momento se puede ver el botón que permite añadir una nueva tareaa, cuya lógica es la misma
+marcar como completada, editar o eliminar cualquier tarea. Además en todo momento se puede ver el botón que permite añadir una nueva tarea, cuya lógica es la misma
 que la de la pantalla de tareas.
 
 Los métodos que componen esta pantalla son: 
 \begin{itemize}
     \item \textbf{initState :} Se ejecuta al abrirse la pantalla. Configura el calendario en español y selecciona el día actual por defecto.
     \item \textbf{dispose :} Libera los recursos cuando se cierra la pantalla.
-    \item \textbf{\_setupHouseholdListener :} Detecta cuando hay algun cambio en el hogar del usuario y recarga las tareas cuando esto ocurre.
+    \item \textbf{\_setupHouseholdListener :} Detecta cuando hay algún cambio en el hogar del usuario y recarga las tareas cuando esto ocurre.
     \item \textbf{\_loadTasksFromFirestore :} Además de escuchar todos los cambios en la colección de tareas, carga las tareas y las filtra en tareas puntuales del usuario y semanales de cualquier miembro del hogar. 
     \item \textbf{\_loadUserNames :} Carga los nombres de los usuarios desde la colección de usuarios. Sirve para mostrar los nombres de los usuario en cada tarea.
     \item \textbf{\_getDailyTasks :} Devuelve una lista con las tareas puntuales del usuario que ocurren en un día específico.
     \item \textbf{\_getWeeklyTasksForDay :} Busca en la lista de las tareas semanales cuáles ocurren en un día específico.
-    \item \textbf{\_buildCalendar :} Se encarga de construir el calendario iteractivo y de mostrar las tareas en los días correspondientes.
+    \item \textbf{\_buildCalendar :} Se encarga de construir el calendario interactivo y de mostrar las tareas en los días correspondientes.
     \item \textbf{\_buildTaskCard :} Muestra un tarjeta con la información de una tarea, permitiendo ver los detalles de la tarea, marcarlas como completadas o acceder a las opciones de editarla o eliminarla.
     \item \textbf{\_buildDetalleItem :} Muestra en detalle la información de una tarea seleccionada.
     \item \textbf{\_obtenerNombreMes :} Devuelve el nombre del mes en español a partir de su número.
@@ -749,7 +749,7 @@ Los métodos que componen esta pantalla son:
 
 \begin{itemize}
     \item \textbf{dispose :} Libera los recursos cuando la pantalla se cierra.
-    \item \textbf{\_buildListaCompra :} Se conecta a la base de ddatos y obtiene todas las listas donde el usuario está incluido y muestra un mensaje si no hay listas creadas o una lista con las tarjetas de cada lista.
+    \item \textbf{\_buildListaCompra :} Se conecta a la base de datos y obtiene todas las listas donde el usuario está incluido y muestra un mensaje si no hay listas creadas o una lista con las tarjetas de cada lista.
     \item \textbf{\_buildListaCard :} Crea una tarjeta para cada lista de la compra, muestra su nombre y si es individual o compartida.
     \item \textbf{\_confirmarBorradaLista :} Muestra un cuadro de confirmación antes de eliminar una lista. Si se confirma, borra todos los productos asociados a esa lista en Firestore y luego borra la lista.
     \item \textbf{\_mostrarModalCrearLista :} Muestra un modal para crear una nueva lista de la compra.
@@ -770,7 +770,7 @@ Esta pantalla es bastante sencilla, y su resultado es el siguiente:
    
 }
 
-Esta pantalla se muestra con el método \textit{\_mostrarModalCrearLista}, explicado anteriomente, que es el encargado de gestionar 
+Esta pantalla se muestra con el método \textit{\_mostrarModalCrearLista}, explicado anteriormente, que es el encargado de gestionar 
 la creación de listas de la compra y mostrar el formulario.
 
 
@@ -811,7 +811,7 @@ dentro de la clase \textit{ListaScreen}, explicada anteriormente. El resultado e
 
 La clase principal de esta pantalla es \textit{ProductoListaScreen} y permite gestionar los productos que pertenecen a una lista de la compra específica. 
 Esta pantalla permite ver, añadir, modificar la cantidad, marcar como comprado o eliminar productos dentro de una lista. Además incluye una opción de marcar 
-todoss los productos como comprados de una sola vez. 
+todos los productos como comprados de una sola vez. 
 
 Al abrir esta pantalla, se cargan automáticamente todos los productos relacionados con la lista seleccionada. Se organizan en una lista y se muestran
 diferenciado entre los productos comprados y los que no lo están. Incluye también un botón para añadir nuevos productos a la lista.
@@ -843,7 +843,7 @@ La pantalla se muestra de la siguiente manera:
    
 }
 
-Esta pantalla se muestra con el método \textit{\_mostrarModalAgregarProducto}, explicado anteriomente. 
+Esta pantalla se muestra con el método \textit{\_mostrarModalAgregarProducto}, explicado anteriormente. 
 
 El resultado es el siguiente: 
 
@@ -859,9 +859,9 @@ El resultado es el siguiente:
 
 \subsubsection{Base de datos}
 
-Como resultado de la implementación de esta iteracción, se han creado las colecciones tareas, lista y producto en la base de datos de Firestore.
+Como resultado de la implementación de esta iteración, se han creado las colecciones tareas, lista y producto en la base de datos de Firestore.
 
-Para la colección de \textbf{tareas} se ha crado la siguiente estructura:
+Para la colección de \textbf{tareas} se ha creado la siguiente estructura:
 
 \begin{itemize}
     \item \textbf{asignados}: Contiene los usuarios asignados a la tarea (en caso de que sea semanal).
@@ -905,7 +905,7 @@ Por último, la colección de \textbf{producto} almacena la siguiente informaci�
 Para probar la implementación que se ha realizado se ha llevado a cabo una serie de pruebas de funcionalidad.
 
 \begin{itemize}
-    \item Comprobación de la creación de una nueva tarea. Esto incluye que la tarea se almacene correctamente en la base de datos con los datos correctos y que se muestre en la intefaz de tareas.
+    \item Comprobación de la creación de una nueva tarea. Esto incluye que la tarea se almacene correctamente en la base de datos con los datos correctos y que se muestre en la interfaz de tareas.
     \item Comprobación de la visualización de la planificación semanal. Esto incluye que las tareas semanales se muestren correctamente en la interfaz de tareas y que se actualicen al seleccionar un día específico.
     \item Comprobación de la edición de una tarea.
     \item Comprobación de la eliminación de una tarea.
@@ -921,10 +921,10 @@ Para probar la implementación que se ha realizado se ha llevado a cabo una seri
     \item Comprobación de la eliminación de una lista de la compra.
 \end{itemize}
 
-\subsubsection{Revisión de la iteracción}
+\subsubsection{Revisión de la iteración}
 
-La aplicación ha sido probada por la misma usuaria que en la iteracción anterior. Ha probado todas las funcionalidades nuevas que se han implementado y 
-las mejoras implementadas con los comentarios que realizó en la iteracción anterior.
+La aplicación ha sido probada por la misma usuaria que en la iteración anterior. Ha probado todas las funcionalidades nuevas que se han implementado y 
+las mejoras implementadas con los comentarios que realizó en la iteración anterior.
 
 \paragraph{Crear una tarea}
 
@@ -942,7 +942,7 @@ en el que se va a realizar, que se asigne automáticamente a todos los días de 
    
 }
 
-La usuaria pudo consutar la planificación semanal sin problemas, pero le costó averiguar que esa pantalla mostraba solo las tareas para la semana 
+La usuaria pudo consultar la planificación semanal sin problemas, pero le costó averiguar que esa pantalla mostraba solo las tareas para la semana 
 actual y que si quería ver las tareas de otras semanas, tenía que ir al calendario.
 
 
@@ -971,20 +971,20 @@ pero indicó que le gustaría que la aplicación le mandará recordatorios de la
 La usuaria pudo crear una lista, añadir productos, eliminarlos, cambiar la cantidad de un producto y marcarlo como comprado sin problemas. 
 Estuvo muy satisfecha con la interfaz y el diseño de la aplicación, ya que le resultó muy intuitivo y fácil de usar.
 
-\subsubsection{Plan para la siguiente iteracción}
+\subsubsection{Plan para la siguiente iteración}
 
-Para la siguiente iteracción se propone:
+Para la siguiente iteración se propone:
 
 \begin{itemize}
-    \item Mejorar la intefaz de usuario, con las sugerencias y comentarios de la usuaria.
-    \item Desarrollar los requisitos de la siguiente iteracción.
+    \item Mejorar la interfaz de usuario, con las sugerencias y comentarios de la usuaria.
+    \item Desarrollar los requisitos de la siguiente iteración.
     \item Implementar una pantalla principal provisional, para hacer la aplicación más intuitiva.
-    \item Corregir los posibles errores que se hayan detectado en la iteracción anterior
+    \item Corregir los posibles errores que se hayan detectado en la iteración anterior
 \end{itemize}
 
 \subsection{Iteración 3}
 
-En esta iteracción se van a desarrollar los siguientes requisitos:
+En esta iteración se van a desarrollar los siguientes requisitos:
 
 \begin{itemize}
     \item {\hyperref[req:RF19]{RF\_19}}: Crear gasto.
@@ -1031,7 +1031,7 @@ Los métodos que componen esta pantalla son:
     \item \textbf{\_cargarDatosHogar :} Busca y carga los fatos del hogar al que pertenece el usuario.
     \item \textbf{\_cargarNombresMiebres :} A través de los IDs de los miembros del hogar, busca en la base de datos y carga los nombres de los miembros del hogar.
     \item \textbf{\_mostrarModalAgregarGasto :} Abre un formulario para crear o editar un gasto. Permite introducir el título, monto, fecha, quién lo pagó y quiénes deben pagar. Calcula automáticamente el monto dividido entre los participantes.
-    \item \textbf{\_eliminarGasto :} Elimina un gasto de la base de datps y llama a la función correspondiente para ajustar las deudas.
+    \item \textbf{\_eliminarGasto :} Elimina un gasto de la base de datos y llama a la función correspondiente para ajustar las deudas.
     \item \textbf{\_mostrarConfirmacionEliminar :} Muestra un cuadro de diálogo para confirmar la eliminación de un gasto.
     \item \textbf{\_mostrarDetalleGasto :} Abre un modal con todos los detalles del gasto seleccionado.
     \item \textbf{\_buildGastosTab :} Construye la pestaña de gastos, mostrando una lista de todos los gastos registrados, agrupados por fecha y también un resumen con el total de gastos y los del usuario.
@@ -1055,7 +1055,7 @@ La clase tiene más métodos pero se explicarán más adelante junto con las pan
    
 }
 
-Esta pantalla se muestra con el método \textit{\_mostrarModalAgregarGasto}, explicado anteriomente, que es el encargado de gestionar la creación de gastos y mostrar el formulario.
+Esta pantalla se muestra con el método \textit{\_mostrarModalAgregarGasto}, explicado anteriormente, que es el encargado de gestionar la creación de gastos y mostrar el formulario.
 
 El resultado de la implementación de esta pantalla es el siguiente:
 
@@ -1080,8 +1080,8 @@ deudas totales del usuario. Los métodos relacionados con esta pantalla son:
 \begin{itemize}
     \item \textbf{\_actualizarDeudasDesdeGastos :} Cuando se crear o edita un gasto, este método se encarga de actualizar las deudas entre el pagador y los participantes, teniendo en cuneta si existen deudas previas o si deben compensarse.
     \item \textbf{\_revertirDeudaDesdeGastos :} Cuando se elimina un gasto, ajusta o elimina las deudas. 
-    \item \textbf{\_buildDeudasTab :} Construye la pestaña de deudas, donde se muestra el balance de deudas de todos los miembros del hogar. Tambien muestra un resumen de las deudas del usuario.
-    \item \textbf{\_buildListaDeudasCompleta :} Muestra todas las deudas del hogar, indicando si son deudas a favor o en contra del usuario y además muestra deudas que son entre otros miembros del hogar. También permite marcala como pagada o cobrada. 
+    \item \textbf{\_buildDeudasTab :} Construye la pestaña de deudas, donde se muestra el balance de deudas de todos los miembros del hogar. También muestra un resumen de las deudas del usuario.
+    \item \textbf{\_buildListaDeudasCompleta :} Muestra todas las deudas del hogar, indicando si son deudas a favor o en contra del usuario y además muestra deudas que son entre otros miembros del hogar. También permite marcarla como pagada o cobrada. 
     \item \textbf{\_marcarDeudaComoPagada :} Permite actualizar una deuda para marcarla como pagada y la registra en la colección de pagos.
     \item \textbf{\_compensarDeudas :} Se encarga de reorganizar todas las deudas del hogar para simplificarlas. Elimina las deudas cruzadas y las convierte en una sola deuda entre dos miembros.
     \item \textbf{\_calcularBalances :} Calcula cuánto debe o le deben a cada miembro del hogar.
@@ -1137,7 +1137,7 @@ El resultado es el siguiente:
 
 La clase principal de este archivo es \textit{HomePage} y representa la pantalla de inicio de la aplicación. Esta pantalla 
 ofrece un visión general de todo lo que el usuario puede hacer en la aplicación, tareas pendientes, deudas compartidas y productos en la lista de la compra.
-Funciona como un panel central donde el usuario puede consultar resumenes y acceder a las diferentes funcionalidades de la aplicación.
+Funciona como un panel central donde el usuario puede consultar resúmenes y acceder a las diferentes funcionalidades de la aplicación.
 
 
 Las funciones que componen esta pantalla son: 
@@ -1184,7 +1184,7 @@ EL resultado de la implementación de esta pantalla es el siguiente:
    
 }
 
-Ha sido necesario implementar una clase más correspondiente a la barra inferior de navvegación de la aplicación que se puede observar en la mayoría de las pantallas. 
+Ha sido necesario implementar una clase más correspondiente a la barra inferior de navegación de la aplicación que se puede observar en la mayoría de las pantallas. 
 Esta barra se ha implementado dentro de la clase \textit{CustomBottomNavigationBar} y permite al usuario navegar entre las diferentes pantallas de la aplicación.
 
 Los métodos que hacen esto posible son: 
@@ -1226,7 +1226,7 @@ Mencionando esta última clase, damos por finalizada la implementación de la ap
 
 \subsubsection{Base de datos}
 
-Como resultado de esta última iteracción, se han creado las colecciones gastos, deudas y pagos en la base de datos de Firestore. 
+Como resultado de esta última iteración, se han creado las colecciones gastos, deudas y pagos en la base de datos de Firestore. 
 
 Para la colección de \textbf{gastos} se ha creado la siguiente estructura:
 
@@ -1268,7 +1268,7 @@ Por ultimo la colección de \textbf{pagos} almacena la siguiente información:
 \end{itemize}
 
 
-Como esta es la ultima iteracción, ya tenemos la base de datos completa y podemos realizar el diagrama final de la base de datos: 
+Como esta es la ultima iteración, ya tenemos la base de datos completa y podemos realizar el diagrama final de la base de datos: 
 
 
 \begin{figure}[H]
@@ -1280,23 +1280,23 @@ Como esta es la ultima iteracción, ya tenemos la base de datos completa y podem
 
 \subsubsection{Pruebas de funcionalidad}
 
-Para probar esta última iteracción se han realizado las siguientes pruebas de funcionalidad:
+Para probar esta última iteración se han realizado las siguientes pruebas de funcionalidad:
 \begin{itemize}
-    \item Comprobación de la creación de un gasto. Esto incluye que el gasto se almacene correctamente en la base de datos con los datos correctos y que se muestre en la intefaz de gastos.
+    \item Comprobación de la creación de un gasto. Esto incluye que el gasto se almacene correctamente en la base de datos con los datos correctos y que se muestre en la interfaz de gastos.
     \item Comprobación de la edición de un gasto.
     \item Comprobación de la eliminación de un gasto. Esto incluye que el gasto se elimine y las deudas se actualicen correctamente.
     \item Comprobación de la visualización de los detalles de un gasto.
     \item Comprobación de la visualización del saldo del hogar. Esto incluye un resumen con todos los miembros del hogar y el balance de deudas de cada uno.
     \item Comprobación de la visualización de las deudas pendientes. Esto incluye un apartado donde ver tus deudas y poder ver las deudas externas a ti.
     \item Comprobación de la compensación de una deuda. Esto incluye marca la deuda como pagada en la base de datos, añadir el pago en la tabla correspondiente y equilibrar el balance. 
-    \item Comprobación de la visualizacion de la pantalla principal de la aplicación. Esto incluye que se muestre un resumen de las tareas, gastos y productos de manera dinámica y que se actualice en tiempo real. 
+    \item Comprobación de la visualización de la pantalla principal de la aplicación. Esto incluye que se muestre un resumen de las tareas, gastos y productos de manera dinámica y que se actualice en tiempo real. 
     \item Comprobación de la barra de navegación. Esto incluye que al pulsar en cada uno de los botones, se navegue a la pantalla correspondiente.
 \end{itemize}
 
-\subsubsection{Revisión de la iteracción}
+\subsubsection{Revisión de la iteración}
 
-Para esta última iteracción se ha vuelto a realizar una revisión de la aplicación por parte de la usuaria. Ha probado 
-además de todas las funcionalidades nuevas, toda la aplicación en general. Al tratarse de la iteracción final, se ha realizado una 
+Para esta última iteración se ha vuelto a realizar una revisión de la aplicación por parte de la usuaria. Ha probado 
+además de todas las funcionalidades nuevas, toda la aplicación en general. Al tratarse de la iteración final, se ha realizado una 
 revisión completa de la aplicación.
 
 \paragraph{Crear un gasto}
@@ -1327,7 +1327,7 @@ La usuaria entendió perfectamente como funcionaba la visualización de las deud
    
 }
 
-Tuvo una experiencia satisfacatoria con esta funcionalidad, ya que le quedó claro cuáles eran las deudas en las que ella participaba y como podía saldarlas. 
+Tuvo una experiencia satisfactoria con esta funcionalidad, ya que le quedó claro cuáles eran las deudas en las que ella participaba y como podía saldarlas. 
 Aunque comentó que le gustaría que el usuario al que pagas una deuda, tenga una manera de ver que le han pagado.
 
 

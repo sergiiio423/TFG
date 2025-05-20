@@ -26,14 +26,14 @@ En esta sección se identifican y detallan los requisitos, tomando en cuenta las
 usuarios y demás partes interesadas. Para ello, es fundamental realizar un análisis que permita comprender qué características son esenciales 
 para el correcto funcionamiento del software.
 
-Cada requisito contará con un código único que permitirá clasificarlo y referenciarlo fácilmente a lo largo del documento. Este método de organización facilita su seguimiento y garantiza que 
+Cada requisito contará con un código único que permitirá clasificarlo y referenciar fácilmente a lo largo del documento. Este método de organización facilita su seguimiento y garantiza que 
 todas las especificaciones sean consideradas durante el desarrollo del proyecto. 
 
 \subsubsection{Requisitos funcionales}
 \label{subsec:requisitos_funcionales}
 Los requisitos funcionales son especificaciones detalladas que describen las funciones y comportamientos que un sistema debe cumplir para 
 satisfacer las necesidades del usuario. Estos requisitos definen las acciones que el sistema debe ser capaz de realizar, incluyendo las interacciones
-con el usuario y las respuestas a entradas específicas. Estos requisitos son ensenciales para guiar el desarrollo del sistema y asegurar que cumpla con las expectivas del usuario. \cite{pmo2017}
+con el usuario y las respuestas a entradas específicas. Estos requisitos son esenciales para guiar el desarrollo del sistema y asegurar que cumpla con las expectativas del usuario. \cite{pmo2017}
 
 Vamos a clasificar estos requisitos en diferentes grupos según su funcionalidad. 
 
@@ -152,7 +152,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item Debe exitir una opción en la interfaz para cerrar sesión.
+                \item Debe existir una opción en la interfaz para cerrar sesión.
                 \item Tras cerrar sesión, se redirigirá a la pantalla de bienvenida.
             \end{enumerate}
             \vspace{2mm}
@@ -239,7 +239,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \textbf{Criterios de aceptación} & 
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
-                \item Debe exitir una opción en la interfaz para crear un hogar.
+                \item Debe existir una opción en la interfaz para crear un hogar.
                 \item El sistema debe pedir el nombre del hogar.
                 \item Tras la creación del hogar, se redirigirá a la pantalla principal del hogar.
             \end{enumerate}
@@ -347,7 +347,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
         \begin{minipage}[t]{0.9\linewidth}
             \begin{enumerate}
                 \item Debe existir una opción en la interfaz para editar los datos del hogar.
-                \item Verificar que los campos obligatorios no estén vacios y que la información sea válida.
+                \item Verificar que los campos obligatorios no estén vacíos y que la información sea válida.
                 \item Si los campos no son válidos, mostrar un mensaje de error.
                 \item Tras la edición de los datos, se actualizará la información en la base de datos.
             \end{enumerate}
@@ -385,7 +385,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
             \begin{enumerate}
                 \item La interfaz de la aplicación debe contener una opción para crear una tarea.
                 \item El sistema nos pedirá la información de la tarea.
-                \item Verificar que los campos  obligatorios no estén vacíos y que la información ssea válida.
+                \item Verificar que los campos  obligatorios no estén vacíos y que la información sea válida.
                 \item Si la información no es válida, mostrar un mensaje de error.
             \end{enumerate}
             \vspace{2mm}
@@ -578,7 +578,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
                 \item Debe existir una opción en la interfaz para crear un gasto.
                 \item El sistema debe pedir la información del gasto.
                 \item Verificar que los campos obligatorios no estén vacíos y que la información sea válida.
-                \item El sistema debe recalcular las deudas pendientes.
+                \item El sistema debe re-calcular las deudas pendientes.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -606,7 +606,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
                 \item El sistema debe pedir la información del gasto.
                 \item Verificar que los campos obligatorios no estén vacíos y que la información sea válida.
                 \item Tras la modificación del gasto, se actualizará la información en la base de datos.
-                \item El sistema debe recalcular las deudas pendientes.
+                \item El sistema debe re-calcular las deudas pendientes.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -632,7 +632,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
             \begin{enumerate}
                 \item Debe existir una opción en la interfaz para eliminar un gasto.
                 \item Si el usuario confirma, el gasto se eliminará y se actualizará la información en la base de datos.
-                \item El sistema debe recalcular las deudas pendientes.
+                \item El sistema debe re-calcular las deudas pendientes.
             \end{enumerate}
             \vspace{2mm}
         \end{minipage} \\
@@ -890,7 +890,7 @@ A continuación, se detallan los requisitos funcionales de cada grupo.
 \subsubsection{Requisitos no funcionales}
 
 Los \textbf{requisitos no funcionales} son aquellos que describen las características y restricciones del sistema, pero no están 
-directamentes relacionadas con sus funcionalidades. En lugar de especificar qué hace el sistema, establecen cómo debe hacerlo.
+directamente relacionadas con sus funcionalidades. En lugar de especificar qué hace el sistema, establecen cómo debe hacerlo.
 Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabilidad y otros aspectos clave del software. \cite{sommerville2015}.
 
 \begin{table}[htb!]
@@ -982,7 +982,7 @@ Estos requisitos garantizan la calidad, el rendimiento, la seguridad, la usabili
 \subsection{Modelos de casos de uso}
 \label{sec:modelos-casos-uso}
 
-Los modelos de de casos de uso nos permiten representar las iteracciones entre los usuarios y el sistema de forma clara. En este apartado, se presentan los casos de uso de la aplicación 
+Los modelos de de casos de uso nos permiten representar las iteraciones entre los usuarios y el sistema de forma clara. En este apartado, se presentan los casos de uso de la aplicación 
 que reflejan las principales funcionalidades que la aplicación va a ofrecer. 
 
 Cada caso de uso describe una funcionalidad específica, estableciendo el actor involucrado. 
@@ -1013,14 +1013,14 @@ y así poder representar de forma más clara las funcionalidades de la aplicaci�
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=\textwidth]{../capitulos/img/diagrama_hogar.jpg}
-    \caption{Diagrama de casos de uso de la gestion de hogar}
+    \caption{Diagrama de casos de uso de la gestión de hogar}
     \label{fig:diagrama_hogar_casos_uso}
 \end{figure}
 
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=\textwidth]{../capitulos/img/diagrama_tareas.jpg}
-    \caption{Diagrama de casos de uso de la gestion de tareas}
+    \caption{Diagrama de casos de uso de la gestión de tareas}
     \label{fig:diagrama_tareas_casos_uso}
 \end{figure}
 
@@ -1028,7 +1028,7 @@ y así poder representar de forma más clara las funcionalidades de la aplicaci�
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=\textwidth]{../capitulos/img/diagrama_gastos.jpg}
-    \caption{Diagrama de casos de uso de la gestion de gastos}
+    \caption{Diagrama de casos de uso de la gestión de gastos}
     \label{fig:diagrama_gastos_casos_uso}
 \end{figure}
 
@@ -1036,7 +1036,7 @@ y así poder representar de forma más clara las funcionalidades de la aplicaci�
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=\textwidth]{../capitulos/img/diagrama_compra.jpg}
-    \caption{Diagrama de casos de uso de la gestion de compra}
+    \caption{Diagrama de casos de uso de la gestión de compra}
     \label{fig:diagrama_compra_casos_uso}
 \end{figure}
 
@@ -1063,7 +1063,7 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
 		\hline
 		Precondición & \multicolumn{3}{l|}{El usuario no debe estar registrado en el sistema.} \\ 
 		\hline
-        Postcondición & \multicolumn{3}{l|}{El usuario queda registrado en el sistema.} \\ 
+        Post-condición & \multicolumn{3}{l|}{El usuario queda registrado en el sistema.} \\ 
 		\hline
 		Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
 		\hline
@@ -1122,7 +1122,7 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
         \hline
         Precondición & \multicolumn{3}{l|}{El usuario debe estar registrado en el sistema.} \\ 
         \hline
-        Postcondición & \multicolumn{3}{l|}{El usuario accede al sistema.} \\ 
+        Post-condición & \multicolumn{3}{l|}{El usuario accede al sistema.} \\ 
         \hline
         Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
         \hline
@@ -1183,7 +1183,7 @@ la descripción y los pasos a seguir para llevar a cabo la funcionalidad.
         \hline
         Precondición & \multicolumn{3}{l|}{El usuario debe estar autenticado en el sistema.} \\ 
         \hline
-        Postcondición & \multicolumn{3}{l|}{El usuario cierra su sesión en el sistema.} \\ 
+        Post-condición & \multicolumn{3}{l|}{El usuario cierra su sesión en el sistema.} \\ 
         \hline
         Autor & \multicolumn{3}{l|}{Sergio Muñoz} \\ 
         \hline
@@ -1248,7 +1248,7 @@ En este diagramas se pueden observar las entidades principales de la aplicación
 También se pueden observar las relaciones entre las entidades : 
 \begin{itemize}
     \item \textbf{Usuario-Hogar:} Un usuario tiene que pertenecer a uno y solo un hogar. Un hogar puede tener varios usuarios.
-    \item \textbf{Usuario-Tarea:} Un usuario puede crear y asignar varias tareas. Una tarea puede pertencer a uno o varios usuarios (como por ejemplo las tareas semanales).
+    \item \textbf{Usuario-Tarea:} Un usuario puede crear y asignar varias tareas. Una tarea puede pertenecer a uno o varios usuarios (como por ejemplo las tareas semanales).
     \item \textbf{Usuario-Lista:} Un usuario puede crear varias listas de la compra. Una lista de la compra puede pertenecer a uno o varios usuarios.
     \item \textbf{Usuario-Gasto:} Un usuario puede crear varios gastos. Un gasto puede pertenecer a uno o varios usuarios.
     \item \textbf{Usuario-Deuda:} Un usuario puede tener varias deudas. Una deuda puede pertenecer a uno o varios usuarios.
@@ -1262,8 +1262,8 @@ También se pueden observar las relaciones entre las entidades :
 \label{sec:arquitectura}
 La arquitectura de este sistema se basa en un modelo \textbf{cliente-servidor}, donde el usuario interactúa únicamente con 
 la interfaz gráfica de la aplicación (cliente), la cual se comunica con la base de datos \textit{Firebase Firestore} para obtener y almacenar la información. 
-La interfaz gráfica se interactua directamente con la base de datos, sin necesidad de un servidor intermedio. Esta estructura simplifica el
-desarrolo, al delegar en Firebase la gestión de la base de datos y la sincronización en tiempo real.
+La interfaz gráfica se interactúa directamente con la base de datos, sin necesidad de un servidor intermedio. Esta estructura simplifica el
+desarrollo, al delegar en Firebase la gestión de la base de datos y la sincronización en tiempo real.
 
 \begin{figure}[htb!]
     \centering
@@ -1318,7 +1318,7 @@ con el color principal y asegurando que la aplicación mantenga un equilibrio vi
     \label{fig:paleta_colores}
 \end{figure}
 
-Uno de los aspectos más destacados en el diseño de la interfaz es la tipográfia. Se va a utilizar la fuente \textit{Poppins}
+Uno de los aspectos más destacados en el diseño de la interfaz es la tipografía. Se va a utilizar la fuente \textit{Poppins}
 de Google Fonts, una fuente moderna que es altamente legible y adecuada para aplicaciones móviles. Tiene una estructura 
 clara y amigable, lo que facilita la lectura incluso en dispositivos con las pantallas más pequeñas. La elección de esta
 tipografía no solo mejora la estética de la aplicación, sino que contribuye a la accesibilidad, ofreciendo una lectura cómoda
@@ -1333,9 +1333,9 @@ El diseño de la interfaz sigue principios clave de usabilidad, los cuales son f
     \item \textbf{Facilidad de navegación:} La interfaz gráfica debe ser fácil de navegar, permitiendo al usuario moverse de una pantalla a otra de forma rápida y sencilla.
 \end{itemize}
 
-A continuación, se van a exponer los bocetos máss importantes de la interfaz gráfica de la aplicación. 
+A continuación, se van a exponer los bocetos más importantes de la interfaz gráfica de la aplicación. 
 Estos bocetos han sido creados con la herramienta de diseño \textit{Figma} y representan las pantallas principales de la aplicación. 
-Más adelante, dentro de la iteracción en la que se desarrollen, se presentarán algunos bocetos más que sean necesarios para completar 
+Más adelante, dentro de la iteración en la que se desarrollen, se presentarán algunos bocetos más que sean necesarios para completar 
 la aplicación.
 
 Los bocetos se han dividido en grupos, cada uno de los cuales representa una funcionalidad específica de la aplicación: 

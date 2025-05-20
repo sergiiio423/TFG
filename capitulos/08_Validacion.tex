@@ -1,11 +1,13 @@
 \chapter{Validación de la aplicación por usuarios reales}
 \label{cap:validacion}
 
+
+
 \section{Introducción}
 
 La validación de la aplicación mediante pruebas con usuarios reales es un paso fundamental en el desarrollo de software, 
 ya que permite evaluar la usabilidad, funcionalidad y experiencia del usuario en un entorno realista. Este proceso además de
-garantizar que la aplicación cumple con los requisitos y los estandares de calidad, también proporciona información 
+garantizar que la aplicación cumple con los requisitos y los estándares de calidad, también proporciona información 
 sobre su eficacia en su uso cotidiano, asegurando que las necesidades y expectativas de los usuarios finales sean solventadas. 
 
 
@@ -39,17 +41,17 @@ Es importante elegir herramientas para medir la usabilidad y la experiencia del 
 que permiten evaluar dichos aspectos de una manera estandarizada: 
 
 \begin{itemize}
-    \item \textbf{System Usability Scale (SUS)}: Es un cuestionario rapido y fácil de usar compuesto por 10 preguntas con un escala Likert del 1 al 5 (1=totalmente en desacuerdo, 5=totalmente de acuerdo). Este cuestionario proporciona una puntación global de usabilidad (del 0 al 100) que permite comparar la aplicación con estándares de usabilidad aceptables.
-    \item \textbf{Software Usability Measurement Inventory (SUMI)}: Es un cuestionaro más extenso compuesto por 50 preguntas que evaluan la eficiencia, afectividad y satisfacción global. Las respuestan pueden ser tres opciones: de acuerdo, no lo sé o en desacuerdo. Este cuestionario ofrece un análisis más detallado de la experiencia del usuario.
-    \item \textbf{Measuring the usability of multi-media systems (MUMMS)}: Este cuestionario tiene el mismo objetivo que el SUMI pero esta diseñado para la consideración de cinco subescalas.
+    \item \textbf{System Usability Scale (SUS)}: Es un cuestionario rápido y fácil de usar compuesto por 10 preguntas con un escala Likert del 1 al 5 (1=totalmente en desacuerdo, 5=totalmente de acuerdo). Este cuestionario proporciona una puntuación global de usabilidad (del 0 al 100) que permite comparar la aplicación con estándares de usabilidad aceptables.
+    \item \textbf{Software Usability Measurement Inventory (SUMI)}: Es un cuestionario más extenso compuesto por 50 preguntas que evalúan la eficiencia, afectividad y satisfacción global. Las respuesta pueden ser tres opciones: de acuerdo, no lo sé o en desacuerdo. Este cuestionario ofrece un análisis más detallado de la experiencia del usuario.
+    \item \textbf{Measuring the usability of multi-media systems (MUMMS)}: Este cuestionario tiene el mismo objetivo que el SUMI pero esta diseñado para la consideración de cinco sub-escalas.
 \end{itemize}
 
-Después de evaluar las opciones disponibles, se decieron usar las siguientes herramientas para la validación de la aplicación:
+Después de evaluar las opciones disponibles, se decidieron usar las siguientes herramientas para la validación de la aplicación:
 
 \subsection{Cuestionario SUS}
 
 Se decidió utilizar el cuestionario SUS, ya que es más sencillo y rápido de completar, lo que facilita la participación de los usuarios.
-Además, su formato permite obtener una puntuación cuantitativva que puder ser utilizada para comparar la usabilidad de la app.
+Además, su formato permite obtener una puntuación cuantitativa que pude ser utilizada para comparar la usabilidad de la app.
 El cuestionario consta de 10 preguntas que son las siguientes: 
 
 \begin{enumerate}
@@ -109,9 +111,9 @@ De la pregunta 1 a la 12 se les pidió a los usuarios que puntuaran de 1 a 5 sie
 las preguntas de la 13 a la 17 eran abiertas, para que los usuarios pudieran expresar su opinión de forma más detallada.
 
 
-\section{Implementacion de la prueba}
+\section{Implementación de la prueba}
 
-\subsection{Preparacion del entorno de prueba}
+\subsection{Preparación del entorno de prueba}
 
 La realización de pruebas se realizó de manera remota, por tanto, lo primero que había que se realizó  fue una investigación sobre las diferentes opciones disponibles para proporcionar acceso a la aplicación a los usuarios. Se valoraron estas opciones: 
 
@@ -122,18 +124,18 @@ La realización de pruebas se realizó de manera remota, por tanto, lo primero q
 \end{itemize}
 
 
-Después de evaluar las opciones, se decició usar un despligue en la nube. La distribución mediante archivos APK, no era la mejor opción, porque solo era posible para Android y alguno de los usuarios iban a usar iOS, por tanto esta opción no era posible.
+Después de evaluar las opciones, se decidió usar un despliegue en la nube. La distribución mediante archivos APK, no era la mejor opción, porque solo era posible para Android y alguno de los usuarios iban a usar iOS, por tanto esta opción no era posible.
 Las plataforma de testeo, aunque eran una buena opción, implicaban procesos de aprobación y limitaciones en el número de testers. 
-El despligue en la nube, sin embargo, permitía acceder a la aplicación desde cualquier dispositivo con conexión a Internet, lo que facilitaba la participación de los usuarios. Además, esta opción permitía realizar actualizaciones rápidas y solucionar problemas técnicos de manera eficiente. 
+El despliegue en la nube, sin embargo, permitía acceder a la aplicación desde cualquier dispositivo con conexión a Internet, lo que facilitaba la participación de los usuarios. Además, esta opción permitía realizar actualizaciones rápidas y solucionar problemas técnicos de manera eficiente. 
 
 Por tanto se optó por esta opción y al estar usando Firestore en el desarrollo de la aplicación,
 se decidió usar Firebase App Hosting para el despliegue. Esta plataforma permite alojar aplicaciones web de manera sencilla y rápida, además de ofrecer un entorno seguro y escalable.
 
-El proceso de despligue en Firebase fue sencillo y rápido, ya que, ofrece una buena integración con Flutter y permite compilar directamente desde el código fuente y subirlo a la nube.
+El proceso de despliegue en Firebase fue sencillo y rápido, ya que, ofrece una buena integración con Flutter y permite compilar directamente desde el código fuente y subirlo a la nube.
 Una vez que se configuró el entorno de Firebase, se subió la aplicación y se generó un enlace de acceso (\href{https://hogar-3f60f.web.app/}{hogar-3f60f.web.app}).
  
 
-Una vez que se garantizó el acceso a la aplicación, lo siguiente fue crear los cuestionario que elegimos anteriomente. 
+Una vez que se garantizó el acceso a la aplicación, lo siguiente fue crear los cuestionario que elegimos anteriormente. 
 Para ello se usó Google Forms, que es una herramienta sencilla y fácil de usar para crear cuestionarios y encuestas.
 Se crearon dos formularios, uno para el cuestionario SUS y otro para el cuestionario ad-hoc y se generaron enlaces para que los usuarios pudieran acceder a ellos.
 
@@ -142,11 +144,11 @@ Con todo todo esto, el material necesario para la prueba estaba listo y se podí
 \subsection{Reclutamiento de usuarios}
 
 Para la selección de los usuarios que participarían en la prueba, se buscó un grupo de personas que fueran representativas del público objetivo de la aplicación.
-Para garantizar esta representatividad, se estableceron los siguientes criterios de selección:
+Para garantizar esta representatividad, se establecieron los siguientes criterios de selección:
 
 \begin{enumerate}
     \item \textbf{Edad}: Personas con edades comprendidas entre 18 y 25 años, ya que este es el rango de edad más común entre los estudiantes universitarios y jóvenes profesionales que podrían beneficiarse de la aplicación.
-    \item \textbf{Situación residencial}: Personas que esten compartiendo piso actualmente o que haya compartido recientemente. Esto es importante porque la aplicación está diseñada para ayudar a gestionar gastos y tareas en un hogar compartido.
+    \item \textbf{Situación residencial}: Personas que estén compartiendo piso actualmente o que haya compartido recientemente. Esto es importante porque la aplicación está diseñada para ayudar a gestionar gastos y tareas en un hogar compartido.
     \item \textbf{Familiaridad con la tecnología}: Personas que tengan un uso diario de aplicaciones móviles y estén familiarizadas con la tecnología.
 \end{enumerate}
 
@@ -184,7 +186,7 @@ El mensaje fue el siguiente:
 ¡¡ATENCIÓN!!  
 Si has recibido este mensaje es porque quiero que formes parte del grupo de pruebas de la aplicación de mi TFG. ¿Que tendrías que hacer? Muy sencillo. Tendrías que probar mi app a través de un enlace (más adelante os proporcionaré instrucciones) y después de probarlas tendrías que responder a algunas preguntas que os proporcionaré a través de unos cuestionarios. 
 Es algo muy sencillo pero que os ocupará alrededor de unos 15-25 minutos. Antes de contar con vosotros para el estudio quiero saber si disponéis del tiempo para hacerlo y no os pillo muy ocupados. 
-Tendreís que hacerlo en un plazo de dos semanas. Si os parece bien hacerlo cuento con vosotros. Espero vuestra participación y que os animéis. 
+Tendréis que hacerlo en un plazo de dos semanas. Si os parece bien hacerlo cuento con vosotros. Espero vuestra participación y que os animéis. 
 
 \end{quote}
 
@@ -193,18 +195,18 @@ Una vez que se tuvo la confirmación de los participantes, se procedió a la dis
 
 \subsection{Distribución del material para la prueba}
 
-El canal prinipal de comunicación con los participantes fue WhatsApp, ya que es una 
+El canal principal de comunicación con los participantes fue WhatsApp, ya que es una 
 herramienta que todos los participantes usaban y que permite una comunicación rápida y directa.
 Se creó un grupo donde se compartió el siguiente mensaje: 
 
 \begin{quote}
-    Aquí teneís todo lo que necesitaís para participar. Os explico un poco, la prueba cuenta con dos partes. 
-    En la primera tendreís que registraros todas en la app y la primera que lo haga creará un hogar y le compartirá el código al resto por aquí. 
+    Aquí tenéis todo lo que necesitáis para participar. Os explico un poco, la prueba cuenta con dos partes. 
+    En la primera tendréis que registraros todas en la app y la primera que lo haga creará un hogar y le compartirá el código al resto por aquí. 
     El resto después de registrarse, en vez de crear un hogar se unirá al que ha creado la primera a través del código que os mande. 
-    MUY IMPORTANTE: tenéis que esperar a que esteís todos metidos dentro del hogar, si no, no podréis probar al completo la app. 
+    MUY IMPORTANTE: tenéis que esperar a que estéis todos metidos dentro del hogar, si no, no podréis probar al completo la app. 
     Cuando estéis dentro todos empezará la segunda parte del experimento, en la que ya si tenéis que probar la app al completo. 
     La app tiene 3 funcionalidades básicas que son gestión de tareas/calendario, gestión de gastos/deudas y gestión de compra. 
-    Necesito que probéis todo. Una vez que terminéis de probar todo. Me rellenaís los formularios.
+    Necesito que probéis todo. Una vez que terminéis de probar todo. Me rellenáis los formularios.
 
 \end{quote}
 
@@ -263,9 +265,9 @@ baja (77.5) sigue siendo una puntuación aceptable.
 Para interpretar los resultados del cuestionarios SUS, hay que hacer una media de todas las puntuaciones obtenidas y si :
 
 \begin{itemize}
-    \item la media está entre \textbf{68 y 80}, la usabidad de la aplicación es aceptable.
+    \item la media está entre \textbf{68 y 80}, la usabilidad de la aplicación es aceptable.
     \item la media es mayor de \textbf{80}, la usabilidad de la aplicación es muy buena.
-    \item la media es menos de \textbf{68}, indica que hay problemas de usabildiad en la aplicación.
+    \item la media es menos de \textbf{68}, indica que hay problemas de usabilidad en la aplicación.
 \end{itemize}
 
 \[
@@ -279,6 +281,8 @@ Por tanto podemos concluir que la usabilidad es muy buena y que los usuarios no 
 
 
 \subsection{Resultados del cuestionario ad-hoc}
+
+Los respuestas de las preguntas con escala (de la 1 a la 12) fueron analizadas y se calcularon las medias de cada una de ellas, como se puede ver a continuación: 
 
 \begin{table}[H]
     \centering
@@ -304,6 +308,10 @@ Por tanto podemos concluir que la usabilidad es muy buena y que los usuarios no 
     \label{tab:adhoc-medias}
 \end{table}
 
+Se estableció que una media de 4 o más en cada pregunta indicaba que los usuarios estaban satisfechos con la funcionalidad de la aplicación. 
+Como se puede ver en la tabla anterior, todas las preguntas tienen una media superior a 4, lo que indica que los usuarios estaban satisfechos 
+con la funcionalidad de la aplicación.
+
 
 Las respuestas de las preguntas abiertas (de la 13 a la 17) fueron analizadas y categorizadas para que sea más fácil ver los resultados. Se ha agrupado las respuestas en categorías 
 que corresponden con las principales funcionalidades de la aplicación y se proporciona debajo de cada categoría la respuesta concreta de los usuarios, después se proporciona un diagrama de pastel con la distribución de las respuestas.
@@ -316,18 +324,18 @@ Respuestas:
 \begin{itemize}
     \item \textbf{Lista de la compra}
     \begin{itemize}
-        \item \textit{la lista de la compra porque asi no tengo que ponerla por whatsapp y está todo ahí }
+        \item \textit{la lista de la compra porque asi no tengo que ponerla por WhatsApp y está todo ahí }
     \end{itemize}
     \item \textbf{Gastos}
     \begin{itemize}
         \item \textit{los gastos, es muy sencillo e intuitivo de usar}
-        \item \textit{ver los gastos tanto personales como los que se comorarten con una persona con la que convives ya que me ayuda a controlar mejor mi economía} 
+        \item \textit{ver los gastos tanto personales como los que se comparten con una persona con la que convives ya que me ayuda a controlar mejor mi economía} 
     \end{itemize}
     \item \textbf{Tareas}
     \begin{itemize}
         \item \textit{La de las tareas. Porque creo que no hay muchas aplicaciones con esta funcionalidad}
         \item \textit{La de las tareas, ya que es algo básico que se hace un piso y siempre hay lío sobre a quien le toca cada parte de la casa}
-        \item \textit{El organizador semanal y puntual de tareas ya que se puede ver de forma rápida las tareas que se tienen que hacer cada día y me parece útil poder crear tareas que implequen a más de uno de los habitantes del hogar}
+        \item \textit{El organizador semanal y puntual de tareas ya que se puede ver de forma rápida las tareas que se tienen que hacer cada día y me parece útil poder crear tareas que impliquen a más de uno de los habitantes del hogar}
         \item \textit{La funcionalidad que más útil me parece es la de las tareas del hogar, porque permite una buena organización de las tareas de limpieza y una forma de mantener a todos los integrantes informados}
         \item \textit{Poder hacer una lista de tareas conjunta porque así le aparece a cada uno las tareas directamente}   
     \end{itemize}
@@ -403,7 +411,7 @@ Respuestas:
     \end{itemize}
     \item \textbf{Tareas}
     \begin{itemize}
-        \item \textit{en la planificacion semanal, cambairía que la tarea se repitiera: los martes por ejemplo, cada semana}
+        \item \textit{en la planificación semanal, cambiaría que la tarea se repitiera: los martes por ejemplo, cada semana}
         \item 
     \end{itemize}
     \item \textbf{Diseño}
@@ -497,14 +505,48 @@ Respuestas:
     \label{fig:problemas-tecnicos}
 \end{figure}
 
+Una vez expuesto los resultados obtenidos, podemos comentar los resultados y analizar el feedback recibido por los usuarios.
+
 \subsection{Feeedback destacado}
+
+El feedback recibido por los usuarios fue muy positivo en general. Como podemos ver en los resultados, la mayoría de los 
+usuarios puntuaron la usabilidad de la aplicación con puntuaciones muy altas y no tuvieron problemas para usarla.
+
+Entre las funcionalidades más destacadas por los usuarios, podemos encontrar la gestión de tareas
+ya que es algo que suele ser bastante difícil de gestionar y esta aplicación facilita mucho esta tarea.
+
+Aunque, en contraste, fue también la funcionalidad que más dificultades presentó a los usuarios, ya que algunos de ellos no entendieron bien cómo funcionaba la planificación semanal.
+Otro sin embargo, tenían otra manera de organizarse a la que les ofrecía la aplicación, por eso les resultó difícil de entender. 
+
+También podemos ver en los resultados que la funcionalidad de gastos fue muy bien valorada por los usuarios,
+ya que les resultó muy intuitiva y fácil de usar. Sin embargo, algunos usuarios sugirieron que sería útil añadir una funcionalidad para controlar los gastos por categorías, lo que podría mejorar aún más la experiencia del usuario.
+
+Podemos destacar también que la mayoría de los usuarios técnicos no tuvieron problemas para usar la aplicación, lo que indica que la usabilidad es buena y que la aplicación es fácil de usar.
+Además los problemas técnicos que tuvieron algunos usuarios fueron errores menores (un diseño responsive que faltaba y que fue solventado) y un usuario que aparecía que no pertenecía a ningún hogar, que fue 
+un error por un uso indebido de los botones del navegador.
+
+Por último, la mayoría de usuarios comentaron tener una buena navegación entre las diferentes secciones de la aplicación y 
+que el diseño y colores de la aplicación les parecían agradables. 
+Lo cual es importante para proporcionar una buena experiencia de usuario y facilitar la interacción con la aplicación. 
+
 
 \subsection{Limitaciones del estudio}
 
+Algunas de las limitaciones del estudio son: 
 
+\begin{enumerate}
+\item \textbf{Tamaño reducido de la muestra}: El número de usuarios que participaron en las pruebas fue limitado, lo que puede afectar la generalización de los resultados.
 
+\item \textbf{Perfil de los participantes}: Todos los usuarios pertenecen a un rango de edad y perfil específico (jóvenes entre 18 y 25 años que han vivido en pisos compartidos), lo que limita la representatividad de otros posibles perfiles de usuario.
 
-\section{Conclusiones de la prueba}
+\item \textbf{Duración limitada de las pruebas}: La interacción de los usuarios con la aplicación se realizó en un periodo corto de tiempo. Esto impide observar ciertos comportamientos o problemas que pueden surgir con un uso prolongado o en contextos reales a lo largo del tiempo.
+
+\item \textbf{Entorno no controlado}: Al tratarse de pruebas remotas, no fue posible controlar completamente el entorno en el que los usuarios interactuaron con la aplicación. Factores externos como la conexión a Internet, el tipo de dispositivo utilizado o distracciones externas podrían haber influido en la experiencia de uso.
+
+\item \textbf{Interpretación subjetiva del cuestionario ad-hoc}: Aunque este cuestionario proporcionó información específica sobre funcionalidades concretas, su diseño no sigue un estándar validado, por lo que las respuestas pueden estar sujetas a sesgos o interpretaciones personales, limitando su fiabilidad.
+
+\item \textbf{Limitaciones técnicas del despliegue web}: La versión utilizada para la prueba fue desplegada mediante Firebase Hosting como aplicación web. Esto puede diferir en comportamiento respecto a una aplicación nativa instalada en dispositivos móviles, especialmente en términos de rendimiento o experiencia de usuario.
+\end{enumerate}
 
 
 
