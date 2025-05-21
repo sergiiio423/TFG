@@ -66,117 +66,119 @@
 \contentsline {subsection}{\numberline {5.1.4}Desarrollo iterativo e Incremental}{68}{subsection.5.1.4}%
 \contentsline {subsection}{\numberline {5.1.5}Metodología Ágil}{69}{subsection.5.1.5}%
 \contentsline {subsection}{\numberline {5.1.6}DevOps}{69}{subsection.5.1.6}%
-\contentsline {section}{\numberline {5.2}Comparativa de metodologías}{69}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Propuesta}{71}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Explicación de la propuesta}{71}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Análisis de la aplicación}{71}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Especificación de requisitos}{71}{subsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.1.1}Requisitos funcionales}{72}{subsubsection.6.2.1.1}%
-\contentsline {paragraph}{Grupo 1: Gestión de sesión}{72}{subsubsection.6.2.1.1}%
-\contentsline {paragraph}{Grupo 2: Gestión del hogar}{76}{table.6.6}%
-\contentsline {paragraph}{Grupo 3: Gestión de tareas}{79}{table.6.11}%
-\contentsline {paragraph}{Grupo 4: Gestión de gastos}{82}{table.6.18}%
-\contentsline {paragraph}{Grupo 5: Gestión de compra}{85}{table.6.24}%
-\contentsline {subsubsection}{\numberline {6.2.1.2}Requisitos no funcionales}{88}{subsubsection.6.2.1.2}%
-\contentsline {subsection}{\numberline {6.2.2}Modelos de casos de uso}{89}{subsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.2.1}Diagrama de casos de uso}{89}{subsubsection.6.2.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2.2}Descripción de los casos de uso}{95}{subsubsection.6.2.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Modelo conceptual}{97}{subsection.6.2.3}%
-\contentsline {section}{\numberline {6.3}Diseño}{99}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Diseño de la arquitectura}{99}{subsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.1.1}Componentes Principales}{99}{subsubsection.6.3.1.1}%
-\contentsline {subsubsection}{\numberline {6.3.1.2}Flujo de interacción}{100}{subsubsection.6.3.1.2}%
-\contentsline {subsection}{\numberline {6.3.2}Diseño de la interfaz gráfica}{100}{subsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.2.1}Bocetos de las interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{102}{subsubsection.6.3.2.1}%
-\contentsline {subsubsection}{\numberline {6.3.2.2}Bocetos de las interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{103}{subsubsection.6.3.2.2}%
-\contentsline {subsubsection}{\numberline {6.3.2.3}Bocetos de las interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{104}{subsubsection.6.3.2.3}%
-\contentsline {subsubsection}{\numberline {6.3.2.4}Bocetos de las interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{105}{subsubsection.6.3.2.4}%
-\contentsline {subsubsection}{\numberline {6.3.2.5}Bocetos de las interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{106}{subsubsection.6.3.2.5}%
-\contentsline {chapter}{\numberline {7}Desarrollo e implementación de la aplicación}{107}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Elección de tecnologías}{107}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Iteraciones de desarrollo}{108}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Iteración 1}{108}{subsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.1.1}Implementacion}{109}{subsubsection.7.2.1.1}%
-\contentsline {paragraph}{Pantalla de bienvenida}{112}{figure.7.4}%
-\contentsline {paragraph}{Pantalla de registro}{112}{figure.7.5}%
-\contentsline {paragraph}{Pantalla de inicio de sesión}{114}{figure.7.6}%
-\contentsline {paragraph}{Pantalla de ver datos de hogar y usuario}{115}{figure.7.7}%
-\contentsline {paragraph}{Pantalla de editar datos de usuario}{118}{figure.7.8}%
-\contentsline {paragraph}{Pantalla de editar hogar}{118}{figure.7.9}%
-\contentsline {paragraph}{Pantalla para participar en un hogar}{119}{figure.7.10}%
-\contentsline {paragraph}{Pantalla para crear un hogar}{120}{figure.7.11}%
-\contentsline {paragraph}{Pantalla de unirse a un hogar}{121}{figure.7.12}%
-\contentsline {subsubsection}{\numberline {7.2.1.2}Base de datos}{122}{subsubsection.7.2.1.2}%
-\contentsline {subsubsection}{\numberline {7.2.1.3}Pruebas de funcionalidad}{123}{subsubsection.7.2.1.3}%
-\contentsline {subsubsection}{\numberline {7.2.1.4}Revisión de la iteración}{123}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Registro}{123}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Inicio de sesión}{124}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Crear hogar}{124}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Visualización y edición de datos de usuario y hogar}{124}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Abandonar hogar y unirse a otro hogar}{124}{subsubsection.7.2.1.4}%
-\contentsline {paragraph}{Cerrar sesión}{124}{subsubsection.7.2.1.4}%
-\contentsline {subsubsection}{\numberline {7.2.1.5}Plan para la siguiente iteración}{124}{subsubsection.7.2.1.5}%
-\contentsline {subsection}{\numberline {7.2.2}Iteración 2}{124}{subsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.2.1}Implementacion}{125}{subsubsection.7.2.2.1}%
-\contentsline {paragraph}{Pantalla de tareas}{127}{figure.7.15}%
-\contentsline {paragraph}{Pantalla de crear tarea}{129}{figure.7.16}%
-\contentsline {paragraph}{Pantalla de ver datos de una tarea}{131}{figure.7.18}%
-\contentsline {paragraph}{Pantalla para editar o eliminar una tarea}{133}{figure.7.19}%
-\contentsline {paragraph}{Pantalla editar tarea}{133}{figure.7.20}%
-\contentsline {paragraph}{Pantalla de calendario}{134}{figure.7.21}%
-\contentsline {paragraph}{Pantalla de lista de la compra}{136}{figure.7.22}%
-\contentsline {paragraph}{Pantalla de crear lista de la compra}{137}{figure.7.23}%
-\contentsline {paragraph}{Pantalla para eliminar lista de la compra}{139}{figure.7.24}%
-\contentsline {paragraph}{Pantalla de productos de la lista de la compra}{139}{figure.7.25}%
-\contentsline {paragraph}{Pantalla de añadir producto a la lista de la compra}{140}{figure.7.26}%
-\contentsline {subsubsection}{\numberline {7.2.2.2}Base de datos}{141}{subsubsection.7.2.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.2.3}Pruebas de funcionalidad}{142}{subsubsection.7.2.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.2.4}Revisión de la iteración}{143}{subsubsection.7.2.2.4}%
-\contentsline {paragraph}{Crear una tarea}{143}{subsubsection.7.2.2.4}%
-\contentsline {paragraph}{Consultar planificación semanal}{144}{subsubsection.7.2.2.4}%
-\contentsline {paragraph}{Visualización, edición y eliminación de tareas}{144}{subsubsection.7.2.2.4}%
-\contentsline {paragraph}{Visualización del calendario de tareas}{144}{subsubsection.7.2.2.4}%
-\contentsline {paragraph}{Crear lista de la compra, añadir productos y eliminar productos}{144}{subsubsection.7.2.2.4}%
-\contentsline {subsubsection}{\numberline {7.2.2.5}Plan para la siguiente iteración}{144}{subsubsection.7.2.2.5}%
-\contentsline {subsection}{\numberline {7.2.3}Iteración 3}{145}{subsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.3.1}Implementacion}{145}{subsubsection.7.2.3.1}%
-\contentsline {paragraph}{Pantalla de gastos}{146}{figure.7.28}%
-\contentsline {paragraph}{Pantalla de crear gasto}{148}{figure.7.29}%
-\contentsline {paragraph}{Pantalla de deudas}{149}{figure.7.30}%
-\contentsline {paragraph}{Pantalla de ver detalles de un gasto}{150}{figure.7.31}%
-\contentsline {paragraph}{Pantalla saldar deuda}{151}{figure.7.32}%
-\contentsline {paragraph}{Pantalla principal de la aplicación}{152}{figure.7.33}%
-\contentsline {paragraph}{Barra de navegación}{154}{figure.7.34}%
-\contentsline {paragraph}{Clase Main}{155}{figure.7.35}%
-\contentsline {subsubsection}{\numberline {7.2.3.2}Base de datos}{156}{subsubsection.7.2.3.2}%
-\contentsline {subsubsection}{\numberline {7.2.3.3}Pruebas de funcionalidad}{158}{subsubsection.7.2.3.3}%
-\contentsline {subsubsection}{\numberline {7.2.3.4}Revisión de la iteración}{159}{subsubsection.7.2.3.4}%
-\contentsline {paragraph}{Crear un gasto}{159}{subsubsection.7.2.3.4}%
-\contentsline {paragraph}{Consultar gastos}{159}{subsubsection.7.2.3.4}%
-\contentsline {paragraph}{Visualización de balance de deudas}{159}{subsubsection.7.2.3.4}%
-\contentsline {paragraph}{Visualización de deudas pendientes}{159}{subsubsection.7.2.3.4}%
-\contentsline {paragraph}{Visualización de la pantalla principal de la aplicación}{160}{subsubsection.7.2.3.4}%
-\contentsline {chapter}{\numberline {8}Validación de la aplicación por usuarios reales}{161}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Introducción}{161}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}Objetivos de la validación}{161}{subsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.1.2}Metodología de la validación}{162}{subsection.8.1.2}%
-\contentsline {section}{\numberline {8.2}Selección de los cuestionarios}{162}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Cuestionario SUS}{163}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Cuestionario ad-hoc}{164}{subsection.8.2.2}%
-\contentsline {section}{\numberline {8.3}Implementación de la prueba}{165}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Preparación del entorno de prueba}{165}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Reclutamiento de usuarios}{166}{subsection.8.3.2}%
-\contentsline {subsection}{\numberline {8.3.3}Distribución del material para la prueba}{168}{subsection.8.3.3}%
-\contentsline {section}{\numberline {8.4}Resultados de la prueba}{169}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Resultados del cuestionario SUS}{169}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Resultados del cuestionario ad-hoc}{170}{subsection.8.4.2}%
-\contentsline {subsection}{\numberline {8.4.3}Feeedback destacado}{176}{subsection.8.4.3}%
-\contentsline {subsection}{\numberline {8.4.4}Limitaciones del estudio}{177}{subsection.8.4.4}%
-\contentsline {chapter}{\numberline {9}Conclusiones y trabajo futuro}{178}{chapter.9}%
-\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{179}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{179}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{185}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{190}{section.Alph1.3}%
-\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{197}{section.Alph1.4}%
-\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{203}{section.Alph1.5}%
-\contentsline {section}{Referencias}{209}{table.Alph1.29}%
+\contentsline {section}{\numberline {5.2}Comparativa de metodologías}{70}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Propuesta}{72}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Explicación de la propuesta}{72}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Análisis de la aplicación}{73}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Especificación de requisitos}{73}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.1}Requisitos funcionales}{73}{subsubsection.6.2.1.1}%
+\contentsline {paragraph}{Grupo 1: Gestión de sesión}{74}{subsubsection.6.2.1.1}%
+\contentsline {paragraph}{Grupo 2: Gestión del hogar}{77}{table.6.6}%
+\contentsline {paragraph}{Grupo 3: Gestión de tareas}{80}{table.6.11}%
+\contentsline {paragraph}{Grupo 4: Gestión de gastos}{83}{table.6.18}%
+\contentsline {paragraph}{Grupo 5: Gestión de compra}{86}{table.6.24}%
+\contentsline {subsubsection}{\numberline {6.2.1.2}Requisitos no funcionales}{89}{subsubsection.6.2.1.2}%
+\contentsline {subsection}{\numberline {6.2.2}Modelos de casos de uso}{90}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}Diagrama de casos de uso}{90}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}Descripción de los casos de uso}{96}{subsubsection.6.2.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Modelo conceptual}{98}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}Diseño}{101}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Diseño de la arquitectura}{101}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}Componentes Principales}{101}{subsubsection.6.3.1.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.2}Flujo de interacción}{102}{subsubsection.6.3.1.2}%
+\contentsline {subsection}{\numberline {6.3.2}Diseño de la interfaz gráfica}{102}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}Bocetos de las interfaces de gráficas del Grupo 1: \textit {Gestión de sesión}}{104}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}Bocetos de las interfaces de gráficas del Grupo 2: \textit {Gestión del hogar}}{105}{subsubsection.6.3.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.3}Bocetos de las interfaces de gráficas del Grupo 3: \textit {Gestión de tareas}}{106}{subsubsection.6.3.2.3}%
+\contentsline {subsubsection}{\numberline {6.3.2.4}Bocetos de las interfaces de gráficas del Grupo 4: \textit {Gestión de gastos}}{107}{subsubsection.6.3.2.4}%
+\contentsline {subsubsection}{\numberline {6.3.2.5}Bocetos de las interfaces de gráficas del Grupo 5: \textit {Gestión de la compra}}{108}{subsubsection.6.3.2.5}%
+\contentsline {chapter}{\numberline {7}Desarrollo e implementación de la aplicación}{109}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Elección de tecnologías}{109}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Iteraciones de desarrollo}{110}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Iteración 1}{110}{subsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.1.1}Implementacion}{111}{subsubsection.7.2.1.1}%
+\contentsline {paragraph}{Pantalla de bienvenida}{114}{figure.7.4}%
+\contentsline {paragraph}{Pantalla de registro}{114}{figure.7.5}%
+\contentsline {paragraph}{Pantalla de inicio de sesión}{116}{figure.7.6}%
+\contentsline {paragraph}{Pantalla de ver datos de hogar y usuario}{117}{figure.7.7}%
+\contentsline {paragraph}{Pantalla de editar datos de usuario}{120}{figure.7.8}%
+\contentsline {paragraph}{Pantalla de editar hogar}{120}{figure.7.9}%
+\contentsline {paragraph}{Pantalla para participar en un hogar}{121}{figure.7.10}%
+\contentsline {paragraph}{Pantalla para crear un hogar}{122}{figure.7.11}%
+\contentsline {paragraph}{Pantalla de unirse a un hogar}{123}{figure.7.12}%
+\contentsline {subsubsection}{\numberline {7.2.1.2}Base de datos}{124}{subsubsection.7.2.1.2}%
+\contentsline {subsubsection}{\numberline {7.2.1.3}Pruebas de funcionalidad}{125}{subsubsection.7.2.1.3}%
+\contentsline {subsubsection}{\numberline {7.2.1.4}Revisión de la iteración}{125}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Registro}{125}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Inicio de sesión}{126}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Crear hogar}{126}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Visualización y edición de datos de usuario y hogar}{126}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Abandonar hogar y unirse a otro hogar}{126}{subsubsection.7.2.1.4}%
+\contentsline {paragraph}{Cerrar sesión}{126}{subsubsection.7.2.1.4}%
+\contentsline {subsubsection}{\numberline {7.2.1.5}Plan para la siguiente iteración}{126}{subsubsection.7.2.1.5}%
+\contentsline {subsection}{\numberline {7.2.2}Iteración 2}{127}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}Implementacion}{127}{subsubsection.7.2.2.1}%
+\contentsline {paragraph}{Pantalla de tareas}{128}{figure.7.15}%
+\contentsline {paragraph}{Pantalla de crear tarea}{131}{figure.7.16}%
+\contentsline {paragraph}{Pantalla de ver datos de una tarea}{133}{figure.7.18}%
+\contentsline {paragraph}{Pantalla para editar o eliminar una tarea}{135}{figure.7.19}%
+\contentsline {paragraph}{Pantalla editar tarea}{135}{figure.7.20}%
+\contentsline {paragraph}{Pantalla de calendario}{136}{figure.7.21}%
+\contentsline {paragraph}{Pantalla de lista de la compra}{138}{figure.7.22}%
+\contentsline {paragraph}{Pantalla de crear lista de la compra}{139}{figure.7.23}%
+\contentsline {paragraph}{Pantalla para eliminar lista de la compra}{141}{figure.7.24}%
+\contentsline {paragraph}{Pantalla de productos de la lista de la compra}{141}{figure.7.25}%
+\contentsline {paragraph}{Pantalla de añadir producto a la lista de la compra}{142}{figure.7.26}%
+\contentsline {subsubsection}{\numberline {7.2.2.2}Base de datos}{143}{subsubsection.7.2.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.3}Pruebas de funcionalidad}{144}{subsubsection.7.2.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.2.4}Revisión de la iteración}{145}{subsubsection.7.2.2.4}%
+\contentsline {paragraph}{Crear una tarea}{145}{subsubsection.7.2.2.4}%
+\contentsline {paragraph}{Consultar planificación semanal}{146}{subsubsection.7.2.2.4}%
+\contentsline {paragraph}{Visualización, edición y eliminación de tareas}{146}{subsubsection.7.2.2.4}%
+\contentsline {paragraph}{Visualización del calendario de tareas}{146}{subsubsection.7.2.2.4}%
+\contentsline {paragraph}{Crear lista de la compra, añadir productos y eliminar productos}{146}{subsubsection.7.2.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.2.5}Plan para la siguiente iteración}{146}{subsubsection.7.2.2.5}%
+\contentsline {subsection}{\numberline {7.2.3}Iteración 3}{147}{subsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.1}Implementacion}{147}{subsubsection.7.2.3.1}%
+\contentsline {paragraph}{Pantalla de gastos}{148}{figure.7.28}%
+\contentsline {paragraph}{Pantalla de crear gasto}{150}{figure.7.29}%
+\contentsline {paragraph}{Pantalla de deudas}{151}{figure.7.30}%
+\contentsline {paragraph}{Pantalla de ver detalles de un gasto}{152}{figure.7.31}%
+\contentsline {paragraph}{Pantalla saldar deuda}{153}{figure.7.32}%
+\contentsline {paragraph}{Pantalla principal de la aplicación}{154}{figure.7.33}%
+\contentsline {paragraph}{Barra de navegación}{156}{figure.7.34}%
+\contentsline {paragraph}{Clase Main}{157}{figure.7.35}%
+\contentsline {subsubsection}{\numberline {7.2.3.2}Base de datos}{158}{subsubsection.7.2.3.2}%
+\contentsline {subsubsection}{\numberline {7.2.3.3}Pruebas de funcionalidad}{160}{subsubsection.7.2.3.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.4}Revisión de la iteración}{161}{subsubsection.7.2.3.4}%
+\contentsline {paragraph}{Crear un gasto}{161}{subsubsection.7.2.3.4}%
+\contentsline {paragraph}{Consultar gastos}{161}{subsubsection.7.2.3.4}%
+\contentsline {paragraph}{Visualización de balance de deudas}{161}{subsubsection.7.2.3.4}%
+\contentsline {paragraph}{Visualización de deudas pendientes}{161}{subsubsection.7.2.3.4}%
+\contentsline {paragraph}{Visualización de la pantalla principal de la aplicación}{162}{subsubsection.7.2.3.4}%
+\contentsline {chapter}{\numberline {8}Validación de la aplicación por usuarios reales}{163}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introducción}{163}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Objetivos de la validación}{163}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Metodología de la validación}{164}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}Selección de los cuestionarios}{165}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Cuestionario SUS}{165}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Cuestionario ad-hoc}{166}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Implementación de la prueba}{168}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Preparación del entorno de prueba}{168}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Reclutamiento de usuarios}{169}{subsection.8.3.2}%
+\contentsline {subsection}{\numberline {8.3.3}Distribución del material para la prueba}{171}{subsection.8.3.3}%
+\contentsline {section}{\numberline {8.4}Resultados de la prueba}{172}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Resultados del cuestionario SUS}{172}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Resultados del cuestionario ad-hoc}{173}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}Feeedback destacado}{179}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}Limitaciones del estudio}{180}{subsection.8.4.4}%
+\contentsline {chapter}{\numberline {9}Conclusiones y trabajo futuro}{181}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Conclusiones}{181}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Trabajo futuro}{183}{section.9.2}%
+\contentsline {chapter}{\numberline {A}Descripción de casos de uso}{184}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{184}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{190}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{195}{section.Alph1.3}%
+\contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{202}{section.Alph1.4}%
+\contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{208}{section.Alph1.5}%
+\contentsline {section}{Referencias}{214}{table.Alph1.29}%
