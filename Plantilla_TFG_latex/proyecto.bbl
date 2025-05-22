@@ -169,6 +169,31 @@ Burriel, T.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Bustos%
+}{%
+Bustos%
+}{%
+{\protect \APACyear {2024}}%
+}]{%
+keepcodingAPK}
+\APACinsertmetastar {%
+keepcodingAPK}%
+\begin{APACrefauthors}%
+Bustos, J\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {APK: Conoce qué es y para qué te sirve en Android.} {Apk:
+  Conoce qué es y para qué te sirve en android.}
+\newblock
+\begin{APACrefURL}
+  \url{https://keepcoding.io/blog/que-es-un-apk-y-para-que-sirve/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Carpena%
 }{%
 Carpena%
@@ -358,6 +383,31 @@ huffpost2025}%
 \newblock
 \begin{APACrefURL}
   \url{https://www.huffingtonpost.es/politica/el-87-jovenes-emancipados-comparte-vivienda-alquiler-frente-gastos-mensuales.html}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Instabug%
+}{%
+Instabug%
+}{%
+{\protect \APACyear {2024}}%
+}]{%
+instabug2024}
+\APACinsertmetastar {%
+instabug2024}%
+\begin{APACrefauthors}%
+Instabug.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {Comparison Between Top Beta App Distribution Tools.}
+  {Comparison between top beta app distribution tools.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.instabug.com/blog/comparison-between-top-beta-app-distribution-tools}
   \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
@@ -604,6 +654,30 @@ Nielsen, J.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{Nielsen Norman Group}%
+}{%
+{Nielsen Norman Group}%
+}{%
+{\protect \APACyear {2019}}%
+}]{%
+nng_usability_testing_101}
+\APACinsertmetastar {%
+nng_usability_testing_101}%
+\begin{APACrefauthors}%
+{Nielsen Norman Group}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+\APACrefbtitle {Usability (User) Testing 101.} {Usability (user) testing 101.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.nngroup.com/articles/usability-testing-101/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 {Node.js Foundation}%
 }{%
 {Node.js Foundation}%
@@ -701,6 +775,33 @@ pmo2017}%
 \begin{APACrefURL}
   [{2025-02-04}]\url{https://www.pmoinformatica.com/2017/02/requerimientos-funcionales-ejemplos.html}
   \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rubin%
+\ \BBA {} Chisnell%
+}{%
+Rubin%
+\ \BBA {} Chisnell%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+rubin2008usability}
+\APACinsertmetastar {%
+rubin2008usability}%
+\begin{APACrefauthors}%
+Rubin, J.%
+\BCBT {}\ \BBA {} Chisnell, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2008}.
+\newblock
+\APACrefbtitle {Handbook of Usability Testing: How to Plan, Design, and Conduct
+  Effective Tests} {Handbook of usability testing: How to plan, design, and
+  conduct effective tests}\ (\PrintOrdinal{2nd}\ \BEd).
+\newblock
+\APACaddressPublisher{Indianapolis, IN}{Wiley}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -867,6 +968,30 @@ Tricount.%
   los gastos del grupo.}
 \newblock
 \begin{APACrefURL} \url{https://tricount.com/es-es} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Universitat Oberta de Catalunya}%
+}{%
+{Universitat Oberta de Catalunya}%
+}{%
+{\protect \APACyear {2021}}%
+}]{%
+uocCuestionarios2021}
+\APACinsertmetastar {%
+uocCuestionarios2021}%
+\begin{APACrefauthors}%
+{Universitat Oberta de Catalunya}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock
+\APACrefbtitle {Guía: Cuestionarios.} {Guía: Cuestionarios.}
+\newblock
+\begin{APACrefURL}
+  \url{https://design-toolkit.recursos.uoc.edu/es/guia/cuestionarios/}
+  \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

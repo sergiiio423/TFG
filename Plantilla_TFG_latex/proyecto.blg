@@ -70,46 +70,54 @@ Warning--entry type for "atlassian_iterative" isn't style-file defined
 --line 509 of file bibliografia.bib
 Warning--entry type for "seo2021" isn't style-file defined
 --line 537 of file bibliografia.bib
+Warning--entry type for "nng_usability_testing_101" isn't style-file defined
+--line 569 of file bibliografia.bib
+Warning--entry type for "uocCuestionarios2021" isn't style-file defined
+--line 583 of file bibliografia.bib
+Warning--entry type for "instabug2024" isn't style-file defined
+--line 597 of file bibliografia.bib
+Warning--entry type for "keepcodingAPK" isn't style-file defined
+--line 611 of file bibliografia.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 37 entries,
+You've used 42 entries,
             6951 wiz_defined-function locations,
-            1435 strings with 15542 characters,
-and the built_in function-call counts, 64357 in all, are:
-= -- 9062
-> -- 388
-< -- 2687
-+ -- 2312
-- -- 125
-* -- 3300
-:= -- 10476
-add.period$ -- 148
-call.type$ -- 37
-change.case$ -- 645
+            1461 strings with 16290 characters,
+and the built_in function-call counts, 72858 in all, are:
+= -- 10274
+> -- 442
+< -- 3010
++ -- 2593
+- -- 141
+* -- 3717
+:= -- 11787
+add.period$ -- 168
+call.type$ -- 42
+change.case$ -- 730
 chr.to.int$ -- 0
-cite$ -- 74
-duplicate$ -- 1245
-empty$ -- 2555
-format.name$ -- 555
-if$ -- 13272
+cite$ -- 84
+duplicate$ -- 1428
+empty$ -- 2905
+format.name$ -- 635
+if$ -- 15060
 int.to.chr$ -- 0
-int.to.str$ -- 115
+int.to.str$ -- 130
 missing$ -- 0
-newline$ -- 826
-num.names$ -- 296
-pop$ -- 1017
+newline$ -- 939
+num.names$ -- 336
+pop$ -- 1137
 preamble$ -- 1
-purify$ -- 148
+purify$ -- 168
 quote$ -- 0
-skip$ -- 5821
+skip$ -- 6628
 stack$ -- 0
-substring$ -- 2478
-swap$ -- 590
-text.length$ -- 99
+substring$ -- 2785
+swap$ -- 679
+text.length$ -- 112
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 4976
+type$ -- 5664
 warning$ -- 0
-while$ -- 196
+while$ -- 223
 width$ -- 0
-write$ -- 912
-(There were 28 warnings)
+write$ -- 1039
+(There were 32 warnings)
