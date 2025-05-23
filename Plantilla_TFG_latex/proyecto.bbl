@@ -828,6 +828,31 @@ rails2025}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{SEIDOR}%
+}{%
+{SEIDOR}%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+seidorCloudApp2023}
+\APACinsertmetastar {%
+seidorCloudApp2023}%
+\begin{APACrefauthors}%
+{SEIDOR}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {Beneficios de desarrollar una app en entorno cloud.}
+  {Beneficios de desarrollar una app en entorno cloud.}
+\newblock
+\begin{APACrefURL}
+  \url{https://www.seidor.com/es-es/blog/beneficio-desarrollar-app-entorno-cloud}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Sommerville%
 }{%
 Sommerville%

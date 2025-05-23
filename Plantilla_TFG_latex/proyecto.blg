@@ -78,46 +78,48 @@ Warning--entry type for "instabug2024" isn't style-file defined
 --line 597 of file bibliografia.bib
 Warning--entry type for "keepcodingAPK" isn't style-file defined
 --line 611 of file bibliografia.bib
+Warning--entry type for "seidorCloudApp2023" isn't style-file defined
+--line 625 of file bibliografia.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-You've used 42 entries,
+You've used 43 entries,
             6951 wiz_defined-function locations,
-            1461 strings with 16290 characters,
-and the built_in function-call counts, 72858 in all, are:
-= -- 10274
-> -- 442
-< -- 3010
-+ -- 2593
-- -- 141
-* -- 3717
-:= -- 11787
-add.period$ -- 168
-call.type$ -- 42
-change.case$ -- 730
+            1466 strings with 16457 characters,
+and the built_in function-call counts, 74603 in all, are:
+= -- 10528
+> -- 452
+< -- 3079
++ -- 2650
+- -- 145
+* -- 3800
+:= -- 12058
+add.period$ -- 172
+call.type$ -- 43
+change.case$ -- 747
 chr.to.int$ -- 0
-cite$ -- 84
-duplicate$ -- 1428
-empty$ -- 2905
-format.name$ -- 635
-if$ -- 15060
+cite$ -- 86
+duplicate$ -- 1460
+empty$ -- 2973
+format.name$ -- 649
+if$ -- 15426
 int.to.chr$ -- 0
-int.to.str$ -- 130
+int.to.str$ -- 133
 missing$ -- 0
-newline$ -- 939
-num.names$ -- 336
-pop$ -- 1137
+newline$ -- 961
+num.names$ -- 344
+pop$ -- 1157
 preamble$ -- 1
-purify$ -- 168
+purify$ -- 172
 quote$ -- 0
-skip$ -- 6628
+skip$ -- 6805
 stack$ -- 0
-substring$ -- 2785
-swap$ -- 679
-text.length$ -- 112
+substring$ -- 2846
+swap$ -- 693
+text.length$ -- 115
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 5664
+type$ -- 5816
 warning$ -- 0
-while$ -- 223
+while$ -- 228
 width$ -- 0
-write$ -- 1039
-(There were 32 warnings)
+write$ -- 1063
+(There were 33 warnings)

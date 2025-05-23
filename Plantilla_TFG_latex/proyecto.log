@@ -1,0 +1,2435 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.17)  23 MAY 2025 11:27
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex
+(c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-16>
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2024/02/08 v1.4n Standard LaTeX document class
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo
+File: bk11.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count194
+\c@chapter=\count195
+\c@section=\count196
+\c@subsection=\count197
+\c@subsubsection=\count198
+\c@paragraph=\count199
+\c@subparagraph=\count266
+\c@figure=\count267
+\c@table=\count268
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+\lst@mode=\count269
+\lst@gtempboxa=\box52
+\lst@token=\toks18
+\lst@length=\count270
+\lst@currlwidth=\dimen142
+\lst@column=\count271
+\lst@pos=\count272
+\lst@lostspace=\dimen143
+\lst@width=\dimen144
+\lst@newlines=\count273
+\lst@lineno=\count274
+\lst@maxwidth=\dimen145
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2024/05/25 1.10b (Carsten Heinz)
+\c@lstnumber=\count275
+\lst@skipnumbers=\count276
+\lst@framebox=\box53
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2024/05/25 1.10b listings configuration
+))
+Package: listings 2024/05/25 1.10b (Carsten Heinz)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks19
+\inpenc@posthook=\toks20
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/08/29 v24.9 The Babel package
+\babel@savecnt=\count277
+\U@D=\dimen146
+\l@unhyphenated=\language79
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count278
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+\es@quottoks=\toks21
+\es@quotdepth=\count279
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\babel-spanish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 11.
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count280
+\float@exts=\toks22
+\float@box=\box54
+\@float@everytoks=\toks23
+\@floatcapt=\box55
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip51
+\enit@outerparindent=\dimen147
+\enit@toks=\toks24
+\enit@inbox=\box56
+\enit@count@id=\count281
+\enitdp@description=\count282
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplots.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.revision.tex)
+Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen148
+\Gin@req@width=\dimen149
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks25
+\pgfutil@tempdima=\dimen150
+\pgfutil@tempdimb=\dimen151
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box57
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks26
+\pgfkeys@temptoks=\toks27
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks28
+))
+\pgf@x=\dimen152
+\pgf@y=\dimen153
+\pgf@xa=\dimen154
+\pgf@ya=\dimen155
+\pgf@xb=\dimen156
+\pgf@yb=\dimen157
+\pgf@xc=\dimen158
+\pgf@yc=\dimen159
+\pgf@xd=\dimen160
+\pgf@yd=\dimen161
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks29
+\t@pgf@tokb=\toks30
+\t@pgf@tokc=\toks31
+\pgf@sys@id@count=\count287
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count288
+\pgfsyssoftpath@bigbuffer@items=\count289
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+\pgfmath@dimen=\dimen162
+\pgfmath@count=\count290
+\pgfmath@box=\box58
+\pgfmath@toks=\toks32
+\pgfmath@stack@operand=\toks33
+\pgfmath@stack@operation=\toks34
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count291
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen163
+\pgf@picmaxx=\dimen164
+\pgf@picminy=\dimen165
+\pgf@picmaxy=\dimen166
+\pgf@pathminx=\dimen167
+\pgf@pathmaxx=\dimen168
+\pgf@pathminy=\dimen169
+\pgf@pathmaxy=\dimen170
+\pgf@xx=\dimen171
+\pgf@xy=\dimen172
+\pgf@yx=\dimen173
+\pgf@yy=\dimen174
+\pgf@zx=\dimen175
+\pgf@zy=\dimen176
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen177
+\pgf@path@lasty=\dimen178
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen179
+\pgf@shorten@start@additional=\dimen180
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box59
+\pgf@hbox=\box60
+\pgf@layerbox@main=\box61
+\pgf@picture@serial@count=\count292
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen181
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen182
+\pgf@pt@y=\dimen183
+\pgf@pt@temp=\dimen184
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen185
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen186
+\pgf@sys@shading@range@num=\count293
+\pgf@shadingcount=\count294
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box62
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box63
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen187
+\pgf@nodesepend=\dimen188
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen189
+\pgffor@skip=\dimen190
+\pgffor@stack=\toks35
+\pgffor@toks=\toks36
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count295
+\pgfplotmarksize=\dimen191
+)
+\tikz@lastx=\dimen192
+\tikz@lasty=\dimen193
+\tikz@lastxsaved=\dimen194
+\tikz@lastysaved=\dimen195
+\tikz@lastmovetox=\dimen196
+\tikz@lastmovetoy=\dimen197
+\tikzleveldistance=\dimen198
+\tikzsiblingdistance=\dimen199
+\tikz@figbox=\box64
+\tikz@figbox@bg=\box65
+\tikz@tempbox=\box66
+\tikz@tempbox@bg=\box67
+\tikztreelevel=\count296
+\tikznumberofchildren=\count297
+\tikznumberofcurrentchild=\count298
+\tikz@fig@count=\count299
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count300
+\pgfmatrixcurrentcolumn=\count301
+\pgf@matrix@numberofcolumns=\count302
+)
+\tikz@expandcount=\count303
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscore.code.tex
+\t@pgfplots@toka=\toks37
+\t@pgfplots@tokb=\toks38
+\t@pgfplots@tokc=\toks39
+\pgfplots@tmpa=\dimen256
+\c@pgfplots@coordindex=\count304
+\c@pgfplots@scanlineindex=\count305
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgfplotssysgeneric.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgfplotslibrary.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks40
+\t@pgf@tokb=\toks41
+\t@pgf@tokc=\toks42
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructure.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructureext.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count306
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsmatrix.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numtable\pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count307
+\t@pgfplotstable@a=\toks43
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsdeque.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.data.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.verb.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count308
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotscolormap.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/util\pgfplotscolor.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsstackedplots.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsplothandlers.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplothandler.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplotimage.code.tex))) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.scaling.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotscoordprocessing.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.errorbars.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.markers.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplotsticks.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.paths.code.tex) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen257
+\pgfdecoratedremainingdistance=\dimen258
+\pgfdecoratedinputsegmentcompleteddistance=\dimen259
+\pgfdecoratedinputsegmentremainingdistance=\dimen260
+\pgf@decorate@distancetomove=\dimen261
+\pgf@decorate@repeatstate=\count309
+\pgfdecorationsegmentamplitude=\dimen262
+\pgfdecorationsegmentlength=\dimen263
+)
+\tikz@lib@dec@box=\box68
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count310
+\pgfplots@xmin@reg=\dimen264
+\pgfplots@xmax@reg=\dimen265
+\pgfplots@ymin@reg=\dimen266
+\pgfplots@ymax@reg=\dimen267
+\pgfplots@zmin@reg=\dimen268
+\pgfplots@zmax@reg=\dimen269
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgfplots\pgfplotstable.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots\pgfplots.revision.tex)
+Package: pgfplotstable 2021/05/15 v1.18.1 Table typesetting and Pretty-printing (1.18.1)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numtable\pgfplotstable.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgfplots/numtable\pgfplotstable.coltype.code.tex)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
+\col@sep=\dimen270
+\ar@mcellbox=\box69
+\extrarowheight=\dimen271
+\NC@list=\toks44
+\extratabsurround=\skip52
+\backup@length=\skip53
+\ar@cellbox=\box70
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/changepage\changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count311
+\cp@tempcnt=\count312
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count313
+\rotFPtop=\skip54
+\rotFPbot=\skip55
+\rot@float@box=\box71
+\rot@mess@toks=\toks45
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
+Package: dcolumn 2023/07/08 v1.06 decimal alignment package (DPC)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks46
+\verbatim@line=\toks47
+\verbatim@in@stream=\read4
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and footers
+\f@nch@headwidth=\skip56
+\f@nch@O@elh=\skip57
+\f@nch@O@erh=\skip58
+\f@nch@O@olh=\skip59
+\f@nch@O@orh=\skip60
+\f@nch@O@elf=\skip61
+\f@nch@O@erf=\skip62
+\f@nch@O@olf=\skip63
+\f@nch@O@orf=\skip64
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
+Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
+\AP@output=\toks48
+\AP@partial=\box72
+\AP@footins=\box73
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2024-04-26 v4.20 Multi-page Table package (DPC)
+\LTleft=\skip65
+\LTright=\skip66
+\LTpre=\skip67
+\LTpost=\skip68
+\LTchunksize=\count314
+\LTcapwidth=\dimen272
+\LT@head=\box74
+\LT@firsthead=\box75
+\LT@foot=\box76
+\LT@lastfoot=\box77
+\LT@gbox=\box78
+\LT@cols=\count315
+\LT@rows=\count316
+\c@LT@tables=\count317
+\c@LT@chunks=\count318
+\LT@p@ftn=\toks49
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2024-07-10 v7.01j Hypertext links for LaTeX
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count319
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count320
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen273
+\Hy@linkcounter=\count321
+\Hy@pagecounter=\count322
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count323
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count324
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen274
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count325
+\Field@Width=\dimen275
+\Fld@charsize=\dimen276
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count326
+\c@Item=\count327
+\c@Hfootnote=\count328
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2024-07-10 v7.01j Hyperref driver for pdfTeX
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count329
+\c@bookmark@seq@number=\count330
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip69
+)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 58.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 58.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 58.
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+\everycr=\toks50
+\minrowclearance=\skip70
+\rownum=\count331
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/footmisc\footmisc.sty
+Package: footmisc 2023/07/05 v6.0f a miscellany of footnote facilities
+\FN@temptoken=\toks51
+\footnotemargin=\dimen277
+\@outputbox@depth=\dimen278
+Package footmisc Info: Declaring symbol style bringhurst on input line 696.
+Package footmisc Info: Declaring symbol style chicago on input line 704.
+Package footmisc Info: Declaring symbol style wiley on input line 713.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 724.
+Package footmisc Info: Declaring symbol style lamport* on input line 744.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 765.
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/index\index.sty
+Package: index 2004/01/20 v4.2beta Improved index support (dmj)
+\@indexbox=\insert252
+\indexproofstyle=\toks52
+
+
+LaTeX Warning: Command \markboth  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \markright  has changed.
+               Check if current package is valid.
+
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count332
+\c@@ppsavesec=\count333
+\c@@ppsaveapp=\count334
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2023/10/27 v2.16 Sectioning titles
+\ttl@box=\box79
+\beforetitleunit=\skip71
+\aftertitleunit=\skip72
+\ttl@plus=\dimen279
+\ttl@minus=\dimen280
+\ttl@toksa=\toks53
+\titlewidth=\dimen281
+\titlewidthlast=\dimen282
+\titlewidthfirst=\dimen283
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks54
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgfgantt\pgfgantt.sty
+Package: pgfgantt 2024/06/19 v5.0a Draw Gantt diagrams with TikZ
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\arrowsize=\dimen284
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@layerbox@background=\box80
+\pgf@layerboxsaved@background=\box81
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfcalendar.sty (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfcalendar.code.tex
+File: pgfcalendar.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfcalendarcurrentjulian=\count335
+\pgf@cal@easter@Y=\count336
+\pgf@cal@easter@G=\count337
+\pgf@cal@easter@C=\count338
+\pgf@cal@easter@X=\count339
+\pgf@cal@easter@Z=\count340
+\pgf@cal@easter@D=\count341
+\pgf@cal@easter@E=\count342
+\pgf@cal@easter@N=\count343
+\pgf@cal@easter@M=\count344
+\pgf@cal@easter@julianday=\count345
+))
+\gtt@currentline=\count346
+\gtt@lasttitleline=\count347
+\gtt@currgrid=\count348
+\gtt@chartwidth=\count349
+\gtt@lasttitleslot=\count350
+\gtt@elementid=\count351
+\gtt@today@slot=\count352
+\gtt@startjulian=\count353
+\gtt@endjulian=\count354
+\gtt@chartid=\count355
+\gtt@vrule@slot=\count356
+\gtt@calendar@slots=\count357
+\gtt@calendar@weeknumber=\count358
+\gtt@calendar@startofweek=\count359
+\gtt@left@slot=\count360
+\gtt@right@slot=\count361
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen285
+\TX@old@table=\dimen286
+\TX@old@col=\dimen287
+\TX@target=\dimen288
+\TX@delta=\dimen289
+\TX@cols=\count362
+\TX@ftn=\toks55
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf-pie\pgf-pie.sty
+Package: pgf-pie 2022/06/14 v0.7 Some LaTeX macros for pie chart by using PGF/Tikz package.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/pgf-pie\tikzlibrarypie.code.tex (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+\pgfpie@angleEnd=\dimen290
+\pgfpie@explodeLength=\count363
+\pgfpie@colorLength=\count364
+\pgfpie@sliceLength=\count365
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 91.
+\idxtitle@default=\toks56
+\tf@default=\write4
+\openout4 = `proyecto.idx'.
+
+Package index Info: Writing index file proyecto.idx on input line 95.
+
+
+Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 101.
+
+
+Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless.
+(fancyhdr)                Please consider using the `twoside' option on input line 102.
+
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen291
+\lightrulewidth=\dimen292
+\cmidrulewidth=\dimen293
+\belowrulesep=\dimen294
+\belowbottomsep=\dimen295
+\aboverulesep=\dimen296
+\abovetopsep=\dimen297
+\cmidrulesep=\dimen298
+\cmidrulekern=\dimen299
+\defaultaddspace=\dimen300
+\@cmidla=\count366
+\@cmidlb=\count367
+\@aboverulesep=\dimen301
+\@belowrulesep=\dimen302
+\@thisruleclass=\count368
+\@lastruleclass=\count369
+\@thisrulewidth=\dimen303
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/eurosym\eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box82
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/apacite\apacite.sty
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count370
+\bibleftmargin=\skip73
+\bibindent=\skip74
+\bibparsep=\skip75
+\bibitemsep=\skip76
+\biblabelsep=\skip77
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count371
+\l__pdf_internal_box=\box83
+) (proyecto.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+)
+\openout1 = `proyecto.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+\c@lstlisting=\count372
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count373
+\scratchdimen=\dimen304
+\scratchbox=\box84
+\nofMPsegments=\count374
+\nofMParguments=\count375
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count376
+\MPscratchDim=\dimen305
+\MPnumerator=\count377
+\makeMPintoPDFobject=\count378
+\everyMPtoPDFconversion=\toks58
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
+
+Package hyperref Info: Link coloring ON on input line 128.
+(proyecto.out) (proyecto.out)
+\@outlinefile=\write5
+\openout5 = `proyecto.out'.
+
+\c@maskedRefs=\count379
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/apacite\spanish.apc
+File: spanish.apc 2013/07/21 v6.03 apacite language file
+LaTeX Info: Redefining \BPBI on input line 138.
+LaTeX Info: Redefining \BHBI on input line 139.
+) (portada/portada.tex
+\centeroffset=\skip78
+<imagenes/logo_ugr.jpg, id=378, 777.90625pt x 231.86626pt>
+File: imagenes/logo_ugr.jpg Graphic file (type jpg)
+<use imagenes/logo_ugr.jpg>
+Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 12.
+(pdftex.def)             Requested size: 323.9978pt x 96.57295pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+ (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<imagenes/etsiit_logo.png, id=379, 110.814pt x 40.4712pt>
+File: imagenes/etsiit_logo.png Graphic file (type png)
+<use imagenes/etsiit_logo.png>
+Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 31.
+(pdftex.def)             Requested size: 108.0011pt x 39.44412pt.
+
+
+[1
+
+
+{C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./imagenes/logo_ugr.jpg> <./imagenes/etsiit_logo.png>]) (prefacios/prefacio.tex
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+
+[2
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+
+ []
+
+
+
+[3
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+
+
+[4
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+
+[5
+
+])
+
+[6
+
+] (proyecto.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+
+[7
+
+]
+
+[8]
+
+[9]
+
+[10])
+\tf@toc=\write6
+\openout6 = `proyecto.toc'.
+
+
+
+[11] (proyecto.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+
+[12
+
+]
+
+[13]
+
+[14]
+
+[15])
+\tf@lof=\write7
+\openout7 = `proyecto.lof'.
+
+
+
+[16] (proyecto.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+
+[17
+
+]
+
+[18]
+
+[19])
+\tf@lot=\write8
+\openout8 = `proyecto.lot'.
+
+ (../capitulos/01_Introduccion.tex
+
+[20]
+Cap\'{\i }tulo 1.
+
+
+[21
+
+]
+
+[22]
+
+[23]
+
+[24]) (../capitulos/02_Planificacion.tex
+Cap\'{\i }tulo 2.
+
+
+[25
+
+]
+
+[26]
+<../capitulos/img/diagrama_gantt.jpg, id=964, 506.1309pt x 119.0046pt>
+File: ../capitulos/img/diagrama_gantt.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_gantt.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_gantt.jpg  used on input line 86.
+(pdftex.def)             Requested size: 576.0022pt x 135.43419pt.
+
+
+[27]
+
+[28 <../capitulos/img/diagrama_gantt.jpg>]
+
+[29]
+
+[30]
+
+[31]) (../capitulos/03_Estado_del_arte.tex
+Cap\'{\i }tulo 3.
+<../capitulos/img/residentes_vivienda.png, id=996, 713.66624pt x 450.18187pt>
+File: ../capitulos/img/residentes_vivienda.png Graphic file (type png)
+<use ../capitulos/img/residentes_vivienda.png>
+Package pdftex.def Info: ../capitulos/img/residentes_vivienda.png  used on input line 13.
+(pdftex.def)             Requested size: 251.9989pt x 158.96046pt.
+
+
+[32
+
+ <../capitulos/img/residentes_vivienda.png>]
+
+[33]
+
+[34]
+
+[35]
+<../capitulos/img/principal.jpg, id=1039, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/principal.jpg Graphic file (type jpg)
+<use ../capitulos/img/principal.jpg>
+Package pdftex.def Info: ../capitulos/img/principal.jpg  used on input line 112.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/inicio.jpg, id=1040, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/inicio.jpg Graphic file (type jpg)
+<use ../capitulos/img/inicio.jpg>
+Package pdftex.def Info: ../capitulos/img/inicio.jpg  used on input line 119.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/añadir.jpg, id=1043, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/añadir.jpg Graphic file (type jpg)
+<use ../capitulos/img/añadir.jpg>
+Package pdftex.def Info: ../capitulos/img/añadir.jpg  used on input line 141.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/incio_sesion.jpg, id=1044, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/incio_sesion.jpg Graphic file (type jpg)
+<use ../capitulos/img/incio_sesion.jpg>
+Package pdftex.def Info: ../capitulos/img/incio_sesion.jpg  used on input line 148.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+
+
+[36 <../capitulos/img/principal.jpg> <../capitulos/img/inicio.jpg>]
+<../capitulos/img/crear.jpg, id=1054, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/crear.jpg Graphic file (type jpg)
+<use ../capitulos/img/crear.jpg>
+Package pdftex.def Info: ../capitulos/img/crear.jpg  used on input line 166.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/creado.jpg, id=1055, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/creado.jpg Graphic file (type jpg)
+<use ../capitulos/img/creado.jpg>
+Package pdftex.def Info: ../capitulos/img/creado.jpg  used on input line 173.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/participantes.jpg, id=1058, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/participantes.jpg Graphic file (type jpg)
+<use ../capitulos/img/participantes.jpg>
+Package pdftex.def Info: ../capitulos/img/participantes.jpg  used on input line 189.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+<../capitulos/img/gastos.jpg, id=1059, 1541.76pt x 2055.68pt>
+File: ../capitulos/img/gastos.jpg Graphic file (type jpg)
+<use ../capitulos/img/gastos.jpg>
+Package pdftex.def Info: ../capitulos/img/gastos.jpg  used on input line 196.
+(pdftex.def)             Requested size: 161.9989pt x 215.99393pt.
+
+
+[37 <../capitulos/img/añadir.jpg> <../capitulos/img/incio_sesion.jpg>]
+
+[38 <../capitulos/img/crear.jpg> <../capitulos/img/creado.jpg> <../capitulos/img/participantes.jpg> <../capitulos/img/gastos.jpg>]
+Overfull \hbox (4.66583pt too wide) in paragraph at lines 234--235
+[]\OT1/cmr/m/n/10.95 Etiquetas. Per-mi-ten agru-par ta-reas de di-fe-ren-tes pro-yec-tos a trav^^Ses
+ []
+
+
+
+[39
+
+]
+<../capitulos/img/registro_todoist.jpg, id=1097, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/registro_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/registro_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/registro_todoist.jpg  used on input line 265.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/ambito_todoist.jpg, id=1098, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/ambito_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/ambito_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/ambito_todoist.jpg  used on input line 272.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/principal_todoist.jpg, id=1099, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/principal_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/principal_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/principal_todoist.jpg  used on input line 282.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/añadir_todoist.jpg, id=1100, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/añadir_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/añadir_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/añadir_todoist.jpg  used on input line 289.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/tarea_todoist.jpg, id=1101, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/tarea_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/tarea_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/tarea_todoist.jpg  used on input line 299.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/calendario_todoist.jpg, id=1102, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/calendario_todoist.jpg Graphic file (type jpg)
+<use ../capitulos/img/calendario_todoist.jpg>
+Package pdftex.def Info: ../capitulos/img/calendario_todoist.jpg  used on input line 306.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+
+
+[40]
+
+[41 <../capitulos/img/registro_todoist.jpg> <../capitulos/img/ambito_todoist.jpg>]
+
+[42 <../capitulos/img/principal_todoist.jpg> <../capitulos/img/añadir_todoist.jpg>]
+
+[43 <../capitulos/img/tarea_todoist.jpg> <../capitulos/img/calendario_todoist.jpg>]
+
+[44
+
+]
+
+[45]
+<../capitulos/img/registro_cozi.jpg, id=1166, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/registro_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/registro_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/registro_cozi.jpg  used on input line 419.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/familia_cozi.jpg, id=1167, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/familia_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/familia_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/familia_cozi.jpg  used on input line 426.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/evento_cozi.jpg, id=1168, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/evento_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/evento_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/evento_cozi.jpg  used on input line 436.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/calendario_cozi.jpg, id=1169, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/calendario_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/calendario_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/calendario_cozi.jpg  used on input line 443.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/listas_cozi.jpg, id=1170, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/listas_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/listas_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/listas_cozi.jpg  used on input line 453.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+<../capitulos/img/recetas_cozi.jpg, id=1171, 741.77126pt x 1606.0pt>
+File: ../capitulos/img/recetas_cozi.jpg Graphic file (type jpg)
+<use ../capitulos/img/recetas_cozi.jpg>
+Package pdftex.def Info: ../capitulos/img/recetas_cozi.jpg  used on input line 460.
+(pdftex.def)             Requested size: 161.9989pt x 350.72351pt.
+
+
+[46]
+
+[47 <../capitulos/img/registro_cozi.jpg> <../capitulos/img/familia_cozi.jpg>]
+
+[48 <../capitulos/img/evento_cozi.jpg> <../capitulos/img/calendario_cozi.jpg>]
+
+[49 <../capitulos/img/listas_cozi.jpg> <../capitulos/img/recetas_cozi.jpg>]
+
+[50
+
+]
+Underfull \hbox (badness 1484) in paragraph at lines 529--529
+[]|\OT1/cmr/m/n/10.95 Android, iOS,
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 529--529
+[]|\OT1/cmr/m/n/10.95 Android, iOS,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 529--529
+\OT1/cmr/m/n/10.95 Win-dows,
+ []
+
+
+Underfull \hbox (badness 4403) in paragraph at lines 529--529
+[]|\OT1/cmr/bx/n/10.95 Asignaci^^Son de Ta-
+ []
+
+
+
+[51]
+
+[52]
+
+[53]
+
+[54]
+
+[55]
+
+[56]
+
+[57]) (../capitulos/04_Tecnologias.tex
+
+[58]
+Cap\'{\i }tulo 4.
+<../capitulos/img/Kotlin_logo.svg.png, id=1298, 2569.6pt x 571.13374pt>
+File: ../capitulos/img/Kotlin_logo.svg.png Graphic file (type png)
+<use ../capitulos/img/Kotlin_logo.svg.png>
+Package pdftex.def Info: ../capitulos/img/Kotlin_logo.svg.png  used on input line 26.
+(pdftex.def)             Requested size: 143.9978pt x 32.0007pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[59
+
+]
+<../capitulos/img/images.png, id=1306, 405.515pt x 125.46875pt>
+File: ../capitulos/img/images.png Graphic file (type png)
+<use ../capitulos/img/images.png>
+Package pdftex.def Info: ../capitulos/img/images.png  used on input line 40.
+(pdftex.def)             Requested size: 108.0011pt x 33.4156pt.
+
+
+[60 <../capitulos/img/Kotlin_logo.svg.png> <../capitulos/img/images.png>]
+<../capitulos/img/ionic-itop.png, id=1316, 1284.8pt x 433.62pt>
+File: ../capitulos/img/ionic-itop.png Graphic file (type png)
+<use ../capitulos/img/ionic-itop.png>
+Package pdftex.def Info: ../capitulos/img/ionic-itop.png  used on input line 63.
+(pdftex.def)             Requested size: 143.9978pt x 48.59819pt.
+<../capitulos/img/flutter.png, id=1319, 421.575pt x 120.45pt>
+File: ../capitulos/img/flutter.png Graphic file (type png)
+<use ../capitulos/img/flutter.png>
+Package pdftex.def Info: ../capitulos/img/flutter.png  used on input line 75.
+(pdftex.def)             Requested size: 143.9978pt x 41.14175pt.
+<../capitulos/img/react.png, id=1322, 863.225pt x 265.99374pt>
+File: ../capitulos/img/react.png Graphic file (type png)
+<use ../capitulos/img/react.png>
+Package pdftex.def Info: ../capitulos/img/react.png  used on input line 85.
+(pdftex.def)             Requested size: 180.0pt x 55.46257pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../capitulos/img/xamarin.png, id=1325, 2569.6pt x 1078.0275pt>
+File: ../capitulos/img/xamarin.png Graphic file (type png)
+<use ../capitulos/img/xamarin.png>
+Package pdftex.def Info: ../capitulos/img/xamarin.png  used on input line 94.
+(pdftex.def)             Requested size: 180.0pt x 75.50253pt.
+
+
+[61 <../capitulos/img/ionic-itop.png> <../capitulos/img/flutter.png>]
+Overfull \hbox (3.4432pt too wide) in paragraph at lines 123--123
+[]|\OT1/cmr/bx/n/10.95 Componentes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\OT1/cmr/m/n/10.95 Componentes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\OT1/cmr/m/n/10.95 Componentes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\OT1/cmr/m/n/10.95 Basado en
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\OT1/cmr/m/n/10.95 Componentes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\OT1/cmr/m/n/10.95 Componentes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\OT1/cmr/m/n/10.95 Integraci^^Son Mi-
+ []
+
+
+
+[62 <../capitulos/img/react.png> <../capitulos/img/xamarin.png>]
+
+[63]
+<../capitulos/img/Firebase.png, id=1349, 1284.8pt x 441.65pt>
+File: ../capitulos/img/Firebase.png Graphic file (type png)
+<use ../capitulos/img/Firebase.png>
+Package pdftex.def Info: ../capitulos/img/Firebase.png  used on input line 149.
+(pdftex.def)             Requested size: 180.0pt x 61.871pt.
+
+
+[64 <../capitulos/img/Firebase.png>]
+<../capitulos/img/Node.js.png, id=1358, 592.2125pt x 362.35374pt>
+File: ../capitulos/img/Node.js.png Graphic file (type png)
+<use ../capitulos/img/Node.js.png>
+Package pdftex.def Info: ../capitulos/img/Node.js.png  used on input line 165.
+(pdftex.def)             Requested size: 108.0011pt x 66.07787pt.
+<../capitulos/img/django.png, id=1361, 1204.5pt x 419.5675pt>
+File: ../capitulos/img/django.png Graphic file (type png)
+<use ../capitulos/img/django.png>
+Package pdftex.def Info: ../capitulos/img/django.png  used on input line 180.
+(pdftex.def)             Requested size: 143.9978pt x 50.15385pt.
+
+
+[65 <../capitulos/img/Node.js.png> <../capitulos/img/django.png>]
+<../capitulos/img/ruby.png, id=1371, 2569.6pt x 969.6225pt>
+File: ../capitulos/img/ruby.png Graphic file (type png)
+<use ../capitulos/img/ruby.png>
+Package pdftex.def Info: ../capitulos/img/ruby.png  used on input line 195.
+(pdftex.def)             Requested size: 143.9978pt x 54.32808pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]|\OT1/cmr/bx/n/10.95 Integraci^^Son con
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 Firebase, Real-ti-me
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 Serverless, en
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 PostgreSQL,
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 Django REST Fra-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 PostgreSQL,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 ActiveRecord
+ []
+
+
+Underfull \hbox (badness 2680) in paragraph at lines 218--218
+[]|\OT1/cmr/m/n/10.95 RESTful API f^^Sacil
+ []
+
+
+
+[66 <../capitulos/img/ruby.png>]) (../capitulos/05_Metodologias.tex
+Cap\'{\i }tulo 5.
+
+
+[67
+
+]
+
+[68]
+
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
+[]|\OT1/cmr/bx/n/10.95 Gesti^^Son de
+ []
+
+
+
+[70]) (../capitulos/06_Propuesta.tex
+
+[71]
+Cap\'{\i }tulo 6.
+
+
+[72
+
+]
+
+[73]
+Underfull \hbox (badness 1596) in paragraph at lines 74--75
+\OT1/cmr/m/n/10.95 dir el nom-bre, ape-lli-dos, co-rreo
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 62--83
+ [][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 88--111
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 117--139
+[][]
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 143--163
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 170--190
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 195--217
+[][]
+ []
+
+
+
+[74]
+
+[75]
+
+[76]
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 230--251
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 257--280
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 286--306
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 312--332
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 337--359
+[][] 
+ []
+
+
+
+[77
+
+]
+
+[78]
+
+[79]
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 374--396
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 402--423
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 428--448
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 453--475
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 480--500
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 505--525
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 530--550
+[][] 
+ []
+
+
+
+[80
+
+]
+
+[81]
+
+[82]
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 566--588
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 593--616
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 621--642
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 647--667
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 672--693
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 698--719
+[][] 
+ []
+
+
+
+[83
+
+]
+
+[84]
+
+[85]
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 735--755
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 760--782
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 787--807
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 812--832
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 837--858
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 863--884
+[][] 
+ []
+
+
+
+[86
+
+]
+
+[87]
+
+[88]
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 898--911
+[][]
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 916--929
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 934--945
+[][] 
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 951--962
+[][]
+ []
+
+
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 966--977
+[][] 
+ []
+
+
+
+[89
+
+]
+<../capitulos/img/diagrama_paquetes.jpg, id=1598, 580.1675pt x 364.36125pt>
+File: ../capitulos/img/diagrama_paquetes.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_paquetes.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_paquetes.jpg  used on input line 1001.
+(pdftex.def)             Requested size: 360.0pt x 226.09067pt.
+<../capitulos/img/diagrama_sesion.jpg, id=1599, 408.52625pt x 311.1625pt>
+File: ../capitulos/img/diagrama_sesion.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_sesion.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_sesion.jpg  used on input line 1009.
+(pdftex.def)             Requested size: 360.0pt x 274.21793pt.
+<../capitulos/img/diagrama_hogar.jpg, id=1600, 360.34625pt x 287.0725pt>
+File: ../capitulos/img/diagrama_hogar.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_hogar.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_hogar.jpg  used on input line 1016.
+(pdftex.def)             Requested size: 360.0pt x 286.79582pt.
+<../capitulos/img/diagrama_tareas.jpg, id=1601, 473.77pt x 469.755pt>
+File: ../capitulos/img/diagrama_tareas.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_tareas.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_tareas.jpg  used on input line 1023.
+(pdftex.def)             Requested size: 360.0pt x 356.96017pt.
+<../capitulos/img/diagrama_gastos.jpg, id=1602, 469.755pt x 425.59pt>
+File: ../capitulos/img/diagrama_gastos.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_gastos.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_gastos.jpg  used on input line 1031.
+(pdftex.def)             Requested size: 360.0pt x 326.15324pt.
+<../capitulos/img/diagrama_compra.jpg, id=1603, 529.98pt x 436.63126pt>
+File: ../capitulos/img/diagrama_compra.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_compra.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_compra.jpg  used on input line 1039.
+(pdftex.def)             Requested size: 360.0pt x 296.5922pt.
+
+
+[90]
+
+LaTeX Warning: Text page 91 contains only floats.
+
+
+
+[91 <../capitulos/img/diagrama_paquetes.jpg> <../capitulos/img/diagrama_sesion.jpg>]
+
+[92 <../capitulos/img/diagrama_hogar.jpg>]
+
+[93 <../capitulos/img/diagrama_tareas.jpg>]
+
+[94 <../capitulos/img/diagrama_gastos.jpg>]
+
+[95 <../capitulos/img/diagrama_compra.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
+[]|\OT1/cmr/m/n/10.95 Usuario: In-tro-du-ce su
+ []
+
+
+Underfull \hbox (badness 4726) in paragraph at lines 1093--1094
+\OT1/cmr/m/n/10.95 nom-bre, ape-lli-dos, co-rreo
+ []
+
+
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 1102--1102
+[]|\OT1/cmr/m/n/10.95 2a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 1104--1104
+[]|\OT1/cmr/m/n/10.95 2b.| 
+ []
+
+
+Overfull \hbox (2.58379pt too wide) in paragraph at lines 1106--1106
+[]|\OT1/cmr/m/n/10.95 2c.| 
+ []
+
+
+
+[96
+
+]
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 1161--1161
+[]|\OT1/cmr/m/n/10.95 2a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 1163--1163
+[]|\OT1/cmr/m/n/10.95 2b.| 
+ []
+
+
+Overfull \hbox (2.58379pt too wide) in paragraph at lines 1165--1165
+[]|\OT1/cmr/m/n/10.95 2c.| 
+ []
+
+
+
+[97]
+<../capitulos/img/modelo_conceptual.jpg, id=1644, 631.35875pt x 342.27875pt>
+File: ../capitulos/img/modelo_conceptual.jpg Graphic file (type jpg)
+<use ../capitulos/img/modelo_conceptual.jpg>
+Package pdftex.def Info: ../capitulos/img/modelo_conceptual.jpg  used on input line 1232.
+(pdftex.def)             Requested size: 360.0pt x 195.1688pt.
+
+
+[98]
+
+[99 <../capitulos/img/modelo_conceptual.jpg>]
+
+[100]
+<../capitulos/img/diagrama_arquitectura.png, id=1657, 353.32pt x 135.50626pt>
+File: ../capitulos/img/diagrama_arquitectura.png Graphic file (type png)
+<use ../capitulos/img/diagrama_arquitectura.png>
+Package pdftex.def Info: ../capitulos/img/diagrama_arquitectura.png  used on input line 1273.
+(pdftex.def)             Requested size: 360.0pt x 138.0698pt.
+
+
+[101 <../capitulos/img/diagrama_arquitectura.png>]
+<../capitulos/img/paleta.png, id=1665, 608.2725pt x 409.53pt>
+File: ../capitulos/img/paleta.png Graphic file (type png)
+<use ../capitulos/img/paleta.png>
+Package pdftex.def Info: ../capitulos/img/paleta.png  used on input line 1319.
+(pdftex.def)             Requested size: 216.0022pt x 145.42477pt.
+
+
+[102]
+<../capitulos/img/login_screen.png, id=1674, 429.605pt x 929.4725pt>
+File: ../capitulos/img/login_screen.png Graphic file (type png)
+<use ../capitulos/img/login_screen.png>
+Package pdftex.def Info: ../capitulos/img/login_screen.png  used on input line 1354.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/profile_screen.png, id=1675, 429.605pt x 929.4725pt>
+File: ../capitulos/img/profile_screen.png Graphic file (type png)
+<use ../capitulos/img/profile_screen.png>
+Package pdftex.def Info: ../capitulos/img/profile_screen.png  used on input line 1361.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[103 <../capitulos/img/paleta.png>]
+
+[104 <../capitulos/img/login_screen.png> <../capitulos/img/profile_screen.png>]
+<../capitulos/img/conect_screen.png, id=1689, 429.605pt x 929.4725pt>
+File: ../capitulos/img/conect_screen.png Graphic file (type png)
+<use ../capitulos/img/conect_screen.png>
+Package pdftex.def Info: ../capitulos/img/conect_screen.png  used on input line 1377.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/join_screen.png, id=1690, 429.605pt x 929.4725pt>
+File: ../capitulos/img/join_screen.png Graphic file (type png)
+<use ../capitulos/img/join_screen.png>
+Package pdftex.def Info: ../capitulos/img/join_screen.png  used on input line 1384.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[105
+
+ <../capitulos/img/conect_screen.png> <../capitulos/img/join_screen.png>]
+<../capitulos/img/task_screen.png, id=1698, 429.605pt x 929.4725pt>
+File: ../capitulos/img/task_screen.png Graphic file (type png)
+<use ../capitulos/img/task_screen.png>
+Package pdftex.def Info: ../capitulos/img/task_screen.png  used on input line 1399.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/calendar_screen.png, id=1699, 429.605pt x 929.4725pt>
+File: ../capitulos/img/calendar_screen.png Graphic file (type png)
+<use ../capitulos/img/calendar_screen.png>
+Package pdftex.def Info: ../capitulos/img/calendar_screen.png  used on input line 1406.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[106
+
+ <../capitulos/img/task_screen.png> <../capitulos/img/calendar_screen.png>]
+<../capitulos/img/bills_screen.png, id=1707, 429.605pt x 929.4725pt>
+File: ../capitulos/img/bills_screen.png Graphic file (type png)
+<use ../capitulos/img/bills_screen.png>
+Package pdftex.def Info: ../capitulos/img/bills_screen.png  used on input line 1423.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/debs_screen.png, id=1708, 429.605pt x 929.4725pt>
+File: ../capitulos/img/debs_screen.png Graphic file (type png)
+<use ../capitulos/img/debs_screen.png>
+Package pdftex.def Info: ../capitulos/img/debs_screen.png  used on input line 1430.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[107
+
+ <../capitulos/img/bills_screen.png> <../capitulos/img/debs_screen.png>]
+<../capitulos/img/list_screen.png, id=1716, 429.605pt x 929.4725pt>
+File: ../capitulos/img/list_screen.png Graphic file (type png)
+<use ../capitulos/img/list_screen.png>
+Package pdftex.def Info: ../capitulos/img/list_screen.png  used on input line 1446.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/product_screen.png, id=1717, 429.605pt x 929.4725pt>
+File: ../capitulos/img/product_screen.png Graphic file (type png)
+<use ../capitulos/img/product_screen.png>
+Package pdftex.def Info: ../capitulos/img/product_screen.png  used on input line 1453.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[108
+
+ <../capitulos/img/list_screen.png> <../capitulos/img/product_screen.png>]) (../capitulos/07_Desarrollo.tex
+Cap\'{\i }tulo 7.
+
+
+[109
+
+]
+
+[110]
+
+[111]
+<../capitulos/img/welcome_screen.png, id=1753, 441.65pt x 932.48375pt>
+File: ../capitulos/img/welcome_screen.png Graphic file (type png)
+<use ../capitulos/img/welcome_screen.png>
+Package pdftex.def Info: ../capitulos/img/welcome_screen.png  used on input line 88.
+(pdftex.def)             Requested size: 161.9989pt x 342.03983pt.
+<../capitulos/img/registro_screen.png, id=1754, 429.605pt x 929.4725pt>
+File: ../capitulos/img/registro_screen.png Graphic file (type png)
+<use ../capitulos/img/registro_screen.png>
+Package pdftex.def Info: ../capitulos/img/registro_screen.png  used on input line 95.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/edit_profile_screen.png, id=1755, 429.605pt x 929.4725pt>
+File: ../capitulos/img/edit_profile_screen.png Graphic file (type png)
+<use ../capitulos/img/edit_profile_screen.png>
+Package pdftex.def Info: ../capitulos/img/edit_profile_screen.png  used on input line 106.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/edit_home.png, id=1756, 429.605pt x 929.4725pt>
+File: ../capitulos/img/edit_home.png Graphic file (type png)
+<use ../capitulos/img/edit_home.png>
+Package pdftex.def Info: ../capitulos/img/edit_home.png  used on input line 113.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[112 <../capitulos/img/welcome_screen.png> <../capitulos/img/registro_screen.png>]
+
+[113 <../capitulos/img/edit_profile_screen.png> <../capitulos/img/edit_home.png>]
+<../capitulos/img/bienvenida_implementado.png, id=1769, 469.755pt x 623.32875pt>
+File: ../capitulos/img/bienvenida_implementado.png Graphic file (type png)
+<use ../capitulos/img/bienvenida_implementado.png>
+Package pdftex.def Info: ../capitulos/img/bienvenida_implementado.png  used on input line 145.
+(pdftex.def)             Requested size: 180.0pt x 238.84572pt.
+
+
+[114
+
+ <../capitulos/img/bienvenida_implementado.png>]
+<../capitulos/img/registro_implementado.png, id=1775, 1174.3875pt x 2541.495pt>
+File: ../capitulos/img/registro_implementado.png Graphic file (type png)
+<use ../capitulos/img/registro_implementado.png>
+Package pdftex.def Info: ../capitulos/img/registro_implementado.png  used on input line 172.
+(pdftex.def)             Requested size: 180.0pt x 389.50673pt.
+
+
+[115]
+
+[116 <../capitulos/img/registro_implementado.png>]
+Overfull \hbox (5.73949pt too wide) in paragraph at lines 196--197
+[][]\OT1/cmr/bx/n/10.95 showEmailNotVerifiedDialog : \OT1/cmr/m/n/10.95 Mues-tra un cua-dro de dia-lo-go cuan-
+ []
+
+<../capitulos/img/inicio_sesion_implementado.png, id=1786, 472.76625pt x 668.4975pt>
+File: ../capitulos/img/inicio_sesion_implementado.png Graphic file (type png)
+<use ../capitulos/img/inicio_sesion_implementado.png>
+Package pdftex.def Info: ../capitulos/img/inicio_sesion_implementado.png  used on input line 201.
+(pdftex.def)             Requested size: 180.0pt x 254.5213pt.
+
+
+[117 <../capitulos/img/inicio_sesion_implementado.png>]
+
+[118]
+<../capitulos/img/datos_implementado.png, id=1796, 841.1425pt x 1798.72pt>
+File: ../capitulos/img/datos_implementado.png Graphic file (type png)
+<use ../capitulos/img/datos_implementado.png>
+Package pdftex.def Info: ../capitulos/img/datos_implementado.png  used on input line 243.
+(pdftex.def)             Requested size: 143.9978pt x 307.91916pt.
+
+
+[119 <../capitulos/img/datos_implementado.png>]
+<../capitulos/img/editar_perfil_implementado.png, id=1802, 475.7775pt x 624.83438pt>
+File: ../capitulos/img/editar_perfil_implementado.png Graphic file (type png)
+<use ../capitulos/img/editar_perfil_implementado.png>
+Package pdftex.def Info: ../capitulos/img/editar_perfil_implementado.png  used on input line 260.
+(pdftex.def)             Requested size: 180.0pt x 236.39076pt.
+<../capitulos/img/editar_hogar_implementado.png, id=1803, 475.7775pt x 623.32875pt>
+File: ../capitulos/img/editar_hogar_implementado.png Graphic file (type png)
+<use ../capitulos/img/editar_hogar_implementado.png>
+Package pdftex.def Info: ../capitulos/img/editar_hogar_implementado.png  used on input line 275.
+(pdftex.def)             Requested size: 180.0pt x 235.82115pt.
+
+
+[120 <../capitulos/img/editar_perfil_implementado.png>]
+
+[121 <../capitulos/img/editar_hogar_implementado.png>]
+<../capitulos/img/opciones_impletementado.png, id=1815, 469.755pt x 626.34pt>
+File: ../capitulos/img/opciones_impletementado.png Graphic file (type png)
+<use ../capitulos/img/opciones_impletementado.png>
+Package pdftex.def Info: ../capitulos/img/opciones_impletementado.png  used on input line 307.
+(pdftex.def)             Requested size: 180.0pt x 239.99956pt.
+
+
+[122 <../capitulos/img/opciones_impletementado.png>]
+<../capitulos/img/crear_hogar_implementado.png, id=1821, 472.76625pt x 624.83438pt>
+File: ../capitulos/img/crear_hogar_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_hogar_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_hogar_implementado.png  used on input line 334.
+(pdftex.def)             Requested size: 180.0pt x 237.89717pt.
+<../capitulos/img/unirse_hoga_implementado.png, id=1822, 468.24937pt x 624.08156pt>
+File: ../capitulos/img/unirse_hoga_implementado.png Graphic file (type png)
+<use ../capitulos/img/unirse_hoga_implementado.png>
+Package pdftex.def Info: ../capitulos/img/unirse_hoga_implementado.png  used on input line 350.
+(pdftex.def)             Requested size: 180.0pt x 239.90552pt.
+
+
+[123 <../capitulos/img/crear_hogar_implementado.png>]
+
+[124 <../capitulos/img/unirse_hoga_implementado.png>]
+
+[125]
+
+[126]
+Overfull \hbox (7.20438pt too wide) in paragraph at lines 492--512
+[][] 
+ []
+
+<../capitulos/img/add_tasks_screen.png, id=1858, 429.605pt x 929.4725pt>
+File: ../capitulos/img/add_tasks_screen.png Graphic file (type png)
+<use ../capitulos/img/add_tasks_screen.png>
+Package pdftex.def Info: ../capitulos/img/add_tasks_screen.png  used on input line 526.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+<../capitulos/img/edit_task.png, id=1859, 429.605pt x 929.4725pt>
+File: ../capitulos/img/edit_task.png Graphic file (type png)
+<use ../capitulos/img/edit_task.png>
+Package pdftex.def Info: ../capitulos/img/edit_task.png  used on input line 533.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[127]
+
+[128]
+
+[129 <../capitulos/img/add_tasks_screen.png> <../capitulos/img/edit_task.png>]
+<../capitulos/img/tareas_implementado.png, id=1878, 477.28313pt x 666.99188pt>
+File: ../capitulos/img/tareas_implementado.png Graphic file (type png)
+<use ../capitulos/img/tareas_implementado.png>
+Package pdftex.def Info: ../capitulos/img/tareas_implementado.png  used on input line 591.
+(pdftex.def)             Requested size: 180.0pt x 251.53601pt.
+
+
+[130]
+
+[131 <../capitulos/img/tareas_implementado.png>]
+<../capitulos/img/crear_tarea_puntual_implementado.png, id=1888, 474.27188pt x 665.48625pt>
+File: ../capitulos/img/crear_tarea_puntual_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_tarea_puntual_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_tarea_puntual_implementado.png  used on input line 622.
+(pdftex.def)             Requested size: 180.0pt x 252.5726pt.
+<../capitulos/img/crear_tarea_semanal_implementado.png, id=1889, 1174.3875pt x 2541.495pt>
+File: ../capitulos/img/crear_tarea_semanal_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_tarea_semanal_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_tarea_semanal_implementado.png  used on input line 630.
+(pdftex.def)             Requested size: 180.0pt x 389.50673pt.
+
+
+[132 <../capitulos/img/crear_tarea_puntual_implementado.png>]
+<../capitulos/img/ver_tarea_implementado.png, id=1895, 479.54156pt x 667.74469pt>
+File: ../capitulos/img/ver_tarea_implementado.png Graphic file (type png)
+<use ../capitulos/img/ver_tarea_implementado.png>
+Package pdftex.def Info: ../capitulos/img/ver_tarea_implementado.png  used on input line 648.
+(pdftex.def)             Requested size: 180.0pt x 250.64818pt.
+
+
+[133 <../capitulos/img/crear_tarea_semanal_implementado.png>]
+
+[134 <../capitulos/img/ver_tarea_implementado.png>]
+<../capitulos/img/menu_tarea_implementado.png, id=1907, 470.50781pt x 665.48625pt>
+File: ../capitulos/img/menu_tarea_implementado.png Graphic file (type png)
+<use ../capitulos/img/menu_tarea_implementado.png>
+Package pdftex.def Info: ../capitulos/img/menu_tarea_implementado.png  used on input line 669.
+(pdftex.def)             Requested size: 180.0pt x 254.59335pt.
+<../capitulos/img/editar_tarea_implementado.png, id=1908, 475.02469pt x 667.74469pt>
+File: ../capitulos/img/editar_tarea_implementado.png Graphic file (type png)
+<use ../capitulos/img/editar_tarea_implementado.png>
+Package pdftex.def Info: ../capitulos/img/editar_tarea_implementado.png  used on input line 686.
+(pdftex.def)             Requested size: 180.0pt x 253.0222pt.
+
+
+[135 <../capitulos/img/menu_tarea_implementado.png>]
+
+[136 <../capitulos/img/editar_tarea_implementado.png>]
+<../capitulos/img/calendario_implementado.png, id=1919, 1174.3875pt x 2541.495pt>
+File: ../capitulos/img/calendario_implementado.png Graphic file (type png)
+<use ../capitulos/img/calendario_implementado.png>
+Package pdftex.def Info: ../capitulos/img/calendario_implementado.png  used on input line 733.
+(pdftex.def)             Requested size: 180.0pt x 389.50673pt.
+
+
+[137]
+
+[138 <../capitulos/img/calendario_implementado.png>]
+<../capitulos/img/lista_compra_implementado.png, id=1929, 472.01344pt x 670.75594pt>
+File: ../capitulos/img/lista_compra_implementado.png Graphic file (type png)
+<use ../capitulos/img/lista_compra_implementado.png>
+Package pdftex.def Info: ../capitulos/img/lista_compra_implementado.png  used on input line 764.
+(pdftex.def)             Requested size: 143.9978pt x 204.62631pt.
+<../capitulos/img/crear_lista_implementado.png, id=1930, 472.01344pt x 664.73344pt>
+File: ../capitulos/img/crear_lista_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_lista_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_lista_implementado.png  used on input line 782.
+(pdftex.def)             Requested size: 143.9978pt x 202.78905pt.
+
+
+[139 <../capitulos/img/lista_compra_implementado.png>]
+
+[140 <../capitulos/img/crear_lista_implementado.png>]
+<../capitulos/img/eliminar_lista_implementado.png, id=1942, 470.50781pt x 663.22781pt>
+File: ../capitulos/img/eliminar_lista_implementado.png Graphic file (type png)
+<use ../capitulos/img/eliminar_lista_implementado.png>
+Package pdftex.def Info: ../capitulos/img/eliminar_lista_implementado.png  used on input line 802.
+(pdftex.def)             Requested size: 143.9978pt x 202.9774pt.
+
+
+[141 <../capitulos/img/eliminar_lista_implementado.png>]
+<../capitulos/img/productos_implementado.png, id=1948, 472.01344pt x 657.95813pt>
+File: ../capitulos/img/productos_implementado.png Graphic file (type png)
+<use ../capitulos/img/productos_implementado.png>
+Package pdftex.def Info: ../capitulos/img/productos_implementado.png  used on input line 836.
+(pdftex.def)             Requested size: 143.9978pt x 200.7221pt.
+<../capitulos/img/crear_producto_implementado.png, id=1949, 473.51906pt x 660.21657pt>
+File: ../capitulos/img/crear_producto_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_producto_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_producto_implementado.png  used on input line 855.
+(pdftex.def)             Requested size: 143.9978pt x 200.76634pt.
+
+
+[142 <../capitulos/img/productos_implementado.png>]
+
+[143 <../capitulos/img/crear_producto_implementado.png>]
+
+[144]
+
+[145]
+
+[146]
+<../capitulos/img/pay_screen.png, id=1983, 429.605pt x 929.4725pt>
+File: ../capitulos/img/pay_screen.png Graphic file (type png)
+<use ../capitulos/img/pay_screen.png>
+Package pdftex.def Info: ../capitulos/img/pay_screen.png  used on input line 1006.
+(pdftex.def)             Requested size: 161.9989pt x 350.49435pt.
+
+
+[147]
+
+[148 <../capitulos/img/pay_screen.png>]
+<../capitulos/img/gastos_implementado.png, id=1994, 473.51906pt x 667.74469pt>
+File: ../capitulos/img/gastos_implementado.png Graphic file (type png)
+<use ../capitulos/img/gastos_implementado.png>
+Package pdftex.def Info: ../capitulos/img/gastos_implementado.png  used on input line 1048.
+(pdftex.def)             Requested size: 180.0pt x 253.82713pt.
+
+
+[149]
+<../capitulos/img/crear_gasto_implementado.png, id=1999, 475.02469pt x 667.74469pt>
+File: ../capitulos/img/crear_gasto_implementado.png Graphic file (type png)
+<use ../capitulos/img/crear_gasto_implementado.png>
+Package pdftex.def Info: ../capitulos/img/crear_gasto_implementado.png  used on input line 1065.
+(pdftex.def)             Requested size: 180.0pt x 253.0222pt.
+
+
+[150 <../capitulos/img/gastos_implementado.png>]
+
+[151 <../capitulos/img/crear_gasto_implementado.png>]
+<../capitulos/img/deudas_implementado.png, id=2011, 476.53032pt x 666.99188pt>
+File: ../capitulos/img/deudas_implementado.png Graphic file (type png)
+<use ../capitulos/img/deudas_implementado.png>
+Package pdftex.def Info: ../capitulos/img/deudas_implementado.png  used on input line 1097.
+(pdftex.def)             Requested size: 180.0pt x 251.9431pt.
+<../capitulos/img/detalles_deudas_implementado.png, id=2012, 475.02469pt x 670.00313pt>
+File: ../capitulos/img/detalles_deudas_implementado.png Graphic file (type png)
+<use ../capitulos/img/detalles_deudas_implementado.png>
+Package pdftex.def Info: ../capitulos/img/detalles_deudas_implementado.png  used on input line 1113.
+(pdftex.def)             Requested size: 180.0pt x 253.87798pt.
+
+
+[152 <../capitulos/img/deudas_implementado.png>]
+<../capitulos/img/saldar_deudas_implementado.png, id=2018, 473.51906pt x 607.51968pt>
+File: ../capitulos/img/saldar_deudas_implementado.png Graphic file (type png)
+<use ../capitulos/img/saldar_deudas_implementado.png>
+Package pdftex.def Info: ../capitulos/img/saldar_deudas_implementado.png  used on input line 1129.
+(pdftex.def)             Requested size: 180.0pt x 230.93404pt.
+
+
+[153 <../capitulos/img/detalles_deudas_implementado.png>]
+
+[154 <../capitulos/img/saldar_deudas_implementado.png>]
+
+[155]
+<../capitulos/img/principal_implementado.png, id=2033, 1174.3875pt x 2541.495pt>
+File: ../capitulos/img/principal_implementado.png Graphic file (type png)
+<use ../capitulos/img/principal_implementado.png>
+Package pdftex.def Info: ../capitulos/img/principal_implementado.png  used on input line 1177.
+(pdftex.def)             Requested size: 143.9978pt x 311.59763pt.
+
+
+[156 <../capitulos/img/principal_implementado.png>]
+<../capitulos/img/barra_implementada.png, id=2039, 880.79062pt x 146.79843pt>
+File: ../capitulos/img/barra_implementada.png Graphic file (type png)
+<use ../capitulos/img/barra_implementada.png>
+Package pdftex.def Info: ../capitulos/img/barra_implementada.png  used on input line 1203.
+(pdftex.def)             Requested size: 180.0pt x 29.99979pt.
+<../capitulos/img/diagrama_final.jpg, id=2040, 3120.65875pt x 2720.1625pt>
+File: ../capitulos/img/diagrama_final.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_final.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_final.jpg  used on input line 1223.
+(pdftex.def)             Requested size: 360.0pt x 313.7875pt.
+
+
+[157 <../capitulos/img/barra_implementada.png>]
+
+[158 <../capitulos/img/diagrama_final.jpg>]
+<../capitulos/img/diagrama_base_datos.jpg, id=2052, 927.465pt x 511.9125pt>
+File: ../capitulos/img/diagrama_base_datos.jpg Graphic file (type jpg)
+<use ../capitulos/img/diagrama_base_datos.jpg>
+Package pdftex.def Info: ../capitulos/img/diagrama_base_datos.jpg  used on input line 1277.
+(pdftex.def)             Requested size: 360.0pt x 198.69992pt.
+
+
+[159]
+
+[160 <../capitulos/img/diagrama_base_datos.jpg>]
+
+[161]) (../capitulos/08_Validacion.tex
+
+[162]
+Cap\'{\i }tulo 8.
+
+
+[163
+
+]
+
+[164]
+
+[165]
+
+[166]
+
+[167]
+
+[168]
+
+[169]
+Overfull \hbox (86.45149pt too wide) in paragraph at lines 178--179
+ [][] 
+ []
+
+
+
+[170]
+Package pgfplots info on input line 246: Using 'lua backend=false' for axis: x coord trafo unsupported.
+
+
+[171]
+
+[172]
+
+[173]
+Overfull \hbox (3.5257pt too wide) in paragraph at lines 329--330
+[]\OT1/cmr/m/it/10.95 la lis-ta de la com-pra por-que asi no ten-go que po-ner-la por WhatsApp
+ []
+
+
+
+[174]
+
+[175]
+
+[176]
+
+[177]
+Overfull \hbox (5.72696pt too wide) in paragraph at lines 481--482
+[]\OT1/cmr/bx/n/10.95 Pregunta 17: \OT1/cmr/m/n/10.95 ?`Tu-vis-te alg^^Sun pro-ble-ma o error t^^Secni-co? Si es as^^S^^P, descr^^S^^Pbe-
+ []
+
+
+
+[178]
+
+[179]) (../capitulos/09_Conclusiones.tex
+
+[180]
+Cap\'{\i }tulo 9.
+
+
+[181
+
+]
+
+[182]
+
+[183]) (../capitulos/anexo.tex
+
+[184]
+Ap\'{e}ndice A.
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+[]|\OT1/cmr/m/n/10.95 Usuario: In-tro-du-ce su
+ []
+
+
+Underfull \hbox (badness 4726) in paragraph at lines 46--47
+\OT1/cmr/m/n/10.95 nom-bre, ape-lli-dos, co-rreo
+ []
+
+
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 55--55
+[]|\OT1/cmr/m/n/10.95 2a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 57--57
+[]|\OT1/cmr/m/n/10.95 2b.| 
+ []
+
+
+Overfull \hbox (2.58379pt too wide) in paragraph at lines 59--59
+[]|\OT1/cmr/m/n/10.95 2c.| 
+ []
+
+
+
+[185
+
+]
+
+[186]
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 116--116
+[]|\OT1/cmr/m/n/10.95 2a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 118--118
+[]|\OT1/cmr/m/n/10.95 2b.| 
+ []
+
+
+Overfull \hbox (2.58379pt too wide) in paragraph at lines 120--120
+[]|\OT1/cmr/m/n/10.95 2c.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 122--122
+[]|\OT1/cmr/m/n/10.95 2d.| 
+ []
+
+
+
+[187]
+
+[188]
+
+[189]
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 282--282
+[]|\OT1/cmr/m/n/10.95 4a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 284--284
+[]|\OT1/cmr/m/n/10.95 4b.| 
+ []
+
+
+
+[190]
+
+[191]
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 397--397
+[]|\OT1/cmr/m/n/10.95 2a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 399--399
+[]|\OT1/cmr/m/n/10.95 2b.| 
+ []
+
+
+
+[192]
+
+[193]
+Overfull \hbox (0.75879pt too wide) in paragraph at lines 509--509
+[]|\OT1/cmr/m/n/10.95 5..| 
+ []
+
+
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 513--513
+[]|\OT1/cmr/m/n/10.95 4a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 515--515
+[]|\OT1/cmr/m/n/10.95 4b.| 
+ []
+
+
+
+[194]
+
+[195]
+
+[196
+
+]
+
+[197]
+Underfull \hbox (badness 1609) in paragraph at lines 715--716
+\OT1/cmr/m/n/10.95 ti-na-da pa-ra ges-tio-nar ta-
+ []
+
+
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 726--726
+[]|\OT1/cmr/m/n/10.95 6a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 728--728
+[]|\OT1/cmr/m/n/10.95 6b.| 
+ []
+
+
+
+[198]
+Underfull \hbox (badness 1609) in paragraph at lines 776--777
+\OT1/cmr/m/n/10.95 ti-na-da pa-ra ges-tio-nar ta-
+ []
+
+
+
+[199]
+Underfull \hbox (badness 1609) in paragraph at lines 828--829
+\OT1/cmr/m/n/10.95 ti-na-da pa-ra ges-tio-nar ta-
+ []
+
+
+
+[200]
+Underfull \hbox (badness 1609) in paragraph at lines 883--884
+\OT1/cmr/m/n/10.95 ti-na-da pa-ra ges-tio-nar ta-
+ []
+
+
+
+[201]
+
+[202]
+Underfull \hbox (badness 3068) in paragraph at lines 989--990
+[]|\OT1/cmr/m/n/10.95 Usuario: Se-lec-cio-na quien
+ []
+
+
+
+[203
+
+]
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 1049--1049
+[]|\OT1/cmr/m/n/10.95 6a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 1051--1051
+[]|\OT1/cmr/m/n/10.95 6b.| 
+ []
+
+
+
+[204]
+
+[205]
+
+[206]
+
+[207]
+
+[208]
+
+[209
+
+]
+
+[210]
+
+[211]
+
+[212]
+
+[213]
+Overfull \hbox (3.19212pt too wide) in paragraph at lines 1577--1577
+[]|\OT1/cmr/m/n/10.95 6a.| 
+ []
+
+
+Overfull \hbox (3.80046pt too wide) in paragraph at lines 1579--1579
+[]|\OT1/cmr/m/n/10.95 6b.| 
+ []
+
+)
+
+[214] (proyecto.bbl
+Underfull \hbox (badness 1184) in paragraph at lines 14--27
+\OT1/cmr/m/n/10.95 car-ga-do 2025-02-04, de [][]$\OT1/cmtt/m/n/10.95 https :// adverthia [] .com / usabilidad [] -web []
+ []
+
+
+Underfull \hbox (badness 6675) in paragraph at lines 87--99
+[]\OT1/cmr/m/n/10.95 Atlassian.  (2025).  \OT1/cmr/m/it/10.95 Gu^^S^^Pa de pro-ce-sos ite-ra-ti-vos.  \OT1/cmr/m/n/10.95 Des-car-ga-
+ []
+
+
+Underfull \hbox (badness 3815) in paragraph at lines 373--388
+\OT1/cmr/m/it/10.95 men-sua-les.  \OT1/cmr/m/n/10.95 Des-car-ga-do de [][]$\OT1/cmtt/m/n/10.95 https :// www [] .huffingtonpost [] .es /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--388
+\OT1/cmtt/m/n/10.95 politica / el [] -87 [] -jovenes [] -emancipados [] -comparte [] -vivienda []
+ []
+
+
+
+[215]
+Underfull \hbox (badness 10000) in paragraph at lines 593--608
+\OT1/cmtt/m/n/10.95 notasprensa / igualdad [] -presenta [] -metoca [] -la [] -aplicacion [] -para []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 593--608
+\OT1/cmtt/m/n/10.95 -repartir [] -de [] -forma [] -corresponsable [] -las [] -tareas [] -domesticas [] -y []
+ []
+
+
+
+[216]
+Underfull \hbox (badness 4001) in paragraph at lines 841--854
+\OT1/cmr/m/n/10.95 Des-car-ga-do de [][]$\OT1/cmtt/m/n/10.95 https :// www [] .seidor [] .com / es [] -es / blog / beneficio []
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 938--951
+[]\OT1/cmr/m/n/10.95 ThoughtWorks.  (2020).  \OT1/cmr/m/it/10.95 Ma-nual de ac-ce-si-bi-li-dad pa-ra pro-fe-sio-na-
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 938--951
+\OT1/cmr/m/it/10.95 les.  \OT1/cmr/m/n/10.95 Des-car-ga-do de [][]$\OT1/cmtt/m/n/10.95 https :// www [] .thoughtworks [] .com / content /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 938--951
+\OT1/cmtt/m/n/10.95 dam / thoughtworks / documents / e [] -book / tw [] []ebook [] []accessibility []
+ []
+
+)
+
+[217]
+
+[218
+
+] (proyecto.aux
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
+)
+ ***********
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-08-16>
+ ***********
+Package rerunfilecheck Info: File `proyecto.out' has not changed.
+(rerunfilecheck)             Checksum: 1DDF0A0015423B3B6F7FD65F607A8856;16807.
+ ) 
+Here is how much of TeX's memory you used:
+ 40079 strings out of 473899
+ 935157 string characters out of 5725556
+ 1951960 words of memory out of 5000000
+ 61472 multiletter control sequences out of 15000+600000
+ 567878 words of font info for 72 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,14n,107p,788b,2350s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1095.pk> <C:\Users\USUARIO\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/eurosym/feybr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/eurosym/feymr10.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on proyecto.pdf (218 pages, 7214138 bytes).
+PDF statistics:
+ 2701 PDF objects out of 2984 (max. 8388607)
+ 806 named destinations out of 1000 (max. 500000)
+ 1207 words of extra memory for PDF output out of 10000 (max. 10000000)
+
