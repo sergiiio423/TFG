@@ -234,7 +234,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
             ),
           ),
           
-          // Contenido principal
           SafeArea(
             child: FadeTransition(
               opacity: _fadeAnimation,
@@ -245,7 +244,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                   children: [
                     const SizedBox(height: 40),
                     
-                    // Logo y título
                     Column(
                       children: [
                         const SizedBox(height: 24),
@@ -270,7 +268,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                     
                     const SizedBox(height: 30),
                     
-                    // Formulario
                     Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
@@ -289,7 +286,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            // Campo Nombre
                             Text(
                               'Nombre',
                               style: TextStyle(
@@ -327,7 +323,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                             
                             const SizedBox(height: 20),
                             
-                            // Campo Apellidos
                             Text(
                               'Apellidos',
                               style: TextStyle(
@@ -365,7 +360,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                             
                             const SizedBox(height: 20),
                             
-                            // Campo Email
                             Text(
                               'Correo electrónico',
                               style: TextStyle(
@@ -409,7 +403,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                             
                             const SizedBox(height: 20),
                             
-                            // Campo Contraseña
                             Text(
                               'Contraseña',
                               style: TextStyle(
@@ -464,7 +457,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                               },
                             ),
                             
-                            // Mensaje de error
                             if (_errorMessage.isNotEmpty) ...[
                               const SizedBox(height: 16),
                               Container(
@@ -503,7 +495,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                             
                             const SizedBox(height: 24),
                             
-                            // Botón de registro
                             ElevatedButton(
                               onPressed: _isLoading ? null : _register,
                               style: ElevatedButton.styleFrom(
@@ -535,7 +526,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                             
                             const SizedBox(height: 24),
                             
-                            // Divisor
                             Row(
                               children: [
                                 Expanded(
@@ -565,7 +555,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                             
                             const SizedBox(height: 24),
                             
-                            // Botón de Google
                             OutlinedButton(
                               onPressed: _isLoading ? null : _signInWithGoogle,
                               style: OutlinedButton.styleFrom(
@@ -604,7 +593,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
                     
                     const SizedBox(height: 32),
                     
-                    // Enlace a inicio de sesión
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -640,7 +628,6 @@ class _RegistrationPageState extends State<RegistrationPage> with SingleTickerPr
             ),
           ),
           
-          // Loading overlay
           if (_isLoading)
             Container(
               color: Colors.black.withOpacity(0.3),

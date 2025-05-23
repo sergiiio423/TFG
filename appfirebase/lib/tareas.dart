@@ -47,7 +47,7 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
   }
 
   Future<void> _loadInitialData() async {
-    await Future.delayed(const Duration(milliseconds: 300)); // Simular carga
+    await Future.delayed(const Duration(milliseconds: 300)); 
     setState(() => _isLoading = false);
     _animationController.forward();
   }
@@ -465,7 +465,7 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
     final data = doc.data() as Map<String, dynamic>;
     final completada = data['completada'] ?? false;
     final esCreador = data['usuarioId'] == userId;
-    final prioridad = (data['prioridad'] as int?) ?? 2; // 1=Alta, 2=Media, 3=Baja
+    final prioridad = (data['prioridad'] as int?) ?? 2; 
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
@@ -494,7 +494,6 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
           padding: const EdgeInsets.all(12),
           child: Row(
             children: [
-              // Checkbox circular
               InkWell(
                 borderRadius: BorderRadius.circular(20),
                 onTap: () => _actualizarEstadoTarea(doc.id, !completada),
@@ -517,7 +516,6 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
               
               const SizedBox(width: 12),
               
-              // Contenido de la tarea
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -594,7 +592,6 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
                 ),
               ),
               
-              // Menú de opciones
               PopupMenuButton<String>(
                 icon: Icon(Icons.more_vert, color: Colors.grey.shade500),
                 onSelected: (value) {
@@ -657,7 +654,6 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
 
 
 
-  // Métodos auxiliares
   String _getShortWeekday(int weekday) {
     const dias = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
     return dias[weekday - 1];
@@ -882,15 +878,15 @@ class _TareasScreenState extends State<TareasScreen> with SingleTickerProviderSt
               child:
                   const Text('Cancelar', style: TextStyle(color: Colors.black)),
               onPressed: () {
-                Navigator.of(context).pop(); // Cierra el diálogo
+                Navigator.of(context).pop(); 
               },
             ),
             TextButton(
               child: const Text('Eliminar',
                   style: TextStyle(color: Color.fromARGB(255, 255, 152, 0))),
               onPressed: () {
-                _eliminarTarea(taskId); // Llama al método de eliminación
-                Navigator.of(context).pop(); // Cierra el diálogo
+                _eliminarTarea(taskId);  
+                Navigator.of(context).pop(); 
               },
             ),
           ],
@@ -1004,7 +1000,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
     if (hogarSnapshot.docs.isNotEmpty) {
       setState(() {
         _miembrosHogar = List<String>.from(hogarSnapshot.docs.first['miembros']);
-        // Auto-seleccionar al usuario actual
         _miembrosSeleccionados.add(widget.userId);
       });
     }
@@ -1070,7 +1065,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
   Future<void> _crearTarea() async {
     if (!_formKey.currentState!.validate()) return;
 
-    // Validaciones
     if (!_esSemanal && _fechaSeleccionada == null) {
       _mostrarError('Selecciona una fecha para tareas puntuales');
       return;
@@ -1162,7 +1156,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Header
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -1178,13 +1171,12 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                         color: Colors.teal,
                       ),
                     ),
-                    const SizedBox(width: 48), // Para balancear el espacio
+                    const SizedBox(width: 48), 
                   ],
                 ),
 
                 const SizedBox(height: 16),
 
-                // Campo Título
                 TextFormField(
                   controller: _tituloController,
                   decoration: InputDecoration(
@@ -1214,7 +1206,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
                 const SizedBox(height: 16),
 
-                // Campo Descripción
                 TextFormField(
                   controller: _descripcionController,
                   maxLines: 3,
@@ -1244,7 +1235,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
                 const SizedBox(height: 20),
 
-                // Selector de Tipo de Tarea
                 const Text(
                   'Tipo de tarea',
                   style: TextStyle(
@@ -1278,9 +1268,7 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
                 const SizedBox(height: 24),
 
-                // Contenido dinámico según tipo de tarea
                 if (!_esSemanal) ...[
-                  // Selector de fecha para tareas puntuales
                   InkWell(
                     onTap: _seleccionarFecha,
                     borderRadius: BorderRadius.circular(12),
@@ -1321,7 +1309,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
                     ),
                   ),
                 ] else ...[
-                  // Selector de mes para tareas semanales
                   const Text(
                     'Mes para las tareas semanales',
                     style: TextStyle(
@@ -1362,7 +1349,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
                   const SizedBox(height: 20),
 
-                  // Selector de semanas
                   const Text(
                     'Semanas del mes',
                     style: TextStyle(
@@ -1397,7 +1383,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
                   const SizedBox(height: 20),
 
-                  // Selector de miembros
                   const Text(
                     'Asignar a miembros',
                     style: TextStyle(
@@ -1456,7 +1441,6 @@ class _CrearTareaFormState extends State<CrearTareaForm> {
 
                 const SizedBox(height: 32),
 
-                // Botón de crear
                 ElevatedButton(
                   onPressed: _isLoading ? null : _crearTarea,
                   style: ElevatedButton.styleFrom(
@@ -1738,7 +1722,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Header
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -1754,13 +1737,12 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
                         color: Colors.teal,
                       ),
                     ),
-                    const SizedBox(width: 48), // Para balancear el espacio
+                    const SizedBox(width: 48),
                   ],
                 ),
 
                 const SizedBox(height: 16),
 
-                // Campo Título
                 TextFormField(
                   controller: _tituloController,
                   decoration: InputDecoration(
@@ -1790,7 +1772,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
                 const SizedBox(height: 16),
 
-                // Campo Descripción
                 TextFormField(
                   controller: _descripcionController,
                   maxLines: 3,
@@ -1820,7 +1801,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
                 const SizedBox(height: 20),
 
-                // Selector de Tipo de Tarea
                 const Text(
                   'Tipo de tarea',
                   style: TextStyle(
@@ -1854,9 +1834,7 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
                 const SizedBox(height: 24),
 
-                // Contenido dinámico según tipo de tarea
                 if (!_esSemanal) ...[
-                  // Selector de fecha para tareas puntuales
                   InkWell(
                     onTap: _seleccionarFecha,
                     borderRadius: BorderRadius.circular(12),
@@ -1897,7 +1875,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
                     ),
                   ),
                 ] else ...[
-                  // Selector de mes para tareas semanales
                   const Text(
                     'Mes para las tareas semanales',
                     style: TextStyle(
@@ -1938,7 +1915,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
                   const SizedBox(height: 20),
 
-                  // Selector de semanas
                   const Text(
                     'Semanas del mes',
                     style: TextStyle(
@@ -1973,7 +1949,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
                   const SizedBox(height: 20),
 
-                  // Selector de miembros
                   const Text(
                     'Asignar a miembros',
                     style: TextStyle(
@@ -2032,7 +2007,6 @@ class _EditarTareaFormState extends State<EditarTareaForm> {
 
                 const SizedBox(height: 32),
 
-                // Botón de actualizar
                 ElevatedButton(
                   onPressed: _isLoading ? null : _actualizarTarea,
                   style: ElevatedButton.styleFrom(

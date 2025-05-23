@@ -201,7 +201,6 @@ void _setupTareasListener() {
           .limit(3)
           .get();
 
-      // Obtener nombres de acreedores y deudores
       List<String> usuariosIds = [];
       for (var doc in deudasSnapshot.docs) {
         usuariosIds.add(doc['deudor']);
@@ -329,16 +328,13 @@ void _setupTareasListener() {
   }
 
   Widget _buildQuickSummary() {
-    // Calcular el balance del usuario
     double balance = 0.0;
 
-    // Sumar todas las deudas donde el usuario es el acreedor (le deben dinero)
     final deudasAFavor =
         deudas.where((d) => d['acreedor'] == _user?.uid).toList();
     final totalAFavor = deudasAFavor.fold(
         0.0, (sum, deuda) => sum + (deuda['monto'] as num).toDouble());
 
-    // Sumar todas las deudas donde el usuario es el deudor (debe dinero)
     final deudasEnContra =
         deudas.where((d) => d['deudor'] == _user?.uid).toList();
     final totalEnContra = deudasEnContra.fold(

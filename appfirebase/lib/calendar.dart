@@ -47,7 +47,6 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
   void _setupHouseholdListener() {
     final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
 
-    // Escuchar cambios en el hogar del usuario
     _householdSubscription = FirebaseFirestore.instance
         .collection('hogar')
         .where('miembros', arrayContains: userId)
@@ -58,7 +57,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
           _householdMembers =
               List<String>.from(snapshot.docs.first['miembros']);
         });
-        // Cuando cambian los miembros, recargar las tareas
+        
         _loadTasksFromFirestore();
       }
     }, onError: (e) {
@@ -67,7 +66,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
   }
 
   void _loadTasksFromFirestore() {
-    _tasksSubscription?.cancel(); // Cancelar suscripción anterior
+    _tasksSubscription?.cancel(); 
 
     _tasksSubscription = FirebaseFirestore.instance
         .collection('tareas')
@@ -80,7 +79,6 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
         var data = doc.data();
         data['id'] = doc.id;
 
-        // Tareas puntuales del usuario actual
         if (data['tipo'] == 'puntual' &&
             data['fecha'] is Timestamp &&
             data['usuarioId'] == userId) {
@@ -89,7 +87,6 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
               DateTime(taskDate.year, taskDate.month, taskDate.day);
           tempDailyTasks.putIfAbsent(normalizedDate, () => []).add(data);
         }
-        // Tareas semanales de miembros del hogar
         else if (data['tipo'] == 'semanal' &&
             _householdMembers.contains(data['usuarioId'])) {
           tempWeeklyTasks.add(data);
@@ -191,7 +188,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
                   Expanded(
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.only(
-                          bottom: 80), // Espacio adicional aquí
+                          bottom: 80), 
                       child: Column(
                         children: [
                           if (weeklyTasks.isNotEmpty) ...[
@@ -242,7 +239,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
                                       .toList(),
                                 ),
                           const SizedBox(
-                              height: 60), // Espacio adicional al final
+                              height: 60), 
                         ],
                       ),
                     ),
@@ -591,7 +588,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
             ),
             trailing: PopupMenuButton<String>(
               icon: const Icon(Icons.more_vert, color: Colors.black54),
-              color: Colors.white, // Set the menu color to white
+              color: Colors.white,
               onSelected: (value) => _handleTaskAction(value, task),
               itemBuilder: (BuildContext context) => [
                 const PopupMenuItem<String>(

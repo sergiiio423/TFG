@@ -10,7 +10,6 @@ class ConnectHomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Fondo con overlay degradado
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
@@ -30,13 +29,11 @@ class ConnectHomeScreen extends StatelessWidget {
             ),
           ),
           
-          // Contenido principal
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Encabezado
                 Column(
                   children: [
                     Text(
@@ -78,8 +75,6 @@ class ConnectHomeScreen extends StatelessWidget {
                   onPressed: () => _showJoinHomeModal(context),
                 ),
                 const SizedBox(height: 40),
-
-                // Botón de cerrar sesión
                 OutlinedButton.icon(
                   icon: Icon(Icons.logout_rounded, size: 18, color: Colors.grey[800]),
                   label: Text(
@@ -167,7 +162,6 @@ class ConnectHomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Encabezado del modal
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -187,7 +181,6 @@ class ConnectHomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               
-              // Campos de código
               Text(
                 'Ingresa el código de 6 dígitos',
                 style: TextStyle(
@@ -197,7 +190,6 @@ class ConnectHomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               
-              // Inputs numéricos
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(

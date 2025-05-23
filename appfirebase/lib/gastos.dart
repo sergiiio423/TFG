@@ -106,7 +106,6 @@ class _GastosScreenState extends State<GastosScreen>
         : [];
     double _montoPorPersona = gastoExistente?['montoPorPersona'] ?? 0.0;
 
-    // Variables para control de errores
     bool _tituloError = false;
     bool _montoError = false;
     bool _pagadoPorError = false;
@@ -455,7 +454,6 @@ class _GastosScreenState extends State<GastosScreen>
                                   'montoPorPersona': montoPorPersona,
                                 });
 
-                                // Actualizar deudas
                                 await _actualizarDeudasDesdeGasto({
                                   'titulo': _tituloController.text.trim(),
                                   'monto': monto,
@@ -626,12 +624,11 @@ class _GastosScreenState extends State<GastosScreen>
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                  vertical: 8), // Reducimos el padding vertical
+                  vertical: 8), 
               child: Center(
-                // Centramos el TabBar
                 child: Container(
                   width: MediaQuery.of(context).size.width *
-                      0.65, // 80% del ancho de pantalla
+                      0.65, 
                   decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(0.45),
                     borderRadius: BorderRadius.circular(15),
@@ -724,7 +721,6 @@ class _GastosScreenState extends State<GastosScreen>
 
         final gastos = snapshot.data?.docs ?? [];
 
-        // Calcular totales
         double totalGastos = 0;
         double misGastos = 0;
 
@@ -735,14 +731,13 @@ class _GastosScreenState extends State<GastosScreen>
 
           totalGastos += monto;
 
-          // Si el usuario pagó el gasto
+
           if (pagadoPor == _currentUserId) {
-            misGastos += monto; // Suma el monto completo
+            misGastos += monto; 
           }
-          // Si el usuario está entre los que deben pagar
           else if (debenPagar.contains(_currentUserId)) {
             misGastos +=
-                monto / debenPagar.length; // Suma su parte proporcional
+                monto / debenPagar.length;
           }
         }
 
@@ -769,7 +764,6 @@ class _GastosScreenState extends State<GastosScreen>
 
         return Column(
           children: [
-            // Resumen de gastos (sin card)
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 60.0, vertical: 16),
@@ -824,7 +818,6 @@ class _GastosScreenState extends State<GastosScreen>
                   ),
                   SizedBox(height: 16),
                   Divider(
-                    // Línea separadora
                     height: 1,
                     thickness: 1,
                     color: Colors.grey[400],
@@ -833,7 +826,6 @@ class _GastosScreenState extends State<GastosScreen>
               ),
             ),
 
-            // Lista de gastos
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.only(bottom: 80),
@@ -908,10 +900,8 @@ class _GastosScreenState extends State<GastosScreen>
           );
         }
 
-        // Calcular balances para todos los miembros
         final balances = _calcularBalances(snapshot.data?.docs ?? []);
 
-        // Obtener balance del usuario actual
         final miBalance = balances[_currentUserId] ?? 0.0;
 
         return Column(
@@ -946,7 +936,6 @@ class _GastosScreenState extends State<GastosScreen>
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Balance principal
                         Text(
                           'Balance Total',
                           style: TextStyle(
@@ -967,7 +956,6 @@ class _GastosScreenState extends State<GastosScreen>
                         ),
                         SizedBox(height: 8),
 
-                        // Subtítulo según el balance
                         Text(
                           miBalance >= 0
                               ? 'Mira cómo te deben devolver dinero'
@@ -980,7 +968,6 @@ class _GastosScreenState extends State<GastosScreen>
                       ],
                     ),
 
-                    // Flecha indicadora a la derecha
                     Positioned(
                       right: 0,
                       top: 0,
@@ -998,7 +985,6 @@ class _GastosScreenState extends State<GastosScreen>
               ),
             ),
 
-            // Lista de balances de todos los miembros
             SizedBox(height: 26),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -1250,10 +1236,8 @@ class _GastosScreenState extends State<GastosScreen>
 
   Future<void> _eliminarGasto(DocumentSnapshot gasto) async {
     try {
-      // Primero actualizar las deudas (revertir el efecto de este gasto)
       await _revertirDeudasDesdeGasto(gasto);
 
-      // Luego eliminar el gasto
       await gasto.reference.delete();
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -1280,7 +1264,7 @@ class _GastosScreenState extends State<GastosScreen>
       final debenPagar = (gasto['debenPagar'] as List).cast<String>();
       final hogarId = gasto['hogarId'] as String;
 
-      // Obtener TODAS las deudas existentes no pagadas del hogar
+
       final todasDeudas = await _firestore
           .collection('deudas')
           .where('hogarId', isEqualTo: hogarId)
@@ -1292,7 +1276,7 @@ class _GastosScreenState extends State<GastosScreen>
       for (final deudor in debenPagar) {
         if (deudor == pagadoPor) continue;
 
-        // Buscar si ya existe una deuda entre estos usuarios en cualquier dirección
+  
         final QueryDocumentSnapshot<Map<String, dynamic>>? deudaExistente =
             todasDeudas.docs.firstWhereOrNull(
           (doc) =>
@@ -1301,28 +1285,23 @@ class _GastosScreenState extends State<GastosScreen>
         );
 
         if (deudaExistente != null) {
-          // Caso 1: Deuda en la misma dirección (deudor → acreedor)
           if (deudaExistente['deudor'] == deudor &&
               deudaExistente['acreedor'] == pagadoPor) {
-            // Restar el monto existente
             batch.update(deudaExistente.reference, {
               'monto': FieldValue.increment(-montoPorPersona),
               'ultimaActualizacion': FieldValue.serverTimestamp(),
             });
           }
-          // Caso 2: Deuda en dirección opuesta (acreedor → deudor)
           else if (deudaExistente['deudor'] == pagadoPor &&
               deudaExistente['acreedor'] == deudor) {
             final deudaActual = deudaExistente['monto'] as double;
 
             if (deudaActual > montoPorPersona) {
-              // Reducir la deuda existente
               batch.update(deudaExistente.reference, {
                 'monto': deudaActual - montoPorPersona,
                 'ultimaActualizacion': FieldValue.serverTimestamp(),
               });
             } else if (deudaActual < montoPorPersona) {
-              // Eliminar la deuda existente y crear una nueva en dirección opuesta
               batch.delete(deudaExistente.reference);
 
               final nuevaDeudaRef = _firestore.collection('deudas').doc();
@@ -1337,12 +1316,10 @@ class _GastosScreenState extends State<GastosScreen>
                 'esCompensada': true,
               });
             } else {
-              // Deudas iguales, se cancelan
               batch.delete(deudaExistente.reference);
             }
           }
         } else {
-          // No existe deuda previa, crear una nueva en dirección opuesta
           final nuevaDeudaRef = _firestore.collection('deudas').doc();
           batch.set(nuevaDeudaRef, {
             'deudor': pagadoPor,
@@ -1358,14 +1335,13 @@ class _GastosScreenState extends State<GastosScreen>
       }
 
       await batch.commit();
-      await _compensarDeudas(hogarId); // Recalcular compensaciones globales
+      await _compensarDeudas(hogarId); 
     } catch (e) {
       print('Error al revertir deudas: $e');
       rethrow;
     }
   }
 
-  // Función para calcular balances de todos los miembros
   Map<String, double> _calcularBalances(List<QueryDocumentSnapshot> deudas) {
     final balances = <String, double>{};
 
@@ -1416,7 +1392,6 @@ class _GastosScreenState extends State<GastosScreen>
             final monto = (deuda['monto'] as num?)?.toDouble() ?? 0.0;
             final esCompensada = deuda['esCompensada'] as bool? ?? false;
 
-            // Verificar si la deuda involucra al usuario actual
             final involucraAlUsuario =
                 deudorId == _currentUserId || acreedorId == _currentUserId;
             final esPositiva = acreedorId == _currentUserId;
@@ -1432,7 +1407,6 @@ class _GastosScreenState extends State<GastosScreen>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Header con icono y dirección de la deuda
                       Row(
                         children: [
                           Container(
@@ -1494,7 +1468,6 @@ class _GastosScreenState extends State<GastosScreen>
 
                       SizedBox(height: 16),
 
-                      // Detalle del monto
                       Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -1601,7 +1574,6 @@ class _GastosScreenState extends State<GastosScreen>
       final debenPagar = (gasto['debenPagar'] as List).cast<String>();
       final hogarId = gasto['hogarId'] as String;
 
-      // Obtener TODAS las deudas existentes no pagadas del hogar
       final todasDeudas = await _firestore
           .collection('deudas')
           .where('hogarId', isEqualTo: hogarId)
@@ -1613,7 +1585,6 @@ class _GastosScreenState extends State<GastosScreen>
       for (final deudor in debenPagar) {
         if (deudor == pagadoPor) continue;
 
-        // Buscar si ya existe una deuda entre estos usuarios
         final QueryDocumentSnapshot<Map<String, dynamic>>? deudaExistente =
             todasDeudas.docs.firstWhereOrNull(
           (doc) =>
@@ -1622,7 +1593,6 @@ class _GastosScreenState extends State<GastosScreen>
         );
 
         if (deudaExistente != null) {
-          // Caso 1: Deuda en la misma dirección
           if (deudaExistente['deudor'] == deudor &&
               deudaExistente['acreedor'] == pagadoPor) {
             batch.update(deudaExistente.reference, {
@@ -1630,7 +1600,6 @@ class _GastosScreenState extends State<GastosScreen>
               'ultimaActualizacion': FieldValue.serverTimestamp(),
             });
           }
-          // Caso 2: Deuda en dirección opuesta
           else if (deudaExistente['deudor'] == pagadoPor &&
               deudaExistente['acreedor'] == deudor) {
             final deudaActual = deudaExistente['monto'] as double;
@@ -1659,7 +1628,6 @@ class _GastosScreenState extends State<GastosScreen>
             }
           }
         } else {
-          // No existe deuda previa, crear nueva
           final nuevaDeudaRef = _firestore.collection('deudas').doc();
           batch.set(nuevaDeudaRef, {
             'deudor': deudor,
@@ -1834,7 +1802,6 @@ class _GastosScreenState extends State<GastosScreen>
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Header fijo
             Container(
               padding: EdgeInsets.fromLTRB(24, 16, 16, 16),
               decoration: BoxDecoration(
@@ -1870,14 +1837,12 @@ class _GastosScreenState extends State<GastosScreen>
               ),
             ),
             
-            // Contenido desplazable
             Expanded(
               child: SingleChildScrollView(
                 padding: EdgeInsets.all(24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // Tarjeta de resumen
                     Container(
                       padding: EdgeInsets.all(16),
                       decoration: BoxDecoration(
@@ -1929,7 +1894,6 @@ class _GastosScreenState extends State<GastosScreen>
                     
                     SizedBox(height: 24),
                     
-                    // Sección de detalles
                     Text(
                       'Detalles',
                       style: TextStyle(
@@ -1941,7 +1905,6 @@ class _GastosScreenState extends State<GastosScreen>
                     
                     SizedBox(height: 12),
                     
-                    // Detalles en tarjetas
                     _buildDetailCard(
                       icon: Icons.euro,
                       title: 'Monto total',
@@ -1969,7 +1932,6 @@ class _GastosScreenState extends State<GastosScreen>
                     
                     SizedBox(height: 24),
                     
-                    // Participantes
                     Text(
                       'Participantes (${debenPagar.length})',
                       style: TextStyle(
@@ -2015,7 +1977,6 @@ class _GastosScreenState extends State<GastosScreen>
               ),
             ),
             
-            // Footer fijo con botones
             Container(
               padding: EdgeInsets.fromLTRB(24, 16, 24, 24),
               decoration: BoxDecoration(

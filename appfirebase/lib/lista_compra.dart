@@ -91,7 +91,6 @@ class _ListaScreenState extends State<ListaScreen> {
                     icon: Icon(Icons.filter_list_rounded,
                         color: Colors.teal[700], size: 24),
                     onPressed: () {
-                      // Acción de filtrado
                     },
                   ),
                 ],
@@ -351,7 +350,7 @@ class _ListaScreenState extends State<ListaScreen> {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      backgroundColor: Colors.white, // Este parámetro va fuera de shape
+      backgroundColor: Colors.white,  
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setState) {

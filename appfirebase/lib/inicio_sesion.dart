@@ -229,7 +229,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
             ),
           ),
           
-          // Contenido principal
           SafeArea(
             child: FadeTransition(
               opacity: _fadeAnimation,
@@ -240,7 +239,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                   children: [
                     const SizedBox(height: 40),
                     
-                    // Logo y título
                     Column(
                       children: [
                     
@@ -266,7 +264,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                     
                     const SizedBox(height: 40),
                     
-                    // Formulario
                     Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
@@ -283,7 +280,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // Campo Email
                           Text(
                             'Correo electrónico',
                             style: TextStyle(
@@ -319,7 +315,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                           
                           const SizedBox(height: 20),
                           
-                          // Campo Contraseña
                           Text(
                             'Contraseña',
                             style: TextStyle(
@@ -366,7 +361,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                             style: const TextStyle(fontSize: 15),
                           ),
                           
-                          // Mensaje de error
                           if (_errorMessage.isNotEmpty) ...[
                             const SizedBox(height: 16),
                             Container(
@@ -405,12 +399,10 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                           
                           const SizedBox(height: 16),
                           
-                          // Botón de olvidé contraseña
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
                               onPressed: () {
-                                // Navegar a pantalla de recuperación
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -428,7 +420,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                           
                           const SizedBox(height: 24),
                           
-                          // Botón de inicio de sesión
                           ElevatedButton(
                             onPressed: _isLoading ? null : _signIn,
                             style: ElevatedButton.styleFrom(
@@ -460,7 +451,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                           
                           const SizedBox(height: 24),
                           
-                          // Divisor
                           Row(
                             children: [
                               Expanded(
@@ -490,7 +480,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                           
                           const SizedBox(height: 24),
                           
-                          // Botón de Google
                           OutlinedButton(
                             onPressed: _isLoading ? null : _signInWithGoogle,
                             style: OutlinedButton.styleFrom(
@@ -528,7 +517,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
                     
                     const SizedBox(height: 32),
                     
-                    // Enlace a registro
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -564,7 +552,6 @@ class _SignInEmailState extends State<SignInEmail> with SingleTickerProviderStat
             ),
           ),
           
-          // Loading overlay
           if (_isLoading)
             Container(
               color: Colors.black.withOpacity(0.3),
