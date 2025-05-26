@@ -181,4 +181,13 @@
 \contentsline {section}{\numberline {A.3}Casos de uso de la gestión de tareas}{196}{section.Alph1.3}%
 \contentsline {section}{\numberline {A.4}Casos de uso de la gestión de gastos}{203}{section.Alph1.4}%
 \contentsline {section}{\numberline {A.5}Casos de uso de la gestión compra}{209}{section.Alph1.5}%
-\contentsline {section}{Referencias}{215}{table.Alph1.29}%
+\contentsline {chapter}{\numberline {B}Manual de usuario}{215}{appendix.Alph2}%
+\contentsline {section}{\numberline {B.1}Requisitos previos}{215}{section.Alph2.1}%
+\contentsline {section}{\numberline {B.2}Registro e inicio de sesión}{216}{section.Alph2.2}%
+\contentsline {section}{\numberline {B.3}Gestión del hogar}{223}{section.Alph2.3}%
+\contentsline {section}{\numberline {B.4}Pantalla principal y navegación}{228}{section.Alph2.4}%
+\contentsline {section}{\numberline {B.5}Gestión de tareas}{228}{section.Alph2.5}%
+\contentsline {section}{\numberline {B.6}Gestión de gastos}{228}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Listas de la compra}{228}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Perfil de usuario y configuración}{228}{section.Alph2.8}%
+\contentsline {section}{Referencias}{229}{section.Alph2.8}%
