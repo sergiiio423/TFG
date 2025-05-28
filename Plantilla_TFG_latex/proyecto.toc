@@ -186,8 +186,8 @@
 \contentsline {section}{\numberline {B.2}Registro e inicio de sesión}{217}{section.Alph2.2}%
 \contentsline {section}{\numberline {B.3}Gestión del hogar}{222}{section.Alph2.3}%
 \contentsline {section}{\numberline {B.4}Pantalla principal y navegación}{225}{section.Alph2.4}%
-\contentsline {section}{\numberline {B.5}Gestión de tareas}{229}{section.Alph2.5}%
-\contentsline {section}{\numberline {B.6}Gestión de gastos}{229}{section.Alph2.6}%
-\contentsline {section}{\numberline {B.7}Listas de la compra}{229}{section.Alph2.7}%
-\contentsline {section}{\numberline {B.8}Perfil de usuario y configuración}{229}{section.Alph2.8}%
-\contentsline {section}{Referencias}{230}{section.Alph2.8}%
+\contentsline {section}{\numberline {B.5}Gestión de tareas}{230}{section.Alph2.5}%
+\contentsline {section}{\numberline {B.6}Gestión de gastos}{241}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Listas de la compra}{241}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Perfil de usuario y configuración}{241}{section.Alph2.8}%
+\contentsline {section}{Referencias}{242}{section.Alph2.8}%

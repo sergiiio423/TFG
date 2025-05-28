@@ -263,8 +263,198 @@ La barra de navegación consta de los siguientes iconos:
 
 Por último, en la parte superior derecha de la pantalla principal, hay un icono de usuario que nos permite acceder a nuestro perfil de usuario y configuración. Que explicaremos más adelante en este manual.
 
+\newpage
 
 \section{Gestión de tareas}
+
+En esta sección de la aplicación podemos encontrar dos pantallas principales, la pantalla de planificación semanal y el calendario. 
+
+\subsection*{Planificación semanal}
+La pantalla de planificación semanal es la primera pantalla que se muestra al pulsar el icono de \textit{Tareas} en la barra de navegación. 
+En esta pantalla se muestra una vista general de la planificación semanal de las tareas del hogar. 
+
+Lo primero que debemos saber es cómo crear una tarea, para ello debemos pulsar sobre el botón con un icono de \textit{+} que se encuentra en la parte inferior central de la pantalla.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual19.png}
+    \caption{Botón de añadir tarea}
+\end{figure}
+
+Al pulsar este botón, se abrirá un formulario que nos permitirá crear una nueva tarea. Donde tendremos unos campos fijos que debemos de rellenar,
+independientemente de si la tarea es puntual o semanal. Estos campos son:
+
+\begin{itemize}
+    \item \textbf{Título:} Un título breve que describa la tarea a realizar.
+    \item \textbf{Descripción:} Este campo es opcional. Una descripción más detallada de la tarea, en caso de que sea necesario.
+    \item \textbf{Tipo de tarea:} Aquí debemos seleccionar si la tarea es \textit{Puntual} o \textit{Semanal}. Dependiendo de la opción seleccionada, se mostrarán unos campos u otros.
+\end{itemize}
+
+Si seleccionamos \textit{Puntual}, es decir, que la tarea es para el propio usuario y no para el hogar y se debe realizar en un día concreto, se nos mostrarán los siguientes campos:
+\begin{itemize}
+    \item \textbf{Fecha:} Fecha en la que se debe realizar la tarea. Debemos seleccionar una fecha concreta.
+\end{itemize}
+
+Una vez completados estos campos, debemos pulsar el botón de \textit{Añadir tarea} para crear la tarea.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_tarea_puntual_implementado.png}
+    \caption{Opción para crear una tarea puntual}
+\end{figure}
+
+En caso de que seleccionemos \textit{Semanal}, es decir, que la tarea es para repartir entre los miembros del hogar y se debe realizar a lo largo de la semana indicada, se nos mostrarán los siguientes campos:
+\begin{itemize}
+    \item \textbf{Mes:} Mes en el que se debe realizar la tarea. Debemos seleccionar un mes concreto.
+    \item \textbf{Semana:} Número de la semana en la que se debe realizar la tarea. Las semanas se numeran del 1 al 5, las semanas en las que se cambia de mes se consideran la primera semana del mes siguiente. Debemos seleccionar un número de semana concreto.
+    \item \textbf{Miembros:} Se muestra una lista de los miembros que ya se han unido a nuestro hogar y debemos seleccionar a los miembros del hogar que se encargarán de realizar la tarea. Se puede seleccionar a uno o varios miembros del hogar.
+\end{itemize}
+
+Una vez completados estos campos, debemos pulsar el botón de \textit{Añadir tarea} para crear la tarea.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_tarea_semanal_implementado.png}
+    \caption{Opción para crear una tarea semanal}
+\end{figure}
+
+Una vez creada la tarea, se mostrará en la pantalla de planificación semanal. Las tareas puntuales se mostrarán en el día correspondiente y las tareas semanales se mostrarán en la semana correspondiente.
+
+La pantalla se divide en 3 secciones principales: 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual18.png}
+    \caption{Primera sección de la pantalla de planificación semanal}
+\end{figure}
+
+En esta primera sección se muestra la semana actual, con el día actual resaltado. Esta sección actúa como un botón que controla
+las tareas que se muestran en las siguientes secciones. A través de los botones en forma de flecha, podemos navegar entre las semanas, 
+y pulsando encima del día que queremos ver encima de esa semana, se mostrarán las tareas de ese día y de la semana a la que pertenece. 
+
+Por tanto si pulsamos otro día de la semana actual, se actualizarán solo las tareas puntuales, debido a que la semana no ha cambiado,
+pero si pulsamos un día de otra semana, se actualizarán las tareas puntuales y las tareas semanales de esa semana.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual20.png}
+    \caption{Segunda sección de la pantalla de planificación semanal}
+\end{figure}
+
+En esta segunda sección se muestran las tareas semanales (por defecto se muestran las tareas de la semana actual, a menos que se haya pulsado otro día de otra semana en la sección anterior).
+Unicamente se muestran las tareas semanales que se han asignado al usuario, es decir, las tareas que el usuario debe realizar en esa semana. En la parte inferior de cada tarea se muestra el nombre del usuario/usuarios al que se le ha asignado la tarea.
+
+Si el usuario no tiene tareas semanales asignadas, se mostrará un mensaje indicando que no hay tareas semanales asignadas al usuario.
+
+Si se quiere ver en detalle la información de una tarea, se debe pulsar sobre la tarea en cuestión, y se abrirá una ventana emergente con la información detallada de la tarea. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/ver_tarea_implementado.png}
+    \caption{Ventana emergente con la información detallada de una tarea}
+\end{figure}
+
+Si queremos eliminar o editar una tarea, debemos pulsar los tres puntos situados a la derecha de la tarea y se nos mostrarán las opciones de \textit{Editar} y \textit{Eliminar}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual21.png}
+    \caption{Botón de opciones de una tarea}
+\end{figure}
+
+Si pulsamos en \textit{Editar}, se abrirá el formulario de creación de tareas con los campos ya rellenados con la información de la tarea seleccionada, no siendo necesario volver a rellenar los campos.
+Si pulsamos en \textit{Eliminar}, se eliminará la tarea de forma permanente y no se podrá recuperar. Se mostrará un mensaje de confirmación antes de eliminar la tarea para evitar eliminaciones accidentales.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual22.png}
+    \caption{Opciones de edición y eliminación de una tarea}
+\end{figure}
+
+
+En caso de que otro usuario te asigne una tarea, se mostrará en tu pantalla, con un icono de persona situado a la izquierda de la tarea, indicando que es una tarea asignada por otro usuario del hogar.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual24.png}
+    \caption{Tarea asignada por otro usuario del hogar}
+\end{figure}
+
+Por último, en la izquierda de la tarea, se muestra un botón en forma de circulo, sirve para marcar la tarea como completada.
+Al pulsar este botón, se pondrá un tick verde en la tarea, indicando que la tarea ha sido completada. Este cambio será visible para 
+todos los miembros del hogar que podrán ver que la tarea ha sido completada.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual23.png}
+        \caption{Opción de marcar una tarea como completada}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual25.png}
+        \caption{Tarea marcada como completada}
+    \end{minipage}
+    \caption{Marcado y estado de una tarea completada}
+\end{figure}
+
+
+La tercera sección se muestran las tareas puntuales del día seleccionado en la primera sección (por defecto el día actual).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual26.png}
+    \caption{Tercera sección de la pantalla de planificación semanal}
+\end{figure}
+
+La lógica de esta sección es la misma que la de la sección anterior, solo que estas tareas no lleva el nombre 
+de a quién están asignadas, ya que son tareas en las que solo participa el usuario que las ha creado. 
+
+Para eliminar, editar o marcar una tarea puntual mirar la sección anterior, ya que el funcionamiento es el mismo.
+
+
+\subsection*{Calendario}
+A esta sección se accede o bien desde la pantalla principal como se comentó en el apartado correspondiente, o bien desde la pantalla de planificación semanal pulsando el botón con el 
+icono del calendario situado en la parte superior izquierda de la pantalla, como se muestra a continuación: 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual27.png}
+    \caption{Botón de acceso al calendario desde la pantalla de planificación semanal}
+\end{figure}
+
+Una vez dentro de la sección del calendario, podremos ver dos secciones principales claramente diferenciadas, la sección del calendario y la sección de tareas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual28.png}
+    \caption{Sección del calendario}
+\end{figure}
+
+
+
+En la parte superior se muestra el calendario mensual, donde cada día por defecto esta seleccionado el día actual. Puedes navegar entre meses utilizando las flechas laterales. Al seleccionar un día concreto, en la parte inferior se mostrarán todas las tareas (puntuales y semanales) correspondientes a ese día.
+Con el botón lateral derecho del calendario, se puede cambiar la vista de calendario mensual a una vista de dos semanas o semanal.
+
+Los días que tienen alguna tarea asignada, se muestra en el calendario con un punto de color debajo del número del día. En caso de que el punto 
+sea verde, significa que hay tareas semanales asignadas a ese día, y si el punto es naranja, significa que hay tareas puntuales asignadas a ese día.
+
+Si se cambia el dia seleccionado, se actualizará la sección de tareas para mostrar las tareas correspondientes a ese día.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual29.png}
+    \caption{Sección de tareas del calendario mostrando las tareas del día seleccionado}
+\end{figure}
+
+Esta sección tiene el mismo funcionamiento que la sección de tareas de la pantalla de planificación semanal,
+es decir, se muestran las tareas puntuales y semanales del día seleccionado,
+solo que con la diferencia de que también puedes ver las tareas semanales asignadas a otros usuarios del hogar y asi 
+poder ver si han completado o no las tareas asignadas y llevar un mejor control. 
+
+La lógica para crear las tareas, eliminarlas, editarlas y marcarlas como completadas es la misma que en la pantalla de planificación semanal. 
+
+
+
 
 \section{Gestión de gastos}
 
