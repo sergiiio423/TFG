@@ -454,9 +454,117 @@ poder ver si han completado o no las tareas asignadas y llevar un mejor control.
 La lógica para crear las tareas, eliminarlas, editarlas y marcarlas como completadas es la misma que en la pantalla de planificación semanal. 
 
 
-
+\newpage
 
 \section{Gestión de gastos}
+En esta sección de la aplicación podemos encontrar dos de las funcionalidades principales. La gestión de gastos y la gestión de deudas. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual30.png}
+    \caption{Navegación entre las dos funcionalidades}
+\end{figure}
+
+Como podemos observar, en la imagen anterior, encontramos una barra de navegación en la parte superior de la pantalla que nos permite navegar entre las dos 
+funcionalidades, es decir entre los gastos y las deudas. 
+
+En los gastos, como su nombre indica, se gestionan los gastos del hogar, es decir, los gastos que se realizan entre los miembros del hogar y que deben ser repartidos entre ellos.
+En las deudas, se gestionan las deudas entre los miembros del hogar, es decir, las deudas que se generan cuando un miembro del hogar paga algo por otro miembro del hogar y debe ser devuelto.
+
+\subsection*{Gastos}
+
+Lo primero que debemos saber es cómo crear un gasto, para ello debemos pulsar sobre el botón con un icono de \textit{+} que se encuentra en la parte inferior central de la pantalla.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual31.png}
+    \caption{Botón de añadir gasto}
+\end{figure}
+
+Una vez pulsado este botón, se abrirá un formulario que nos permitirá crear un nuevo gasto. Donde tendremos unos campos fijos que debemos rellenar: 
+
+\begin{itemize}
+    \item \textbf{Título:} El titulo del gasto.
+    \item \textbf{Cantidad:} La cantidad del gasto que se ha realizado. 
+    \item \textbf{Fecha:} La fecha en la que se realizó el gasto. 
+    \item \textbf{Pagado por:} Se muestra una lista con los miembros que están el hogar y debemos seleccionar el que pagó el gasto. 
+    \item \textbf{Participantes:} Aquí se muestra también los miembros del hogar y debemos seleccionar a los que participaron el gasto, es decir, a los que deben pagar el gasto. El usuario que pagó el gasto también puede ser un participante.
+\end{itemize}
+
+La cantidad del gasto se reparte entre los participantes del gasto, es decir, si hay 3 participantes, cada uno debe pagar un tercio del gasto.
+Si el usuario que pagó el gasto es un participante del gasto, también se dividirá la cantidad del gasto con el, aunque no contará como deuda, ya que el usuario ya ha pagado el gasto.
+
+Una vez completados estos campos, debemos pulsar el botón de \textit{Guardar} para crear el gasto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_gasto_implementado.png}
+    \caption{Formulario de creación de un gasto}
+\end{figure}
+
+
+Una vez creado el gasto, se mostrará en la pantalla de gastos. Los gastos se muestran en una lista ordenada por fecha, desde el más reciente al más antiguo. Como podemos ver a continuación: 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual32.png}
+    \caption{Vista de la lista de gastos del hogar}
+\end{figure}
+
+En cada gasto se muestra el título del gasto, la cantidad total y quien lo ha pagado. En caso de que sea un gasto en el que participas se indica que has participado en el gasto con una etiqueta, en el caso de que seas 
+el pagador del gasto, se muestra una etiqueta también indicándolo. 
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual33.png}
+        \caption{Etiqueta de participante en un gasto}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual34.png}
+        \caption{Etiqueta de pagador en un gasto}
+    \end{minipage}
+    \caption{Etiquetas de participante y pagador en la lista de gastos}
+\end{figure}
+
+
+Si queremos ver más detalles de un gasto, debemos pulsar sobre el gasto que nos interesa y se nos abrirá una ventana emergente con la información detallada del gasto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/ver_gasto_implementado.png}
+    \caption{Ventana emergente con la información detallada de un gasto}
+\end{figure}
+
+En esta ventana emergente se muestra toda la información del gasto, incluyendo el título, la cantidad, la fecha, quien lo ha pagado y los participantes del gasto.
+Esta ventana también nos permite editar el gasto pulsando el botón de \textit{Editar} que nos llevará al formulario de creación de gastos con los campos ya rellenados con la información del gasto seleccionado.
+
+En caso de que queramos eliminar el gasto, debemos pulsar los tres puntos situados a la derecha del gasto y se nos mostrarán las opciones de \textit{Editar} y \textit{Eliminar}.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual36.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual35.png}
+    \end{minipage}
+\end{figure}
+
+Si elegimos \textit{Editar} se mostrará lo mismo que lo mencionado anteriormente, es decir, se abrirá el formulario de creación de gastos con los campos ya rellenados con la información del gasto seleccionado.
+Si elegimos \textit{Eliminar}, se eliminará el gasto de forma permanente y no se podrá recuperar. Se mostrará un mensaje de confirmación antes de eliminar el gasto para evitar eliminaciones accidentales. En ese caso se ajustaran las deudas de los participantes del gasto.
+
+\subsection*{Deudas}
+
+
+
+
+
 
 \section{Listas de la compra}
 
