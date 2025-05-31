@@ -79,17 +79,20 @@ En ambos casos, el proceso es el mismo. Debemos introducir nuestro correo electr
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=0.40\textwidth]{../capitulos/img/inicio_sesion_implementado.png}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/inicio_sesion_implementado.png}
         \caption{Pantalla de inicio de sesión}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual4.png}
+        \caption{Pantalla principal tras iniciar sesión sin verificar la cuenta}
+    \end{minipage}
 \end{figure}
 
 En caso de que no hayamos verificado nuestra cuenta, se nos mostrará un mensaje de error indicando que debemos verificar nuestra cuenta antes de iniciar sesión. En este caso, debemos seguir el proceso de verificación descrito anteriormente.
 
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=0.40\textwidth]{../capitulos/img/manual4.png}
-        \caption{Pantalla principal tras iniciar sesión sin verificar la cuenta}
-\end{figure}
 
 Tenemos la opción de iniciar sesión con una cuenta de Google, pulsando el botón de \textit{Iniciar sesión con Google}. Esto nos llevará a la pantalla de inicio de sesión de Google, donde debemos introducir nuestras credenciales de Google (correo electrónico y contraseña) para iniciar sesión.
 En caso de ya nos hubiéramos registrado con una cuenta de Google, se iniciará sesión directamente, en caso contrario, se nos creará una cuenta nueva con los datos de nuestra cuenta de Google.
@@ -122,35 +125,41 @@ selecciona la opción de \textit{Unirse a un hogar} y escribe el código de acce
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=0.40\textwidth]{../capitulos/img/manual6.png}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual6.png}
         \caption{Opción de unirse a un hogar}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual7.png}
+        \caption{Opción verificar código de acceso}
+    \end{minipage}
 \end{figure}
 
 Una vez introducido el código de acceso, hay que pulsar el botón de \textit{Verificar código} para unirse al hogar. Si el código es correcto, se te añadirá al hogar y podrás acceder a todas las funcionalidades del mismo.
 Si el código es incorrecto, se te mostrará un mensaje de error indicando que el código no es válido. En ese caso, debes asegurarte de que has introducido el código correctamente o pedir a tu compañero de piso que te proporcione el código correcto.
 
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=0.40\textwidth]{../capitulos/img/manual7.png}
-        \caption{Opción verificar código de acceso}
-\end{figure}
 
 Si eres el encargado de crear el hogar, debes pulsar el botón de \textit{Crea tu hogar} para crear un nuevo hogar. 
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=0.40\textwidth]{../capitulos/img/manual8.png}
-        \caption{Opción de crear de un nuevo hogar}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual8.png}
+        \caption{Opción de crear un nuevo hogar}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual9.png}
+        \caption{Pantalla de creación de un nuevo hogar}
+    \end{minipage}
 \end{figure}
 
 Una vez elegida esta opción, se te pedirá que introduzcas un nombre para el hogar. Este nombre será visible para todos los miembros del hogar y se utilizará para identificar el hogar en la aplicación.
 Es obligatorio introducir un nombre para el hogar y una vez introducido, debes pulsar el botón de \textit{Crear hogar} para crear el hogar.
 
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=0.40\textwidth]{../capitulos/img/manual9.png}
-        \caption{Pantalla de creación de un nuevo hogar}
-\end{figure}
 
 Una vez realizado correctamente uno de los dos procesos anteriores, se te llevará a la pantalla principal de la aplicación.
 
@@ -277,8 +286,22 @@ Lo primero que debemos saber es cómo crear una tarea, para ello debemos pulsar 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual19.png}
-    \caption{Botón de añadir tarea}
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual19.png}
+        \caption{Botón de añadir tarea}
+    \end{minipage}\hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/crear_tarea_puntual_implementado.png}
+        \caption{Opción para crear una tarea puntual}
+    \end{minipage}\hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/crear_tarea_semanal_implementado.png}
+        \caption{Opción para crear una tarea semanal}
+    \end{minipage}
+    
 \end{figure}
 
 Al pulsar este botón, se abrirá un formulario que nos permitirá crear una nueva tarea. Donde tendremos unos campos fijos que debemos de rellenar,
@@ -297,11 +320,6 @@ Si seleccionamos \textit{Puntual}, es decir, que la tarea es para el propio usua
 
 Una vez completados estos campos, debemos pulsar el botón de \textit{Añadir tarea} para crear la tarea.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_tarea_puntual_implementado.png}
-    \caption{Opción para crear una tarea puntual}
-\end{figure}
 
 En caso de que seleccionemos \textit{Semanal}, es decir, que la tarea es para repartir entre los miembros del hogar y se debe realizar a lo largo de la semana indicada, se nos mostrarán los siguientes campos:
 \begin{itemize}
@@ -311,11 +329,6 @@ En caso de que seleccionemos \textit{Semanal}, es decir, que la tarea es para re
 \end{itemize}
 
 Una vez completados estos campos, debemos pulsar el botón de \textit{Añadir tarea} para crear la tarea.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_tarea_semanal_implementado.png}
-    \caption{Opción para crear una tarea semanal}
-\end{figure}
 
 Una vez creada la tarea, se mostrará en la pantalla de planificación semanal. Las tareas puntuales se mostrarán en el día correspondiente y las tareas semanales se mostrarán en la semana correspondiente.
 
@@ -356,18 +369,20 @@ Si queremos eliminar o editar una tarea, debemos pulsar los tres puntos situados
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual21.png}
-    \caption{Botón de opciones de una tarea}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual21.png}
+        \caption{Botón de opciones de una tarea}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual22.png}
+        \caption{Opciones de edición y eliminación de una tarea}
+    \end{minipage}
 \end{figure}
 
 Si pulsamos en \textit{Editar}, se abrirá el formulario de creación de tareas con los campos ya rellenados con la información de la tarea seleccionada, no siendo necesario volver a rellenar los campos.
 Si pulsamos en \textit{Eliminar}, se eliminará la tarea de forma permanente y no se podrá recuperar. Se mostrará un mensaje de confirmación antes de eliminar la tarea para evitar eliminaciones accidentales.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual22.png}
-    \caption{Opciones de edición y eliminación de una tarea}
-\end{figure}
 
 
 En caso de que otro usuario te asigne una tarea, se mostrará en tu pantalla, con un icono de persona situado a la izquierda de la tarea, indicando que es una tarea asignada por otro usuario del hogar.
@@ -475,10 +490,19 @@ En las deudas, se gestionan las deudas entre los miembros del hogar, es decir, l
 
 Lo primero que debemos saber es cómo crear un gasto, para ello debemos pulsar sobre el botón con un icono de \textit{+} que se encuentra en la parte inferior central de la pantalla.
 
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual31.png}
-    \caption{Botón de añadir gasto}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual31.png}
+        \caption{Botón de añadir gasto}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/crear_gasto_implementado.png}
+        \caption{Formulario para crear un gasto}
+    \end{minipage}
 \end{figure}
 
 Una vez pulsado este botón, se abrirá un formulario que nos permitirá crear un nuevo gasto. Donde tendremos unos campos fijos que debemos rellenar: 
@@ -496,12 +520,6 @@ Si el usuario que pagó el gasto es un participante del gasto, también se divid
 
 Una vez completados estos campos, debemos pulsar el botón de \textit{Guardar} para crear el gasto.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.40\textwidth]{../capitulos/img/crear_gasto_implementado.png}
-    \caption{Formulario de creación de un gasto}
-\end{figure}
-
 
 Una vez creado el gasto, se mostrará en la pantalla de gastos. Los gastos se muestran en una lista ordenada por fecha, desde el más reciente al más antiguo. Como podemos ver a continuación: 
 
@@ -517,12 +535,12 @@ el pagador del gasto, se muestra una etiqueta también indicándolo.
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{0.40\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../capitulos/img/manual33.png}
         \caption{Etiqueta de participante en un gasto}
     \end{minipage}\hfill
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{0.40\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../capitulos/img/manual34.png}
         \caption{Etiqueta de pagador en un gasto}
@@ -561,12 +579,228 @@ Si elegimos \textit{Eliminar}, se eliminará el gasto de forma permanente y no s
 
 \subsection*{Deudas}
 
+Para acceder a esta sección debemos usar la barra de navegación superior y pulsar sobre la opción que dice \textit{Deudas}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual37.png}
+    \caption{Opción de navegación a la sección de deudas}
+\end{figure}
+
+En esta sección se muestra un resumen de las deudas del usuario, donde se muestra la cantidad que le deben o la cantidad que debe pagar.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual38.png}
+    \caption{Resumen de deudas del usuario}
+\end{figure}
+
+Este resumen sirve también de botón de acceso a la lista de deudas, donde se muestran todas las deudas del hogar. 
+Al pulsar sobre el resumen de deudas, se nos llevará a la pantalla de gestión de deudas, donde se muestran todas las deudas del hogar.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/saldar_deudas_implementado.png}
+        \caption{Opción para saldar deudas en caso de que las deudas sean a cobrar}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual39.png}
+        \caption{Opción para saldar deudas en caso de que las deudas sean a pagar}
+    \end{minipage}
+\end{figure}
+
+La pantalla nos muestra todas las deudas del hogar, aunque nosotros solo podemos gestionar las deudas que nos afectan directamente, es decir, las deudas que tenemos que cobrar o las deudas que tenemos que pagar.
+En la imagen de la izquierda podemos ver como se muestra una deudas que tenemos que cobrar, se muestra en color verde y con un icono de una flecha hacia abajo, indicando que es una deuda a cobrar.
+En caso de que la deuda haya sido saldada, se muestra un botón de \textit{Marcar como cobrado} que al pulsarlo, se marcará la deuda como cobrada y se eliminará de la lista de deudas pendientes.
+En la imagen de la derecha podemos ver como se muestra una deudas que tenemos que pagar, se muestra en color naranja y con un icono de una flecha hacia arriba, indicando que es una deuda a pagar.
+En caso de que la deuda haya sido saldada, se muestra un botón de \textit{Marcar como pagado} que al pulsarlo, se marcará la deuda como pagada y se eliminará de la lista de deudas pendientes.
+
+Podemos ver también en la imagen de la derecha, como se muestran las deudas externas al usuario, es decir, las deudas que no afectan directamente al usuario, pero que si afectan al hogar. Estas deudas se muestran en color gris y con un icono de una flecha hacia arriba y hacia abajo, indicando que es una deuda externa al usuario.
+Esas deudas no podemos marcarlas como pagadas o cobradas, ya que no nos afectan directamente, pero si podemos ver la información de la deuda.
+
+Por último, debemos comentar que en la pantalla principal de la sección de deudas se muestra también un balance general de cada usuario del hogar, es decir, se muestra la cantidad total que debe cada usuario y la cantidad total que le deben cada usuario.
 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual40.png}
+    \caption{Balances generales de las deudas del hogar}
+\end{figure}
 
+Como podemos ver, se muestra la lista de usuarios del hogar y su balance a la derecha, en caso de que el balance sea positivo, se muestra el en verde y al lado del balance aparece un icono de \textit{+} indicando que el usuario tiene un saldo a favor, es decir, que le deben dinero.
+En caso de que el balance sea negativo, se muestra en color naranja y al lado del balance aparece un icono de \textit{-} indicando que el usuario tiene un saldo en contra, es decir, que debe dinero.
+
+
+\newpage
 
 
 \section{Listas de la compra}
 
+A esta sección se accede desde la barra de navegación pulsando el icono de \textit{Compra}. 
+
+En esta sección se gestionan la lista de la compra del usuario y del hogar. Su funcionamiento es muy sencillo, lo primero que debemos saber es como crear una lista de la compra,
+para ello debemos pulsar sobre el botón con un icono de \textit{+} que se encuentra en la parte inferior central de la pantalla.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual41.png}
+        \caption{Botón para crear una nueva lista de la compra}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/crear_lista_implementado.png}
+        \caption{Formulario para crear una lista de la compra}
+    \end{minipage}
+\end{figure}
+
+Al pulsar este botón, se abrirá un formulario que nos permitirá crear una nueva lista de la compra. 
+Donde tendremos que dar un nombre a la lista y elegir si queremos que la lista sea nuestra personal (solo nosotros podemos ver la lista y 
+añadir productos a ellas) o si queremos que sea una lista grupal (todos los miembros del hogar participan en ella).
+
+Una vez completados estos campos, debemos pulsar el botón de \textit{Crear lista} para crear la lista de la compra.
+
+Una vez creada la lista, se mostrará en la pantalla de listas de la compra. 
+Las listas de la compra se muestran en una lista ordenada por fecha de creación, desde la más reciente a la más antigua.
+Se muestra el nombre de la lista, el tipo de lista (personal o grupal). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual42.png}
+    \caption{Vista de una lista de la compra implementada}
+\end{figure}
+
+Como podemos ver, la primera lista que se muestra es una lista grupal, ya que tiene un icono de grupo al lado del nombre de la lista de color naranja. Debajo
+se muestra el número de miembros que participan en la lista. 
+
+La otra lista que se muestra es una lista personal, ya que tiene un icono de usuario al lado del nombre de la lista de color verde.
+
+Para eliminar una lista de la compra, debemos pulsar los tres puntos situados a la derecha de la lista que deseamos eliminar y se nos mostrarán las opción de \textit{Eliminar}. 
+Si pulsamos en \textit{Eliminar}, se eliminará la lista de forma permanente y no se podrá recuperar. Se mostrará un mensaje de confirmación antes de eliminar la lista para evitar eliminaciones accidentales.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual43.png}
+        \caption{Tres puntos de opciones de una lista de la compra}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual44.png}
+        \caption{Opción de eliminar una lista de la compra}
+    \end{minipage}
+    
+\end{figure}
+
+Para ver los productos de una lista de la compra, debemos pulsar sobre la lista que nos interesa
+y nos llevará a la pantalla de productos de la lista de la compra.
+
+Lo primero que debemos hacer es añadir productos a la lista de la compra, para ello debemos pulsar sobre el botón con un icono de \textit{+} que se encuentra en la parte inferior central de la pantalla.
+Al pulsar este botón, se abrirá un formulario que nos permitirá crear un nuevo producto.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual45.png}
+        \caption{Botón para añadir un nuevo producto a la lista de la compra}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/crear_producto_implementado.png}
+        \caption{Formulario para añadir un nuevo producto a la lista de la compra}
+    \end{minipage}
+\end{figure}
+
+Para añadir un producto a la lista de la compra, debemos rellenar los siguientes campos:
+\begin{itemize}
+    \item \textbf{Nombre del producto:} El nombre del producto que queremos añadir a la lista de la compra.
+    \item \textbf{Icono:} Seleccionamos un icono que represente el producto.
+    \item \textbf{Cantidad:} La cantidad del producto que queremos añadir a la lista de la compra.
+\end{itemize}
+
+Una vez completados estos campos (es obligatorio rellenarlos todos), debemos pulsar el botón de \textit{Agregar producto} para añadir el producto a la lista de la compra.
+
+Una vez añadido el producto se mostrará en la lista de la compra, con su icono, el nombre del producto y la cantidad.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/productos_implementado.png}
+    \caption{Vista de los productos de una lista de la compra}
+\end{figure}
+
+
+Al lado de cada producto se muestra una serie de botones que podemos usar para gestionar el producto. Los primero botones que encontramos son 
+el icono \textit{-} y el icono \textit{+}, que nos permiten disminuir o aumentar la cantidad del producto respectivamente.
+El siguiente botón tiene forma de circulo sin rellenar por defecto y sirve para marcar el producto como comprado. 
+Al pulsar este botón, se pondrá un tick verde en el producto, indicando que el producto ha sido comprado.
+Una vez marcado como comprado, el producto se mostrará al final de la lista tachado indicando que ya está comprado, a las 24 horas de haberlo 
+marcado como comprado, el producto se eliminará automáticamente de la lista de la compra.
+
+Por último se muestran tres puntos que sirve para abrir un menú donde nos permite la opción de \textit{Eliminar}, y así eliminar el producto de la lista de la compra.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual46.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual47.png}
+    \end{minipage}
+    \caption{Opción para eliminar un producto}
+\end{figure}
+
+Esta pantalla también nos marcar todos los productos como comprados a la vez con el botón que se encuentra en la esquina superior derecha.
+
+\newpage
+
+
+
+
 \section{Perfil de usuario y configuración}
+
+A esta sección se puede acceder desde cualquier pantalla de la aplicación usando el icono de usuario situado en la parte superior derecha de la pantalla.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual48.png}
+    \caption{Icono de usuario para acceder al perfil y configuración}
+\end{figure}
+
+La primera sección que encontramos son la de los datos del usuario, donde se muestra el nombre y apellidos del usuario y su correo electrónico.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual49.png}
+    \caption{Sección de datos del usuario}
+\end{figure}
+
+En esta sección también podemos editar los datos del usuario pulsando el icono de lápiz situado a la derecha del nombre del usuario.
+Al pulsar este icono, se abrirá un formulario que nos permitirá editar el nombre y apellidos.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual50.png}
+        \caption{Opción de edición de perfil}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/editar_perfil_implementado.png}
+        \caption{Formulario para editar los datos del usuario}
+    \end{minipage}
+\end{figure}
+
+Una vez editados los datos, debemos pulsar el botón de \textit{Guardar} para guardar los cambios.
+
+La siguiente sección que encontramos es la de los datos del hogar.
+
 

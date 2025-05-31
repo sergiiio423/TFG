@@ -185,9 +185,9 @@
 \contentsline {section}{\numberline {B.1}Requisitos previos}{217}{section.Alph2.1}%
 \contentsline {section}{\numberline {B.2}Registro e inicio de sesión}{218}{section.Alph2.2}%
 \contentsline {section}{\numberline {B.3}Gestión del hogar}{223}{section.Alph2.3}%
-\contentsline {section}{\numberline {B.4}Pantalla principal y navegación}{226}{section.Alph2.4}%
+\contentsline {section}{\numberline {B.4}Pantalla principal y navegación}{225}{section.Alph2.4}%
 \contentsline {section}{\numberline {B.5}Gestión de tareas}{231}{section.Alph2.5}%
-\contentsline {section}{\numberline {B.6}Gestión de gastos}{243}{section.Alph2.6}%
-\contentsline {section}{\numberline {B.7}Listas de la compra}{247}{section.Alph2.7}%
-\contentsline {section}{\numberline {B.8}Perfil de usuario y configuración}{247}{section.Alph2.8}%
-\contentsline {section}{Referencias}{248}{section.Alph2.8}%
+\contentsline {section}{\numberline {B.6}Gestión de gastos}{241}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Listas de la compra}{249}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Perfil de usuario y configuración}{255}{section.Alph2.8}%
+\contentsline {section}{Referencias}{258}{figure.Alph2.64}%
