@@ -87,7 +87,7 @@ En ambos casos, el proceso es el mismo. Debemos introducir nuestro correo electr
     \begin{minipage}{0.40\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../capitulos/img/manual4.png}
-        \caption{Pantalla principal tras iniciar sesión sin verificar la cuenta}
+        \caption{Advertencia de cuenta no verificada}
     \end{minipage}
 \end{figure}
 
@@ -163,6 +163,7 @@ Es obligatorio introducir un nombre para el hogar y una vez introducido, debes p
 
 Una vez realizado correctamente uno de los dos procesos anteriores, se te llevará a la pantalla principal de la aplicación.
 
+\newpage
 
 
 \section{Pantalla principal y navegación}
@@ -801,6 +802,51 @@ Al pulsar este icono, se abrirá un formulario que nos permitirá editar el nomb
 
 Una vez editados los datos, debemos pulsar el botón de \textit{Guardar} para guardar los cambios.
 
-La siguiente sección que encontramos es la de los datos del hogar.
+La siguiente sección que encontramos es la de los datos del hogar. En esta sección podemos ver el nombre del hogar, el código (el que necesitamos 
+para invitar a otros usuarios a unirse al hogar) y los miembros que pertenecen a el. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual51.png}
+    \caption{Sección de datos del hogar}
+\end{figure}
+
+En esta sección también podemos editar el nombre del hogar pulsando el icono de lápiz situado a la derecha del nombre del hogar.
+Al pulsar este icono, se abrirá un formulario que nos permitirá editar el nombre del hogar.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/manual52.png}
+        \caption{Opción de edición del nombre del hogar}
+    \end{minipage}\hfill
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../capitulos/img/editar_hogar_implementado.png}
+        \caption{Formulario para editar el nombre del hogar}
+    \end{minipage}
+\end{figure}
+
+
+La siguiente sección que encontramos es la de preferencias del usuario. En este sección podemos activar y desactivar las notificaciones de la aplicación,
+(aunque esto funcionará en futuras versiones, ya que actualmente no se han implementado las notificaciones).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual53.png}
+    \caption{Sección de preferencias del usuario}
+\end{figure}
+
+La ultima sección que encontramos es la de acciones, donde podemos elegir entre dos acciones, abandonar el hogar,
+es decir, abandonar el hogar al que pertenecemos, se mostrará un mensaje de confirmación antes de abandonar el hogar para evitar abandonos accidentales.
+Y se enviará al usuario a la pantalla para poder volver a unirse a otro hogar. Si el usuario abandona un hogar, las deudas relacionadas a el no se eliminarán hasta que se salden, es decir, si el usuario tiene deudas a cobrar o a pagar, estas deudas seguirán existiendo y se podrán gestionar desde la sección de deudas.
+
+También podemos cerrar sesión, es decir, cerrar la sesión del usuario actual y volver a la pantalla de inicio de sesión.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.40\textwidth]{../capitulos/img/manual54.png}
+    \caption{Pantalla de confirmación al abandonar el hogar}
+\end{figure}
 
