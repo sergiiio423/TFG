@@ -174,7 +174,8 @@
 \contentsline {subsection}{\numberline {8.4.4}Limitaciones del estudio}{183}{subsection.8.4.4}%
 \contentsline {chapter}{\numberline {9}Conclusiones y trabajo futuro}{184}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Conclusiones}{184}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Trabajos futuros}{187}{section.9.2}%
+\contentsline {section}{\numberline {9.2}Trabajos futuros}{186}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Valoración Personal}{187}{section.9.3}%
 \contentsline {chapter}{\numberline {A}Descripción de casos de uso}{188}{appendix.Alph1}%
 \contentsline {section}{\numberline {A.1}Casos de uso de la gestión de sesión}{188}{section.Alph1.1}%
 \contentsline {section}{\numberline {A.2}Casos de uso de la gestión de hogar}{194}{section.Alph1.2}%

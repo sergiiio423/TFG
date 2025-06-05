@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex proyecto"] 1748692381.85851 "proyecto.aux" "proyecto.bbl" "proyecto" 1748692413.14521 0
+["bibtex proyecto"] 1749116274.67179 "proyecto.aux" "proyecto.bbl" "proyecto" 1749200800.51021 0
   "./bibliografia.bib" 1747909437 10252 3bfcf177223415687cb146c532bd1ece ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/bibtex/bst/apacite/apacite.bst" 1374952728 146156 9d7b79dbf9d91133318126032cff8c27 ""
-  "proyecto.aux" 1748692410 89678 45451ec1a4e3d736181d9738bff86e61 "pdflatex"
+  "proyecto.aux" 1749200797 89801 a2aea72a95b715a690062ec1c6fc0699 "pdflatex"
   (generated)
   "proyecto.bbl"
   "proyecto.blg"
   (rewritten before read)
-["makeindex proyecto.idx"] 1748692030.02125 "proyecto.idx" "proyecto.ind" "proyecto" 1748692413.14415 0
-  "proyecto.idx" 1748692385 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex proyecto.idx"] 1749115885.94983 "proyecto.idx" "proyecto.ind" "proyecto" 1749200800.50913 0
+  "proyecto.idx" 1749200767 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "proyecto.ilg"
   "proyecto.ind"
   (rewritten before read)
-["pdflatex"] 1748692382.52808 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1748692413.14707 0
+["pdflatex"] 1749200755.40052 "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" "proyecto.pdf" "proyecto" 1749200800.51167 0
   "../capitulos/01_Introduccion.tex" 1747737975 7912 464ca05658c09f951ceb9a027c4b4153 ""
   "../capitulos/02_Planificacion.tex" 1747817076 10313 c44170efe5572d8e8669920cc22bbbf5 ""
   "../capitulos/03_Estado_del_arte.tex" 1747738574 45874 522505aa416f985db647ce4b478d3541 ""
@@ -22,7 +22,7 @@
   "../capitulos/06_Propuesta.tex" 1747825261 59361 303b501cd045355bbd101700f659939f ""
   "../capitulos/07_Desarrollo.tex" 1747825470 73667 57a11ee17accdeed30065a2a2010b6e8 ""
   "../capitulos/08_Validacion.tex" 1747909455 32763 6e92626e50bdf599bd7e918baea6a3ed ""
-  "../capitulos/09_Conclusiones.tex" 1748250148 7097 4a842bc09784497bc39ca0c697fe37cf ""
+  "../capitulos/09_Conclusiones.tex" 1749116259 7626 cf0344fdabe552e20f18579a9e0d21e2 ""
   "../capitulos/anexo.tex" 1747739825 62067 1c6d9b2cd9a397a5ff6743ed45641549 ""
   "../capitulos/anexo_2.tex" 1748692369 47774 038632e5a656e0d66980dbba66ba4859 ""
   "../capitulos/img/Firebase.png" 1729941650 17150 b1cf89805130c05be3003b143040769a ""
@@ -417,19 +417,19 @@
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty" 1718356376 7532 d2e1111e17bfebb1607d8ffa779705ec ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" 1748425278 4337 1bbca6cab404b69d5d40e110070d6cce ""
+  "c:/Users/USUARIO/Documents/Sergio/TFG/Plantilla_TFG_latex/proyecto.tex" 1748692604 4303 5dd074c097af0d3600bbe55b054ae0cc ""
   "imagenes/etsiit_logo.png" 1379672160 15686 96fbb972320ee192b868b64d57775747 ""
   "imagenes/logo_ugr.jpg" 1228354992 85532 25866cc28cc667a1cdd972180571e7be ""
-  "portada/portada.tex" 1737367880 1078 1c2fe0a8f5546a43996c48d26be77a2a ""
+  "portada/portada.tex" 1749200749 1079 c98887f759576a7ae353dc901f7323c4 ""
   "prefacios/prefacio.tex" 1747740734 7070 30dfb4562066540608d4d34a5072b70a ""
-  "proyecto.aux" 1748692410 89678 45451ec1a4e3d736181d9738bff86e61 "pdflatex"
-  "proyecto.bbl" 1748692382 25123 6935789b23124280a2dcbe38108997d4 "bibtex proyecto"
-  "proyecto.ind" 1748692030 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
-  "proyecto.lof" 1748692410 19856 defe194451ec0f4cf0aa6ea56639cb2f "pdflatex"
-  "proyecto.lot" 1748692410 7449 8e90ac70960263fc19a5456cd366af4d "pdflatex"
-  "proyecto.out" 1748692410 18439 b254944b8d0b450d8b538f32833bc28a "pdflatex"
-  "proyecto.tex" 1748425278 4337 1bbca6cab404b69d5d40e110070d6cce ""
-  "proyecto.toc" 1748692410 17533 c9a040865d9b92c558a4fe6ac2cb7486 "pdflatex"
+  "proyecto.aux" 1749200797 89801 a2aea72a95b715a690062ec1c6fc0699 "pdflatex"
+  "proyecto.bbl" 1749116275 25123 6935789b23124280a2dcbe38108997d4 "bibtex proyecto"
+  "proyecto.ind" 1749115886 0 d41d8cd98f00b204e9800998ecf8427e "makeindex proyecto.idx"
+  "proyecto.lof" 1749200797 19856 defe194451ec0f4cf0aa6ea56639cb2f "pdflatex"
+  "proyecto.lot" 1749200797 7449 8e90ac70960263fc19a5456cd366af4d "pdflatex"
+  "proyecto.out" 1749200797 18596 ed8df7f20864ca70c0cd369991629da2 "pdflatex"
+  "proyecto.tex" 1748692604 4303 5dd074c097af0d3600bbe55b054ae0cc ""
+  "proyecto.toc" 1749200797 17615 1f2896eab0a7e4d32456811852bb03da "pdflatex"
   (generated)
   "proyecto.aux"
   "proyecto.idx"
